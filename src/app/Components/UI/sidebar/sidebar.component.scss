@@ -1,0 +1,116 @@
+@use "../../../../styles/variables";
+
+/**
+ * Styles for the Sidebar.js component
+ */
+
+ 
+ .SideBarTemplateCol {
+    @media (min-width: 576px) {
+      margin-left: 150px;
+      padding: 3rem;
+    }
+    margin-left: 0;
+    padding: 3rem;
+   }
+   
+   .navbar-dark{   
+    background-color: rgb(36, 40, 48);
+    .navbar-nav {
+    .nav {
+      margin-bottom: 20px;
+    }
+  
+    .nav-item {
+      width: 100%;
+  
+      & + .nav-item {
+        margin-left: 0;
+      }
+    }
+  
+    .nav-link {
+      color: $DarkGold;
+      font-size: 0.9rem;
+      padding: 0.75rem 0.5rem;
+      @include ShortTransition;
+  
+      i {
+        font-size: 1.2rem;
+        margin-right: 0.4rem;
+      }
+  
+      span {
+        position: absolute;
+      }
+  
+      &.active, &:hover {
+        color: $Gold;
+        padding: 0.75rem 0.75rem;
+        @include ShortTransition;
+      }
+  
+      &.active {
+        color: $LightGold;
+        padding: 0.75rem 1rem;
+        @include ShortTransition;
+      }
+    }
+  }
+   }
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: $DarkGray;
+    border-right: 1px solid $Black;
+    max-width: 150px;
+    min-width: 150px;
+  
+    .nav {
+      margin-bottom: 20px;
+    }
+  
+    .nav-item {
+      width: 100%;    
+      border-bottom: 1px solid $DarkerGold;
+  
+      & + .nav-item {
+        margin-left: 0;
+      }
+    }
+  
+    .nav-link {
+      color: $DarkGold;
+      font-size: 0.9rem;
+      padding: 0.75rem 0.5rem;
+      @include ShortTransition;
+  
+      i {
+        font-size: 1.2rem;
+        margin-right: 0.2rem;
+      }
+  
+      span {
+        position: absolute;
+      }
+      
+      &:hover {
+        color: $Gold;
+        padding: 0.75rem 0.65rem;      
+        @include ShortTransition;
+      }
+  
+      &.active {
+        color: $LightGold;
+        padding: 0.75rem 1rem;      
+        @include ShortTransition;
+      }
+    }
+  }
+  
