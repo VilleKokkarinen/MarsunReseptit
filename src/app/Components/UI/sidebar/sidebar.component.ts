@@ -1,10 +1,23 @@
+import { KeyValue } from '@angular/common';
 import { Component } from '@angular/core';
+import { Route } from './Route';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.css']
 })
+
 export class SidebarComponent {
+  public Routes:Route[] = [
+    {
+      "Route":"Dashboard",
+      "Icon":"house"
+    },
+    {
+      "Route":"Recipes",
+      "Icon":"journals"
+    }
+  ]
 
 }

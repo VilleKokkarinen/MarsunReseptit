@@ -1,0 +1,92 @@
+@import "../../../../styles/style.css";
+
+.body{
+  height:calc(100vh);
+  width:100vw;
+  flex-direction: column;
+  display:flex;
+}
+.contentbody{
+  background-color: var(--LighterGray);
+  width: 94vw;
+  height:100%;
+  display:flex;
+}
+
+.content{
+  margin:1vh;
+  height:calc(100% - 2vh);
+  width:100%;
+}
+.sidebarcontainer{
+  display:flex;
+  flex-direction: row;
+  height:calc(100vh - 100px);
+}
+
+.container{
+  display:flex;
+  flex-direction: column;
+  height:100%;
+}
+
+.sidebar {
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  background-color: var(--DarkGray);
+  border-right: 1px solid var(--Black);
+  width: 6vw;
+  min-width: 110px;
+  height:100%;
+  padding:0;
+  color:var(--LightGold);
+  font-family: 'Inter UI', sans-serif; 
+} 
+
+.sidebar nav .flex-container {
+  width: 100%;
+  height:3vh;
+  min-height:25px;
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: 1px solid var(--DarkerGold);
+}
+
+.flex-icon,
+.flex-content {
+  flex-grow: 0;
+  position: relative;
+  padding-left: 5px;
+}
+
+.flex-icon {
+  color: var(--DarkGold);
+  transition: all .5s;
+}
+
+.nav-link {
+  padding-left: 5px;
+  color: var(--DarkGold);
+}
+
+.flex-container:hover .flex-icon {
+  flex-grow: 0.75;
+  color: var(--Gold);
+}
+
+.flex-container:hover .nav-link {
+  color: var(--Gold);
+}
+
+.flex-container:active .nav-link {
+  color: var(--Gold);
+}
+
+.flex-container.is-active .flex-icon {
+  color: var(--Gold);
+}
+.flex-container.is-active .nav-link  {
+  color: var(--Gold);
+  text-decoration: underline;
+}

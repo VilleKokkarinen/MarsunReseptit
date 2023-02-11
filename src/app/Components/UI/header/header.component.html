@@ -1,1 +1,59 @@
-<p>header works!</p>
+<header class="header">
+
+    <div class="headercontainer">
+        <a className="navbar-brand" href="/">
+        <img
+            src="https://i.imgur.com/Dxkqw0C.png"
+            alt="header"
+            className="header-image"
+            style="height:60px;"
+        />
+        </a>
+        <div class="header-text">
+          {{" Marsun Reseptit"}}
+        </div>
+
+        <div class="dropdowncontainer">
+          <div class="dropdownbuttoncontainer">
+            <a class="dropdownbutton"
+            (click)="DropdownOpen = !DropdownOpen"
+            >
+            {{DDButtonText}}
+          </a>
+          </div>
+        
+          
+        <div [hidden]="!DropdownOpen" [ngClass]="!DropdownOpen ? 'hidden' : 'visible'" class="dropdown-menu">
+          <nav>
+            <div class="dropdown-item">
+              <a class="dropdown-item" href="#login">Login</a>
+            </div>
+            <div class="dropdown-item">
+              <a class="dropdown-item" href="#login">Login</a>
+            </div>
+            <div class="dropdown-item">
+              <a class="dropdown-item" href="#login">Login</a>
+            </div>
+            <div class="dropdown-item">
+              <a class="dropdown-item" href="#login">Login</a>
+            </div>
+            <div class="dropdown-item">
+              <a class="dropdown-item" href="#login">Login</a>
+            </div>
+          </nav>
+          <!--
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li hidden="{{!loggedIn}}"><a class="dropdown-item" href="#login">Login</a></li>
+            <li hidden="{{!loggedIn}}"><a class="dropdown-item" href="#/sign-up">Sign up</a></li>
+            <li hidden="{{loggedIn}}"><a class="dropdown-item" href="#/update-profile">Update Profile</a></li>
+            <li hidden="{{loggedIn}}"><button>Logout</button></li>
+          </ul>
+        -->
+        </div>
+        
+        </div> 
+       
+      
+    </div>
+
+</header>

@@ -1,0 +1,29 @@
+
+<div class="body">
+    <app-header></app-header>
+
+    <div class="sidebarcontainer">
+        <div class="sidebar">
+            <nav class="nav">
+                <div class="flex-container" style="height:50px;"></div>
+            </nav>  
+            <nav class="nav" *ngFor="let Route of Routes">
+                <div class="flex-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']">
+                    <i class="bi bi-{{Route.Icon}} flex-icon"></i>
+                    <a class="nav-link">
+                        <span>{{Route.Route}}</span>
+                    </a>
+                </div>
+            </nav>  
+        </div>  
+        <div class="contentbody">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+    
+    <app-footer></app-footer>
+</div>
+
+

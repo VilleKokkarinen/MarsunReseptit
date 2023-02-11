@@ -1,0 +1,117 @@
+@import "../../../../styles/style.css";
+
+.header{
+    height:60px;
+    background-color: var(--Black);
+    border-bottom: 1px solid var(--DarkerGold);
+    font-family: 'Inter UI', sans-serif; 
+}
+.header-text{
+    color: var(--Gold);
+}
+
+.headercontainer{
+    display:flex;
+    flex-direction: row;
+    height:60px;
+    align-items: center;
+    justify-content: space-between;
+}
+.header-image{
+    zoom: 2;
+    margin: auto;
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+}
+
+.navbar-brand {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-size: 0.9rem;
+}
+
+.hidden{
+    display: none;
+    position: absolute;
+    height:0;
+    width:0;
+}
+
+.visible{
+    display: block;
+    position: absolute;
+    background-color: aliceblue;
+    height:80px;
+    width:100px;
+}
+
+.dropdownbuttoncontainer{
+    width:100px;
+    height:30px;
+}
+
+.dropdownbutton{
+    color: var(--Gold);
+    border: 2px solid var(--DarkerGold);
+    border-radius: 4px;
+    height:30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dropdownbutton:hover{
+    background-color: var(--DarkerGold);
+    transition: all .15s;
+}
+
+
+.dropdowncontainer{
+    width:250px;
+}
+.dropdownbuttoncontainer{
+    width:150px;
+}
+
+.dropdowncontainer ul
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.dropdowncontainer ul li
+{
+    list-style: none;
+    padding: 4px;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+}
+
+
+
+
+.dropdown-menu {
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    background-color: var(--DarkGray);
+    border: 1px solid var(--DarkGold);
+    width: 150px;
+    height:100px;
+    padding:0;
+    color:var(--LightGold);
+  } 
+  
+  .dropdown-menu nav .dropdown-item {
+    width: 100%;
+    height: 3vh;
+    padding-left:5px;
+    min-height: 25px;
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid var(--DarkerGold);
+  }

@@ -9,9 +9,11 @@ import { FooterComponent } from './Components/UI/footer/footer.component';
 import { HeaderComponent } from './Components/UI/header/header.component';
 import { ErrorComponent } from './Components/UI/error/error.component';
 import { LoadingComponent } from './Components/UI/loading/loading.component';
-import { UserComponent } from './Components/Templates/user/user.component';
-import { MemberComponent } from './Components/Templates/member/member.component';
-import { RecipeComponent } from './Components/Templates/recipe/recipe.component';
+import { UserComponent } from './Components/Routes/user/user.component';
+import { MemberComponent } from './Components/Routes/member/member.component';
+import { RecipeComponent } from './Components/Routes/recipe/recipe.component';
+import { SidebarComponent } from './Components/UI/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { RecipeComponent } from './Components/Templates/recipe/recipe.component'
     LoadingComponent,
     UserComponent,
     MemberComponent,
-    RecipeComponent
+    RecipeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

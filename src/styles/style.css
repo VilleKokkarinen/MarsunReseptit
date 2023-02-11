@@ -1,0 +1,20 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+:root{
+  --Black: #191b20;
+  --DarkGray: #22262E;
+  --Gray: #4e4e4e;
+  --LightGray: #606060;
+  --LighterGray: #6d6d6d;
+  --Gold: #ddbb5c;
+  --DarkGold: #a07500;
+  --DarkerGold: #775700;
+  --DarkestGold: #4e3900;
+  --LightGold: #ffd970;
+  --body-bg: rgb(83, 83, 83);
+}
+
+body{
+  margin:0;
+  padding:0;
+}
