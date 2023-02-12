@@ -5,11 +5,20 @@ import { ErrorComponent } from './Components/UI/error/error.component';
 import { MemberComponent } from './Components/Routes/member/member.component';
 import { RecipeComponent } from './Components/Routes/recipe/recipe.component';
 import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
+
+// route guard
+import { AuthGuard } from './Components/shared/services/shared/guard/auth.guard';
+
 const routes: Routes =[
   {
     path: '',
     component: SidebarComponent,
     children: [
+      {
+        path: '',
+        redirectTo: '/Dashboard',
+        pathMatch: 'full'
+      },
       {
         path: 'Dashboard',
         component: DashboardComponent
@@ -22,13 +31,14 @@ const routes: Routes =[
   },
   {
     path: 'Member',
-    component: MemberComponent
+    component: MemberComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
     redirectTo: '/Dashboard',
     pathMatch: 'full'
-  }
+  } 
 ];
 
 @NgModule({

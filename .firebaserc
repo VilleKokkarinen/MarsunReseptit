@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "marsun-reseptit"
+  },
+  "targets": {
+    "marsun-reseptit": {
+      "hosting": {
+        "MarsunReseptit": [
+          "marsun-reseptit"
+        ]
+      }
+    }
+  }
+}

@@ -5,7 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environments/environment';
 
+
+/* Firebase */
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { providePerformance,getPerformance } from '@angular/fire/performance';
+import { PERSISTENCE } from '@angular/fire/compat/auth';
+import { AngularFireModule } from '@angular/fire/compat';
 
 
 /* ui components */
@@ -18,6 +28,7 @@ import { SidebarComponent } from './Components/UI/sidebar/sidebar.component';
 import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
 
 
+
 /* route components */
 import { RecipeComponent } from './Components/Routes/recipe/recipe.component';
 import { MemberComponent } from './Components/Routes/member/member.component';
@@ -26,10 +37,9 @@ import { MemberComponent } from './Components/Routes/member/member.component';
 
 /* user components */
 import { UserComponent } from './Components/Routes/user/user/user.component';
-import { LoginComponent } from './Components/Routes/user/login/login.component';
 import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.component';
 
-
+import { AuthService } from './Components/shared/services/shared/services/auth.service';
 
 
 
@@ -44,7 +54,6 @@ import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.compon
     MemberComponent,
     RecipeComponent,
     SidebarComponent,
-    LoginComponent,
     SignUpComponent,
     DashboardComponent
   ],
@@ -53,9 +62,20 @@ import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.compon
     AppRoutingModule,
     NgbModule,
     BrowserAnimationsModule,
-    AccountDropdownComponent
+    AccountDropdownComponent,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    providePerformance(() => getPerformance())
   ],
-  providers: [],
+  providers: [
+    { provide: PERSISTENCE, useValue: 'local' },
+    AuthService,
+    ScreenTrackingService,
+    UserTrackingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/Components/shared/services/shared/services/auth.service';
 
 @Component({
   selector: 'account-dropdown',
@@ -8,10 +9,8 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
   standalone: true,
 	imports: [NgbDropdownModule],
 })
-export class AccountDropdownComponent {
-  loggedIn = false;
-  member = {userName:""};
-
-  DDButtonText = this.loggedIn ? `Hi, ${this.member.userName}` : 'My Account'
-  DropdownOpen:boolean = false;
+export class AccountDropdownComponent {  
+  constructor(
+    public authService: AuthService
+  ) { }
 }
