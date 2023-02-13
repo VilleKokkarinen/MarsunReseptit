@@ -30,6 +30,7 @@ export class AuthService {
       }
     });
   }
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -82,6 +83,11 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
+
+    if(user !== null && this.userData == null)
+      this.userData = user;
+
+
     return user !== null && user.emailVerified !== false ? true : false;
   }
   // Sign in with Google

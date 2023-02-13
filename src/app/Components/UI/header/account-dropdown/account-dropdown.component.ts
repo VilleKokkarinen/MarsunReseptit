@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from 'src/app/Components/shared/services/shared/services/auth.service';
+import { AuthService } from 'src/app/Components/shared/services/auth.service';
 
 @Component({
   selector: 'account-dropdown',

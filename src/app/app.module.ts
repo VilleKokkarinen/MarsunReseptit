@@ -30,16 +30,23 @@ import { DashboardComponent } from './Components/Routes/dashboard/dashboard.comp
 
 
 /* route components */
-import { RecipeComponent } from './Components/Routes/recipe/recipe.component';
 import { MemberComponent } from './Components/Routes/member/member.component';
 
+
+/* Recipes */
+import { AddRecipeComponent } from './Components/Routes/recipe/add-recipe/add-recipe.component';
+import { RecipeListComponent } from './Components/Routes/recipe/recipe-list/recipe-list.component';
+import { RecipeDetailsComponent } from './Components/Routes/recipe/recipe-details/recipe-details.component';
 
 
 /* user components */
 import { UserComponent } from './Components/Routes/user/user/user.component';
 import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.component';
 
-import { AuthService } from './Components/shared/services/shared/services/auth.service';
+import { AuthService } from './Components/shared/services/auth.service';
+
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -52,10 +59,12 @@ import { AuthService } from './Components/shared/services/shared/services/auth.s
     LoadingComponent,
     UserComponent,
     MemberComponent,
-    RecipeComponent,
     SidebarComponent,
     SignUpComponent,
-    DashboardComponent
+    DashboardComponent,
+    AddRecipeComponent,
+    RecipeListComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +72,7 @@ import { AuthService } from './Components/shared/services/shared/services/auth.s
     NgbModule,
     BrowserAnimationsModule,
     AccountDropdownComponent,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),

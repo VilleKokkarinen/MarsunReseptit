@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './Components/UI/sidebar/sidebar.component';
 import { ErrorComponent } from './Components/UI/error/error.component';
 import { MemberComponent } from './Components/Routes/member/member.component';
-import { RecipeComponent } from './Components/Routes/recipe/recipe.component';
+import { RecipeListComponent } from './Components/Routes/recipe/recipe-list/recipe-list.component';
 import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
+import { AddRecipeComponent } from './Components/Routes/recipe/add-recipe/add-recipe.component';
 
 // route guard
-import { AuthGuard } from './Components/shared/services/shared/guard/auth.guard';
+import { AuthGuard } from './Components/shared/guard/auth.guard';
 
 const routes: Routes =[
   {
@@ -25,7 +26,12 @@ const routes: Routes =[
       },
       {
         path: 'Recipes',
-        component: RecipeComponent
+        component: RecipeListComponent
+      },
+      {
+        path: 'Add-Recipe',
+        component: AddRecipeComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },

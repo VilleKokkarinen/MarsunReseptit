@@ -17,6 +17,10 @@ export class SidebarComponent {
     {
       "Route":"Recipes",
       "Icon":"journals"
+    },
+    {
+      "Route":"Add-Recipe",
+      "Icon":"journal-plus"
     }
   ]
 
@@ -29,6 +33,7 @@ export class SidebarComponent {
       "Route":"Recipes",
       "Icon":"journals"
     }
+   
   ]
 
 }
