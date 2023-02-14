@@ -13,7 +13,6 @@
   --DarkerGold: #775700;
   --DarkestGold: #4e3900;
   --LightGold: rgba(255, 217, 112, 1);
-  --body-bg: rgb(83, 83, 83);
 }
 
 body{
@@ -23,14 +22,15 @@ body{
 
 
 .btn-outline-primary {
+  --bs-btn-bg: var(--DarkGray);
   --bs-btn-color: var(--LightGold);
   --bs-btn-border-color: var(--Gold);
   --bs-btn-hover-color: var(--LightGold);
-  --bs-btn-hover-bg: var(--DarkerGold);
+  --bs-btn-hover-bg: var(--Gray);
   --bs-btn-hover-border-color: var(--DarkGold);
   --bs-btn-focus-shadow-rgb: 13,110,253;
   --bs-btn-active-color: var(--LightGold);
-  --bs-btn-active-bg: var(--DarkerGold);
+  --bs-btn-active-bg: var(--Gray);
   --bs-btn-active-border-color: var(--DarkGold);
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: var(--Gray);

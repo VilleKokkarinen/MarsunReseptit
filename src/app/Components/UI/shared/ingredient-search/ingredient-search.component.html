@@ -1,0 +1,59 @@
+<div ngbDropdown #ingredientDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
+    <button type="button" class="btn btn-outline-primary" id="ingredientDropDownToggle" ngbDropdownToggle>
+        {{selectIngredientData()}}
+        <i [hidden]="ingredientDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
+        <i [hidden]="!ingredientDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
+    </button>
+    <div ngbDropdownMenu>
+        <form class="px-4 py-3">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="searchIngredient"
+                    placeholder="search"
+                    [(ngModel)]="Search"
+                    name="Search"
+                />
+            </div>
+        </form>
+
+        <div style="overflow-y:auto; max-height:20vh;">
+            <div *ngFor="let Ingredient of Ingredients">
+                <div *ngIf='Search == "" || (Ingredient?.Name?.includes(Search)) '>
+                    <div class="dropdown-divider"></div>
+                    <button (click)="selectIngredient(Ingredient)" ngbDropdownItem>{{Ingredient.Name}}</button>
+                </div>
+              
+            </div>
+        </div>
+       
+
+        <div class="dropdown-divider"></div>
+        <div (click)="createNewIngredient()" ngbDropdownItem>cannot find correct ingredient? Add One!</div>
+        
+        <div *ngIf="newIngredient != null">
+            <div class="dropdown-divider"></div>
+            <form class="px-4 py-3">
+                <div class="row">
+                    <label for="Name" class="col-7">Name</label>
+                    <div class="col-5">
+                        <input
+                        class="form-control"
+                        id="Ingredient.Name"
+                        required
+                        [(ngModel)]="newIngredient.Name"
+                        name="newIngredient.Name"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-md btn-success" (click)="saveNewIngredient()">Save</button>
+                </div>
+               
+            </form>
+        </div>
+
+    </div>
+</div>

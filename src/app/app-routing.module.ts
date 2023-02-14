@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './Components/UI/sidebar/sidebar.component';
-import { ErrorComponent } from './Components/UI/error/error.component';
+import { SidebarComponent } from './Components/UI/ui-components/sidebar/sidebar.component';
+import { ErrorComponent } from './Components/UI/ui-components/error/error.component';
 import { MemberComponent } from './Components/Routes/member/member.component';
 import { RecipeListComponent } from './Components/Routes/recipe/recipe-list/recipe-list.component';
 import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';

@@ -19,12 +19,12 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 
 /* ui components */
-import { HeaderComponent } from './Components/UI/header/header.component';
-import { AccountDropdownComponent } from './Components/UI/header/account-dropdown/account-dropdown.component';
-import { FooterComponent } from './Components/UI/footer/footer.component';
-import { ErrorComponent } from './Components/UI/error/error.component';
-import { LoadingComponent } from './Components/UI/loading/loading.component';
-import { SidebarComponent } from './Components/UI/sidebar/sidebar.component';
+import { HeaderComponent } from './Components/UI/ui-components/header/header.component';
+import { AccountDropdownComponent } from './Components/UI/ui-components/header/account-dropdown/account-dropdown.component';
+import { FooterComponent } from './Components/UI/ui-components/footer/footer.component';
+import { ErrorComponent } from './Components/UI/ui-components/error/error.component';
+import { LoadingComponent } from './Components/UI/ui-components/loading/loading.component';
+import { SidebarComponent } from './Components/UI/ui-components/sidebar/sidebar.component';
 import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
 
 
@@ -46,6 +46,10 @@ import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.compon
 import { AuthService } from './Components/shared/services/auth.service';
 
 import { FormsModule } from '@angular/forms';
+import { RecipeStepListComponent } from './Components/Routes/recipe/add-recipe/recipe-step-list/recipe-step-list.component';
+import { RecipeStepIngredientListComponent } from './Components/Routes/recipe/add-recipe/recipe-step-ingredient-list/recipe-step-ingredient-list.component';
+import { IngredientSearchComponent } from './Components/UI/shared/ingredient-search/ingredient-search.component';
+import { MeasuringUnitSearchComponent } from './Components/UI/shared/measuring-unit-search/measuring-unit-search.component';
 
 
 
@@ -64,7 +68,11 @@ import { FormsModule } from '@angular/forms';
     DashboardComponent,
     AddRecipeComponent,
     RecipeListComponent,
-    RecipeDetailsComponent
+    RecipeDetailsComponent,
+    RecipeStepListComponent,
+    RecipeStepIngredientListComponent,
+    IngredientSearchComponent,
+    MeasuringUnitSearchComponent
   ],
   imports: [
     BrowserModule,

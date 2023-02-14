@@ -12,75 +12,23 @@
             name="recipe.Name"
           />
         </div>
+        <div class="col-2">
+            <button (click)="saveRecipe()" class="btn btn-md btn-success">Save Recipe</button>
+        </div>
+
+        <div class="col-2">
+            <button class="btn btn-md btn-danger" (click)="newRecipe()">Clear Recipe</button>
+        </div>
        
       </div>
   
-      <div class="form-group row recipe-card">
-        <div class="row">
-            <label for="Steps" class="col-2">Steps {{recipe.Steps.length}}</label>
-            <div class="col-4">
-                <button (click)="addStep()" class="btn btn-sm btn-success">Add Step</button>
-            </div>
-        </div>
-            <div class="form-group col-12 recipe-card" *ngFor="let Step of recipe.Steps">
-                <div class="row">
-                    <label for="Step.Name" class="col-2">Step Name</label>
-                        <div class="col-4">
-                            <input
-                            class="form-control"
-                            id="Step.Name"
-                            required
-                            [(ngModel)]="Step.Name"
-                            name="Step.Name"
-                            />
-                        </div>
-                </div>
-                
-                <div class="row">
-                    <label for="Ingredients" class="col-3" >Ingredients {{Step.Ingredients?.length}}</label>
-                    <div class="col-4">
-                        <button (click)="addIngredient(Step)" class="btn btn-sm btn-success">Add Ingredient</button>
-                    </div>
-                </div>
-
-               
-               
-
-
-                <div class="form-group col-12 recipe-card" *ngFor="let Ingredient of Step.Ingredients">
-                    <div class="row">
-                        <label for="Ingredient.Name" class="col-3">Ingredient.Name</label>
-                        <div class="col-4">
-                            <input
-                            class="form-control"
-                            id="Ingredient.Name"
-                            required
-                            [(ngModel)]="Ingredient.Name"
-                            name="Ingredient.Name"
-                            />
-                        </div>
-
-                        <!--
-                        <input
-                        class="form-control"
-                        id="Ingredient.Unit"
-                        required
-                        [(ngModel)]="Ingredient.Unit"
-                        name="Ingredient.Unit"
-                        />
-                        -->
-                    </div>
-                </div>
-            </div>
-            
-      
-      </div>
+      <app-recipe-step-list [Steps]="recipe.Steps"></app-recipe-step-list>
 
       <div class="form-group">
 
       </div>
   
-      <button (click)="saveRecipe()" class="btn btn-success">Save Recipe</button>
+     
     </div>
   
     <div *ngIf="submitted">

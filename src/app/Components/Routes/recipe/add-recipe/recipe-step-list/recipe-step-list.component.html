@@ -1,0 +1,34 @@
+<div class="form-group row recipe-card">
+    <div class="row">
+        <label for="Steps" class="col-2">Steps {{Steps.length}}</label>
+        <div class="col-4">
+            <button (click)="addStep()" class="btn btn-md btn-success">Add Step</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-12 recipe-card" *ngFor="let Step of Steps">
+            <div class="row">
+                <label for="Step.Name" class="col-2">Step Name</label>
+                    <div class="col-4">
+                        <input
+                        class="form-control"
+                        id="Step.Name"
+                        required
+                        [(ngModel)]="Step.Name"
+                        name="Step.Name"
+                        />
+                    </div>
+
+                    <div class="col-1">
+                        <button (click)="removeStep(Step)" class="btn btn-md btn-danger">Delete</button>
+                    </div>
+            </div>
+
+           
+
+            <app-recipe-step-ingredient-list [Ingredients]="Step.Ingredients"></app-recipe-step-ingredient-list>
+
+           
+        </div>
+    </div>
+  </div>

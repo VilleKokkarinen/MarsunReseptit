@@ -1,0 +1,86 @@
+<div ngbDropdown #measuringUnitDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
+    <button type="button" class="btn btn-outline-primary" id="measuringUnitDropDownToggle" ngbDropdownToggle>
+        {{selectMeasuringUnitData()}}
+        <i [hidden]="measuringUnitDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
+        <i [hidden]="!measuringUnitDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
+    </button>
+    <div ngbDropdownMenu>
+        <form class="px-4 py-3">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="searchMeasuringUnit"
+                    placeholder="search"
+                    [(ngModel)]="Search"
+                    name="Search"
+                />
+            </div>
+        </form>
+
+        <div style="overflow-y:auto; max-height:20vh;">
+            <div *ngFor="let MeasuringUnit of MeasuringUnits">
+                <div *ngIf='Search == "" || (MeasuringUnit?.Name?.includes(Search) || MeasuringUnit?.ShortName?.includes(Search)  ) '>
+                    <div class="dropdown-divider"></div>
+                    <button (click)="selectMeasuringUnit(MeasuringUnit)" ngbDropdownItem>{{MeasuringUnit.Name}}</button>
+                </div>
+              
+            </div>
+        </div>
+       
+
+        <div class="dropdown-divider"></div>
+        <div (click)="createNewMeasuringUnit()" ngbDropdownItem>cannot find correct unit? Add One!</div>
+        
+        <div *ngIf="newMeasuringUnit != null">
+            <div class="dropdown-divider"></div>
+            <form class="px-4 py-3">
+                <div class="row">
+                    <label for="Name" class="col-7">Name</label>
+                    <div class="col-5">
+                        <input
+                        class="form-control"
+                        id="MeasuringUnit.Name"
+                        required
+                        [(ngModel)]="newMeasuringUnit.Name"
+                        name="newMeasuringUnit.Name"
+                        />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="Name" class="col-7">ShortName</label>
+                    <div class="col-5">
+                        <input
+                        class="form-control"
+                        id="MeasuringUnit.ShortName"
+                        required
+                        [(ngModel)]="newMeasuringUnit.ShortName"
+                        name="newMeasuringUnit.ShortName"
+                        />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="Name" class="col-7">BaseUnitMultiplier</label>
+                    <div class="col-5">
+                        <input
+                        class="form-control"
+                        type="number"
+                        id="MeasuringUnit.BaseUnitMultiplier"
+                        required
+                        [(ngModel)]="newMeasuringUnit.BaseUnitMultiplier"
+                        name="newMeasuringUnit.BaseUnitMultiplier"
+                        />
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn btn-md btn-success" (click)="saveNewMeasuringUnit()">Save</button>
+                </div>
+               
+            </form>
+        </div>
+
+    </div>
+</div>
