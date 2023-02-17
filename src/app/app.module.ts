@@ -16,40 +16,45 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { PERSISTENCE } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
+import { FormsModule } from '@angular/forms';
+
+
+/* Services */
+import { AuthService } from './Services/auth.service';
 
 
 /* ui components */
-import { HeaderComponent } from './Components/UI/ui-components/header/header.component';
-import { AccountDropdownComponent } from './Components/UI/ui-components/header/account-dropdown/account-dropdown.component';
-import { FooterComponent } from './Components/UI/ui-components/footer/footer.component';
-import { ErrorComponent } from './Components/UI/ui-components/error/error.component';
-import { LoadingComponent } from './Components/UI/ui-components/loading/loading.component';
-import { SidebarComponent } from './Components/UI/ui-components/sidebar/sidebar.component';
-import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
+import { HeaderComponent } from './UI/ui-components/header/header.component';
+import { AccountDropdownComponent } from './UI/ui-components/header/account-dropdown/account-dropdown.component';
+import { FooterComponent } from './UI/ui-components/footer/footer.component';
+import { ErrorComponent } from './UI/ui-components/error/error.component';
+import { LoadingComponent } from './UI/ui-components/loading/loading.component';
+import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
+
 
 
 
 /* route components */
-import { MemberComponent } from './Components/Routes/member/member.component';
+import { DashboardComponent } from './Routes/dashboard/dashboard.component';
+import { AccountComponent } from './Routes/account/account/account.component';
+import { UserComponent } from './Routes/user/user.component';
+import { SignUpComponent } from './Routes/account/sign-up/sign-up.component';
+
 
 
 /* Recipes */
-import { AddRecipeComponent } from './Components/Routes/recipe/add-recipe/add-recipe.component';
-import { RecipeListComponent } from './Components/Routes/recipe/recipe-list/recipe-list.component';
-import { RecipeDetailsComponent } from './Components/Routes/recipe/recipe-details/recipe-details.component';
+import { AddRecipeComponent } from './Routes/recipe/add-recipe/add-recipe.component';
+import { RecipeListComponent } from './Routes/recipe/recipe-list/recipe-list.component';
+import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-details.component';
+import { RecipeStepListComponent } from './Routes/recipe/add-recipe/recipe-step-list/recipe-step-list.component';
+import { RecipeStepIngredientListComponent } from './Routes/recipe/add-recipe/recipe-step-ingredient-list/recipe-step-ingredient-list.component';
 
 
-/* user components */
-import { UserComponent } from './Components/Routes/user/user/user.component';
-import { SignUpComponent } from './Components/Routes/user/sign-up/sign-up.component';
 
-import { AuthService } from './Components/shared/services/auth.service';
+import { IngredientSearchComponent } from './UI/search-dropdown/ingredient-search/ingredient-search.component';
+import { MeasuringUnitSearchComponent } from './UI/search-dropdown/measuring-unit-search/measuring-unit-search.component';
+import { AddIngredientModalComponent } from './Routes/recipe/add-ingredient-modal/add-ingredient-modal.component';
 
-import { FormsModule } from '@angular/forms';
-import { RecipeStepListComponent } from './Components/Routes/recipe/add-recipe/recipe-step-list/recipe-step-list.component';
-import { RecipeStepIngredientListComponent } from './Components/Routes/recipe/add-recipe/recipe-step-ingredient-list/recipe-step-ingredient-list.component';
-import { IngredientSearchComponent } from './Components/UI/shared/ingredient-search/ingredient-search.component';
-import { MeasuringUnitSearchComponent } from './Components/UI/shared/measuring-unit-search/measuring-unit-search.component';
 
 
 
@@ -62,7 +67,6 @@ import { MeasuringUnitSearchComponent } from './Components/UI/shared/measuring-u
     ErrorComponent,
     LoadingComponent,
     UserComponent,
-    MemberComponent,
     SidebarComponent,
     SignUpComponent,
     DashboardComponent,
@@ -72,7 +76,10 @@ import { MeasuringUnitSearchComponent } from './Components/UI/shared/measuring-u
     RecipeStepListComponent,
     RecipeStepIngredientListComponent,
     IngredientSearchComponent,
-    MeasuringUnitSearchComponent
+    MeasuringUnitSearchComponent,
+    AddIngredientModalComponent,
+    AccountComponent
+    
   ],
   imports: [
     BrowserModule,

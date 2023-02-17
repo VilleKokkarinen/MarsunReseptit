@@ -1,0 +1,18 @@
+.footer{
+    height:30px;
+    border-top: 1px solid var(--Accent_Border_Color);
+    background-color: var(--Header_Bg_Color);
+    margin:0px;
+    padding:0px;
+}
+.footer-text{
+    color: var(--TextColor_Primary);
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    white-space: pre;
+}
+.footer-text a{
+    color: var(--TextColor_Primary);
+    text-decoration: underline;
+}

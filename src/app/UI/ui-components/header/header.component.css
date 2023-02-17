@@ -1,0 +1,27 @@
+.header{
+    height:60px;
+    background-color: var(--Header_Bg_Color);
+    border-bottom: 1px solid var(--Accent_Border_Color);
+    font-family: 'Inter UI', sans-serif; 
+}
+.header-text{
+    color: var(--TextColor_Primary);
+}
+
+.headercontainer{
+    display:flex;
+    flex-direction: row;
+    height:60px;
+    align-items: center;
+    justify-content: flex-start;
+    margin:0;
+    padding:0
+}
+.header-image{
+    zoom: 2;
+    margin: auto;
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+}

@@ -1,0 +1,39 @@
+
+    <div class="form-group recipe-card">
+       
+        <div class="row">
+           <label class="col-4" for="Ingredient">Ingredient: </label>
+            <div class="col-3">
+                <app-ingredient-search [(selectedIngredient)]="Ingredient"></app-ingredient-search>
+            </div>
+           
+            <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+        </div>
+        <div class="row">
+            <label class="col-4" for="Measuring Unit">Measuring Unit: </label>
+
+            <div class="col-3">
+                <app-measuring-unit-search *ngIf="Ingredient != undefined" [selectedMeasuringUnit]="Ingredient.Unit"></app-measuring-unit-search>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-4" for="Amount">Amount: </label>
+
+            <div class="col-3">
+                <input
+                *ngIf="Ingredient != undefined"
+                class="form-control"
+                id="Amount"
+                type="number"
+                [(ngModel)]="Ingredient.Amount"
+                name="Amount"
+                />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <button type="button" class="btn btn-md btn-success" [disabled]="Ingredient == undefined" (click)="activeModal.close({ingredient:Ingredient})"> Save </button>
+            </div>
+        </div>
+    </div>

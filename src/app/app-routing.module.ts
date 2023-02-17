@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './Components/UI/ui-components/sidebar/sidebar.component';
-import { ErrorComponent } from './Components/UI/ui-components/error/error.component';
-import { MemberComponent } from './Components/Routes/member/member.component';
-import { RecipeListComponent } from './Components/Routes/recipe/recipe-list/recipe-list.component';
-import { DashboardComponent } from './Components/Routes/dashboard/dashboard.component';
-import { AddRecipeComponent } from './Components/Routes/recipe/add-recipe/add-recipe.component';
+import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
+import { ErrorComponent } from './UI/ui-components/error/error.component';
+import { RecipeListComponent } from './Routes/recipe/recipe-list/recipe-list.component';
+import { DashboardComponent } from './Routes/dashboard/dashboard.component';
+import { AddRecipeComponent } from './Routes/recipe/add-recipe/add-recipe.component';
+import { UserComponent } from './Routes/user/user.component';
+import { AccountComponent } from './Routes/account/account/account.component';
 
 // route guard
-import { AuthGuard } from './Components/shared/guard/auth.guard';
+import { AuthGuard } from './Guard/auth.guard';
 
 const routes: Routes =[
   {
@@ -32,19 +33,29 @@ const routes: Routes =[
         path: 'Add-Recipe',
         component: AddRecipeComponent,
         canActivate: [AuthGuard]
-      }
+      },
+      {
+        path: 'User/:id',
+        component: UserComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'Account',
+        component: AccountComponent,
+        canActivate: [AuthGuard]
+      },
     ]
   },
   {
-    path: 'Member',
-    component: MemberComponent,
-    canActivate: [AuthGuard]
+    path: 'Error',
+    component: ErrorComponent
   },
+
   {
     path: '**',
     redirectTo: '/Dashboard',
     pathMatch: 'full'
-  } 
+  }
 ];
 
 @NgModule({

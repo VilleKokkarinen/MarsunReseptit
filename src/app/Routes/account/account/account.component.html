@@ -1,0 +1,10 @@
+<div class="row" *ngIf="authService.userData as user">
+    <div class="col-12">
+        <div class="form-group row recipe-card">
+            <div class="col-12">
+                <p> your user data -> </p>
+                <pre>{{userToString()}}</pre>
+            </div>
+        </div>
+    </div>
+</div>
