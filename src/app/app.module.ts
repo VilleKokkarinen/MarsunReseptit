@@ -53,11 +53,11 @@ import { RecipeStepIngredientListComponent } from './Routes/recipe/add-recipe/re
 
 import { IngredientSearchComponent } from './UI/search-dropdown/ingredient-search/ingredient-search.component';
 import { MeasuringUnitSearchComponent } from './UI/search-dropdown/measuring-unit-search/measuring-unit-search.component';
-import { AddIngredientModalComponent } from './Routes/recipe/add-ingredient-modal/add-ingredient-modal.component';
+import { UnitSearchComponent } from './UI/search-dropdown/unit-search/unit-search.component';
+import { AddStepIngredientModalComponent } from './Routes/recipe/add-stepingredient-modal/add-stepingredient-modal.component';
 
-
-
-
+import { RichTextEditorModule } from './UI/rich-text-editor/rich-text-editor.module';
+import { QuillModule } from "ngx-quill";
 
 @NgModule({
   declarations: [
@@ -77,9 +77,9 @@ import { AddIngredientModalComponent } from './Routes/recipe/add-ingredient-moda
     RecipeStepIngredientListComponent,
     IngredientSearchComponent,
     MeasuringUnitSearchComponent,
-    AddIngredientModalComponent,
+    UnitSearchComponent,
+    AddStepIngredientModalComponent,
     AccountComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -88,6 +88,8 @@ import { AddIngredientModalComponent } from './Routes/recipe/add-ingredient-moda
     BrowserAnimationsModule,
     AccountDropdownComponent,
     FormsModule,
+    QuillModule.forRoot(),
+    RichTextEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),

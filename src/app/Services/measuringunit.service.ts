@@ -1,7 +1,5 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MeasuringUnit } from '../components/recipecomponents/measuringunit';
-
-import { AuthService } from './auth.service';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
@@ -10,8 +8,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 })
 export class MeasuringUnitService {
   constructor(
-    private authService: AuthService,
-    private afs: AngularFirestore,
     private db: AngularFirestore
   ) { this.measuringUnitRef = db.collection(this.dbPath) }
 

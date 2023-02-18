@@ -1,6 +1,5 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MeasuringUnitService } from 'src/app/Services/measuringunit.service';
-import { AuthService } from 'src/app/Services/auth.service';
 import { MeasuringUnit } from 'src/app/components/recipecomponents/measuringunit';
 import { map } from 'rxjs/operators';
 
@@ -16,8 +15,9 @@ export class MeasuringUnitSearchComponent {
   MeasuringUnits?: MeasuringUnit[];
   Search:string="";
   
+  @Output() selectedMeasuringUnitChange = new EventEmitter<MeasuringUnit>()
 
-  constructor(private measuringUnitService: MeasuringUnitService, private authservice:AuthService) {
+  constructor(private measuringUnitService: MeasuringUnitService) {
     this.retrieveMeasuringUnits();
    }
 
@@ -33,6 +33,7 @@ export class MeasuringUnitSearchComponent {
 
     if(index != undefined && index != -1){
       this.selectedMeasuringUnit = unit;
+      this.selectedMeasuringUnitChange.emit(this.selectedMeasuringUnit);
     }
    }
 

@@ -9,24 +9,24 @@
         <div class="form-group col-12 recipe-card" *ngFor="let Step of Steps">
             <div class="row">
                 <label for="Step.Name" class="col-2">Step Name</label>
-                    <div class="col-4">
-                        <input
-                        class="form-control"
-                        id="Step.Name"
-                        required
-                        [(ngModel)]="Step.Name"
-                        name="Step.Name"
-                        />
-                    </div>
+                <div class="col-4">
+                    <input
+                    class="form-control"
+                    id="Step.Name"
+                    required
+                    [(ngModel)]="Step.Name"
+                    name="Step.Name"
+                    />
+                </div>
 
-                    <div class="col-1">
-                        <button (click)="removeStep(Step)" class="btn btn-md btn-danger">Delete</button>
-                    </div>
+                <div class="col-1">
+                    <button (click)="removeStep(Step)" class="btn btn-md btn-danger">Delete</button>
+                </div>
             </div>
 
            
 
-            <app-recipe-step-ingredient-list [Ingredients]="Step.Ingredients"></app-recipe-step-ingredient-list>
+            <app-recipe-step-ingredient-list [StepIngredients]="Step.Ingredients"></app-recipe-step-ingredient-list>
 
            
         </div>

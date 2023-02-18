@@ -11,7 +11,6 @@ export class RecipeStepListComponent {
 @Input() Steps:Step[]=[];
 
 constructor(){
-  console.log("adding step constructor")
   this.addStep();
 }
 

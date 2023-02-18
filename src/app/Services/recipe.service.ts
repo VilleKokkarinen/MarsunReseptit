@@ -1,7 +1,5 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Recipe } from '../components/recipecomponents/recipe';
-
-import { AuthService } from './auth.service';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
@@ -10,8 +8,6 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 })
 export class RecipeService {
   constructor(
-    private authService: AuthService,
-    private afs: AngularFirestore,
     private db: AngularFirestore
   ) { this.recipesRef = db.collection(this.dbPath) }
 

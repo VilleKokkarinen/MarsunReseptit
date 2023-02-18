@@ -4,16 +4,17 @@
         <div class="row">
            <label class="col-4" for="Ingredient">Ingredient: </label>
             <div class="col-3">
-                <app-ingredient-search [(selectedIngredient)]="Ingredient"></app-ingredient-search>
+                <app-ingredient-search [(selectedIngredient)]="StepIngredient.Ingredient"></app-ingredient-search>
             </div>
            
             <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
         </div>
+        
         <div class="row">
             <label class="col-4" for="Measuring Unit">Measuring Unit: </label>
 
             <div class="col-3">
-                <app-measuring-unit-search *ngIf="Ingredient != undefined" [selectedMeasuringUnit]="Ingredient.Unit"></app-measuring-unit-search>
+                <app-measuring-unit-search *ngIf="StepIngredient.Ingredient != undefined" [(selectedMeasuringUnit)]="StepIngredient.MeasuringUnit"></app-measuring-unit-search>
             </div>
         </div>
         <div class="row">
@@ -21,19 +22,20 @@
 
             <div class="col-3">
                 <input
-                *ngIf="Ingredient != undefined"
+                *ngIf="StepIngredient.Ingredient != undefined"
                 class="form-control"
                 id="Amount"
                 type="number"
-                [(ngModel)]="Ingredient.Amount"
+                [(ngModel)]="StepIngredient.Amount"
                 name="Amount"
                 />
             </div>
         </div>
+    
 
         <div class="row">
             <div class="col-3">
-                <button type="button" class="btn btn-md btn-success" [disabled]="Ingredient == undefined" (click)="activeModal.close({ingredient:Ingredient})"> Save </button>
+                <button type="button" class="btn btn-md btn-success" [disabled]="StepIngredient.Ingredient == undefined" (click)="activeModal.close(StepIngredient)"> Save </button>
             </div>
         </div>
     </div>

@@ -1,28 +1,40 @@
 <div class="form-group row recipe-card">
     <div class="row">
-        <label for="Ingredients" class="col-3" >Ingredients {{Ingredients.length}}</label>
+        <label for="Ingredients" class="col-3" >Ingredients {{StepIngredients.length}}</label>
 
-        <div class="col-2">
+        <div class="col-3">
             <button (click)="addIngredient()" class="btn btn-md btn-success">Add Ingredient</button>
         </div>
     </div>
-    <div class="row">
-        <div class="form-group col-12 recipe-card" *ngFor="let Ingredient of Ingredients">
-            <div class="row">
-                <div class="row col-12">
-                    <label for="Ingredient.Name" class="col-3">{{Ingredient.Name}}</label>
-                    <label for="Ingredient.Unit" class="col-3">{{Ingredient?.Unit?.Name}}</label>
-                    <label for="Ingredient.Unit" class="col-3">{{Ingredient?.Amount}}</label>
-                    <div class="col-1">
-                        <button (click)="removeIngredient(Ingredient)" class="btn btn-md btn-danger">Delete</button>
-                    </div>
+    <div class="row recipe-card" style="display:flex; flex-direction: column">
+        <div class="form-group col-12 ingredient-card" *ngFor="let StepIngredient of StepIngredients">
+            <div style="display:flex; justify-content: flex-start; flex-direction: row">
+                <div class="ingredient-details">
+                    <app-ingredient-search [(selectedIngredient)]="StepIngredient.Ingredient"></app-ingredient-search>
                 </div>
-                <div class="row col-12">
-                    <div class="col-4">
-                       
-                    </div>
+                <div class="ingredient-details">
+                    <app-measuring-unit-search [(selectedMeasuringUnit)]="StepIngredient.MeasuringUnit"></app-measuring-unit-search>
                 </div>
+                <div class="ingredient-details">
+                    <input
+                    class="form-control"
+                    style="width:100px;"
+                    id="Amount"
+                    type="number"
+                    [(ngModel)]="StepIngredient.Amount"
+                    name="Amount"
+                    />
+                </div>
+                <div style="padding-left:50px;">
+                    <button (click)="removeIngredient(StepIngredient)" class="btn btn-md btn-danger">Delete</button>
+                </div>             
             </div>
+
+            <div *ngIf="StepIngredients.length >= 2 && StepIngredients.indexOf(StepIngredient) != StepIngredients.length -1">
+                <div class="dropdown-divider"></div>
+            </div>
+                   
+               
         </div>
     </div>
 </div>

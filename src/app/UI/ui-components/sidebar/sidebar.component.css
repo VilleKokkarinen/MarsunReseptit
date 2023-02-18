@@ -10,6 +10,9 @@
   width: calc(100vw - 6vw - 6vw);
   height:100%;
   display:flex;
+
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .content{
