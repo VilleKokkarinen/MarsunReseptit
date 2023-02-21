@@ -4,31 +4,42 @@
 @import "~quill/dist/quill.snow.css";
 
 :root{
-  --Primary_Border_Color: rgb(25, 25, 30);
-  --Accent_Border_Color: rgb(160, 117, 0);
+  --Primary_Border_Color: rgba(25, 25, 30);
+  --Accent_Border_Color: rgba(160, 117, 0);
 
 
-  --Header_Bg_Color: rgb(39, 47, 56);
-  --Sidebar_Bg_Color:rgb(35, 40, 45); 
-  --Modal_Bg_Color: rgb(95, 95, 95);
-  --Dropdown_Bg_Color:rgb(40, 45, 51); 
-  --MainContent_Bg_Color: rgb(110, 110, 110);
+  --Header_Bg_Color: rgba(39, 47, 56);
+  --Sidebar_Bg_Color:rgba(35, 40, 45); 
+  --Modal_Bg_Color: rgba(95, 95, 95);
+  --Dropdown_Bg_Color:rgba(40, 45, 51); 
+  --MainContent_Bg_Color: rgba(110, 110, 110);
 
 
-  --PrimaryColor: rgb(35, 40, 45); 
-  --ComplementColor:rgb(116, 99, 68); 
-  --AccentColor:rgb(201, 178, 94); 
-  --NeutralColor: rgb(75, 75, 75);
+  --PrimaryColor: rgba(35, 40, 45); 
+  --ComplementColor:rgba(116, 99, 68); 
+  --AccentColor:rgba(201, 178, 94); 
+  --NeutralColor: rgba(75, 75, 75);
 
 
-  --TextColor_Primary: rgb(221, 187, 92);
-  --TextColor_Complement: rgb(255, 217, 112);  
-  --TextColor_Accent: rgb(160, 117, 0);
-  --TextColor_Accent_2: rgb(25, 25, 30);
+  --TextColor_Primary: rgba(221, 187, 92);
+  --TextColor_Complement: rgba(255, 217, 112);  
+  --TextColor_Accent: rgba(160, 117, 0);
+  --TextColor_Accent_2: rgba(25, 25, 30);
 
+  --TextColor_Selected:rgba(255, 217, 112); 
+  --TextColor_Selected_Shadow:rgba(0, 0, 0); 
+  --TextColor_Selected_Bg:rgba(157, 51, 9, 0.125); 
 
   --DropShadow_Color: rgba(35, 35, 45, 0.9);  
-  --DisabledElementColor:rgb(75, 75, 75);
+  --DisabledElementColor:rgba(75, 75, 75);
+
+  --bs-body-bg: var(--PrimaryColor);
+}
+
+::selection {
+  text-shadow: 2px 2px 2px var(--TextColor_Selected_Shadow);
+  color: var(--TextColor_Selected);
+  background-color: var(--TextColor_Selected_Bg);
 }
 
 body{
@@ -37,28 +48,12 @@ body{
 }
 
 .modal {
-  --bs-modal-zindex: 1055;
-  --bs-modal-width: 40vw;
-  --bs-modal-padding: 1rem;
-  --bs-modal-margin: 0.5rem;
-  --bs-modal-color:var(--TextColor_Complement) ;
-  --bs-modal-bg:var(--Modal_Bg_Color);
-  --bs-modal-border-color: var(--bs-border-color-translucent);
-  --bs-modal-border-width: 1px;
-  --bs-modal-border-radius: 0.5rem;
-  --bs-modal-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-  --bs-modal-inner-border-radius: calc(0.5rem - 1px);
-  --bs-modal-header-padding-x: 1rem;
-  --bs-modal-header-padding-y: 1rem;
-  --bs-modal-header-padding: 1rem 1rem;
-  --bs-modal-header-border-color: var(--bs-border-color);
-  --bs-modal-header-border-width: 1px;
-  --bs-modal-title-line-height: 1.5;
-  --bs-modal-footer-gap: 0.5rem;
-  --bs-modal-footer-bg: ;
-  --bs-modal-footer-border-color: var(--bs-border-color);
-  --bs-modal-footer-border-width: 1px;
-  filter: drop-shadow(0px 3px 6px var(--DropShadow_Color));
+  color:var(--TextColor_Complement) ;
+  border-color: var(--Primary_Border_Color);
+  box-shadow: 0px 3px 6px var(--DropShadow_Color);
+}
+.modal-content {
+  background-color:var(--Modal_Bg_Color);
 }
 
 .btn-outline-primary {
@@ -98,7 +93,7 @@ body{
   --bs-dropdown-link-disabled-color: #adb5bd;
   --bs-dropdown-header-color: #6c757d;
   color: var(--bs-dropdown-color);
-  filter: drop-shadow(0px 2px 6px var(--DropShadow_Color));
+  box-shadow: 0px 2px 6px var(--DropShadow_Color);
 }
 
 .form-check-input:checked {
@@ -160,46 +155,49 @@ body{
   background-color: var(--Dropdown_Bg_Color);
   color: var(--TextColor_Accent);
 }
-
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label{
+  border-color: var(--Accent_Border_Color);
+}
+.ql-snow .ql-picker.ql-expanded .ql-picker-label{
+  color: var(--TextColor_Complement); 
+}
 .ql-toolbar .ql-stroke {
   fill: none;
   stroke: var(--TextColor_Accent);
 }
-
 .ql-toolbar .ql-fill {
   fill: var(--TextColor_Accent);
 }
-
 .ql-toolbar .ql-picker {
   color: var(--TextColor_Accent);
 }
-
 .ql-snow.ql-toolbar button:hover .ql-stroke {
   fill: none;
   stroke: var(--TextColor_Complement); 
 }
-
+.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke{
+  stroke: var(--TextColor_Complement); 
+}
+.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill{
+  fill:  var(--TextColor_Complement); 
+}
 .ql-snow.ql-toolbar button:hover{
   color: var(--TextColor_Complement); 
 }
-
 .ql-snow.ql-toolbar button:hover .ql-fill{
   fill: var(--TextColor_Complement); 
 }
-
 .ql-snow.ql-toolbar .ql-picker-label:hover{
   color: var(--TextColor_Complement); 
 }
 .ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke{
   color: var(--TextColor_Complement); 
-}
-.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke{
   stroke: var(--TextColor_Complement); 
 }
 .ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill{
   fill: var(--TextColor_Complement); 
 }
-.ql-snow .ql-picker.ql-expanded .ql-picker-label{
+.ql-snow.ql-picker.ql-expanded .ql-picker-label{
   color: var(--TextColor_Complement); 
 }
 .ql-snow.ql-toolbar .ql-picker-item:hover{
@@ -208,7 +206,7 @@ body{
 .ql-snow.ql-toolbar .ql-picker-item.ql-selected{
   color: var(--TextColor_Complement); 
 }
-.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke{
+.ql-snow.ql-picker.ql-expanded .ql-picker-label .ql-stroke{
   stroke: var(--TextColor_Complement); 
 }
 .ql-snow.ql-toolbar .ql-picker-label.ql-active{

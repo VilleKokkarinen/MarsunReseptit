@@ -55,9 +55,12 @@ import { IngredientSearchComponent } from './UI/search-dropdown/ingredient-searc
 import { MeasuringUnitSearchComponent } from './UI/search-dropdown/measuring-unit-search/measuring-unit-search.component';
 import { UnitSearchComponent } from './UI/search-dropdown/unit-search/unit-search.component';
 import { AddStepIngredientModalComponent } from './Routes/recipe/add-stepingredient-modal/add-stepingredient-modal.component';
-
+import { ThemeSearchComponent } from './UI/search-dropdown/theme-search/theme-search.component';
 import { RichTextEditorModule } from './UI/rich-text-editor/rich-text-editor.module';
 import { QuillModule } from "ngx-quill";
+import { AddThemeComponent } from './Routes/theme/add-theme/add-theme.component';
+
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,9 @@ import { QuillModule } from "ngx-quill";
     MeasuringUnitSearchComponent,
     UnitSearchComponent,
     AddStepIngredientModalComponent,
-    AccountComponent
+    AccountComponent,
+    ThemeSearchComponent,
+    AddThemeComponent
   ],
   imports: [
     BrowserModule,
@@ -90,6 +95,7 @@ import { QuillModule } from "ngx-quill";
     FormsModule,
     QuillModule.forRoot(),
     RichTextEditorModule,
+    ColorPickerModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),

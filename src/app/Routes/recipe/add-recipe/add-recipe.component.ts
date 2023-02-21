@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { RecipeService } from 'src/app/Services/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
-import { Step } from 'src/app/components/recipecomponents/step';
-import { Ingredient } from 'src/app/components/recipecomponents/ingredient';
 import { AuthService } from 'src/app/Services/auth.service';
 
 @Component({
@@ -16,10 +14,6 @@ export class AddRecipeComponent {
 
   constructor(private recipeService: RecipeService, private authservice:AuthService) {
     this.recipe = new Recipe();
-    //this.recipe.Steps = [];
-
-    console.log(authservice.isLoggedIn)
-
     if(authservice.isLoggedIn)
     this.recipe.Publisher = authservice.userData?.uid
 
@@ -27,10 +21,7 @@ export class AddRecipeComponent {
    }
 
   saveRecipe(): void {
-    console.log('Creating recipe', this.recipe)
-
     this.recipeService.create(JSON.parse(JSON.stringify(this.recipe))).then((recipeData:Recipe) => {
-      console.log('Created new recipe successfully!', recipeData);
       this.submitted = true;
     });
   }

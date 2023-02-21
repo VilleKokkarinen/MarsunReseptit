@@ -7,6 +7,9 @@ import { DashboardComponent } from './Routes/dashboard/dashboard.component';
 import { AddRecipeComponent } from './Routes/recipe/add-recipe/add-recipe.component';
 import { UserComponent } from './Routes/user/user.component';
 import { AccountComponent } from './Routes/account/account/account.component';
+import { AddThemeComponent } from './Routes/theme/add-theme/add-theme.component';
+
+
 
 // route guard
 import { AuthGuard } from './Guard/auth.guard';
@@ -32,6 +35,11 @@ const routes: Routes =[
       {
         path: 'Add-Recipe',
         component: AddRecipeComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'Add-Theme',
+        component: AddThemeComponent,
         canActivate: [AuthGuard]
       },
       {

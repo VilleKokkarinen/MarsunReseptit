@@ -1,20 +1,38 @@
 import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
+import { Theme } from '../components/shared/theme';
+
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { 
+  constructor( private db: AngularFirestore, @Inject(DOCUMENT) private document: Document) {
+    this.themesRef = db.collection(this.dbPath)
+  }  
+  private dbPath = '/themes';
 
-    var themeObject = {
-      
-    };
+  themesRef: AngularFirestoreCollection<Theme>;
 
-
-    this.loadTheme("");
+  getAll(): AngularFirestoreCollection<Theme> {
+    return this.themesRef;
   }
+
+  create(theme: Theme): any {
+    return this.themesRef.add({ ...theme });
+  }
+
+  update(id: string, data: any): Promise<void> {
+    return this.themesRef.doc(id).update(data);
+  }
+
+  delete(id: string): Promise<void> {
+    return this.themesRef.doc(id).delete();
+  }
+     
 
   loadTheme(theme:string){
     const head = this.document.getElementsByTagName('head')[0];

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Route } from 'src/app/components/shared/route';
 
 @Component({
-  selector: 'sidebar',
+  selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
@@ -20,6 +20,10 @@ export class SidebarComponent {
     {
       "Route":"Add-Recipe",
       "Icon":"journal-plus"
+    },
+    {
+      "Route":"Add-Theme",
+      "Icon":"palette"
     }
   ]
 

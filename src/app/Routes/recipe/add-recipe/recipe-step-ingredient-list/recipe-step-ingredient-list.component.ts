@@ -14,7 +14,6 @@ export class RecipeStepIngredientListComponent {
   SelectIngredient: StepIngredient|undefined;
 
   constructor(private modalService: NgbModal, config: NgbModalConfig){
-    console.log("adding ingredient constructor")
     config.backdrop = 'static';
 		config.keyboard = false;
   }  
