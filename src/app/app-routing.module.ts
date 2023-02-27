@@ -13,6 +13,8 @@ import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-de
 
 // route guard
 import { AuthGuard } from './Guard/auth.guard';
+import { GDPRComponent } from './Routes/gdpr/gdpr.component';
+import { PrivacyComponent } from './Routes/privacy/privacy.component';
 
 const routes: Routes =[
   {
@@ -56,13 +58,20 @@ const routes: Routes =[
         component: AccountComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'GDPR',
+        component: GDPRComponent
+      },
+      {
+        path: 'Privacy',
+        component: PrivacyComponent
+      }
     ]
   },
   {
     path: 'Error',
     component: ErrorComponent
   },
-
   {
     path: '**',
     redirectTo: '/Dashboard',

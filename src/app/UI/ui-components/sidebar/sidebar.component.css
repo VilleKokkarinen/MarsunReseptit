@@ -64,8 +64,7 @@
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: var(--Sidebar_Bg_Color);
     border-left: 1px solid var(--Accent_Border_Color);
-    width: 6vw;
-    min-width: 120px;
+    width: 250px;
     height:100%;
     padding:0;
     color:var(--TextColor_Complement);
@@ -73,7 +72,7 @@
   } 
   .contentbody{
     background-color: var(--MainContent_Bg_Color);
-    width: 94vw;
+    width: calc(94vw - 250px);
     height:100%;
     display:flex;
   
@@ -95,8 +94,8 @@
 }
 
 .ad-container {
-  width: 100%;
-  height:30vh;
+  width: 250px;
+  height: 250px;
   align-items: center;
   display: flex;
   flex-flow: row nowrap;

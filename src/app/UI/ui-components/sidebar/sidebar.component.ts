@@ -27,16 +27,8 @@ export class SidebarComponent {
     }
   ]
 
-  public Ads:Route[] = [
-    {
-      "Route":"Dashboard",
-      "Icon":"house"
-    },
-    {
-      "Route":"Recipes",
-      "Icon":"journals"
-    }
-   
+  public Ads:string[] = [
+    "1", "2", "3", "4"
   ]
 
 }

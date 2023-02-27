@@ -77,6 +77,8 @@ import localeFi from '@angular/common/locales/fi';
 
 import { LocalizedDatePipe } from './Services/localized-date-pipe';
 import { CommentfieldComponent } from './UI/ui-components/commentfield/commentfield.component';
+import { GDPRComponent } from './Routes/gdpr/gdpr.component';
+import { PrivacyComponent } from './Routes/privacy/privacy.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
@@ -110,7 +112,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddThemeComponent,
     RouteDropdownComponent,
     LocalizedDatePipe,
-    CommentfieldComponent
+    CommentfieldComponent,
+    GDPRComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
