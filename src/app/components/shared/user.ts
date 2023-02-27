@@ -1,7 +1,19 @@
-export interface User {
+export interface PublicUser {
     uid: string;
-    email: string;
     displayName: string;
     photoURL: string;
+}
+
+export interface PrivateUser {
+    uid: string;
+    email: string;
     emailVerified: boolean;
- }
+}
+
+export interface User {
+    uid: string;
+    displayName: string;
+    photoURL: string;
+    email: string;
+    emailVerified: boolean;
+}

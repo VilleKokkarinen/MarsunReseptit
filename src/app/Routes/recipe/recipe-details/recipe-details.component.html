@@ -1,1 +1,27 @@
-<p>recipe-details works!</p>
+<div class="form-group recipe-card" *ngIf="Recipe != undefined">
+   
+    <div class="headercontainer header">
+        <div class="header-text">
+            {{Recipe.Name}}
+        </div>
+    </div>
+
+    <div class="recipecontainer-simple" *ngIf="Recipe.Mode == 'Simple'">
+        <div [innerHTML] = "Recipe.Recipe"></div>
+    </div>
+</div>
+
+<div class="form-group recipe-card">
+    <div style="display:flex; flex-direction:row; justify-content:space-around">
+        <button class="btn btn-outline-primary" (click)="ShowComments = (ShowComments ? false : true)"> Show comments </button>
+        <button class="btn btn-outline-primary" style="margin-left:auto" (click)="AddComment"> Leave a comment</button>
+    </div>
+
+    <div *ngIf="ShowComments == true">
+        <div class="recipecontainer-simple" *ngFor="let Comment of Recipe?.Comments">
+            <app-commentfield [Comment]="Comment"></app-commentfield>          
+        </div>
+    </div>
+</div>
+
+

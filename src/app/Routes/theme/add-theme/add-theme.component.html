@@ -1,54 +1,76 @@
 <div class="submit-form">
     <div *ngIf="!submitted">
       <div class="form-group row theme-card">
-        <label for="Name" class="col-2">Name</label>
-        <div class="col-4">
-            <input
-            type="text"
-            class="form-control"
-            id="theme.Name"
-            required
-            [(ngModel)]="NewTheme.Name"
-            name="theme.Name"
-          />
+
+        <div clas="row" style="display:flex; flex-direction:row;">
+          <label for="Name" class="col-2" style="max-width:80px;">Name</label>
+          <div class="col-4">
+              <input
+              type="text"
+              class="form-control"
+              id="theme.Name"
+              required
+              [(ngModel)]="NewTheme.Name"
+              name="theme.Name"
+            />
+          </div>
+          <div class="col-5" style="margin-left:auto;">
+            <app-theme-search [(selectedTheme)]="SelectedTheme" (selectedThemeChange)="DDSelected()"></app-theme-search>
+          </div>
         </div>
-        <div class="col-2">
-            <button [disabled]="NewTheme.Name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success">Save Theme</button>
+      
+        <div style="height:25px;">
         </div>
 
-        <div class="col-2">
-            <button class="btn btn-md btn-danger" (click)="newTheme()">Clear Theme</button>
+        <div class="row">
+          <div class="col-6">
+            <button [disabled]="NewTheme.Name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success">Save Theme</button>
+          </div>
+          <div class="col-6" style="margin-left:auto;">
+            <button class="btn btn-md btn-danger" style="margin-left:auto;" (click)="newTheme()">Clear Theme</button>
+          </div>          
         </div>
+
       </div>
       <div *ngIf="NewTheme.Theme != undefined">
-
-        <div class="row" style="padding:0; margin:0">
-          <div class="col-xs-12 col-lg-6 form-group theme-card" style="min-width:225px; max-width:225px;">
-            <div class="stylerow" *ngFor="let Style of NewTheme.Theme | keyvalue:keepOriginalOrder">
-              <label for="Primary" class="col-xs-12">{{Style.key}}</label> 
-                <div class="col-xs-12">
-                  <input
-                  class="col-12"
-                  style="max-width:175px;"
-                  [(colorPicker)]="Style.value"
-                  [style.background]="Style.value"
-                  [cpAlphaChannel]="'enabled'"
-                  [cpOutputFormat]="'rgba'"
-                  [cpOKButton]="true"
-                  [cpCancelButton]="true"
-                  [cpOKButtonText]="'apply'"
-                  [cpCancelButtonText]="'cancel'"
-                  [cpCancelButtonClass]="'btn btn-outline-primary'"
-                  [cpOKButtonClass]="'btn btn-outline-primary'"
-                  (colorPickerSelect)="update($event, Style.key);"
-                  />
+        <div class="row form-group theme-card">
+          <div class="col-xs-12 col-lg-6 form-group theme-card" style="margin:0">
+            <div class="row" style="display:flex; justify-content:center;">
+              <div class="col-6" style="min-width:225px; max-width:225px;" *ngFor="let Style of NewTheme.Theme | keyvalue:keepOriginalOrder">
+                <label for="Primary">{{Style.key}}</label> 
+                  <div>
+                    <input
+                    style="max-width:175px;"
+                    [(colorPicker)]="Style.value"
+                    [style.background]="Style.value"
+                    [cpAlphaChannel]="'enabled'"
+                    [cpOutputFormat]="'rgba'"
+                    [cpOKButton]="true"
+                    [cpCancelButton]="true"
+                    [cpOKButtonText]="'apply'"
+                    [cpCancelButtonText]="'cancel'"
+                    [cpCancelButtonClass]="'btn btn-outline-primary'"
+                    [cpOKButtonClass]="'btn btn-outline-primary'"
+                    (colorPickerSelect)="update($event, Style.key);"
+                    />
+                </div>
               </div>
             </div>
           </div> 
           
-          <div class="col-xs-12 col-lg-6 form-group theme-card" style="margin-left:auto;">
-            <h2>
-              Edit theme and see the effects
+          <div class="col-xs-12 col-lg-6" style="margin-left:auto;">
+            <div class="form-group theme-card">
+
+            
+            <h2 style="background-color: var(--Modal_Bg_Color); color:var(--TextColor_Primary); border:2px solid var(--Primary_Border_Color);">
+              Edit theme 
+              <h3 style="background-color: var(--Dropdown_Bg_Color); color:var(--TextColor_Complement); border:2px solid var(--Accent_Border_Color)">
+                and see
+                <h4 style="background-color: var(--MainContent_Bg_Color); color:var(--TextColor_Accent); border:2px solid var(--Primary_Border_Color)">
+                  the effects
+                </h4>
+              </h3>
+            
             </h2>
             <app-ingredient-search></app-ingredient-search>
  
@@ -56,20 +78,23 @@
  
               <form class="px-4 py-3">
                 <div class="mb-3">
-                  <label>Input</label>
+                  <label style="color:var(--TextColor_Accent);">Input</label>
                   <input
+                    style="box-shadow:4px 4px 6px 0px var(--DropShadow_Color)"
                     type="text"
                     class="form-control"
                     id="text"
+                    placeholder="placeholder"
                     #Input
                   />
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input"/>
-                  <label class="form-check-label"> Checkbox </label>
+                  <input type="checkbox" class="form-check-input" />
+                  <label class="form-check-label" style="color:var(--TextColor_Accent_2);"> Checkbox </label>
                 </div>
               </form>
            </div>
+          </div>
         </div>
         
       </div>     

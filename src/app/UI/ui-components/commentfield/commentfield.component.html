@@ -1,0 +1,12 @@
+<div class="row form-group comment-card" *ngIf="Comment != undefined && PublicUser != undefined">
+    <div class="col-xs-12 comment-header">
+        <img
+            class="comment-img"
+            [src]="PublicUser.photoURL"
+            alt="userPicture"
+          />
+
+        {{PublicUser.displayName}} {{Comment.PublishDate ?? "" | localizedDate}}
+    </div>
+    <div class="col-12 comment-text" [innerHTML] = "Comment.Message"></div>
+</div>

@@ -6,6 +6,7 @@
 }
 .header-text{
     color: var(--TextColor_Primary);
+    word-wrap: break-word;
 }
 
 .headercontainer{
@@ -18,10 +19,25 @@
     padding:0
 }
 .header-image{
-    zoom: 2;
-    margin: auto;
-    height: auto;
-    max-height: 100%;
-    width: auto;
-    max-width: 100%;
+    zoom: 1;
 }
+
+.header-img{
+display:flex;
+flex-direction: row;
+justify-content: center;
+text-align: center;
+align-items: center;
+}
+
+@media (min-width: 0px) {
+    .routedropdown{
+        display:inline;
+    }
+}
+@media (min-width: 620px) {
+    .routedropdown{
+        display:none;
+    }
+}
+

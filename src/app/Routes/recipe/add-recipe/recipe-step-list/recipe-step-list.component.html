@@ -6,27 +6,42 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-12 recipe-card" *ngFor="let Step of Steps">
+      
+        <div class="form-group col-12 recipe-card" *ngFor="let Step of Steps; let i = index;">
+          
+
             <div class="row">
-                <label for="Step.Name" class="col-2">Step Name</label>
-                <div class="col-4">
+                <div class="col-12" style="display:flex">
+                    <div style="width:45px;">
+                        <button type="button" class="btn btn-outline-primary" (click)="toggle(i)">
+                            <i [hidden]="hiddenSteps.includes(i)" class="bi bi-caret-down-fill"></i>
+                            <i [hidden]="!hiddenSteps.includes(i)" class="bi bi-caret-up-fill"></i>
+                        </button>
+                    </div>
                     <input
+                    style="width:50%"
                     class="form-control"
                     id="Step.Name"
                     required
                     [(ngModel)]="Step.Name"
                     name="Step.Name"
                     />
+                    <button (click)="removeStep(Step)" style="margin-left:auto;" class="btn btn-md btn-danger">Delete</button>
                 </div>
-
-                <div class="col-1">
-                    <button (click)="removeStep(Step)" class="btn btn-md btn-danger">Delete</button>
+            </div>
+               
+            <div [hidden]="hiddenSteps.includes(i)" style="margin-top:10px;">
+                
+    
+                <div class="form-group row recipe-card">
+                    <rich-text-editor [(control)]="Step.Description"></rich-text-editor>
                 </div>
+                
+    
+                <app-recipe-step-ingredient-list [StepIngredients]="Step.Ingredients"></app-recipe-step-ingredient-list>
             </div>
 
            
-
-            <app-recipe-step-ingredient-list [StepIngredients]="Step.Ingredients"></app-recipe-step-ingredient-list>
 
            
         </div>

@@ -9,7 +9,7 @@ import { UserComponent } from './Routes/user/user.component';
 import { AccountComponent } from './Routes/account/account/account.component';
 import { AddThemeComponent } from './Routes/theme/add-theme/add-theme.component';
 
-
+import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-details.component';
 
 // route guard
 import { AuthGuard } from './Guard/auth.guard';
@@ -31,6 +31,10 @@ const routes: Routes =[
       {
         path: 'Recipes',
         component: RecipeListComponent
+      },
+      {
+        path: 'Recipes/:id',
+        component: RecipeDetailsComponent
       },
       {
         path: 'Add-Recipe',

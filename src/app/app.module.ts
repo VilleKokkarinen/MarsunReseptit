@@ -1,12 +1,20 @@
 /* core modules */
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
+import { registerLocaleData } from '@angular/common';
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateService
+} from '@ngx-translate/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 /* Firebase */
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -61,6 +69,21 @@ import { QuillModule } from "ngx-quill";
 import { AddThemeComponent } from './Routes/theme/add-theme/add-theme.component';
 
 import { ColorPickerModule } from 'ngx-color-picker';
+import { RouteDropdownComponent } from './UI/ui-components/header/route-dropdown/route-dropdown.component';
+import { ReactiveFormsModule } from "@angular/forms";
+
+import localeEn from '@angular/common/locales/en';
+import localeFi from '@angular/common/locales/fi';
+
+import { LocalizedDatePipe } from './Services/localized-date-pipe';
+import { CommentfieldComponent } from './UI/ui-components/commentfield/commentfield.component';
+
+registerLocaleData(localeEn);
+registerLocaleData(localeFi);
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -84,7 +107,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
     AddStepIngredientModalComponent,
     AccountComponent,
     ThemeSearchComponent,
-    AddThemeComponent
+    AddThemeComponent,
+    RouteDropdownComponent,
+    LocalizedDatePipe,
+    CommentfieldComponent
   ],
   imports: [
     BrowserModule,
@@ -96,15 +122,28 @@ import { ColorPickerModule } from 'ngx-color-picker';
     QuillModule.forRoot(),
     RichTextEditorModule,
     ColorPickerModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
-    providePerformance(() => getPerformance())
+    providePerformance(() => getPerformance()),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
+  exports: [TranslateModule],
   providers: [
     { provide: PERSISTENCE, useValue: 'local' },
+    { provide: LOCALE_ID, useValue: 'en-US' },
+    TranslateService,
     AuthService,
     ScreenTrackingService,
     UserTrackingService

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Recipe } from '../components/recipecomponents/recipe';
+import { PublicUser } from '../components/shared/user';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/compat/firestore';
@@ -7,21 +7,21 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument,
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeService {
+export class PublicUserService {
   constructor(
     private db: AngularFirestore
-  ) { this.recipesRef = db.collection(this.dbPath) }
+  ) { this.usersRef = db.collection(this.dbPath) }
 
-  private dbPath = '/recipes';
+  private dbPath = '/public-users';
 
-  recipesRef: AngularFirestoreCollection<Recipe>;
+  usersRef: AngularFirestoreCollection<PublicUser>;
 
-  getAll(): AngularFirestoreCollection<Recipe> {
-    return this.recipesRef;
+  getAll(): AngularFirestoreCollection<PublicUser> {
+    return this.usersRef;
   }
 
-  get(id: string): Observable<Recipe|undefined> {
-    const docs = this.db.doc<Recipe>('recipes/' + id);
+  get(id: string): Observable<PublicUser|undefined> {
+    const docs = this.db.doc<PublicUser>('public-users/' + id);
     return docs.snapshotChanges()
     .pipe(
       map(changes => {
@@ -30,16 +30,16 @@ export class RecipeService {
       }))
   }
   
-  create(recipe: Recipe): any {
-    return this.recipesRef.add({ ...recipe });
+  create(user: PublicUser): any {
+    return this.usersRef.add({ ...user });
   }
 
   update(id: string, data: any): Promise<void> {
-    return this.recipesRef.doc(id).update(data);
+    return this.usersRef.doc(id).update(data);
   }
 
   delete(id: string): Promise<void> {
-    return this.recipesRef.doc(id).delete();
+    return this.usersRef.doc(id).delete();
   }
      
 }

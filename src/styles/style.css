@@ -59,7 +59,7 @@ body{
 .btn-outline-primary {
   --bs-btn-bg: var(--PrimaryColor);
   --bs-btn-color: var(--TextColor_Complement);
-  --bs-btn-border-color: var(--TextColor_Primary);
+  --bs-btn-border-color: var(--Accent_Border_Color);
   --bs-btn-hover-color: var(--TextColor_Complement);
   --bs-btn-hover-bg: var(--ComplementColor);
   --bs-btn-hover-border-color: var(--Accent_Border_Color);

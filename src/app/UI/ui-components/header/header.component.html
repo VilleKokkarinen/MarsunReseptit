@@ -1,21 +1,22 @@
 <header class="header">
     <div class="headercontainer row">
-      <div class="col-3" style="padding-left:0px;">
-        <a>
+      <div class="col-4" style="max-width:300px; min-width:120px; padding-left:0px;">
+        <div class="header-img">
           <img
-              src="https://i.imgur.com/Dxkqw0C.png"
-              alt="header"
-              className="header-image"
-              style="height:60px;"
+            src="../../../../assets/icon.png"
+            alt="header"
+            className="header-image"
+            style="height:58px;"
           />
-        </a>
-      </div>
-      <div class="col-1" >
-        <div class="header-text">
-          {{" Marsun Reseptit"}}
+          <div class="header-text" style="margin-right:auto">         
+            {{"Marsun Reseptit"}}
+          </div>
         </div>
       </div>
-      <div class="col-8" style="display:flex; justify-content: flex-end;">
+      <div class="col-2 routedropdown" style="padding-left:25px;">
+        <app-route-dropdown></app-route-dropdown>
+      </div>
+      <div class="col-2" style="display:flex; justify-content: flex-end; margin-left:auto">
         <account-dropdown></account-dropdown>
       </div>
     </div>

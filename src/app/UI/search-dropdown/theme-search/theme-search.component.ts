@@ -9,7 +9,6 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./theme-search.component.css']
 })
 export class ThemeSearchComponent {
-  newTheme:Theme|null = null;
   @Input() selectedTheme: Theme|undefined;
 
   Themes?: Theme[];
@@ -33,6 +32,7 @@ export class ThemeSearchComponent {
 
     if(index != undefined && index != -1){
       this.selectedTheme = theme;
+      console.log(theme)
       this.selectedThemeChange.emit(this.selectedTheme);
     }
    }
@@ -49,22 +49,4 @@ export class ThemeSearchComponent {
     });
   }
 
-
-  createNewTheme() {
-    this.newTheme = new Theme();
-
-    this.newTheme.Name = "";
-
-  }
-
-   saveNewTheme(): void {
-    if(this.newTheme != null){
-      console.log('Creating  Theme', this.newTheme)
-
-      this.ThemeService.create(JSON.parse(JSON.stringify(this.newTheme))).then((themeData:Theme) => {
-        console.log('Created new  Theme successfully!', themeData);
-        this.newTheme = null;
-      });
-    }  
-  }
 }

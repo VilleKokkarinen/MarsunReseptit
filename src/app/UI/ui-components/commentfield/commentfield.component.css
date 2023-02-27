@@ -1,0 +1,28 @@
+.comment-text{
+    max-height: 200px;
+    overflow-y: auto;
+}
+.comment-header{
+    background-color: var(--Header_Bg_Color);
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    padding:0;
+    margin:0;
+    height:50px;
+    font-size: 16px;
+}
+
+.form-group{
+    padding-bottom: 25px;
+}
+
+.comment-card{
+    padding:10px;
+    margin:10px;
+}
+
+.comment-img{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    max-height: 100%;
+}

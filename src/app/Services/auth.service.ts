@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../components/shared/user';
+import { PrivateUser, PublicUser } from '../components/shared/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
@@ -36,7 +36,7 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SetUserData(result.user);
+        this.SetPrivateUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['Dashboard']);
@@ -55,7 +55,7 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.SendVerificationMail();
-        this.SetUserData(result.user);
+        this.SetPrivateUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -102,7 +102,8 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.router.navigate(['Dashboard']);
-        this.SetUserData(result.user);
+        this.SetPrivateUserData(result.user);
+        this.SetPublicUserData(result.user);
       })
       .catch((error) => {
         window.alert(error);
@@ -111,24 +112,35 @@ export class AuthService {
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    
-    const userData: User = {
+  SetPrivateUserData(user: any) {
+    const privateUserRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `private-users/${user.uid}`
+    );  
+
+    const privateUserData: PrivateUser = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      emailVerified: user.emailVerified
     };
+
+    return privateUserRef.set(privateUserData, {
+      merge: true,
+    });  
+  }
+  SetPublicUserData(user: any) {
+    const publicUserRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `public-users/${user.uid}`
+    );
     
-    return userRef.set(userData, {
+    const publicUserData: PublicUser = {
+      uid: user.uid,
+      displayName: user.displayName,
+      photoURL: user.photoURL
+    };
+
+    return publicUserRef.set(publicUserData, {
       merge: true,
     });
-    
-    
   }
   // Sign out
   SignOut() {

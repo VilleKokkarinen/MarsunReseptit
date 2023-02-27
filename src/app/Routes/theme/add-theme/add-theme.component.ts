@@ -1,6 +1,6 @@
 import { Component, ElementRef } from '@angular/core';
 import { ThemeService } from 'src/app/Services/theme.service';
-import { Theme, ThemeObject } from 'src/app/components/shared/theme';
+import { Theme } from 'src/app/components/shared/theme';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepIngredientModalComponent } from '../../recipe/add-stepingredient-modal/add-stepingredient-modal.component';
@@ -12,11 +12,11 @@ import { AddStepIngredientModalComponent } from '../../recipe/add-stepingredient
 })
 export class AddThemeComponent {
   NewTheme:Theme;
+  SelectedTheme:Theme|undefined;
   submitted = false;
 
   constructor(private themeService: ThemeService, private authservice:AuthService, private elementRef: ElementRef,private modalService: NgbModal, config: NgbModalConfig) {
     this.NewTheme = new Theme();
-    this.NewTheme.Theme = new ThemeObject();
 
     if(authservice.isLoggedIn)
     this.NewTheme.Publisher = authservice.userData?.uid
@@ -26,32 +26,53 @@ export class AddThemeComponent {
     config.backdrop = 'static';
 		config.keyboard = false;
 
-   }
+  }
 
-   public keepOriginalOrder = (a:any, b:any) => a.key
+  public keepOriginalOrder = (a:any, b:any) => a.key
 
-   open() {
-		const modalRef = this.modalService.open(AddStepIngredientModalComponent);
-	}
+  open() {
+    const modalRef = this.modalService.open(AddStepIngredientModalComponent);
+  }
 
+  DDSelected(){
+    if(this.SelectedTheme != undefined){
+      this.NewTheme = JSON.parse(JSON.stringify(this.SelectedTheme));
+      this.NewTheme.Name = "";
 
-   update(color:string, key:string){
+      for (const [k, v] of Object.entries(this.NewTheme.Theme)) {
+        this.update(v,k);
+      }
+    }
+  }
+
+  update(color:string, key:string){
+    this.NewTheme.Theme[key] = color;
+
+    console.log(this.NewTheme)
     document.documentElement.style.setProperty(key, color);
-    console.log(key, color);
-  
-      //this.themeService.loadTheme(themestring);
-   }
+  }
 
   saveTheme(): void {
+    console.log(this.NewTheme)
+    
     this.themeService.create(JSON.parse(JSON.stringify(this.NewTheme))).then((themeData:Theme) => {
       this.submitted = true;
     });
+    this.SelectedTheme = undefined;
+    
   }
 
   newTheme(): void {
     this.submitted = false;
     this.NewTheme = new Theme();
-    this.NewTheme.Theme = new ThemeObject();
+
+    
+    for (const [k, v] of Object.entries(this.NewTheme.Theme)) {
+      this.update(v,k);
+    }
+    
+    this.SelectedTheme = undefined;
+
   }
 
 }
