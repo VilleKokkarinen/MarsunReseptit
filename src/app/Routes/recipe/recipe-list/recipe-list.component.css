@@ -8,4 +8,34 @@
     border-radius: 8px;
     padding:10px;
     margin:10px;
+    background-color: var(--Modal_Bg_Color);
+}
+
+.recipe-img{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    max-height: 100px;
+    transition:all .2s;
+    margin-right:auto;
+}
+.recipe-img:hover{
+    max-height: 200px;
+    transition:all 1s;
+}
+
+.recipe-img-container{
+    width:max-content;
+    max-height: 100px;
+    transition:all .2s;
+}
+.recipe-img-container:hover{
+    max-height: 200px;
+    transition:all 1s;
+}
+
+.description-text{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    background-color: var(--PrimaryColor);
+    color:var(--TextColor_Accent)
 }

@@ -12,6 +12,7 @@ export class Recipe extends Publishable {
     Steps: Step[] = [];
     Comments?: Comment[];
 
+    Thumbnail?:string;
     Categories?:string[];
     Tags?:string[];
     Likes?:string[];

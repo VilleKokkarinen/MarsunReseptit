@@ -19,18 +19,8 @@
                 <router-outlet></router-outlet>
             </div>
         </div>
-        <div class="adbar">
-            <nav class="nav" *ngFor="let Ad of Ads">
-                <div class="ad-container">
-                    <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-client="ca-pub-1120436091721652"
-                    data-ad-slot="1073935566"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-                </div>
-            </nav>  
-        </div>  
+        <app-bannerad [banner]="bannerad"  class="adbar">
+        </app-bannerad>
     </div>
     
     <app-footer></app-footer>
