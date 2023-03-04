@@ -1,31 +1,17 @@
-
-<div class="body">
-    <app-header></app-header>
-
-    <div class="sidebarelement">
-        <div class="sidebar">
-           
-            <nav class="nav" *ngFor="let Route of Routes">
-                <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']">
-                    <i class="bi bi-{{Route.Icon}} flex-icon"></i>
-                    <a class="nav-link">
-                        <span>{{Route.Route}}</span>
-                    </a>
-                </div>
-            </nav>
-        </div>  
-        <div class="contentbody">
-            <div class="content">
-                <router-outlet></router-outlet>
+<div class="sidebarelement">
+    <div class="sidebar">
+       
+        <nav class="nav" *ngFor="let Route of Routes">
+            <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']">
+                <i class="bi bi-{{Route.Icon}} flex-icon"></i>
+                <a class="nav-link">
+                    <span>{{Route.Route}}</span>
+                </a>
             </div>
-        </div>
-        <app-bannerad [banner]="bannerad"  class="adbar">
-        </app-bannerad>
+        </nav>
     </div>
-    
-    <app-footer></app-footer>
+   
 </div>
-
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>

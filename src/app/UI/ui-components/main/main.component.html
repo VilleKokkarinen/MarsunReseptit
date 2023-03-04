@@ -1,0 +1,18 @@
+<div class="body">
+    <app-header></app-header>
+    <div style="display:flex; flex-direction:row; height:100%; overflow:auto;">
+        <app-sidebar *ngIf="SidebarEnabled"></app-sidebar>
+
+        <div class="contentbody">
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+
+        <app-adbar *ngIf="AdBarEnabled"></app-adbar>
+    </div>
+    
+   
+    
+    <app-footer></app-footer>
+</div>

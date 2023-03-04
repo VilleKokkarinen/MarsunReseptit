@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
+import { MainComponent } from './UI/ui-components/main/main.component';
 import { ErrorComponent } from './UI/ui-components/error/error.component';
 import { RecipeListComponent } from './Routes/recipe/recipe-list/recipe-list.component';
 import { DashboardComponent } from './Routes/dashboard/dashboard.component';
@@ -19,7 +19,7 @@ import { PrivacyComponent } from './Routes/privacy/privacy.component';
 const routes: Routes =[
   {
     path: '',
-    component: SidebarComponent,
+    component: MainComponent,
     children: [
       {
         path: '',

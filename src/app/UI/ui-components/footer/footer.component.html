@@ -1,6 +1,17 @@
-<footer class="footer">
+
+<button type="button" [ngClass]="FooterEnabled == true ? 'btn btn-outline-primary ghostbutton' : 'btn btn-outline-primary ghostbutton hide'" (click)="toggle()">
+    <i [hidden]="!FooterEnabled" class="bi bi-caret-down-fill"></i>
+    <i [hidden]="FooterEnabled" class="bi bi-caret-up-fill"></i>
+</button>
+
+<footer class="footer" *ngIf="FooterEnabled">
     <div class="footer-text ">
-        <div style="padding-right:10px;">
+        <div style="margin-left:auto; padding-right:5px;">
+
+            <a routerLink="GDPR">GDPR</a>
+            {{" | "}}
+            <a routerLink="Privacy">Privacy</a>            
+            {{" | "}}
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/VilleKokkarinen">Github</a>
             {{" | Dev: "}}
             <a target="_blank" rel="noopener noreferrer" href="https://github.com/VilleKokkarinen">Ville Kokkarinen</a>

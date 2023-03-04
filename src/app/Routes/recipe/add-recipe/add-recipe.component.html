@@ -1,17 +1,37 @@
 <div class="submit-form">
     <div *ngIf="!submitted">
       <div class="form-group row recipe-card">
-        <label for="Name" class="col-2">Name</label>
-        <div class="col-4">
-            <input
-            type="text"
-            class="form-control"
-            id="recipe.Name"
-            required
-            [(ngModel)]="recipe.Name"
-            name="recipe.Name"
-          />
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12">
+              <label for="Name" class="col-6">Name</label>
+              <div class="col-6">
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="recipe.Name"
+                  required
+                  [(ngModel)]="recipe.Name"
+                  name="recipe.Name"
+                />
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="Thumbnail" class="col-6">Thumbnail</label>
+              <div class="col-6">
+              <input
+              type="text"
+              class="form-control"
+              id="recipe.Thumbnail"
+              [(ngModel)]="recipe.Thumbnail"
+              name="recipe.Thumbnail"
+            />
+            </div>
+            </div>
+          </div>
         </div>
+       
+       
         <div class="col-2">
             <button (click)="saveRecipe()" class="btn btn-md btn-success">Save Recipe</button>
         </div>
@@ -30,6 +50,7 @@
           type="checkbox"
           id="Mode"
           required
+          disabled="true"
           [(ngModel)]="Mode"
           name="Mode"
         />
@@ -37,6 +58,21 @@
       </div>
       
       <div class="form-group row recipe-card" *ngIf="Mode == false">
+          <label for="Description" class="col-2">Description: </label>
+            <div class="col-4">
+            <input
+              class="form-control" 
+              type="text"
+              id="Description"
+              required
+              [(ngModel)]="recipe.Description"
+              name="Description"
+            />
+          </div>
+      </div>
+
+      <div class="form-group row recipe-card" *ngIf="Mode == false">
+        <label for="Recipe" class="col-2">Recipe: </label>
         <rich-text-editor [(control)]="recipe.Recipe"></rich-text-editor>
       </div>
 

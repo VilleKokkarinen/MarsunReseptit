@@ -10,6 +10,9 @@
     margin:10px;
     background-color: var(--Modal_Bg_Color);
 }
+.recipe-card:hover{
+  cursor:pointer
+}
 
 .recipe-img{
     border:1px solid var(--Accent_Border_Color);
@@ -25,17 +28,26 @@
 
 .recipe-img-container{
     width:max-content;
-    max-height: 100px;
-    transition:all .2s;
-}
-.recipe-img-container:hover{
     max-height: 200px;
-    transition:all 1s;
+    transition:all .2s;
 }
 
 .description-text{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
     background-color: var(--PrimaryColor);
-    color:var(--TextColor_Accent)
+    color:var(--TextColor_Accent);
+    overflow-y:auto;
+    max-height: 125px;
+    margin:10px 0px 0px 10px;
+}
+
+.title-text{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    background-color: var(--PrimaryColor);
+    color:var(--TextColor_Primary);
+    overflow-y:auto;
+    max-height: 125px;
+    margin:0px 0px 0px 10px;
 }

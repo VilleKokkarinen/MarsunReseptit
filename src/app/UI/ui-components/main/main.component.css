@@ -1,0 +1,29 @@
+
+.body{
+    height:100vh;
+    width:100vw;
+    flex-direction: column;
+    display:flex;
+}
+  
+  
+.content{
+    padding:1vh;
+    width:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.contentbody{
+    background-color: var(--MainContent_Bg_Color);
+    width: 100vw;
+    height:100%;
+    display:flex;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    height:100%;
+}
+  

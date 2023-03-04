@@ -80,6 +80,8 @@ import { CommentfieldComponent } from './UI/ui-components/commentfield/commentfi
 import { GDPRComponent } from './Routes/gdpr/gdpr.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
 import { BanneradComponent } from './UI/ui-components/bannerad/bannerad.component';
+import { MainComponent } from './UI/ui-components/main/main.component';
+import { AdbarComponent } from './UI/ui-components/adbar/adbar.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
@@ -116,7 +118,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommentfieldComponent,
     GDPRComponent,
     PrivacyComponent,
-    BanneradComponent
+    BanneradComponent,
+    MainComponent,
+    AdbarComponent
   ],
   imports: [
     BrowserModule,

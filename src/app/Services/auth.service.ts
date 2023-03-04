@@ -3,8 +3,10 @@ import { PrivateUser, PublicUser } from '../components/shared/user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-
+import { ImageService } from './image.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -117,7 +119,7 @@ export class AuthService {
       `private-users/${user.uid}`
     );  
 
-    const privateUserData: PrivateUser = {
+    let privateUserData: PrivateUser = {
       uid: user.uid,
       email: user.email,
       emailVerified: user.emailVerified
@@ -127,6 +129,46 @@ export class AuthService {
       merge: true,
     });  
   }
+
+  SetImageServiceKey(key:string|undefined = undefined) {
+    var user = this.userData;
+    const privateUserRef: AngularFirestoreDocument<any> = this.afs.doc(
+      `private-users/${user.uid}`
+    );
+    var imageServiceKey = "";
+
+    if(key != undefined && key.length == 25){
+      imageServiceKey = key;
+    }else{
+      key = ImageService.GenerateGuid(25);
+    }
+    
+    let privateUserData: PrivateUser = {
+      uid: user.uid,
+      email: user.email,
+      emailVerified: user.emailVerified,
+      imageServiceKey: imageServiceKey
+    };
+
+    return privateUserRef.set(privateUserData, {
+      merge: true,
+    });  
+  }
+
+  GetImageServiceKey():Observable<string|undefined> {
+    var user = this.userData;
+    const privateUserRef: AngularFirestoreDocument<PrivateUser> = this.afs.doc(
+      `private-users/${user.uid}`
+    );
+   
+    return privateUserRef.snapshotChanges()
+    .pipe(
+      map(changes => {
+        const data = changes.payload.data();
+        return data?.imageServiceKey;
+      }))
+  }
+
   SetPublicUserData(user: any) {
     const publicUserRef: AngularFirestoreDocument<any> = this.afs.doc(
       `public-users/${user.uid}`

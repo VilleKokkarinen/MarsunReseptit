@@ -12,25 +12,25 @@
 </form>
 <div *ngFor="let Recipe of Recipes">
     <div *ngIf='Search == "" || (Recipe?.Name?.includes(Search)) '>
-        <div class="form-group row recipe-card" style="min-width:320px;">
-            <div class="col-12" *ngIf="Recipe.Thumbnail != undefined">
-                <div class="" style="display:flex; flex-direction:row;">
+        <div class="form-group row recipe-card" style="min-width:350px;" (click)="gotoRecipe(Recipe)">
+            <div class="col-12">
+                <div style="display:flex; flex-direction:row;">
                     <div class="recipe-img-container">
-                        <img
+                        <img *ngIf="Recipe.Thumbnail != undefined"
                         class="recipe-img"
                         [src]="Recipe.Thumbnail"
                         alt="Recipe Picture"
                     />
                     </div>
-                    <div class="row" style="padding-left:10px; padding-right:10px;">
-                        <div class="col-12" style="overflow-y:auto; max-height: 125px;">
-                            <button class="btn btn-outline-primary" (click)="gotoRecipe(Recipe)">{{Recipe.Name}}</button>
+                    <div class="row" style="padding-left:10px; padding-right:10px; display: inline-block;">
+                        <div class="col-12 title-text recipe-card">
+                                {{Recipe.Name}}
                         </div>
-                        <div class="col-12 description-text recipe-card" style="overflow-y:auto; max-height: 150px; max-width: max-content;">
+                        <div class="col-12 description-text recipe-card">
                             {{Recipe.Description}}
                         </div>
                     </div>
-                </div>                             
+                </div>
             </div>
         </div>
     </div>
