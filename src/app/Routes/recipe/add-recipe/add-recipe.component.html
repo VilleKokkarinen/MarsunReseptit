@@ -18,15 +18,7 @@
             </div>
             <div class="col-12">
               <label for="Thumbnail" class="col-6">Thumbnail</label>
-              <div class="col-6">
-              <input
-              type="text"
-              class="form-control"
-              id="recipe.Thumbnail"
-              [(ngModel)]="recipe.Thumbnail"
-              name="recipe.Thumbnail"
-            />
-            </div>
+              <app-image-upload [(selectedImageURL)]="recipe.Thumbnail"></app-image-upload>
             </div>
           </div>
         </div>

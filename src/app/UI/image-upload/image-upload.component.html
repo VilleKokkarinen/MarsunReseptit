@@ -1,0 +1,26 @@
+<input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-6" style="max-width:fit-content">
+                <button class="btn btn-outline-primary"
+                (click)="fileUpload.click()"> Upload Image
+              </button>
+            </div>
+            <div class="col-6 dropzone" style="max-width:fit-content; height: 35px;"  fileDragDrop (filesChangeEmitter)="onFileDropped($event[0])">
+                <div class="droptext">
+                    Drag & Drop here
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12" style="padding-top:10px;">
+        <img *ngIf="selectedImage?.url"
+        style="max-height: 128px; max-width: 128px;"
+        [src]="selectedImage?.url"/>
+    </div>
+</div>
+
+

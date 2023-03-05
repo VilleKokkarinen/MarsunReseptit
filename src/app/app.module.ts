@@ -82,6 +82,8 @@ import { PrivacyComponent } from './Routes/privacy/privacy.component';
 import { BanneradComponent } from './UI/ui-components/bannerad/bannerad.component';
 import { MainComponent } from './UI/ui-components/main/main.component';
 import { AdbarComponent } from './UI/ui-components/adbar/adbar.component';
+import { ImageUploadComponent } from './UI/image-upload/image-upload.component';
+import { FileDragNDropDirective } from './UI/image-upload/file-dragdrop.directive';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
@@ -120,7 +122,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     PrivacyComponent,
     BanneradComponent,
     MainComponent,
-    AdbarComponent
+    AdbarComponent,
+    ImageUploadComponent,
+    FileDragNDropDirective
   ],
   imports: [
     BrowserModule,

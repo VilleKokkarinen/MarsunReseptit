@@ -1,0 +1,19 @@
+.file-input {
+    display: none;
+  }
+
+  
+.dropzone {
+  border: solid 1px var(--Accent_Border_Color);
+  border-radius: 8px;
+  background-color: var(--PrimaryColor);
+}
+
+.droptext{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:auto;
+  height:100%;
+  color: var(--TextColor_Primary);
+}

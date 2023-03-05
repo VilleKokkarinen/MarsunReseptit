@@ -3,23 +3,32 @@ import { RecipeService } from 'src/app/Services/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { AuthService } from 'src/app/Services/auth.service';
 import { RichTextEditorComponent } from 'src/app/UI/rich-text-editor/rich-text-editor.component';
+import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
+
 @Component({
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.component.html',
   styleUrls: ['./add-recipe.component.css']
 })
 export class AddRecipeComponent {
-  child:RichTextEditorComponent|undefined;
-  @ViewChild(RichTextEditorComponent)
-  set appShark(child: RichTextEditorComponent) {
-    this.child = child
+  ThumbnailImage:ImageUploadComponent|undefined;
+  @ViewChild(ImageUploadComponent) set TI(ThumbnailImage: ImageUploadComponent) {
+    this.ThumbnailImage = ThumbnailImage
+  };
+
+  RecipeTextEditor:RichTextEditorComponent|undefined;
+  @ViewChild(RichTextEditorComponent) set RTE(RecipeTextEditor: RichTextEditorComponent) {
+    this.RecipeTextEditor = RecipeTextEditor
   };
   recipe:Recipe;
   Mode:Boolean = false;
   submitted = false;
   
 
-  constructor(private recipeService: RecipeService, private authservice:AuthService) {
+  constructor(
+    private recipeService: RecipeService,
+    private authservice:AuthService
+    ) {
     this.recipe = new Recipe();
     if(authservice.isLoggedIn)
     this.recipe.Publisher = authservice.userData?.uid
@@ -32,8 +41,12 @@ export class AddRecipeComponent {
 
   saveRecipe(): void {
 
-    if(this.child)
-    this.child.SaveImages();
+    if(this.RecipeTextEditor)
+    this.RecipeTextEditor.SaveImages();
+
+    if(this.ThumbnailImage){
+      this.ThumbnailImage.SaveImage();
+    }
     
     this.recipeService.create(JSON.parse(JSON.stringify(this.recipe))).then((recipeData:Recipe) => {
       this.submitted = true;

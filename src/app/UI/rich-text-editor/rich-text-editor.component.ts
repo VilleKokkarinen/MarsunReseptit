@@ -33,7 +33,7 @@ export class RichTextEditorComponent{
           reject();
         }
 
-        this.blobToBase64(file).then(base64 => {
+        ImageService.blobToBase64(file).then(base64 => {
           var imageData = new QuillImageData(base64, file.type, file.name)
           imageData
           .minify({
@@ -154,15 +154,6 @@ export class RichTextEditorComponent{
     }
   }
 
-  blobToBase64(blob:Blob) {
-    return new Promise((resolve, _) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.readAsDataURL(blob);
-    });
-  }
-
-
   insertImage(url:string){
     let index = (this.quill?.getSelection() || {}).index;
 
@@ -180,16 +171,14 @@ export class RichTextEditorComponent{
       var delta = this.quill.getContents();
       delta.forEach(op => {
         if(op["insert"]["image"] != null){
-          var found = this.Images.find(x => x.url == op["insert"]["image"]);
+          var found = this.Images.find(x => x.url.normalize() == op["insert"]["image"]["url"].normalize());
           if(found)
           validimages.push(found)
         }
       })
     }
 
-    validimages.forEach(image => {
-      this.imageservice.updateImage(image);
-
+    validimages.forEach((image) => {
       for (var i = this.Images.length - 1; i >= 0; --i) {
         if (this.Images[i].id == image.id) {
             this.Images.splice(i,1); // splice out the valid ones
@@ -197,9 +186,14 @@ export class RichTextEditorComponent{
       }
     })
 
-
     this.Images.forEach(image => { // remove rest
       this.imageservice.deleteImage(image);
     })
+
+    validimages.forEach((image) => {
+      this.imageservice.updateImageURL(image)
+      this.imageservice.addImageEOL(image)
+    })
   }
+  
 }

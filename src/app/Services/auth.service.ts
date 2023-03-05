@@ -130,19 +130,13 @@ export class AuthService {
     });  
   }
 
-  SetImageServiceKey(key:string|undefined = undefined) {
+  SetImageServiceKey() {
     var user = this.userData;
     const privateUserRef: AngularFirestoreDocument<any> = this.afs.doc(
       `private-users/${user.uid}`
     );
-    var imageServiceKey = "";
 
-    if(key != undefined && key.length == 25){
-      imageServiceKey = key;
-    }else{
-      key = ImageService.GenerateGuid(25);
-    }
-    
+    var imageServiceKey = ImageService.GenerateGuid(25);
     let privateUserData: PrivateUser = {
       uid: user.uid,
       email: user.email,
