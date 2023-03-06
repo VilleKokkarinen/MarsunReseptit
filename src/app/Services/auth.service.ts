@@ -7,6 +7,7 @@ import { ImageService } from './image.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { map } from 'rxjs';
 import { Observable } from 'rxjs';
+import { SharedService } from './shared.service';
 
 @Injectable({
   providedIn: 'root',
@@ -136,17 +137,26 @@ export class AuthService {
       `private-users/${user.uid}`
     );
 
-    var imageServiceKey = ImageService.GenerateGuid(25);
-    let privateUserData: PrivateUser = {
-      uid: user.uid,
-      email: user.email,
-      emailVerified: user.emailVerified,
-      imageServiceKey: imageServiceKey
-    };
+    var existingKey:string|undefined = undefined;
 
-    return privateUserRef.set(privateUserData, {
-      merge: true,
-    });  
+    this.GetImageServiceKey().pipe(
+      ).subscribe(data => {
+        existingKey = data;
+      });
+
+    SharedService.waitFor(()=> existingKey != undefined, () => { // make sure the user doesn't already have a key, wait 500x500ms => 250 seconds
+      var imageServiceKey = ImageService.GenerateGuid(25);
+      let privateUserData: PrivateUser = {
+        uid: user.uid,
+        email: user.email,
+        emailVerified: user.emailVerified,
+        imageServiceKey: imageServiceKey
+      };
+  
+      return privateUserRef.set(privateUserData, {
+        merge: true,
+      });  
+    },500)
   }
 
   GetImageServiceKey():Observable<string|undefined> {

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase from "pocketbase";
 import { AuthService } from 'src/app/Services/auth.service';
+import { SharedService } from './shared.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -47,6 +48,8 @@ export class ImageService {
     return img;
   }
 
+ 
+
   getImageURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
       this.pb.collection('images').getOne(id).then((record)=>{
@@ -57,6 +60,19 @@ export class ImageService {
         console.log(err)
         reject("Not Found")
       })
+    })
+  }
+
+  getImageByURL(url:string): Promise<Image> {
+    return new Promise((resolve,reject) => {
+      SharedService.waitFor(()=> this.authservice.userData != undefined && this.imageServiceKey != undefined, () => {
+        this.pb.collection('images').getFirstListItem<Image>('url="'+url.normalize()+'"',{"imageservicekey":this.imageServiceKey}).then((record)=>{
+          resolve(record)
+        },(err)=>{
+          console.log(err)
+          reject("Not Found")
+        })
+      }, 10)
     })
   }
 
@@ -92,7 +108,7 @@ export class ImageService {
     })
   }
 
-  updateImageURL(image:Image): Promise<string> {
+  updateImageURL(image:Image): Promise<string> { // should only be used to transform "temp" => actual url
     return new Promise((resolve,reject) => {
       if(this.authservice.userData != undefined && this.imageServiceKey){
           const formData = new FormData();
@@ -140,11 +156,22 @@ export class ImageService {
         date.setDate(new Date().getDate() + 365);
         const formData = new FormData();
         formData.append('eol', date.toISOString());
-        const updatedRecord = this.pb.collection('images_eol').update(image.id, formData)
+        const updatedRecord = this.pb.collection('images_eol').update(image.id, formData, {"$autoCancel": false})
         updatedRecord.then(data=>{
           resolve("OK");
         },(err)=>{
           reject(err)
+        }) 
+    })
+  }
+
+  GetImageEOL(image:Image): Promise<string> {
+    return new Promise((resolve,reject) => {
+        const updatedRecord = this.pb.collection('images_eol').getFirstListItem('id="'+image.id+'"')
+        updatedRecord.then(data=>{
+          resolve(data["eol"]);
+        },(err)=>{
+          resolve("");
         }) 
     })
   }

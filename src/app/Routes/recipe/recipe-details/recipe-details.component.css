@@ -8,20 +8,23 @@
     padding:10px;
     margin:10px;
 }
-
+.recipe-img{
+    max-height: 8vh;
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+}
 .header{
     background-color: var(--Dropdown_Bg_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    font-family: 'Inter UI', sans-serif; 
-    padding:10px;
+    font-family: 'Inter UI', sans-serif;
     margin:10px;
 }
 
 .header-text{
-    font-size:3vw;
+    padding-left:10px;
+    font-size:calc(100% + 2vw);
     color: var(--TextColor_Primary);
-   
 }
 
 .headercontainer{
@@ -30,7 +33,7 @@
     display:flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .recipecontainer-simple{

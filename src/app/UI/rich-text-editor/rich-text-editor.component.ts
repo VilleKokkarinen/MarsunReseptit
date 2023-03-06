@@ -122,6 +122,18 @@ export class RichTextEditorComponent{
 
   created(createdEditor: Quill) {
     this.quill = createdEditor;
+
+    // Add existing images so we can delete them if user deletes them
+    if(this.quill != undefined){
+      var delta = this.quill.getContents();
+      delta.forEach(op => {
+        if(op["insert"]["image"] != null){
+          this.imageservice.getImageByURL(op["insert"]["image"]["url"].normalize()).then(img => {
+            this.Images.push(img)
+          })
+        }
+      })
+    }
   }
 
   imageDropAndPasteHandler(dataUrl:any, type: string, imageData:any){
@@ -186,13 +198,27 @@ export class RichTextEditorComponent{
       }
     })
 
+
     this.Images.forEach(image => { // remove rest
       this.imageservice.deleteImage(image);
     })
 
     validimages.forEach((image) => {
-      this.imageservice.updateImageURL(image)
-      this.imageservice.addImageEOL(image)
+
+      var found = false; // check if this image existed already, (editing existing rte)
+      this.Images.forEach(oldimage => { // remove rest
+        if(oldimage.url.normalize() == image.url.normalize()){
+          found = true;
+        }
+      })
+
+      if(!found){
+        this.imageservice.updateImageURL(image)
+        this.imageservice.addImageEOL(image)
+      }else{
+        this.imageservice.RefreshImageEOL(image)
+      }
+    
     })
   }
   

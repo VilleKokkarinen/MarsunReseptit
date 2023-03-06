@@ -1,25 +1,48 @@
 <div class="form-group recipe-card" *ngIf="Recipe != undefined">
    
-    <div class="headercontainer header">
+    <div class="headercontainer header" *ngIf="!Editing">
+        <img *ngIf="Recipe.Thumbnail != undefined"
+        class="recipe-img"
+        [src]="Recipe.Thumbnail"
+        alt="Recipe Picture"
+        />
         <div class="header-text">
             {{Recipe.Name}}
         </div>
     </div>
 
+    <div class="headercontainer header" *ngIf="Editing" style="max-height:100%;">
+        <app-image-upload [(selectedImageURL)]="Recipe.Thumbnail"></app-image-upload>
+    </div>
+
+   
+
     <div class="recipecontainer-simple" *ngIf="Recipe.Mode == 'Simple'">
-        <div [innerHTML] = "Recipe.Recipe"></div>
+        <div *ngIf="!Editing" [innerHTML]="Recipe.Recipe"></div>
+
+        <rich-text-editor *ngIf="Editing" [(control)]="Recipe.Recipe"></rich-text-editor>
     </div>
 </div>
 
+<div *ngIf="Editing" class="form-group recipe-card">
+    <div style="display:flex; flex-direction:row; justify-content:space-around">
+        <button (click)="saveRecipe()" class="btn btn-md btn-success">Save</button>
+
+        <button class="btn btn-md btn-danger" (click)="Cancel()">Cancel</button>
+    </div>
+</div>
+
+
 <div class="form-group recipe-card">
     <div style="display:flex; flex-direction:row; justify-content:space-around">
-        <button class="btn btn-outline-primary" (click)="ShowComments = (ShowComments ? false : true)"> Show comments </button>
-        <button class="btn btn-outline-primary" style="margin-left:auto" (click)="AddComment"> Leave a comment</button>
+        <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ShowComments = (ShowComments ? false : true)"> Show comments </button>
+        <button class="btn btn-outline-primary" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditRecipe()">Edit Recipe</button>
+        <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment"> Leave a comment</button>
     </div>
 
     <div *ngIf="ShowComments == true">
         <div class="recipecontainer-simple" *ngFor="let Comment of Recipe?.Comments">
-            <app-commentfield [Comment]="Comment"></app-commentfield>          
+            <app-commentfield [Comment]="Comment"></app-commentfield>
         </div>
     </div>
 </div>

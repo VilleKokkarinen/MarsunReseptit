@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
 import { ImageService } from "src/app/Services/image.service";
 import { Image } from "src/app/components/shared/image";
 import { ImageData as QuillImageData} from 'quill-image-drop-and-paste';
@@ -8,7 +8,7 @@ import { ImageData as QuillImageData} from 'quill-image-drop-and-paste';
   templateUrl: './image-upload.component.html',
   styleUrls: ['./image-upload.component.css']
 })
-export class ImageUploadComponent {
+export class ImageUploadComponent implements OnInit {
   @Input() maxWidth: number = 256;
   @Input() maxHeight: number = 256;
   @Input() quality: number = 0.75;
@@ -19,7 +19,18 @@ export class ImageUploadComponent {
   @Input() selectedImageURL: string|undefined;
   @Output() selectedImageURLChange = new EventEmitter<string>()
 
-  constructor(private imageservice: ImageService){ }
+  oldImages:Image[] = [];
+
+  constructor(private imageservice: ImageService){
+  }
+
+  ngOnInit(){
+    if(this.selectedImageURL)
+      this.imageservice.getImageByURL(this.selectedImageURL).then(img => {
+      this.selectedImage = img;
+      this.oldImages.push(img);
+    })
+  }
 
   onFileSelected(event:any) {
     const file:File = event.target.files[0];
@@ -52,6 +63,7 @@ export class ImageUploadComponent {
             if(result == "Not authenticated"){
               alert("You are not authenticated, cannot insert image")
             }else if(typeof result != "string" && result.url){
+              this.oldImages.push(result);
               this.selectedImage = result
               this.selectedImageURL = result.url
               this.selectedImageChange.emit(this.selectedImage);
@@ -68,10 +80,26 @@ export class ImageUploadComponent {
 
   SaveImage(){ // edit image EOL, to 1 year
     if(this.selectedImage != undefined)
-      this.imageservice.updateImageURL(this.selectedImage).then((result)=>{
-        console.log(this.selectedImage);
-        if(this.selectedImage != undefined)
-          this.imageservice.addImageEOL(this.selectedImage)
+    {
+      this.oldImages.forEach((img)=>{ // remove images user has cycled through or deleted which are not the selected one.
+        if(img.id != this.selectedImage?.id){
+          this.imageservice.deleteImage(img);
+        }
+      });
+
+      this.imageservice.GetImageEOL(this.selectedImage).then(eol => {
+        if(eol != "")
+        {
+          if(this.selectedImage != undefined)
+          this.imageservice.RefreshImageEOL(this.selectedImage)
+        }else{
+          if(this.selectedImage != undefined)
+          this.imageservice.updateImageURL(this.selectedImage).then(()=>{
+            if(this.selectedImage != undefined)
+              this.imageservice.addImageEOL(this.selectedImage)
+          })
+        }
       })
+    }
   }
 }

@@ -28,7 +28,6 @@ export class RecipeListComponent {
       )
     ).subscribe(data => {
       this.Recipes = data;
-      console.log(data)
     });
   }
 

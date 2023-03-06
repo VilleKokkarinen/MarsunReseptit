@@ -40,7 +40,6 @@ export class AddRecipeComponent {
    }
 
   saveRecipe(): void {
-
     if(this.RecipeTextEditor)
     this.RecipeTextEditor.SaveImages();
 
@@ -48,7 +47,7 @@ export class AddRecipeComponent {
       this.ThumbnailImage.SaveImage();
     }
     
-    this.recipeService.create(JSON.parse(JSON.stringify(this.recipe))).then((recipeData:Recipe) => {
+    this.recipeService.create(JSON.parse(JSON.stringify(this.recipe))).then(() => {
       this.submitted = true;
     });
     
