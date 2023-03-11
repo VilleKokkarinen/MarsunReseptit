@@ -1,14 +1,16 @@
 
 .form-group{
-    padding-bottom: 25px;
+    padding-bottom: 50px;
 }
 
 .recipe-card{
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
-    padding:10px;
+    padding:5px;   
     margin:10px;
+    margin-top:25px;
     background-color: var(--Modal_Bg_Color);
+    max-width: 700px;
 }
 .recipe-card:hover{
   cursor:pointer
@@ -17,37 +19,44 @@
 .recipe-img{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    max-height: 100px;
-    transition:all .2s;
-    margin-right:auto;
-}
-.recipe-img:hover{
-    max-height: 200px;
-    transition:all 1s;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
+
 .recipe-img-container{
-    width:max-content;
-    max-height: 200px;
-    transition:all .2s;
+    min-width:100px;
+    max-height:15vh;
+    max-width:15vw;
+    transition:all .25s;
+    padding-right: 5px;
+}
+
+.recipe-img-container:hover{
+    min-width:200px;
+    max-height:30vh;
+    max-width:30vw;
+    height: auto;
+    transition:all .5s;
 }
 
 .description-text{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    background-color: var(--PrimaryColor);
-    color:var(--TextColor_Accent);
+    background-color: var(--Primary_Color);
+    color:var(--Accent_Text_Color);
     overflow-y:auto;
     max-height: 125px;
-    margin:10px 0px 0px 10px;
+    margin:10px 0px 0px 0px;
 }
 
 .title-text{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    background-color: var(--PrimaryColor);
-    color:var(--TextColor_Primary);
+    background-color: var(--Primary_Color);
+    color:var(--Primary_Text_Color);
     overflow-y:auto;
     max-height: 125px;
-    margin:0px 0px 0px 10px;
+    margin:0px 0px 0px 0px;
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { TranslateService } from '@ngx-translate/core';
-
+import { Settings } from './components/shared/settings';
+import { LanguageService } from './Services/language.service';
+import { SettingsService } from './Services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -10,27 +10,15 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MarsunReseptit';
 
-  localeOptions: { label: string; value: string }[] | undefined;
-  selectedLocale: string | undefined;
+  Settings:Settings|undefined|null;
+  
+  constructor(private modalService: NgbModal, private settingsService:SettingsService, private languageService: LanguageService) {
+    this.settingsService.LoadSettings();
+    this.Settings = this.settingsService.Settings
 
-  constructor(private modalService: NgbModal,private translate: TranslateService) {
-  }
-
-  ngOnInit() {
-    this.selectedLocale = 'en';
-    this.translate.setDefaultLang(this.selectedLocale);
-    this.localeOptions = [
-      { label: 'FI', value: 'fi' },
-      { label: 'US', value: 'en' }
-    ];
-
-    this.useLocale( this.localeOptions[0] );
-  }
-
-  useLocale(option: any) {
-    this.translate.use(option.value);
+    if(this.Settings)
+    this.languageService.UseLanguage(this.Settings.Language)
   }
 
   public open(modal: any): void {

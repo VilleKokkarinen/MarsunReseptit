@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ThemeService } from 'src/app/Services/theme.service';
 import { Theme } from 'src/app/components/shared/theme';
 import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-theme-search',
@@ -16,13 +17,13 @@ export class ThemeSearchComponent {
   
   @Output() selectedThemeChange = new EventEmitter<Theme>()
 
-  constructor(private ThemeService: ThemeService) {
+  constructor(private ThemeService: ThemeService, private translate:TranslateService) {
     this.retrieveThemes();
    }
 
    selectThemeData(){
     if(this.selectedTheme == undefined || this.Themes == undefined)
-    return "Select Theme";
+    return this.translate.instant("TXT_Select_Theme");
 
     return this.selectedTheme.Name
    }
@@ -32,7 +33,6 @@ export class ThemeSearchComponent {
 
     if(index != undefined && index != -1){
       this.selectedTheme = theme;
-      console.log(theme)
       this.selectedThemeChange.emit(this.selectedTheme);
     }
    }

@@ -1,0 +1,31 @@
+<div ngbDropdown #LanguageDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
+    <button type="button" class="btn btn-outline-primary" id="LanguageDropDownToggle" ngbDropdownToggle>
+        {{selectedLanguageKey}}
+        <i [hidden]="LanguageDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
+        <i [hidden]="!LanguageDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
+    </button>
+    <div ngbDropdownMenu>
+        <form class="px-4 py-3">
+            <div class="mb-3">
+                <input
+                    type="text"
+                    class="form-control"
+                    id="searchLanguage"
+                    placeholder="{{'TXT_Search' | translate}}"
+                    [(ngModel)]="Search"
+                    name="Search"
+                />
+            </div>
+        </form>
+
+        <div style="overflow-y:auto; max-height:20vh;">
+            <div *ngFor="let Language of Languages">
+                <div *ngIf='Search == "" || Language?.key?.toLowerCase()?.includes(Search.toLowerCase())'>
+                    <div class="dropdown-divider"></div>
+                    <button (click)="selectLanguage(Language.key)" ngbDropdownItem>{{Language.key}}</button>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+</div>

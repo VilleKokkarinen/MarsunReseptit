@@ -1,5 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Injectable } from '@angular/core';
 
 import { Theme } from '../components/shared/theme';
 
@@ -10,7 +9,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 })
 export class ThemeService {
 
-  constructor( private db: AngularFirestore, @Inject(DOCUMENT) private document: Document) {
+  constructor( private db: AngularFirestore) {
     this.themesRef = db.collection(this.dbPath)
   }  
   private dbPath = '/themes';
@@ -34,12 +33,10 @@ export class ThemeService {
   }
      
 
-  loadTheme(theme:string){
-    const head = this.document.getElementsByTagName('head')[0];
-    const style = this.document.createElement('link');
-    style.id = 'css-styling';
-    style.rel = 'stylesheet';
-    style.href = `${theme}`;
-    head.appendChild(style);
+  applyTheme(Theme:Theme){
+    for (const [k, v] of Object.entries(Theme.Theme)) {
+      document.documentElement.style.setProperty(k, v);
+    }
   }
+
 }

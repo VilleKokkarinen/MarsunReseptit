@@ -15,6 +15,7 @@ import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-de
 import { AuthGuard } from './Guard/auth.guard';
 import { GDPRComponent } from './Routes/gdpr/gdpr.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
+import { SettingsComponent } from './Routes/settings/settings.component';
 
 const routes: Routes =[
   {
@@ -65,7 +66,11 @@ const routes: Routes =[
       {
         path: 'Privacy',
         component: PrivacyComponent
-      }
+      },
+      {
+        path: 'Settings',
+        component: SettingsComponent
+      },
     ]
   },
   {

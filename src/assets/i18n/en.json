@@ -1,4 +1,96 @@
 {
-  
+    "TXT_App_Title":"Marsus' Recipes",
+
+    "TXT_Dashboard":"Dashboard",
+    "TXT_Recipes":"Recipes",
+    "TXT_Add_Recipe":"Add recipe",
+    "TXT_Add_Theme":"Add theme",
+    "TXT_Settings":"Settings",
+
+    "TXT_GDPR":"GDPR",
+    "TXT_Privacy":"Privacy",
+
+    "TXT_Hi":"Hi",
+    "TXT_My_Account":"My account",
+    "TXT_Sign_Out":"Sign out",
+    "TXT_Email_Address":"Email",
+    "TXT_Password":"Password",
+    "TXT_Login":"Login",
+    "TXT_Forgot":"Forgot",
+    "TXT_Forgot_Password":"Forgot password",
+    "TXT_Email_Placeholder":"email@example.com",
+    "TXT_Password_Placeholder":"Password",
+    "TXT_Remember_Me":"Remember me",
+    "TXT_New_Around_Here":"New around here",
+    "TXT_Sign_Up":"Sign up",
+    "TXT_Login_With_Google":"Login with google",
+       
+    "TXT_Recipe":"Recipe",
+    "TXT_Theme":"Theme",
+    "TXT_Add":"Add",
+
+    "TXT_Recipe_Placeholder":"<h1><u>Recipe template</u></h1><h1><br></h1><h1><br></h1><p><br></p><h2><u>Ingredients:</u></h2><ul><li>200g x</li><li>2dl y</li><li>2tbsp z</li></ul><p><br></p><p><br></p><p><br></p><h2><u>Recipe:</u></h2><ol><li>Whip x</li><li>Melt y</li><li>Mix x + y + z</li><li>Bake at 200'c for 1h</li></ol><p><br></p><p><br></p><p><br></p><p><br></p>",
+    "TXT_Name":"Name",
+    "TXT_Thumbnail":"Thumbnail",
+    "TXT_Mode":"Mode",
+    "TXT_Simple":"Simple",
+    "TXT_Description":"Description",
+    "TXT_Recipe_Label":"Recipe: (You can drag & drop / copy paste / upload up to 3 images inside the recipe)",
+    "TXT_Save":"Save",
+    "TXT_Clear":"Clear",
+    "TXT_Saved_Succesfully":"Saved succesfully !",
+
+    "TXT_Drag_Drop":"Drag & Drop here",
+    "TXT_Upload_Image":"Upload Image",
+
+    "TXT_Select_Theme":"Select theme",
+    "TXT_Select_Ingredient":"Select ingredient",
+    "TXT_Select_Unit":"Select unit",
+    "TXT_Select_Measuring_Unit":"Select measuring unit",
+
+    "TXT_Ingredient":"Ingredient",
+    "TXT_Measuring_Unit":"Measuring Unit",
+    "TXT_Amount":"Amount",
+
+    "TXT_Search":"Search",
+    "TXT_Short_Name":"Short name",
+    "TXT_Base_Unit_Multiplier":"Base unit multiplier",
+
+    "TXT_Cannot_Find_Correct_Unit_Create":"Can't find the correct unit? Add One!",
+    "TXT_Cannot_Find_Correct_Measuring_Unit_Create":"Can't find the correct measuring unit? Add One!",
+    "TXT_Cannot_Find_Correct_Theme_Create":"Can't find the correct theme? Add One!",
+    "TXT_Cannot_Find_Correct_Ingredient_Create":"Can't find the correct ingredient? Add One!",
+
+    "TXT_Add_Theme_Text_1":"Edit theme",
+    "TXT_Add_Theme_Text_2":"And see",
+    "TXT_Add_Theme_Text_3":"The effects",
+
+    "TXT_Open_Modal":"Open modal",
+    "TXT_Input":"Input",
+    "TXT_Checkbox":"Checkbox",
+
+    "TXT_Primary":"Primary",
+    "TXT_Accent":"Accent",
+    "TXT_Neutral":"Neutral",
+    "TXT_Complement":"Complement",
+    "TXT_Secondary":"Secondary",
+    "TXT_Disabled":"Disabled",
+    "TXT_Element":"Element",
+    "TXT_Color":"Color",
+    "TXT_Text":"Text",
+    "TXT_Border":"Border",
+    "TXT_Sidebar":"Sidebar",
+    "TXT_Modal":"Modal",
+    "TXT_Header":"Header",
+    "TXT_Dropdown":"Dropdown",
+    "TXT_MainContent":"Maincontent",
+    "TXT_DropShadow":"Dropshadow",
+    "TXT_Selected":"Selected",
+    "TXT_Bg":"Background",
+    "TXT_Shadow":"Shadow",
+
+    "TXT_Show_Footer":"Show footer",
+    "TXT_Show_Sidebar":"Show sidebar",
+    "TXT_Language":"Language"
 }
   

@@ -18,33 +18,33 @@
 }
 
 .flex-icon {
-  color: var(--TextColor_Accent);
+  color: var(--Accent_Text_Color);
   transition: all .5s;
 }
 
 .nav-link {
   padding-left: 5px;
-  color: var(--TextColor_Accent);
+  color: var(--Accent_Text_Color);
   white-space:nowrap;
 }
 
 .sidebar-container:hover .flex-icon {
   flex-grow: 0.15;
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container:hover .nav-link {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container:active .nav-link {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container.is-active .flex-icon {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 .sidebar-container.is-active .nav-link  {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
   text-decoration: underline;
 }

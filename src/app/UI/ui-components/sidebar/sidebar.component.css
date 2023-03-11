@@ -21,12 +21,8 @@
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: var(--Sidebar_Bg_Color);
     border-right: 1px solid var(--Accent_Border_Color);
-    max-width:200px;
-    width: 6vw;
-    min-width: 120px;
     height:100%;
-    padding:0;
-    color:var(--TextColor_Complement);
+    color:var(--Complement_Text_Color);
     font-family: 'Inter UI', sans-serif; 
   }
 }
@@ -52,33 +48,34 @@
 }
 
 .flex-icon {
-  color: var(--TextColor_Accent);
+  color: var(--Accent_Text_Color);
   transition: all .5s;
 }
 
 .nav-link {
   padding-left: 5px;
-  color: var(--TextColor_Accent);
+  padding-right: 5px;
+  color: var(--Accent_Text_Color);
   white-space:nowrap;
 }
 
 .sidebar-container:hover .flex-icon {
   flex-grow: 0.75;
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container:hover .nav-link {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container:active .nav-link {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 
 .sidebar-container.is-active .flex-icon {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }
 .sidebar-container.is-active .nav-link  {
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
   text-decoration: underline;
 }

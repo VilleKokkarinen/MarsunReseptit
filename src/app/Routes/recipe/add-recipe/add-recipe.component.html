@@ -4,7 +4,7 @@
         <div class="col-6">
           <div class="row">
             <div class="col-12">
-              <label for="Name" class="col-6">Name</label>
+              <label for="Name" class="col-6">{{"TXT_Name" | translate}}</label>
               <div class="col-6">
                   <input
                   type="text"
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="col-12">
-              <label for="Thumbnail" class="col-6">Thumbnail</label>
+              <label for="Thumbnail" class="col-6">{{"TXT_Thumbnail" | translate}}</label>
               <app-image-upload [(selectedImageURL)]="recipe.Thumbnail"></app-image-upload>
             </div>
           </div>
@@ -25,46 +25,43 @@
        
        
         <div class="col-2">
-            <button (click)="saveRecipe()" class="btn btn-md btn-success">Save Recipe</button>
+            <button (click)="saveRecipe()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
         </div>
 
         <div class="col-2">
-            <button class="btn btn-md btn-danger" (click)="newRecipe()">Clear Recipe</button>
+            <button class="btn btn-md btn-danger" (click)="newRecipe()">{{"TXT_Clear" | translate}}</button>
         </div>
        
       </div>
 
-      <div class="form-group row recipe-card">
-        <label for="Mode" class="col-2">Mode: {{Mode == true ? "Advanced" : "Simple"}}</label>
-        <div class="col-4">
-          <input
-          class="form-check-input" 
-          type="checkbox"
-          id="Mode"
-          required
-          disabled="true"
-          [(ngModel)]="Mode"
-          name="Mode"
-        />
-      </div>
+      <div class="form-group recipe-card">
+        <label style="padding-right:5px;" for="Mode">{{"TXT_Mode" | translate}}: {{Mode == true ? ("TXT_Advanced" | translate) : ("TXT_Simple" | translate)}}</label>
+        <input
+            class="form-check-input" 
+            type="checkbox"
+            id="Mode"
+            required
+            disabled="true"
+            [(ngModel)]="Mode"
+            name="Mode"
+          />
       </div>
       
-      <div class="form-group row recipe-card" *ngIf="Mode == false">
-          <label for="Description" class="col-2">Description: </label>
-            <div class="col-4">
-            <input
+      <div class="form-group recipe-card" *ngIf="Mode == false" style="display:flex; flex-direction: row;">
+          <label for="Description" style="padding-right:10px;">{{"TXT_Description" | translate}}: </label>
+            <textarea
+              style="max-width:200px;"
               class="form-control" 
               type="text"
               id="Description"
               required
               [(ngModel)]="recipe.Description"
               name="Description"
-            />
-          </div>
+            ></textarea>
       </div>
 
       <div class="form-group row recipe-card" *ngIf="Mode == false">
-        <label for="Recipe" class="col-12" style="padding-bottom:5px;">Recipe: (You can drag & drop / copy paste / upload up to 3 images inside the recipe) </label>
+        <label for="Recipe" class="col-12" style="padding-bottom:5px;">{{"TXT_Recipe_Label" | translate}}</label>
         <rich-text-editor [(control)]="recipe.Recipe"></rich-text-editor>
       </div>
 
@@ -78,7 +75,7 @@
     </div>
   
     <div *ngIf="submitted">
-      <h4>saved successfully!</h4>
-      <button class="btn btn-success" (click)="newRecipe()">Add Recipe</button>
+      <h4>{{"TXT_Saved_Succesfully" | translate}}</h4>
+      <button class="btn btn-success" (click)="newRecipe()">{{"TXT_Add_Recipe" | translate}}</button>
     </div>
   </div>

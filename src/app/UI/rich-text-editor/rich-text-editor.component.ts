@@ -128,7 +128,7 @@ export class RichTextEditorComponent{
       var delta = this.quill.getContents();
       delta.forEach(op => {
         if(op["insert"]["image"] != null){
-          this.imageservice.getImageByURL(op["insert"]["image"]["url"].normalize()).then(img => {
+          this.imageservice.getImageByURL(op["insert"]["image"]["url"]).then(img => {
             this.Images.push(img)
           })
         }

@@ -1,15 +1,21 @@
 <div class="body">
     <app-header></app-header>
-    <div style="display:flex; flex-direction:row; height:100%; overflow:auto;">
-        <app-sidebar *ngIf="SidebarEnabled"></app-sidebar>
+    <div style="display:flex; flex-direction:row; height:100%; overflow:hidden;">
+       
 
         <div class="contentbody">
+            <app-sidebar *ngIf="Settings?.Show_Sidebar"></app-sidebar>
             <div class="content">
-                <router-outlet></router-outlet>
+                <app-top-adbar *ngIf="TopAdBarEnabled"></app-top-adbar>
+                <div style="padding:0.5vw; justify-content: center; display:flex;">
+                    <router-outlet></router-outlet>
+                </div>
+               
             </div>
+            <app-side-adbar *ngIf="SideAdBarEnabled"></app-side-adbar>
         </div>
 
-        <app-adbar *ngIf="AdBarEnabled"></app-adbar>
+      
     </div>
     
    

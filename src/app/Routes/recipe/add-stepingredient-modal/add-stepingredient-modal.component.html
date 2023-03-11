@@ -2,7 +2,7 @@
     <div class="form-group recipe-card">
        
         <div class="row">
-           <label class="col-4" for="Ingredient">Ingredient: </label>
+           <label class="col-4" for="Ingredient">{{"TXT_Ingredient" | translate}}:</label>
             <div class="col-3">
                 <app-ingredient-search [(selectedIngredient)]="StepIngredient.Ingredient"></app-ingredient-search>
             </div>
@@ -11,14 +11,14 @@
         </div>
         
         <div class="row">
-            <label class="col-4" for="Measuring Unit">Measuring Unit: </label>
+            <label class="col-4" for="Measuring Unit">{{"TXT_Measuring_Unit" | translate}}: </label>
 
             <div class="col-3">
                 <app-measuring-unit-search *ngIf="StepIngredient.Ingredient != undefined" [(selectedMeasuringUnit)]="StepIngredient.MeasuringUnit"></app-measuring-unit-search>
             </div>
         </div>
         <div class="row">
-            <label class="col-4" for="Amount">Amount: </label>
+            <label class="col-4" for="Amount">{{"TXT_Amount" | translate}}: </label>
 
             <div class="col-3">
                 <input
@@ -35,7 +35,7 @@
 
         <div class="row">
             <div class="col-3">
-                <button type="button" class="btn btn-md btn-success" [disabled]="StepIngredient.Ingredient == undefined" (click)="activeModal.close(StepIngredient)"> Save </button>
+                <button type="button" class="btn btn-md btn-success" [disabled]="StepIngredient.Ingredient == undefined" (click)="activeModal.close(StepIngredient)">{{"TXT_Save" | translate}}</button>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@
                     type="text"
                     class="form-control"
                     id="searchIngredient"
-                    placeholder="search"
+                    placeholder="{{'TXT_Search' | translate}}"
                     [(ngModel)]="Search"
                     name="Search"
                 />
@@ -30,13 +30,13 @@
        
 
         <div class="dropdown-divider"></div>
-        <div (click)="createNewIngredient()" ngbDropdownItem>cannot find correct ingredient? Add One!</div>
+        <div (click)="createNewIngredient()" ngbDropdownItem>{{"TXT_Cannot_Find_Correct_Ingredient_Create" | translate}}</div>
         
         <div *ngIf="newIngredient != null">
             <div class="dropdown-divider"></div>
             <form class="px-4 py-3">
                 <div class="row">
-                    <label for="Name" class="col-7">Name</label>
+                    <label for="Name" class="col-7">{{'TXT_Name' | translate}}</label>
                     <div class="col-5">
                         <input
                         class="form-control"
@@ -49,7 +49,7 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-md btn-success" (click)="saveNewIngredient()">Save</button>
+                    <button class="btn btn-md btn-success" (click)="saveNewIngredient()">{{'TXT_Save' | translate}}</button>
                 </div>
                
             </form>

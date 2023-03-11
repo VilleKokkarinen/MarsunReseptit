@@ -6,32 +6,20 @@
     padding:0px;
 }
 .footer-text{
-    color: var(--TextColor_Primary);
+    color: var(--Primary_Text_Color);
     display: flex;
     justify-content: flex-end;
     text-align: center;
     white-space: pre;
 }
 .footer-text a{
-    color: var(--TextColor_Primary);
+    color: var(--Primary_Text_Color);
     text-decoration: underline;
 }
 
 .ghostbutton{
     position:absolute;
-    left:50%;
+    left:5px;
     bottom:0px;
     padding:0px 2px 0px 2px;
-}
-
-.hide{
-    color: rgba(10,10,10,0.125);
-    border-color: rgba(10,10,10,0.03);
-    background-color: rgba(10,10,10,0.03);
-}
-
-.hide:hover{
-    color: rgba(10,10,10,0.35);
-    border-color: rgba(10,10,10,0.15);
-    background-color: rgba(10,10,10,0.15);
 }

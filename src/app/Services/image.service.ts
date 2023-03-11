@@ -9,7 +9,7 @@ import { SharedService } from './shared.service';
   providedIn: 'root'
 })
 export class ImageService {
-  baseurl:string = "http://127.0.0.1:8090";
+  baseurl:string = "https://83.102.58.1:443";
   pb:PocketBase;
   imageServiceKey:string|undefined = undefined;
 
@@ -50,12 +50,23 @@ export class ImageService {
 
  
 
-  getImageURL(id:string): Promise<string> {
+  getImageFILEURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getOne(id).then((record)=>{
+      this.pb.collection('images').getOne(id,{"imageservicekey":this.imageServiceKey}).then((record)=>{
       const firstFilename = record['data'];
       const url = this.pb.getFileUrl(record, firstFilename);
       resolve(url)
+      },(err)=>{
+        console.log(err)
+        reject("Not Found")
+      })
+    })
+  }
+
+  getImageURL(id:string): Promise<string> {
+    return new Promise((resolve,reject) => {
+      this.pb.collection('images').getOne<Image>(id,{"imageservicekey":this.imageServiceKey}).then((record)=>{
+      resolve(record.url)
       },(err)=>{
         console.log(err)
         reject("Not Found")
@@ -125,6 +136,7 @@ export class ImageService {
       }
     })
   }
+  
 
   addImageEOL(image:Image): Promise<string> {
     return new Promise((resolve,reject) => {

@@ -87,17 +87,16 @@ export class ImageUploadComponent implements OnInit {
         }
       });
 
-      this.imageservice.GetImageEOL(this.selectedImage).then(eol => {
-        if(eol != "")
+      this.imageservice.getImageURL(this.selectedImage.id).then(url => {
+        if(url != "temp")
         {
           if(this.selectedImage != undefined)
-          this.imageservice.RefreshImageEOL(this.selectedImage)
+            this.imageservice.RefreshImageEOL(this.selectedImage)
         }else{
-          if(this.selectedImage != undefined)
-          this.imageservice.updateImageURL(this.selectedImage).then(()=>{
-            if(this.selectedImage != undefined)
-              this.imageservice.addImageEOL(this.selectedImage)
-          })
+          if(this.selectedImage != undefined){
+            this.imageservice.updateImageURL(this.selectedImage)
+            this.imageservice.addImageEOL(this.selectedImage)
+          }
         }
       })
     }

@@ -6,7 +6,7 @@
 .dropzone {
   border: solid 1px var(--Accent_Border_Color);
   border-radius: 8px;
-  background-color: var(--PrimaryColor);
+  background-color: var(--Primary_Color);
 }
 
 .droptext{
@@ -15,5 +15,5 @@
   justify-content:center;
   margin:auto;
   height:100%;
-  color: var(--TextColor_Primary);
+  color: var(--Primary_Text_Color);
 }

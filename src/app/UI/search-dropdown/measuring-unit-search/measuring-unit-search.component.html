@@ -11,7 +11,7 @@
                     type="text"
                     class="form-control"
                     id="searchMeasuringUnit"
-                    placeholder="search"
+                    placeholder="{{'TXT_Search' | translate}}"
                     [(ngModel)]="Search"
                     name="Search"
                 />
@@ -30,13 +30,13 @@
        
 
         <div class="dropdown-divider"></div>
-        <div (click)="createNewMeasuringUnit()" ngbDropdownItem>cannot find correct unit? Add One!</div>
+        <div (click)="createNewMeasuringUnit()" ngbDropdownItem>{{"TXT_Cannot_Find_Correct_Measuring_Unit_Create" | translate}}</div>
         
         <div *ngIf="newMeasuringUnit != null">
             <div class="dropdown-divider"></div>
             <form class="px-4 py-3">
                 <div class="row">
-                    <label for="Name" class="col-7">Name</label>
+                    <label for="Name" class="col-7">{{'TXT_Name' | translate}}</label>
                     <div class="col-5">
                         <input
                         class="form-control"
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="row">
-                    <label for="Name" class="col-7">ShortName</label>
+                    <label for="Name" class="col-7">{{'TXT_Short_Name' | translate}}</label>
                     <div class="col-5">
                         <input
                         class="form-control"
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="row">
-                    <label for="Name" class="col-7">BaseUnitMultiplier</label>
+                    <label for="Name" class="col-7">{{'TXT_Base_Unit_Multiplier' | translate}}</label>
                     <div class="col-5">
                         <input
                         class="form-control"
@@ -76,7 +76,7 @@
                 </div>
 
                 <div>
-                    <button class="btn btn-md btn-success" (click)="saveNewMeasuringUnit()">Save</button>
+                    <button class="btn btn-md btn-success" (click)="saveNewMeasuringUnit()">{{'TXT_Save' | translate}}</button>
                 </div>
                
             </form>

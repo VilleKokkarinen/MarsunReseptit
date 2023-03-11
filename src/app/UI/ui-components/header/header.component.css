@@ -5,7 +5,7 @@
     font-family: 'Inter UI', sans-serif; 
 }
 .header-text{
-    color: var(--TextColor_Primary);
+    color: var(--Primary_Text_Color);
     word-wrap: break-word;
 }
 
@@ -23,11 +23,15 @@
 }
 
 .header-img{
-display:flex;
-flex-direction: row;
-justify-content: center;
-text-align: center;
-align-items: center;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.showroutedropdown{
+    display:inline;
 }
 
 @media (min-width: 0px) {

@@ -6,12 +6,12 @@
         <div class="row">
             <div class="col-6" style="max-width:fit-content">
                 <button class="btn btn-outline-primary"
-                (click)="fileUpload.click()"> Upload Image
+                (click)="fileUpload.click()">{{"TXT_Upload_Image" | translate}}
               </button>
             </div>
-            <div class="col-6 dropzone" style="max-width:fit-content; height: 35px;"  fileDragDrop (filesChangeEmitter)="onFileDropped($event[0])">
+            <div class="col-6 dropzone" style="max-width:fit-content;"  fileDragDrop (filesChangeEmitter)="onFileDropped($event[0])">
                 <div class="droptext">
-                    Drag & Drop here
+                    {{"TXT_Drag_Drop" | translate}}
                 </div>
             </div>
         </div>

@@ -9,11 +9,11 @@
             style="height:58px;"
           />
           <div class="header-text" style="margin-right:auto">         
-            {{"Marsun Reseptit"}}
+            {{"TXT_App_Title" | translate}}
           </div>
         </div>
       </div>
-      <div class="col-2 routedropdown" style="padding-left:25px;">
+      <div class="col-2" [ngClass]="Settings?.Show_Sidebar == false ? 'showroutedropdown' : 'routedropdown'" style="padding-left:25px;">
         <app-route-dropdown></app-route-dropdown>
       </div>
       <div class="col-2" style="display:flex; justify-content: flex-end; margin-left:auto">

@@ -3,6 +3,7 @@ import { IngredientService } from 'src/app/Services/ingredient.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { Ingredient } from 'src/app/components/recipecomponents/ingredient';
 import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-ingredient-search',
@@ -18,13 +19,13 @@ export class IngredientSearchComponent {
   
   @Output() selectedIngredientChange = new EventEmitter<Ingredient>()
 
-  constructor(private ingredientService: IngredientService, private authservice:AuthService) {
+  constructor(private ingredientService: IngredientService, private translate:TranslateService) {
     this.retrieveIngredients();
    }
 
    selectIngredientData(){
     if(this.selectedIngredient == undefined || this.Ingredients == undefined)
-    return "Select Ingredient";
+    return this.translate.instant("TXT_Select_Ingredient");
 
     return this.selectedIngredient.Name
    }
@@ -58,10 +59,7 @@ export class IngredientSearchComponent {
 
    saveNewIngredient(): void {
     if(this.newIngredient != null){
-      console.log('Creating Ingredient', this.newIngredient)
-
       this.ingredientService.create(JSON.parse(JSON.stringify(this.newIngredient))).then((unitData:Ingredient) => {
-        console.log('Created new Ingredient successfully!', unitData);
         this.newIngredient = null;
       });
     }  

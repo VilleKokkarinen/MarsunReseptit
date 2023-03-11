@@ -12,22 +12,22 @@ export class Theme extends Publishable{
     "--Dropdown_Bg_Color":  "rgba(40, 45, 51)", 
     "--MainContent_Bg_Color":  "rgba(110, 110, 110)",
   
-    "--PrimaryColor":  "rgba(35, 40, 45)", 
-    "--ComplementColor":  "rgba(116, 99, 68)", 
-    "--AccentColor":  "rgba(201, 178, 94)", 
-    "--NeutralColor":  "rgba(75, 75, 75)",
+    "--Primary_Color":  "rgba(35, 40, 45)", 
+    "--Complement_Color":  "rgba(116, 99, 68)", 
+    "--Accent_Color":  "rgba(201, 178, 94)", 
+    "--Neutral_Color":  "rgba(75, 75, 75)",
   
-    "--TextColor_Primary":  "rgba(221, 187, 92)",
-    "--TextColor_Complement":  "rgba(255, 217, 112)",  
-    "--TextColor_Accent":  "rgba(160, 117, 0)",
-    "--TextColor_Accent_2":  "rgba(25, 25, 30)",
+    "--Primary_Text_Color":  "rgba(221, 187, 92)",
+    "--Complement_Text_Color":  "rgba(255, 217, 112)",  
+    "--Accent_Text_Color":  "rgba(160, 117, 0)",
+    "--Secondary_Accent_Text_Color":  "rgba(25, 25, 30)",
   
     "--DropShadow_Color":  "rgba(35, 35, 45, 0.9)",  
-    "--DisabledElementColor":  "rgba(75, 75, 75)",
+    "--Disabled_Element_Color":  "rgba(75, 75, 75)",
   
   
-    "--TextColor_Selected":  "rgba(255, 217, 112)",
-    "--TextColor_Selected_Shadow":  "rgba(0, 0, 0)",
-    "--TextColor_Selected_Bg":  "rgba(157, 51, 9, 0.125)",
+    "--Selected_Text_Color":  "rgba(255, 217, 112)",
+    "--Selected_Text_Color_Shadow":  "rgba(0, 0, 0)",
+    "--Selected_Text_Color_Bg":  "rgba(157, 51, 9, 0.125)",
   };
 }

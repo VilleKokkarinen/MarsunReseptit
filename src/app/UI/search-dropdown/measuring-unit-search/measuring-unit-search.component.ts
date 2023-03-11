@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MeasuringUnitService } from 'src/app/Services/measuringunit.service';
 import { MeasuringUnit } from 'src/app/components/recipecomponents/measuringunit';
 import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-measuring-unit-search',
@@ -17,13 +18,13 @@ export class MeasuringUnitSearchComponent {
   
   @Output() selectedMeasuringUnitChange = new EventEmitter<MeasuringUnit>()
 
-  constructor(private measuringUnitService: MeasuringUnitService) {
+  constructor(private measuringUnitService: MeasuringUnitService,  private translate:TranslateService) {
     this.retrieveMeasuringUnits();
    }
 
    selectMeasuringUnitData(){
     if(this.selectedMeasuringUnit == undefined || this.MeasuringUnits == undefined)
-    return "Select Unit";
+    return this.translate.instant("TXT_Select_Measuring_Unit");
 
     return this.selectedMeasuringUnit.Name
    }
@@ -61,10 +62,7 @@ export class MeasuringUnitSearchComponent {
 
    saveNewMeasuringUnit(): void {
     if(this.newMeasuringUnit != null){
-      console.log('Creating Measuring Unit', this.newMeasuringUnit)
-
       this.measuringUnitService.create(JSON.parse(JSON.stringify(this.newMeasuringUnit))).then((unitData:MeasuringUnit) => {
-        console.log('Created new Measuring Unit successfully!', unitData);
         this.newMeasuringUnit = null;
       });
     }  

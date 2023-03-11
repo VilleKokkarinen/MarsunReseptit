@@ -4,6 +4,7 @@ import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { AuthService } from 'src/app/Services/auth.service';
 import { RichTextEditorComponent } from 'src/app/UI/rich-text-editor/rich-text-editor.component';
 import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-recipe',
@@ -27,7 +28,8 @@ export class AddRecipeComponent {
 
   constructor(
     private recipeService: RecipeService,
-    private authservice:AuthService
+    private authservice:AuthService,
+    private translate:TranslateService
     ) {
     this.recipe = new Recipe();
     if(authservice.isLoggedIn)
@@ -35,8 +37,8 @@ export class AddRecipeComponent {
 
     this.recipe.PublishDate = new Date;
 
-    this.recipe.Description = "Description";
-    this.recipe.Recipe = "<h1><u>Reseptipohja</u></h1><h1><br></h1><h1><br></h1><p><br></p><h2><u>Raaka-aineet:</u></h2><ul><li>200g x</li><li>2dl y</li><li>2tl z</li></ul><p><br></p><p><br></p><p><br></p><h2><u>Ohje:</u></h2><ol><li>Vatkaa x</li><li>Sulata y</li><li>Sekoita x + y + z</li><li>Paista 200'c 1h</li></ol><p><br></p><p><br></p><p><br></p><p><br></p>";
+    this.recipe.Description = "";
+    this.recipe.Recipe = this.translate.instant('TXT_Recipe_Placeholder')
    }
 
   saveRecipe(): void {

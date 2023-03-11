@@ -1,34 +1,31 @@
-<form class="px-4 py-3">
-    <div class="mb-3">
-        <input
-            type="text"
-            class="form-control"
-            id="searchIngredient"
-            placeholder="search"
-            [(ngModel)]="Search"
-            name="Search"
-        />
-    </div>
-</form>
+
+<div style="max-width: 700px; margin:10px;">
+    <input
+        type="text"
+        class="form-control"
+        id="searchIngredient"
+        placeholder="search"
+        [(ngModel)]="Search"
+        name="Search"
+    />
+</div>
 <div *ngFor="let Recipe of Recipes">
-    <div *ngIf='Search == "" || (Recipe?.Name?.includes(Search)) '>
-        <div class="form-group row recipe-card" style="min-width:350px;" (click)="gotoRecipe(Recipe)">
-            <div class="col-12">
-                <div style="display:flex; flex-direction:row;">
-                    <div class="recipe-img-container">
-                        <img *ngIf="Recipe.Thumbnail != undefined"
+    <div *ngIf='Search == "" || (Recipe?.Name?.toLowerCase().includes(Search.toLowerCase()))'>
+        <div class="recipe-card" (click)="gotoRecipe(Recipe)">
+            <div style="display:flex; flex-direction:row;">
+                <div *ngIf="Recipe.Thumbnail != undefined" class="recipe-img-container">
+                    <img
                         class="recipe-img"
                         [src]="Recipe.Thumbnail"
-                        alt="Recipe Picture"
+                        alt=""
                     />
+                </div>
+                <div style="height:fit-content;">
+                    <div class="title-text recipe-card">
+                        {{Recipe.Name}}
                     </div>
-                    <div class="row" style="padding-left:10px; padding-right:10px; display: inline-block;">
-                        <div class="col-12 title-text recipe-card">
-                                {{Recipe.Name}}
-                        </div>
-                        <div class="col-12 description-text recipe-card">
-                            {{Recipe.Description}}
-                        </div>
+                    <div class="description-text recipe-card">
+                        {{Recipe.Description}}
                     </div>
                 </div>
             </div>

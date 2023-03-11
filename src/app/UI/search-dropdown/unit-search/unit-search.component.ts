@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UnitService } from 'src/app/Services/unit.service';
 import { Unit } from 'src/app/components/recipecomponents/unit';
 import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-unit-search',
@@ -17,13 +18,13 @@ export class UnitSearchComponent {
   
   @Output() selectedUnitChange = new EventEmitter<Unit>()
 
-  constructor(private UnitService: UnitService) {
+  constructor(private UnitService: UnitService, private translate:TranslateService) {
     this.retrieveUnits();
    }
 
    selectUnitData(){
     if(this.selectedUnit == undefined || this.Units == undefined)
-    return "Select Unit";
+    return this.translate.instant("TXT_Select_Unit");
 
     return this.selectedUnit.Name
    }
@@ -61,10 +62,7 @@ export class UnitSearchComponent {
 
    saveNewUnit(): void {
     if(this.newUnit != null){
-      console.log('Creating  Unit', this.newUnit)
-
       this.UnitService.create(JSON.parse(JSON.stringify(this.newUnit))).then((unitData:Unit) => {
-        console.log('Created new  Unit successfully!', unitData);
         this.newUnit = null;
       });
     }  

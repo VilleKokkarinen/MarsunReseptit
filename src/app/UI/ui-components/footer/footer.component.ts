@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Settings } from 'src/app/components/shared/settings';
+import { SettingsService } from 'src/app/Services/settings.service';
 
 @Component({
   selector: 'app-footer',
@@ -6,8 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  FooterEnabled:Boolean = true;
-  toggle(){
-    this.FooterEnabled = !this.FooterEnabled;
+  Settings:Settings|undefined|null;
+  
+  constructor(private settingsService:SettingsService){
+    this.Settings = this.settingsService.Settings
   }
 }

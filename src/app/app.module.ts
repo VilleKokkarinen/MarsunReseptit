@@ -57,7 +57,10 @@ import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-de
 import { RecipeStepListComponent } from './Routes/recipe/add-recipe/recipe-step-list/recipe-step-list.component';
 import { RecipeStepIngredientListComponent } from './Routes/recipe/add-recipe/recipe-step-ingredient-list/recipe-step-ingredient-list.component';
 
-
+/* Ads */
+import { SideAdbarComponent } from './UI/ui-components/ads/side-adbar/side-adbar.component';
+import { BannerAdComponent } from './UI/ui-components/ads/bannerad/bannerad.component';
+import { TopAdbarComponent } from './UI/ui-components/ads/top-adbar/top-adbar.component';
 
 import { IngredientSearchComponent } from './UI/search-dropdown/ingredient-search/ingredient-search.component';
 import { MeasuringUnitSearchComponent } from './UI/search-dropdown/measuring-unit-search/measuring-unit-search.component';
@@ -79,11 +82,13 @@ import { LocalizedDatePipe } from './Services/localized-date-pipe';
 import { CommentfieldComponent } from './UI/ui-components/commentfield/commentfield.component';
 import { GDPRComponent } from './Routes/gdpr/gdpr.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
-import { BanneradComponent } from './UI/ui-components/bannerad/bannerad.component';
+
 import { MainComponent } from './UI/ui-components/main/main.component';
-import { AdbarComponent } from './UI/ui-components/adbar/adbar.component';
+
 import { ImageUploadComponent } from './UI/image-upload/image-upload.component';
 import { FileDragNDropDirective } from './UI/image-upload/file-dragdrop.directive';
+import { SettingsComponent } from './Routes/settings/settings.component';
+import { LanguageSearchComponent } from './UI/search-dropdown/language-search/language-search.component';
 
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
@@ -120,11 +125,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommentfieldComponent,
     GDPRComponent,
     PrivacyComponent,
-    BanneradComponent,
+    BannerAdComponent,
     MainComponent,
-    AdbarComponent,
+    SideAdbarComponent,
+    TopAdbarComponent,
     ImageUploadComponent,
-    FileDragNDropDirective
+    FileDragNDropDirective,
+    SettingsComponent,
+    LanguageSearchComponent
   ],
   imports: [
     BrowserModule,

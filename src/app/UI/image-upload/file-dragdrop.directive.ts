@@ -8,7 +8,7 @@ export class FileDragNDropDirective {
 @Output() private filesChangeEmitter : EventEmitter<File[]> = new EventEmitter();
 
 @HostBinding('style.border-color') private borderColor = 'var(--Accent_Border_Color)';
-@HostBinding('style.background-color') private backgroundColor = 'var(--PrimaryColor)';
+@HostBinding('style.background-color') private backgroundColor = 'var(--Primary_Color)';
 
 constructor() { }
 
@@ -16,7 +16,7 @@ constructor() { }
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.backgroundColor = 'var(--ComplementColor)';
+    this.backgroundColor = 'var(--Complement_Color)';
     this.borderColor = 'var(--Primary_Border_Color)';
 }
 
@@ -24,7 +24,7 @@ constructor() { }
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.backgroundColor = 'var(--PrimaryColor)';
+    this.backgroundColor = 'var(--Primary_Color)';
     this.borderColor = 'var(--Accent_Border_Color)';
 }
 
@@ -32,7 +32,7 @@ constructor() { }
     evt.preventDefault();
     evt.stopPropagation();
   
-    this.backgroundColor = 'var(--PrimaryColor)';
+    this.backgroundColor = 'var(--Primary_Color)';
     this.borderColor = 'var(--Accent_Border_Color)';
 
     let files = evt.dataTransfer.files;

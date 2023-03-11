@@ -1,13 +1,13 @@
 import {Component, OnInit, Input, AfterViewInit} from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { BannerAd } from '../../../components/ads/bannerad';
+import { BannerAd } from '../../../../components/ads/bannerad';
 
 @Component({
   selector: 'app-bannerad',
   templateUrl: './bannerad.component.html',
   styleUrls: ['./bannerad.component.css']
 })
-export class BanneradComponent {
+export class BannerAdComponent {
 
   @Input() banner: BannerAd|undefined;
   showAd = environment.adsense.show;

@@ -24,7 +24,7 @@
 .header-text{
     padding-left:10px;
     font-size:calc(100% + 2vw);
-    color: var(--TextColor_Primary);
+    color: var(--Primary_Text_Color);
 }
 
 .headercontainer{
@@ -38,7 +38,7 @@
 
 .recipecontainer-simple{
     background-color: var(--Dropdown_Bg_Color);
-    color: var(--TextColor_Primary);
+    color: var(--Primary_Text_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
     font-family: 'Inter UI', sans-serif; 
