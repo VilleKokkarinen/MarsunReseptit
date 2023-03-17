@@ -41,6 +41,8 @@
 					<div class="dropdown-divider"></div>
 					<button type="button" ngbDropdownItem>{{"TXT_New_Around_Here" | translate}}? {{"TXT_Sign_Up" | translate}}</button>
 					<button type="button" ngbDropdownItem>{{"TXT_Forgot_Password" | translate}}?</button>
+					<div class="dropdown-divider"></div>
+					<button type="button" routerLink="Settings" ngbDropdownItem><i class="bi bi-gear-fill"></i> {{"TXT_Settings" | translate}} </button>
 			</div>
 			<div [hidden]="this.authService.userData === undefined" ngbDropdownMenu>
 				<button type="button" routerLink="Account" ngbDropdownItem><i class="bi bi-person-square"></i> {{"TXT_My_Account" | translate}} </button>

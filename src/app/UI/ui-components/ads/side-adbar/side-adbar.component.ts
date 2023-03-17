@@ -10,7 +10,7 @@ export class SideAdbarComponent {
   bannerad: BannerAd;
   constructor(){
     this.bannerad = new BannerAd(
-      'a-pub-1120436091721652',
+      'ca-pub-1120436091721652',
       1073935566,
       'auto',
       true

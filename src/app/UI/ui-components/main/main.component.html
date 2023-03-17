@@ -1,18 +1,18 @@
 <div class="body">
     <app-header></app-header>
-    <div style="display:flex; flex-direction:row; height:100%; overflow:hidden;">
+    <div style="display:flex; flex-direction:row; overflow:hidden;" [style.height]="GetHeight()">
        
 
         <div class="contentbody">
-            <app-sidebar *ngIf="Settings?.Show_Sidebar"></app-sidebar>
+            <app-sidebar *ngIf="Settings.Show_Sidebar == true"></app-sidebar>
             <div class="content">
-                <app-top-adbar *ngIf="TopAdBarEnabled"></app-top-adbar>
-                <div style="padding:0.5vw; justify-content: center; display:flex;">
-                    <router-outlet></router-outlet>
+                <app-top-adbar *ngIf="TopAdBarEnabled && showAd"></app-top-adbar>
+                <div style="padding:15px; overflow-y:auto; overflow-x:hidden; height:100%">
+                    <router-outlet/>
                 </div>
                
             </div>
-            <app-side-adbar *ngIf="SideAdBarEnabled"></app-side-adbar>
+            <app-side-adbar *ngIf="SideAdBarEnabled && showAd"></app-side-adbar>
         </div>
 
       

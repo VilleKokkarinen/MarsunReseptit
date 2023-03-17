@@ -3,7 +3,7 @@
     <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
         <label for="Theme" class="settings-label">{{"TXT_Theme" | translate}}</label>
         <div class="col-5">
-            <app-theme-search [(selectedTheme)]="Settings.Theme" (selectedThemeChange)="UpdateTheme()"></app-theme-search>
+            <app-theme-search></app-theme-search>
         </div>
     </div>
 
@@ -11,7 +11,7 @@
     <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
         <label for="Language" class="settings-label">{{"TXT_Language" | translate}}</label>
         <div class="col-5">
-            <app-language-search [(selectedLanguage)]="Settings.Language" (selectedLanguageChange)="UpdateLanguage()"></app-language-search>
+            <app-language-search></app-language-search>
         </div>
     </div>
 
@@ -23,6 +23,7 @@
             id="Show_Footer"
             required
             [(ngModel)]="Settings.Show_Footer"
+            (ngModelChange)="SaveSettings()"
             name="Show_Footer" />
     </div>
 
@@ -34,13 +35,14 @@
             id="Show_Sidebar"
             required
             [(ngModel)]="Settings.Show_Sidebar"
+            (ngModelChange)="SaveSettings()"
             name="Show_Sidebar" />
     </div>
 
     <div class="row" style="display:flex; flex-direction:row; padding:10px;">
-        <div class="col-6">
-          <button (click)="SaveSettings()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
+        <div class="col-12">
+          <button (click)="ChangePrivacySettings()" class="btn btn-md btn-success">{{"TXT_Change_Privacy_Settings" | translate}}</button>
+          <button (click)="ResetSettings()" class="btn btn-md btn-danger" style="margin-left:50px;">{{"TXT_Reset_Settings" | translate}}</button>
         </div>
     </div>
-
   </div>

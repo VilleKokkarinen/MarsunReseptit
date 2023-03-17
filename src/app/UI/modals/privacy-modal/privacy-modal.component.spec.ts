@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GDPRComponent } from './gdpr.component';
+import { PrivacyModalComponent } from './privacy-modal.component';
 
-describe('GDPRComponent', () => {
-  let component: GDPRComponent;
-  let fixture: ComponentFixture<GDPRComponent>;
+describe('PrivacyModalComponent', () => {
+  let component: PrivacyModalComponent;
+  let fixture: ComponentFixture<PrivacyModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GDPRComponent ]
+      declarations: [ PrivacyModalComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GDPRComponent);
+    fixture = TestBed.createComponent(PrivacyModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

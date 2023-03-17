@@ -8,9 +8,12 @@ import { SettingsService } from 'src/app/Services/settings.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  Settings:Settings|undefined|null;
+  Settings:Settings;
   
   constructor(private settingsService:SettingsService){
-    this.Settings = this.settingsService.Settings
+    this.Settings = this.settingsService.Settings,
+    this.settingsService.SettingsChange.subscribe((newSettings)=>{
+      this.Settings = newSettings;
+    })
   }
 }

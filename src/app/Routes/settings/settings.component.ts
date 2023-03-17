@@ -10,27 +10,27 @@ import { ThemeService } from 'src/app/Services/theme.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent {
-  Settings:Settings|undefined|null;
+  Settings:Settings;
 
   constructor(private settingsService:SettingsService, private themeService: ThemeService, private languageService:LanguageService) {
     this.Settings = settingsService.Settings
-  }
-
-  UpdateTheme(){
-    if(this.Settings)
-    this.themeService.applyTheme(this.Settings.Theme)
-  }
-  
-  UpdateLanguage(){
-    if(this.Settings)
-    this.languageService.UseLanguage(this.Settings.Language)
+    this.settingsService.SettingsChange.subscribe((newSettings)=>{
+      this.Settings = newSettings
+    })
   }
 
   SaveSettings(){
-    if(this.Settings)
-    this.themeService.applyTheme(this.Settings.Theme)
-
+    this.settingsService.Settings = this.Settings;
     this.settingsService.SaveSettings();
   }
 
+
+  ChangePrivacySettings(){
+    this.Settings.CookieSettings.Show_Popup = true;
+    this.SaveSettings();
+  }
+
+  ResetSettings(){
+    this.settingsService.ResetSettings();
+  }
 }

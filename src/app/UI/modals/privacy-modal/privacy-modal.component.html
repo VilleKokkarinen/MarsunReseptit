@@ -1,0 +1,194 @@
+
+<div class="modal-card">
+    <ul ngbNav #nav1="ngbNav" [(activeId)]="mode" class="nav-tabs main-ul" >
+        <li [ngbNavItem]="0" class="header-button main-li">
+            <a ngbNavLink>{{"TXT_Legal" | translate}}</a>
+            <ng-template ngbNavContent>
+                <ul ngbNav #nav2="ngbNav" [(activeId)]="active" class="nav-tabs main-ul" domId="2">
+                    <li [ngbNavItem]="0" class="header-button main-li">
+                        <a ngbNavLink>{{"TXT_Privacy" | translate}}</a>
+                        <ng-template ngbNavContent>
+                            <div class="panel">
+                                <p>
+                                    {{"TXT_Privacy_Modal_1" | translate}}
+                                </p>
+                                <p>
+                                    {{"TXT_Privacy_Modal_2" | translate}}
+                                </p>
+                                <p>
+                                    {{"TXT_Privacy_Modal_3" | translate}}
+                                </p>
+                                <p>
+                                    {{"TXT_Privacy_Modal_4" | translate}}
+                                </p>
+                                <p>
+                                    {{"TXT_Privacy_Modal_5" | translate}}
+                                </p>
+                                <ngb-accordion [closeOthers]="true" activeIds="">
+                                    <ngb-panel id="static-1"title="{{'TXT_Analytics' | translate}}">
+                                        <ng-template ngbPanelContent>
+                                            {{"TXT_Privacy_Modal_6" | translate}}
+                                        </ng-template>
+                                    </ngb-panel>
+                                    <ngb-panel id="static-2"title="{{'TXT_Google_Ads' | translate}}">
+                                        <ng-template ngbPanelContent>
+                                            {{"TXT_Privacy_Modal_7" | translate}}
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>
+                         
+                        </ng-template>
+                    </li>
+                    <li [ngbNavItem]="1" class="header-button main-li">
+                        <a ngbNavLink>{{"TXT_Vendors" | translate}}</a>
+                        <ng-template ngbNavContent>
+                            <div class="panel">
+                                <p>
+                                    {{"TXT_Privacy_Modal_8" | translate}}
+                                </p>
+                                <p>
+                                    {{"TXT_Privacy_Modal_9" | translate}}
+                                </p>
+                
+                                <ngb-accordion [closeOthers]="true" activeIds="">
+                                    <ngb-panel id="static-1" title="Marsun-reseptit">
+                                        <ng-template ngbPanelContent>
+                                            <div class="panel">
+                                                <ul>
+                                                    <li>
+                                                        {{"TXT_Privacy_Modal_10" | translate}}
+                                                        <ul>
+                                                            <li>
+                                                                {{"TXT_Privacy_Modal_11" | translate}}
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        {{"TXT_Privacy_Modal_12" | translate}}
+                                                    </li>
+                                                    <li>
+                                                        {{"TXT_Privacy_Modal_13" | translate}}
+                                                    </li>
+                                                    <br/>
+
+                                                    <li>
+                                                        {{"TXT_Privacy_Modal_14" | translate}}
+                                                        <ul>
+                                                            <li>
+                                                                {{"TXT_Privacy_Modal_15" | translate}}
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <label style="padding-right:5px;"> {{"TXT_Privacy_Modal_16" | translate}} </label>
+                                                        <input
+                                                        class="form-check-input" 
+                                                        type="checkbox"
+                                                        id="Geological_Area"
+                                                        [(ngModel)]="Settings.CookieSettings.Geological_Area"
+                                                        name="Geological_Area"/>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                    <ngb-panel id="static-2"title="{{'TXT_Analytics' | translate}}">
+                                        <ng-template ngbPanelContent>
+                                            <div>
+                                                {{"TXT_Privacy_Modal_17" | translate}}
+                                               </div>
+                                               <div>
+                                                <label style="padding-right:5px;"> {{"TXT_Enable_Analytics" | translate}} </label>
+                                                <input
+                                                class="form-check-input" 
+                                                type="checkbox"
+                                                id="Analytics"
+                                                [(ngModel)]="Settings.CookieSettings.Analytics"
+                                                name="Analytics"/>
+                                               </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                    <ngb-panel id="static-3"title="{{'TXT_Google_Advertising_Products' | translate}}">
+                                        <ng-template ngbPanelContent>
+                                           <div>
+                                            {{"TXT_Privacy_Modal_18" | translate}}
+                                            </div>
+                                            <br/>
+                                            <div>
+                                            <label>{{"TXT_Privacy_Modal_19" | translate}}</label>
+                                            </div>
+                                            <br/>
+                                            <div>
+                                                {{"TXT_Privacy_Modal_20" | translate}}
+                                            </div>
+                                            <div>
+                                            <label style="padding-right:5px;"> {{"TXT_Enable_Personalised_Ads" | translate}} </label>
+                                            <input
+                                            class="form-check-input" 
+                                            type="checkbox"
+                                            id="Analytics"
+                                            [(ngModel)]="Settings.CookieSettings.Personalised_Ads"
+                                            name="Personalised_Ads"/>
+                                           </div>
+                                        </ng-template>
+                                    </ngb-panel>
+                                </ngb-accordion>
+                            </div>                            
+                        </ng-template>
+                    </li>
+                </ul>
+                <div [ngbNavOutlet]="nav2"></div>
+            </ng-template>
+        </li>
+        <li [ngbNavItem]="1" class="header-button main-li">
+            <a ngbNavLink>{{"TXT_Simplified" | translate}}</a>
+            <ng-template ngbNavContent>
+                <div class="panel">
+                    <ul>
+                        <li>
+                            {{"TXT_Privacy_Modal_21" | translate}}
+                        </li>
+                        <br/>
+                        <li>
+                            <label style="padding-right:5px;">{{"TXT_Enable_Analytics" | translate}}</label>
+                            <input
+                            class="form-check-input" 
+                            type="checkbox"
+                            id="Analytics2"
+                            [(ngModel)]="Settings.CookieSettings.Analytics"
+                            name="Analytics"/>
+                        </li>
+                        <li>
+                            <label style="padding-right:5px;">{{"TXT_Enable_Geological" | translate}}</label>
+                            <input
+                            class="form-check-input" 
+                            type="checkbox"
+                            id="Geological_Area2"
+                            [(ngModel)]="Settings.CookieSettings.Geological_Area"
+                            name="Geological_Area"/>
+                        </li>
+                        <li>
+                        <label style="padding-right:5px;"> {{"TXT_Enable_Personalised_Ads" | translate}} </label>
+                        <input
+                        class="form-check-input" 
+                        type="checkbox"
+                        id="Analytics"
+                        [(ngModel)]="Settings.CookieSettings.Personalised_Ads"
+                        name="Personalised_Ads"/>
+                    </li>
+                    </ul>
+                </div>               
+            </ng-template>
+          
+        </li>
+    </ul>
+    <div [ngbNavOutlet]="nav1"></div>
+    <div style="margin-top:20px; display:flex; justify-content: space-between; width:100%;">
+        <button (click)="RejectAll()" class="btn btn-md btn-outline-primary" > {{"TXT_Reject_All" | translate}}</button>
+        <button (click)="AcceptSelected()" class="btn btn-md btn-primary" > {{"TXT_Accept_Selected" | translate}}</button>
+        <button (click)="AcceptAll()" class="btn btn-md btn-success"> {{"TXT_Accept_All" | translate}}</button>
+    </div>
+  
+</div>

@@ -37,9 +37,9 @@ export class RichTextEditorComponent{
           var imageData = new QuillImageData(base64, file.type, file.name)
           imageData
           .minify({
-            maxWidth: 128,
-            maxHeight: 128,
-            quality: 0.25,
+            maxWidth: 756,
+            maxHeight: 756,
+            quality: 0.75,
           })
           .then((miniImageData:any) => {
             if (miniImageData instanceof QuillImageData) {
@@ -142,9 +142,9 @@ export class RichTextEditorComponent{
     }else{
       imageData
       .minify({
-        maxWidth: 128,
-        maxHeight: 128,
-        quality: 0.25,
+        maxWidth: 756,
+        maxHeight: 756,
+        quality: 0.75,
       })
       .then((miniImageData:any) => {
         if (miniImageData instanceof QuillImageData) {

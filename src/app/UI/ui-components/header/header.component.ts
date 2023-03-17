@@ -14,7 +14,7 @@ export class HeaderComponent {
   DDButtonText = this.loggedIn ? `Hi, ${this.member.userName}` : 'My Account'
   DropdownOpen:boolean = false;
   
-  Settings:Settings|undefined|null;
+  Settings:Settings;
   
   constructor(private settingsService:SettingsService){
     this.Settings = this.settingsService.Settings

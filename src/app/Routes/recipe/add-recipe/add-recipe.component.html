@@ -1,37 +1,28 @@
 <div class="submit-form">
     <div *ngIf="!submitted">
       <div class="form-group row recipe-card">
-        <div class="col-6">
+        <div class="col-12" style="padding:0;">
           <div class="row">
-            <div class="col-12">
-              <label for="Name" class="col-6">{{"TXT_Name" | translate}}</label>
-              <div class="col-6">
-                  <input
-                  type="text"
-                  class="form-control"
-                  id="recipe.Name"
-                  required
-                  [(ngModel)]="recipe.Name"
-                  name="recipe.Name"
+            <div style="display:flex; flex-direction: row;">
+                <label for="Name" style="margin-right: 5px;">{{"TXT_Name" | translate}}</label>
+                <input
+                style="max-width: 150px;margin-right: 10px;"
+                type="text"
+                class="form-control"
+                id="recipe.Name"
+                required
+                [(ngModel)]="recipe.Name"
+                name="recipe.Name"
                 />
-              </div>
+                <button (click)="saveRecipe()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
+                <button class="btn btn-md btn-danger" style="margin-left:auto;" (click)="newRecipe()">{{"TXT_Clear" | translate}}</button>
             </div>
-            <div class="col-12">
+            <div class="col-12" style="margin-top:5px;">
               <label for="Thumbnail" class="col-6">{{"TXT_Thumbnail" | translate}}</label>
               <app-image-upload [(selectedImageURL)]="recipe.Thumbnail"></app-image-upload>
             </div>
           </div>
         </div>
-       
-       
-        <div class="col-2">
-            <button (click)="saveRecipe()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
-        </div>
-
-        <div class="col-2">
-            <button class="btn btn-md btn-danger" (click)="newRecipe()">{{"TXT_Clear" | translate}}</button>
-        </div>
-       
       </div>
 
       <div class="form-group recipe-card">

@@ -13,9 +13,10 @@ import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-de
 
 // route guard
 import { AuthGuard } from './Guard/auth.guard';
-import { GDPRComponent } from './Routes/gdpr/gdpr.component';
+import { TOSComponent } from './Routes/tos/tos.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
 import { SettingsComponent } from './Routes/settings/settings.component';
+import { ContactUsComponent } from './Routes/contact-us/contact-us.component';
 
 const routes: Routes =[
   {
@@ -60,8 +61,12 @@ const routes: Routes =[
         canActivate: [AuthGuard]
       },
       {
-        path: 'GDPR',
-        component: GDPRComponent
+        path: 'TOS',
+        component: TOSComponent
+      },
+      { 
+        path: 'Contact-Us',
+        component: ContactUsComponent
       },
       {
         path: 'Privacy',

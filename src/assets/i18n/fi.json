@@ -9,6 +9,8 @@
 
     "TXT_GDPR":"GDPR",
     "TXT_Privacy":"Yksityisyys",
+    "TXT_TOS":"TOS",
+    "TXT_Contact_Us":"Ota yhteyttä",
 
     "TXT_Hi":"Hei",
     "TXT_My_Account":"Oma tili",
@@ -91,5 +93,54 @@
 
     "TXT_Show_Footer":"Näytä alapalkki",
     "TXT_Show_Sidebar":"Näytä sivupalkki",
-    "TXT_Language":"Kieli"
+    "TXT_Language":"Kieli",
+
+    "TXT_Recipe_Search":"Etsi reseptejä",
+    "TXT_Trending_Recipes":"Trendaavat reseptit",
+
+    "TXT_Accept_All":"Hyväksy kaikki",
+    "TXT_Accept_Selected":"Hyväksy valitut",
+    "TXT_Reject_All":"Hylkää kaikki",
+
+   
+    "TXT_Privacy_Modal_1":"Parhaan kokemuksen tarjoamiseksi me ja kumppanimme käytämme evästeitä ja/tai paikallista tallennustilaa laitteessasi tarjotaksemme sisältöä, toimintoja, personalisoituja mainoksia ja muita palveluita.",
+    "TXT_Privacy_Modal_2":"Näiden tekniikoiden hyväksyminen antaa meille ja yhteistyökumppaneillemme mahdollisuuden käsitellä sinun tietojasi tällä sivustolla, kuten selauskäyttäytymistä ja yksilöllisiä tunnisteita. Suostumuksen jättäminen tai peruuttaminen voi vaikuttaa tiettyihin ominaisuuksiin ja toimintoihin negatiivisesti. Napsauta alla olevaa nappia hyväksyäksesi yllä olevat ehdot.",
+    "TXT_Privacy_Modal_3":"Sinulla on oikeus vastustaa sitä, että yritykset käsittelevät henkilötietojasi edun perusteella suostumuksen sijaan. Napsauta yllä Kumppanit välilehteä muuttaaksesi asetuksia!",
+    "TXT_Privacy_Modal_4":"Voit muuttaa valintojasi milloin tahansa oman tilin asetuksissa.",
+    "TXT_Privacy_Modal_5":"Tietojasi käytetään seuraaviin tarkoituksiin:",
+    "TXT_Privacy_Modal_6":"Nämä evästeet keräävät nimettömiä tietoja ja antavat meille mahdollisuuden tunnistaa suosituimmat sivumme ja sisältömme parantaaksemme sivustoamme ja vierailijoillemme tarjoamaa kokemusta. Näiden evästeiden kieltäminen vaikuttaa negatiivisesti kykyymme parantaa tuotteitamme ja palveluitamme.",
+    "TXT_Privacy_Modal_7":"Mainoskumppanimme voivat asettaa nämä evästeet sivustomme kautta. Nämä yritykset voivat käyttää niitä luodakseen profiilin kiinnostuksen kohteistasi ja näyttääkseen sinulle asiaankuuluvia mainoksia. Ne eivät tallenna henkilökohtaisia tietoja suoraan, vaan ne perustuvat selaimesi ja/tai laitteesi yksilölliseen tunnistamiseen.",
+    "TXT_Privacy_Modal_8":"Nämä kumppanit käsittelevät tietojasi. Napsauta mitä tahansa niistä muokataksesi ehtoja.",
+    "TXT_Privacy_Modal_9":"Napsauta kutakin kumppania saadaksesi selville, mihin tarkoitukseen he pyytävät suostumusta ja/tai mihin tarkoituksiin he vaativat oikeutettua etua.",
+    "TXT_Privacy_Modal_10":"Tallenna ja/tai käytä tietoja laitteella.",
+    "TXT_Privacy_Modal_11":"Antaa meille mahdollisuuden ottaa käyttöön ominaisuuksia, kuten: pitää asetuksesi tallennettuna ja kirjautua takaisin sisään automaattisesti.",
+    "TXT_Privacy_Modal_12":"Pääsy paikalliseen tallennustilaan vaaditaan.",
+    "TXT_Privacy_Modal_13":"Marsun-reseptit ei käytä evästeitä, mutta toimittajamme ja kumppanimme sivustomme kautta käyttävät niitä.",
+    "TXT_Privacy_Modal_14":"Pääsy geologiseen dataan",
+    "TXT_Privacy_Modal_15":"Antaa meille mahdollisuuden ottaa käyttöön ominaisuuksia, kuten: käyttöliittymän oletuskielen automaattinen tunnistaminen.",
+    "TXT_Privacy_Modal_16":"Hyväksy pääsy geologiseen dataan ?",
+    "TXT_Privacy_Modal_17":"Näiden evästeiden avulla voimme parantaa sivustoamme ja kokemusta, jota voimme tarjota vierailijoillemme.",
+    "TXT_Privacy_Modal_18":"Tämä kumppani käyttää evästeitä ja paikallista tallennustilaa tai muita menetelmiä päästäkseen käsiksi tietoihin.",
+    "TXT_Privacy_Modal_19":"Mainokset vaaditaan ilmaisille käyttäjille",
+    "TXT_Privacy_Modal_20":"Tämä kumppani tarjoaa myös personalisoituja mainoksia.",
+    "TXT_Privacy_Modal_21":"Voit poistaa osan tai kaikki näistä asetuksista pitääksesi mahdollisimman suuren osan tiedoistasi yksityisinä.",
+    "TXT_Enable_Geological":"Hyväksy pääsy geologiseen dataan ?",
+    "TXT_Enable_Analytics":"Hyväksy analytiikka ?",
+    "TXT_Enable_Personalised_Ads":"Hyväksy personoidut mainokset ? ",
+    "TXT_Legal":"Laillinen",
+    "TXT_Simplified":"Yksinkertainen",
+    "TXT_Ask_Consent":"Anna lupa ?",
+    "TXT_Google_Advertising_Products":"Google Mainokset",
+    "TXT_Analytics":"Analytiikka",
+    "TXT_Vendors":"Kumppanit",
+    "TXT_Google_Ads":"Google mainokset",
+
+    "TXT_Change_Privacy_Settings":"Muuta yksityisyys-asetuksia",
+    "TXT_Reset_Settings":"Resetoi asetukset",
+
+    "TXT_Choose_Template":"Valitse pohja",
+
+    "TXT_Welcome_To_Marsun_Reseptit":"Tervetuloa Marsun-resepteihin!",
+    "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi, joka käyttää:"
+
 }

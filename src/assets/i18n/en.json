@@ -9,6 +9,8 @@
 
     "TXT_GDPR":"GDPR",
     "TXT_Privacy":"Privacy",
+    "TXT_TOS":"TOS",
+    "TXT_Contact_Us":"Contact us",
 
     "TXT_Hi":"Hi",
     "TXT_My_Account":"My account",
@@ -91,6 +93,54 @@
 
     "TXT_Show_Footer":"Show footer",
     "TXT_Show_Sidebar":"Show sidebar",
-    "TXT_Language":"Language"
+    "TXT_Language":"Language",
+
+    "TXT_Recipe_Search":"Search recipes",
+    "TXT_Trending_Recipes":"Trending recipes",
+
+    "TXT_Accept_All":"Accept all",
+    "TXT_Accept_Selected":"Accept selected",
+    "TXT_Reject_All":"Reject all",
+
+   
+    "TXT_Privacy_Modal_1":"To provide the best experience, we and our partners use cookies and or local storage on your device in order to provide content, functionality, personalised ads, and other services.",
+    "TXT_Privacy_Modal_2":"Consenting to these technologies allows us and our partners to process personal data such as browsing behaviour and unique identifiers on this site. Not consenting or withdrawing consent, may affect certain features and functionality negatively. Click below to consent to the above.",
+    "TXT_Privacy_Modal_3":"You have the right to object to companies processing your personal data based on interest instead of consent. Click above to the vendor tab to change the settings!",
+    "TXT_Privacy_Modal_4":"You can update your choices at any time in the account settings.",
+    "TXT_Privacy_Modal_5":"We use your data for:",
+    "TXT_Privacy_Modal_6":"These cookies collect anonymous data and enable us to identify our most popular pages and content to improve our site and the experience we offer visitors. Disallowing these cookies negatively affects our ability to improve our product and services.",
+    "TXT_Privacy_Modal_7":"These cookies may be set through our site by our advertising partners. They may be used by those companies to build a profile of your interests and show you relevant adverts. They do not store personal information directly, but they are based on uniquely identifying your browser and or device.",
+    "TXT_Privacy_Modal_8":"These vendors process your data. Click any one of them to customise data processing.",
+    "TXT_Privacy_Modal_9":"Click each vendor to learn what purpose they request consent and/or which purposes they are claiming legitimate interest for.",
+    "TXT_Privacy_Modal_10":"Store and or access information on a device.",
+    "TXT_Privacy_Modal_11":"Allows us to enable features such as: keeping your settings saved and to log you back in automatically.",
+    "TXT_Privacy_Modal_12":"Access to local storage is required.",
+    "TXT_Privacy_Modal_13":"Marsun-reseptit uses no cookies but our vendors and partners through our site do.",
+    "TXT_Privacy_Modal_14":"Access to geolocation data",
+    "TXT_Privacy_Modal_15":"Allows us to enable features such as: detecting the default user interface language automatically.",
+    "TXT_Privacy_Modal_16":"Allow access to geolocation data ?",
+    "TXT_Privacy_Modal_17":"These cookies allow us to improve our site, and the experience we can offer to our visitors.",
+    "TXT_Privacy_Modal_18":"This vendor utilizes cookies and local storage or other methods of accessing information on your device.",
+    "TXT_Privacy_Modal_19":"Ads are required for free users",
+    "TXT_Privacy_Modal_20":"This vendor also offers personalised ads.",
+    "TXT_Privacy_Modal_21":"You can disable some or all of these settings in order to keep as much of your data as private as possible.",
+    "TXT_Enable_Geological":"Enable access to geological data ?",
+    "TXT_Enable_Analytics":"Enable analytics ?",
+    "TXT_Enable_Personalised_Ads":"Enable personalised ads ?",
+    "TXT_Legal":"Legal",
+    "TXT_Simplified":"Simplified",
+    "TXT_Ask_Consent":"Consent ?",
+    "TXT_Google_Advertising_Products":"Google Advertising Products",
+    "TXT_Analytics":"Analytics",
+    "TXT_Vendors":"Vendors",
+    "TXT_Google_Ads":"Google ads",
+
+    "TXT_Change_Privacy_Settings":"Change privacy settings",
+    "TXT_Reset_Settings":"Reset settings",
+
+    "TXT_Choose_Template":"Choose template",
+
+    "TXT_Welcome_To_Marsun_Reseptit":"Welcome to Marsus' recipes!",
+    "TXT_About_Marsun_Reseptit":"Modern Open Source Web-app, which uses:"
 }
   

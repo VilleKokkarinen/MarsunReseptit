@@ -34,6 +34,7 @@
   --Disabled_Element_Color:rgba(75, 75, 75);
 
   --bs-body-bg: var(--Primary_Color);
+  
 }
 
 ::selection {
@@ -42,9 +43,11 @@
   background-color: var(--Selected_Text_Color_Bg);
 }
 
+html,
 body{
   margin:0;
   padding:0;
+  height:100%;
 }
 
 .modal {
@@ -95,6 +98,47 @@ body{
   color: var(--bs-dropdown-color);
   box-shadow: 0px 2px 6px var(--DropShadow_Color);
 }
+
+.nav-tabs>li>a:focus-visible{
+  border: none;
+  outline: none;
+}
+
+.nav-tabs>li>a:focus{
+  border: none;
+  outline: none;
+}
+
+.nav-tabs>li>a:focus-within{
+  border: none;
+  outline: none;
+}
+
+.nav-tabs>li:focus{
+  border: none;
+  outline: none;
+}
+
+.nav-tabs>li:focus-within{
+  border: none;
+  outline: none;
+}
+
+.nav-tabs>li:focus-visible{
+  border: none;
+  outline: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: var(--Primary_Border_Color);
+}
+
+.accordion-button:not(.collapsed)::after{
+  background-image: none;
+  transform: var(--bs-accordion-btn-icon-transform);
+}
+
 
 .form-check-input:checked {
   background-color: var(--Accent_Color);

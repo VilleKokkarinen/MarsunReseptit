@@ -80,7 +80,7 @@ import localeFi from '@angular/common/locales/fi';
 
 import { LocalizedDatePipe } from './Services/localized-date-pipe';
 import { CommentfieldComponent } from './UI/ui-components/commentfield/commentfield.component';
-import { GDPRComponent } from './Routes/gdpr/gdpr.component';
+import { TOSComponent } from './Routes/tos/tos.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
 
 import { MainComponent } from './UI/ui-components/main/main.component';
@@ -89,7 +89,8 @@ import { ImageUploadComponent } from './UI/image-upload/image-upload.component';
 import { FileDragNDropDirective } from './UI/image-upload/file-dragdrop.directive';
 import { SettingsComponent } from './Routes/settings/settings.component';
 import { LanguageSearchComponent } from './UI/search-dropdown/language-search/language-search.component';
-
+import { ContactUsComponent } from './Routes/contact-us/contact-us.component';
+import { AnalyticsService } from './Services/analytics.service';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -123,16 +124,17 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouteDropdownComponent,
     LocalizedDatePipe,
     CommentfieldComponent,
-    GDPRComponent,
+    TOSComponent,
     PrivacyComponent,
     BannerAdComponent,
     MainComponent,
     SideAdbarComponent,
     TopAdbarComponent,
+    LanguageSearchComponent,
     ImageUploadComponent,
     FileDragNDropDirective,
     SettingsComponent,
-    LanguageSearchComponent
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -168,7 +170,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateService,
     AuthService,
     ScreenTrackingService,
-    UserTrackingService
+    UserTrackingService,
+    AnalyticsService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,79 @@
-<div>
-    DASHBOARD
+<div style="max-width: 850px;">
+    <div class="form-group dashboard-card" style="padding:20px;">
+
+        <div class="dashboard-about-title">
+            <div class="dashboard-about-text">
+                {{"TXT_Welcome_To_Marsun_Reseptit" | translate}}
+                <br/>
+                {{"TXT_About_Marsun_Reseptit" | translate}}
+            </div>
+        </div>
+
+
+        <div style="display:flex; flex-direction:row; justify-content:space-around; margin-top:50px;">
+            <div class="dashboard-about">
+                <img class="recipe-img" style="max-width:200px;" src="https://firebase.google.com/static/images/brand-guidelines/logo-built_black.png" />
+                <div class="dashboard-about-text">
+                    Firebase
+                </div>
+            </div>
+            <div class="dashboard-about">
+                <img class="recipe-img" style="max-width:200px;" src="https://seeklogo.com/images/P/pocketbase-logo-CA73994F09-seeklogo.com.png" />
+                <div class="dashboard-about-text">
+                    Pocketbase
+                </div>
+            </div>
+            <div class="dashboard-about">
+                <img class="recipe-img" style="max-width:200px;" src="https://angular.io/assets/images/logos/angular/angular.svg" />
+                <div class="dashboard-about-text">
+                    Angular
+                </div>
+            </div>
+        </div>
+      
+      
+    </div>
+    <div class="form-group dashboard-card">
+        <label for="Trending" class="dashboard-label">{{"TXT_Trending_Recipes" | translate}}</label>
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-6">
+                <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined">
+                    <div (click)="gotoRecipe(TrendingRecipes[0])">
+                        <div style="display:flex; flex-direction:column;">
+                            <div *ngIf="TrendingRecipes[0].Thumbnail != undefined">
+                                <img
+                                    class="recipe-img"
+                                    [src]="TrendingRecipes[0].Thumbnail"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="title-text">
+                                {{TrendingRecipes[0].Name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-6" style="flex-wrap:wrap; display:flex;">
+                <div *ngFor="let Recipe of TrendingRecipes | slice:1" class="mini-recipe-card">
+                    <div (click)="gotoRecipe(Recipe)">
+                        <div style="display:flex; flex-direction:column;">
+                            <div *ngIf="Recipe.Thumbnail != undefined">
+                                <img
+                                    class="recipe-img"
+                                    [src]="Recipe.Thumbnail"
+                                    alt=""
+                                />
+                            </div>
+                            <div class="title-text">
+                                {{Recipe.Name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
+
+    </div>
 </div>

@@ -9,8 +9,8 @@ import { ImageData as QuillImageData} from 'quill-image-drop-and-paste';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit {
-  @Input() maxWidth: number = 256;
-  @Input() maxHeight: number = 256;
+  @Input() maxWidth: number = 756;
+  @Input() maxHeight: number = 756;
   @Input() quality: number = 0.75;
 
   @Input() selectedImage: Image|undefined;

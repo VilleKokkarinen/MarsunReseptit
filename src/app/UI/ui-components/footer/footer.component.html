@@ -1,14 +1,15 @@
-<footer class="footer" *ngIf="Settings?.Show_Footer">
+<footer class="footer" *ngIf="Settings.Show_Footer">
     <div class="footer-text ">
         <div style="margin-left:auto; padding-right:5px;">
 
-            <a routerLink="GDPR">{{"TXT_GDPR" | translate}}</a>
+            <a routerLink="Contact-Us">{{"TXT_Contact_Us" | translate}}</a>
+            {{" | "}}
+            <a routerLink="TOS">{{"TXT_TOS" | translate}}</a>
             {{" | "}}
             <a routerLink="Privacy">{{"TXT_Privacy" | translate}}</a>            
             {{" | "}}
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/VilleKokkarinen">Github</a>
-            {{" | Dev: "}}
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/VilleKokkarinen">Ville Kokkarinen</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/VilleKokkarinen/MarsunReseptit">Github</a>
+           
         </div>
     
     </div>

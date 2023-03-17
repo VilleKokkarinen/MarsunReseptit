@@ -1,10 +1,12 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ThemeService } from 'src/app/Services/theme.service';
 import { Theme } from 'src/app/components/shared/theme';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AddStepIngredientModalComponent } from '../../recipe/add-stepingredient-modal/add-stepingredient-modal.component';
 import { TranslateService } from '@ngx-translate/core';
+import { Settings } from 'src/app/components/shared/settings';
+import { SettingsService } from 'src/app/Services/settings.service';
 
 @Component({
   selector: 'app-add-theme',
@@ -13,22 +15,67 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AddThemeComponent {
   NewTheme:Theme;
-  SelectedTheme:Theme|undefined;
   submitted = false;
 
-  constructor(private themeService: ThemeService, private authservice:AuthService, private elementRef: ElementRef,private modalService: NgbModal, config: NgbModalConfig, private translate:TranslateService) {
-    this.NewTheme = new Theme();
+  Settings:Settings;
 
-    if(authservice.isLoggedIn)
-    this.NewTheme.Publisher = authservice.userData?.uid
+  StyleGroups:string[] = [
+    "Bg_Color",
+    "Text_Color",
+    "Border_Color"
+  ];
 
-    this.NewTheme.PublishDate = new Date;
+  constructor(
+    private settingsService:SettingsService,
+    private themeService: ThemeService,
+    private authservice:AuthService,
+    private modalService: NgbModal,
+    config: NgbModalConfig,
+    private translate:TranslateService) {
+
+    this.Settings = this.settingsService.Settings;
+    this.NewTheme = this.Settings.Theme;
+
+    this.settingsService.SettingsChange.subscribe((newSettings)=>{
+      this.Settings = newSettings
+      this.NewTheme = this.Settings.Theme;
+    })
 
     config.backdrop = 'static';
 		config.keyboard = false;
   }
 
-  keepOriginalOrder = (a:any, b:any) => a.key
+  Filter(filter:string):{ [key: string]: string; }{
+    const values = Object.keys(this.NewTheme.Theme)
+    .filter((key) => key.includes(filter))
+    .reduce((obj, key) => {
+        return Object.assign(obj, {
+          [key]: this.NewTheme.Theme[key]
+        });
+    }, {});
+    return values;
+  }
+
+  Remaining():{ [key: string]: string; }{
+    var keys_used:string[] = [];
+    var all_keys = Object.keys(this.NewTheme.Theme)
+    
+    this.StyleGroups.forEach(group => {
+      var keys = all_keys.filter((key) => key.includes(group))
+      keys_used.push(...keys);
+    })
+
+    console.log(keys_used)
+   
+    const returnvalue = all_keys.filter((key) => !keys_used.includes(key))
+    .reduce((obj, key) => {
+        return Object.assign(obj, {
+          [key]: this.NewTheme.Theme[key]
+        });
+    }, {});
+
+    return returnvalue;
+  }
 
   translateKey(key:string){
 
@@ -55,29 +102,21 @@ export class AddThemeComponent {
     this.themeService.applyTheme(this.NewTheme)
   }
 
-  DDSelected(){
-    if(this.SelectedTheme != undefined){
-      this.NewTheme = JSON.parse(JSON.stringify(this.SelectedTheme));
-      this.NewTheme.Name = "";
-
-      this.themeService.applyTheme(this.NewTheme)
-    }
-  }
-
-
   saveTheme(): void {
-    this.themeService.create(JSON.parse(JSON.stringify(this.NewTheme))).then((themeData:Theme) => {
+    this.NewTheme.Publisher = this.authservice.userData.uid
+    this.NewTheme.PublishDate = new Date;
+
+    this.themeService.create(JSON.parse(JSON.stringify(this.NewTheme))).then(() => {
+      this.settingsService.Settings.Theme = this.NewTheme;
+      this.settingsService.SaveSettings();
       this.submitted = true;
     });
-    this.SelectedTheme = undefined;
-    
   }
 
   newTheme(): void {
     this.submitted = false;
     this.NewTheme = new Theme();
     this.themeService.applyTheme(this.NewTheme)
-    this.SelectedTheme = undefined;
   }
 
 }

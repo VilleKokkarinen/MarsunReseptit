@@ -3,14 +3,18 @@ import { Injectable } from '@angular/core';
 import { Theme } from '../components/shared/theme';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
-  constructor( private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,private settingsService:SettingsService) {
     this.themesRef = db.collection(this.dbPath)
+    this.settingsService.SettingsChange.subscribe((newSettings)=>{
+      this.applyTheme(newSettings.Theme)
+    })
   }  
   private dbPath = '/themes';
 

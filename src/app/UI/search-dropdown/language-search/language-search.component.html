@@ -1,6 +1,6 @@
 <div ngbDropdown #LanguageDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
     <button type="button" class="btn btn-outline-primary" id="LanguageDropDownToggle" ngbDropdownToggle>
-        {{selectedLanguageKey}}
+        {{Settings.Language.key}}
         <i [hidden]="LanguageDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
         <i [hidden]="!LanguageDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
     </button>
@@ -20,7 +20,7 @@
 
         <div style="overflow-y:auto; max-height:20vh;">
             <div *ngFor="let Language of Languages">
-                <div *ngIf='Search == "" || Language?.key?.toLowerCase()?.includes(Search.toLowerCase())'>
+                <div *ngIf='Search == "" || Language.key.toLowerCase().includes(Search.toLowerCase())'>
                     <div class="dropdown-divider"></div>
                     <button (click)="selectLanguage(Language.key)" ngbDropdownItem>{{Language.key}}</button>
                 </div>

@@ -29,6 +29,10 @@ export class RecipeService {
         return data;
       }))
   }
+
+  getTrending(){
+    
+  }
   
   create(recipe: Recipe): any {
     return this.recipesRef.add({ ...recipe });

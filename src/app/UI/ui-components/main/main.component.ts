@@ -4,6 +4,7 @@ import {tap, map, filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import { Settings } from 'src/app/components/shared/settings';
 import { SettingsService } from 'src/app/Services/settings.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,8 @@ import { SettingsService } from 'src/app/Services/settings.service';
 export class MainComponent {
   SideAdBarEnabled: Boolean = false;
   TopAdBarEnabled: Boolean = false;
-  Settings:Settings|undefined|null;
+  Settings:Settings;
+  showAd = environment.adsense.show;
   
   constructor(
     private router: Router,
@@ -21,6 +23,11 @@ export class MainComponent {
     private settingsService:SettingsService
     ) {
       this.Settings = this.settingsService.Settings
+      
+      this.settingsService.SettingsChange.subscribe((newSettings)=>{
+        this.Settings = newSettings;
+      })
+
       router.events.subscribe((val) => {
         if(val instanceof NavigationEnd){
           if(val.url.endsWith("Recipes")){
@@ -32,5 +39,16 @@ export class MainComponent {
           }
         }
       })
+  }
+
+  GetHeight(){
+    var pxAmount = 60; // header
+
+    if(this.Settings.Show_Footer)
+    pxAmount += 30;
+
+
+
+    return `calc(100% - ${pxAmount}px)`;
   }
 }

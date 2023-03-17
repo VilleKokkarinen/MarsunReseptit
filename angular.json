@@ -108,7 +108,19 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "prerender": false,
+            "prerender":{
+              "builder": "@nguniversal/builders:prerender",
+              "options": {
+                "routes": [
+                  "/",
+                  "Recipes",
+                  "Dashboard"
+                ]
+              },
+              "configurations": {
+              },
+              "defaultConfiguration": "production"
+            },
             "ssr": false,
             "browserTarget": "MarsunReseptit:build:production",
             "firebaseProject": "marsun-reseptit",

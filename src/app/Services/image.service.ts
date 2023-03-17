@@ -9,12 +9,14 @@ import { SharedService } from './shared.service';
   providedIn: 'root'
 })
 export class ImageService {
-  baseurl:string = "https://83.102.58.1:443";
+  baseurl:string = "https://marsun-reseptit.com";
+  asd:string="asd";
   pb:PocketBase;
   imageServiceKey:string|undefined = undefined;
 
   constructor(private http: HttpClient, private authservice:AuthService) {
     this.pb = new PocketBase(this.baseurl);
+    console.log(this.baseurl)
     this.authservice.GetImageServiceKey().pipe(
       ).subscribe(data => {
         this.imageServiceKey = data;

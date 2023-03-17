@@ -1,42 +1,56 @@
 <div class="submit-form">
     <div *ngIf="!submitted">
-      <div class="form-group row theme-card">
+      <div class="form-group row">
 
-        <div clas="row" style="display:flex; flex-direction:row;">
-          <label for="Name" class="col-2" style="max-width:80px;">{{"TXT_Name" | translate}}</label>
-          <div class="col-4">
-              <input
-              type="text"
-              class="form-control"
-              id="theme.Name"
-              required
-              [(ngModel)]="NewTheme.Name"
-              name="theme.Name"
-            />
-          </div>
-          <div class="col-5" style="margin-left:auto;">
-            <app-theme-search [(selectedTheme)]="SelectedTheme" (selectedThemeChange)="DDSelected()"></app-theme-search>
-          </div>
+        <div class="col-xs-12" style="display:flex; flex-direction: row;">
+          <label for="Name" style="padding-right: 5px;" >{{"TXT_Name" | translate}}</label>
+          <input
+          style="max-width:150px;"
+          type="text"
+          class="form-control"
+          id="theme.Name"
+          required
+          [(ngModel)]="NewTheme.Name"
+          name="theme.Name"
+        />
+        <button [disabled]="NewTheme.Name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success" style="margin-right:25px; margin-left:25px;">{{"TXT_Save" | translate}}</button>
+        <button class="btn btn-md btn-danger" (click)="newTheme()">{{"TXT_Clear" | translate}}</button>
+        </div>
+
+        <div class="col-xs-12" style="margin-top:15px;">
+            <label for="Template" style="padding-right: 5px;" >{{"TXT_Choose_Template" | translate}}</label>
+            <app-theme-search></app-theme-search>
         </div>
       
-        <div style="height:25px;">
-        </div>
-
-        <div class="row">
-          <div class="col-6">
-            <button [disabled]="NewTheme.Name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
-          </div>
-          <div class="col-6" style="margin-left:auto;">
-            <button class="btn btn-md btn-danger" style="margin-left:auto;" (click)="newTheme()">{{"TXT_Clear" | translate}}</button>
-          </div>
-        </div>
 
       </div>
       <div *ngIf="NewTheme.Theme != undefined">
-        <div class="row form-group theme-card">
-          <div class="col-xs-12 col-lg-6 form-group theme-card" style="margin:0">
-            <div class="row" style="display:flex; justify-content:center;">
-              <div class="col-6" style="min-width:225px; max-width:225px;" *ngFor="let Style of NewTheme.Theme | keyvalue:keepOriginalOrder">
+        <div class="row form-group"  style="display:flex; flex-direction: row;">
+          
+          <div style="margin:0; width:fit-content;">
+            <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; width: 420px;" *ngFor="let StyleGroup of StyleGroups">
+              <div class="col-6" *ngFor="let Style of Filter(StyleGroup) | keyvalue">
+                <label for="Primary">{{translateKey(Style.key)}}</label> 
+                  <div>
+                    <input
+                    style="max-width:175px;"
+                    [(colorPicker)]="Style.value"
+                    [style.background]="Style.value"
+                    [cpAlphaChannel]="'enabled'"
+                    [cpOutputFormat]="'rgba'"
+                    [cpOKButton]="true"
+                    [cpCancelButton]="true"
+                    [cpOKButtonText]="'apply'"
+                    [cpCancelButtonText]="'cancel'"
+                    [cpCancelButtonClass]="'btn btn-outline-primary'"
+                    [cpOKButtonClass]="'btn btn-outline-primary'"
+                    (colorPickerSelect)="update($event, Style.key);"
+                    />
+                </div>
+              </div>
+            </div>
+            <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap;  width: 420px;">
+              <div class="col-6" *ngFor="let Style of Remaining() | keyvalue">
                 <label for="Primary">{{translateKey(Style.key)}}</label> 
                   <div>
                     <input
@@ -57,10 +71,9 @@
               </div>
             </div>
           </div> 
-          
-          <div class="col-xs-12 col-lg-6" style="margin-left:auto;">
-            <div class="form-group theme-card">
 
+          <div style="margin:0;width:fit-content;">
+            <div class="row theme-card" style="width: 420px;">
             
             <h2 style="background-color: var(--Modal_Bg_Color); color:var(--Primary_Text_Color); border:2px solid var(--Primary_Border_Color);">
               {{"TXT_Add_Theme_Text_1" | translate}}
@@ -70,11 +83,14 @@
                   {{"TXT_Add_Theme_Text_3" | translate}}
                 </h4>
               </h3>
-            
             </h2>
+
             <app-ingredient-search></app-ingredient-search>
  
-            <button class="btn btn-outline-primary" (click)="open()">{{"TXT_Open_Modal" | translate}}</button>
+            <div style="height:25px; margin:25px 0px;">
+              <button class="btn btn-outline-primary" (click)="open()">{{"TXT_Open_Modal" | translate}}</button>
+            </div>
+         
  
               <form class="px-4 py-3">
                 <div class="mb-3">
@@ -95,8 +111,6 @@
               </form>
            </div>
           </div>
-        </div>
-        
       </div>     
     </div>
   
