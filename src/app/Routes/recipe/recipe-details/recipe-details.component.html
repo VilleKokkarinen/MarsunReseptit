@@ -35,9 +35,9 @@
 
 <div class="form-group recipe-card">
     <div style="display:flex; flex-direction:row; justify-content:space-around">
-        <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ShowComments = (ShowComments ? false : true)"> Show comments </button>
-        <button class="btn btn-outline-primary" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditRecipe()">Edit Recipe</button>
-        <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment"> Leave a comment</button>
+        <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ShowComments = (ShowComments ? false : true)">{{"TXT_Show_Comments" | translate}}</button>
+        <button class="btn btn-outline-primary" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditRecipe()">{{"TXT_Edit_Recipe" | translate}}</button>
+        <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment">{{"TXT_Leave_Comment" | translate}}</button>
     </div>
 
     <div *ngIf="ShowComments == true">

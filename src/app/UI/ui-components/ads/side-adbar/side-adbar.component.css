@@ -12,8 +12,8 @@
       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
       background-color: var(--Sidebar_Bg_Color);
       border-left: 1px solid var(--Accent_Border_Color);
-      width:250px;
-      height:100%;
+      width:250px !important;
+      height:100% !important;
       padding:0;
       color:var(--Complement_Text_Color);
       font-family: 'Inter UI', sans-serif; 

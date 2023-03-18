@@ -8,22 +8,20 @@ import { BannerAd } from '../../../../components/ads/bannerad';
   styleUrls: ['./bannerad.component.css']
 })
 export class BannerAdComponent {
+    @Input() banner: BannerAd|undefined;
 
-  @Input() banner: BannerAd|undefined;
-  showAd = environment.adsense.show;
-      constructor() {    }
-  
-      ngAfterViewInit() {
-          setTimeout(() => {
-              try {
-
-                  ((window as { [key: string]: any })["adsbygoogle"] = (window as { [key: string]: any })["adsbygoogle"] || []).push({
-                      overlays: {bottom: true}
-                  });
-              } catch (e) {
-                  console.error(e);
-              }
-          }, 0);
-      }
+    showAd = environment.adsense.show;
+    constructor() {    }
+    ngAfterViewInit() {
+        setTimeout(() => {
+            try {
+                ((window as { [key: string]: any })["adsbygoogle"] = (window as { [key: string]: any })["adsbygoogle"] || []).push({
+                    overlays: {bottom: true}
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        }, 0);
+    }
   
 }

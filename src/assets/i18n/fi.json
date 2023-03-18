@@ -144,6 +144,12 @@
     "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi, joka käyttää:",
 
 
-    "TXT_Verify_Account_First":"Vahvista tilisi ensin sähköpostiisi lähetetyllä viestillä."
+    "TXT_Verify_Account_First":"Vahvista tilisi ensin sähköpostiisi lähetetyllä viestillä.",
+
+
+    "TXT_Show_Comments":"Näytä kommentit",
+    "TXT_Edit_Recipe":"Muuta reseptiä",
+    "TXT_Leave_Comment":"Jätä kommentti",
+    "TXT_Like":"Tykkää"
 
 }

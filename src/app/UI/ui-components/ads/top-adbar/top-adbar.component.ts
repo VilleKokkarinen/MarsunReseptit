@@ -12,8 +12,8 @@ export class TopAdbarComponent {
     this.bannerad = new BannerAd(
       'ca-pub-1120436091721652',
       5143555393,
-      'auto',
-      true
+      'horizontal',
+      false
     )
   }
 }
