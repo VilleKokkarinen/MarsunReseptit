@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Settings } from 'src/app/components/shared/settings';
+import { LanguageService } from 'src/app/Services/language.service';
 import { SettingsService } from 'src/app/Services/settings.service';
 
 @Component({
@@ -10,20 +11,12 @@ import { SettingsService } from 'src/app/Services/settings.service';
 export class LanguageSearchComponent {
   Settings:Settings;
   
-  Languages:{key:string,value:string}[] = [
-    {
-      key:"English",
-      value:"en"
-    },
-    {
-      key:"Finnish",
-      value:"fi"
-    }
- ];
+  Languages:{key:string,value:string}[] = [];
 
   Search:string="";
   
   constructor(private settingsService:SettingsService) {
+    this.Languages = LanguageService.Languages
     this.Settings = settingsService.Settings
     this.settingsService.SettingsChange.subscribe((newSettings)=>{
       this.Settings = newSettings

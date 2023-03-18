@@ -7,8 +7,8 @@
             <app-sidebar *ngIf="Settings.Show_Sidebar == true"></app-sidebar>
             <div class="content">
                 <app-top-adbar *ngIf="TopAdBarEnabled && showAd"></app-top-adbar>
-                <div style="padding:15px; overflow-y:auto; overflow-x:hidden; height:100%">
-                    <router-outlet/>
+                <div style="padding:15px;">
+                    <router-outlet />
                 </div>
                
             </div>

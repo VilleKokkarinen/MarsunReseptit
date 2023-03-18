@@ -7,6 +7,17 @@ import { SettingsService } from './settings.service';
 })
 export class LanguageService {
 
+  public static Languages:{key:string,value:string}[] = [
+    {
+      key:"English",
+      value:"en"
+    },
+    {
+      key:"Finnish",
+      value:"fi"
+    }
+ ];
+
   constructor(private translateService: TranslateService, private settingsService:SettingsService) {
     this.settingsService.SettingsChange.subscribe((newSettings)=>{
       this.UseLanguage(newSettings.Language.value)

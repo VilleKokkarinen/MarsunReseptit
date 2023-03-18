@@ -5,7 +5,7 @@
 export const environment = {
   adsense: {
     adClient: 'ca-pub-1120436091721652',
-    show: false
+    show: true
  },
   firebase: {
     projectId: 'marsun-reseptit',

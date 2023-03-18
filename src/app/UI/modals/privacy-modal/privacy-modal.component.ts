@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal, NgbNavModule, NgbPanel,NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbNavModule, NgbPanel,NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from "@angular/forms";
 import { CookieSettings } from 'src/app/components/shared/cookie-settings';
 import { TranslateModule } from '@ngx-translate/core';
 import { NavigationEnd } from '@angular/router';
 import { SettingsService } from 'src/app/Services/settings.service';
 import { Settings } from 'src/app/components/shared/settings';
+import { CommonModule } from '@angular/common';
+import { LanguageService } from 'src/app/Services/language.service';
 
 declare let gtag: Function;
 
@@ -14,7 +16,7 @@ declare let gtag: Function;
   templateUrl: './privacy-modal.component.html',
   styleUrls: ['./privacy-modal.component.css'],
   standalone: true,
-  imports: [NgbNavModule, NgbPanel,NgbAccordionModule,FormsModule,TranslateModule ],
+  imports: [NgbNavModule, NgbPanel,NgbAccordionModule,FormsModule,TranslateModule,NgbDropdownModule, CommonModule ],
 })
 export class PrivacyModalComponent {
   active = 0; // active tab in legal jargon mode
@@ -22,8 +24,22 @@ export class PrivacyModalComponent {
 
   Settings: Settings;
 
-  constructor(private settingsService:SettingsService, public activeModal: NgbActiveModal) {
+  Languages:{key:string,value:string}[] = [];
+
+  Search:String = "";
+
+  constructor(private settingsService:SettingsService, public activeModal: NgbActiveModal, private languageService:LanguageService) {
     this.Settings = this.settingsService.Settings;
+    this.Languages = LanguageService.Languages
+  }
+
+  selectLanguage(language:string){
+    var selected = this.Languages.find(x => x.key == language);
+
+    if(selected != undefined){
+      this.Settings.Language = selected;
+      this.languageService.UseLanguage(this.Settings.Language.value);
+    }
   }
 
   AcceptAll(){
@@ -34,8 +50,11 @@ export class PrivacyModalComponent {
   }
 
   AcceptSelected(){
-    this.Settings.CookieSettings.Show_Popup = false;
+    this.Settings.CookieSettings.Show_Popup = false; // don't show the popup until user deletes local storage / changes privacy settings
     this.settingsService.Settings.CookieSettings = this.Settings.CookieSettings;
+
+    this.settingsService.Settings.Language = this.Settings.Language;
+
     this.settingsService.AcceptSelectedCookies();
     this.settingsService.SaveSettings();
     this.Close();

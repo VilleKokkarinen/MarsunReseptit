@@ -123,11 +123,16 @@ export class SettingsService {
   RejectAnalytics(){
     this.deleteCookie("_ga");
     this.deleteCookie("_ga_NPTH5CEKC2");
+    gtag('set', 'consent', false);
+    gtag('set', 'allow_google_signals', false);
+
   }
 
   RejectPersonalisedAds(){
     this.deleteCookie("__gpi");
     this.deleteCookie("__gads");
+    gtag('set', 'consent', false);
+    gtag('set', 'allow_google_signals', false);
   }
 
   private deleteCookie(name: string) {
@@ -137,9 +142,10 @@ export class SettingsService {
   private setCookie(name: string, value: string, expireDays: number, path: string = '') {
     let d: Date = new Date();
     d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
-    let expires: string = `expires=${d.toUTCString()}`;
-    let cpath: string = path ? `; path=${path}` : '';
-    document.cookie = `${name}=${value}; ${expires}${cpath}`;
+    let expires: string = `Expires=${d.toUTCString()}`;
+    let cpath: string = path ? `; Path=${path}` : '';
+    let dpath: string = "Domain=.marsun-reseptit.web.app";
+    document.cookie = `${name}=${value}; ${cpath}; ${dpath}; ${expires};`;
   }
 
 }
