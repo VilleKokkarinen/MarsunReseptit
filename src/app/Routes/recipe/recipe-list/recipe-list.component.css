@@ -20,13 +20,9 @@
 .recipe-img{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    width: 100%;
-    height: auto;
-}
-
-.recipe-img{
-    width: 100%;
-    height: auto;
+    object-fit: cover;
+    height:100%;
+    width:100%;
 }
 
 .recipe-img-container{

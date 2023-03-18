@@ -46,7 +46,6 @@ import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
 import { DashboardComponent } from './Routes/dashboard/dashboard.component';
 import { AccountComponent } from './Routes/account/account/account.component';
 import { UserComponent } from './Routes/user/user.component';
-import { SignUpComponent } from './Routes/account/sign-up/sign-up.component';
 
 
 
@@ -91,6 +90,9 @@ import { SettingsComponent } from './Routes/settings/settings.component';
 import { LanguageSearchComponent } from './UI/search-dropdown/language-search/language-search.component';
 import { ContactUsComponent } from './Routes/contact-us/contact-us.component';
 import { AnalyticsService } from './Services/analytics.service';
+import { SignUpModalComponent } from './UI/modals/sign-up-modal/sign-up-modal.component';
+import { ForgotPasswordModalComponent } from './UI/modals/forgot-password-modal/forgot-password-modal.component';
+import { NotifierModule } from 'angular-notifier';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -107,7 +109,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoadingComponent,
     UserComponent,
     SidebarComponent,
-    SignUpComponent,
     DashboardComponent,
     AddRecipeComponent,
     RecipeListComponent,
@@ -134,9 +135,26 @@ export function HttpLoaderFactory(http: HttpClient) {
     ImageUploadComponent,
     FileDragNDropDirective,
     SettingsComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    SignUpModalComponent,
+    ForgotPasswordModalComponent
   ],
   imports: [
+    NotifierModule.withConfig({
+      position:{
+        horizontal:{
+          position:"right",
+          distance:15
+        },
+        vertical:{
+          position:"top",
+          distance:60
+        }
+      },
+      behaviour: {
+        autoHide: 4000
+      }
+    }),
     BrowserModule,
     AppRoutingModule,
     NgbModule,

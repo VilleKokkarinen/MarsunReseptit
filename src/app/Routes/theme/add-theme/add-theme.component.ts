@@ -64,9 +64,7 @@ export class AddThemeComponent {
       var keys = all_keys.filter((key) => key.includes(group))
       keys_used.push(...keys);
     })
-
-    console.log(keys_used)
-   
+    
     const returnvalue = all_keys.filter((key) => !keys_used.includes(key))
     .reduce((obj, key) => {
         return Object.assign(obj, {
@@ -84,7 +82,7 @@ export class AddThemeComponent {
     var result = "";
 
     for(var i = 0; i < splitted.length; i++){
-      result += this.translate.instant("TXT_"+splitted[i]) + "_";     
+      result += this.translate.instant("TXT_"+splitted[i]) + "_";
     }
 
     if(splitted.length > 1)

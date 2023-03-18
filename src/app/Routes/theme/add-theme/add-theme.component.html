@@ -1,4 +1,4 @@
-<div class="submit-form">
+<div class="submit-form" style="padding:10px 10px 0px 10px;">
     <div *ngIf="!submitted">
       <div class="form-group row">
 
@@ -25,7 +25,7 @@
 
       </div>
       <div *ngIf="NewTheme.Theme != undefined">
-        <div class="row form-group"  style="display:flex; flex-direction: row;">
+        <div class="row" style="display:flex; flex-direction: row;">
           
           <div style="margin:0; width:fit-content;">
             <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; width: 420px;" *ngFor="let StyleGroup of StyleGroups">

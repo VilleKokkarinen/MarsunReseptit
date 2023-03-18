@@ -8,7 +8,7 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import { map } from 'rxjs';
 import { Observable } from 'rxjs';
 import { SharedService } from './shared.service';
-
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from '@angular/fire/auth';
 @Injectable({
   providedIn: 'root',
 })
@@ -40,6 +40,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetPrivateUserData(result.user);
+        this.SetPublicUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
             this.router.navigate(['Dashboard']);
@@ -59,6 +60,7 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         this.SetPrivateUserData(result.user);
+        this.SetPublicUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -180,7 +182,7 @@ export class AuthService {
     
     const publicUserData: PublicUser = {
       uid: user.uid,
-      displayName: user.displayName,
+      displayName: user.displayName ?? "displayName",
       photoURL: user.photoURL
     };
 

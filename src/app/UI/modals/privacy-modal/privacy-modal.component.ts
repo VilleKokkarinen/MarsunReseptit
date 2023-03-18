@@ -66,6 +66,7 @@ export class PrivacyModalComponent {
     this.Settings.CookieSettings.Geological_Area = false;
     this.AcceptSelected();
   }
+  
   Close(){
     this.activeModal.close('ok');
   }

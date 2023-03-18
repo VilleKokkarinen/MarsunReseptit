@@ -141,6 +141,9 @@
     "TXT_Choose_Template":"Valitse pohja",
 
     "TXT_Welcome_To_Marsun_Reseptit":"Tervetuloa Marsun-resepteihin!",
-    "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi, joka käyttää:"
+    "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi, joka käyttää:",
+
+
+    "TXT_Verify_Account_First":"Vahvista tilisi ensin sähköpostiisi lähetetyllä viestillä."
 
 }

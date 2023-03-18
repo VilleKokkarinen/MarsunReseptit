@@ -12,19 +12,26 @@
 
         <div style="display:flex; flex-direction:row; justify-content:space-around; margin-top:50px;">
             <div class="dashboard-about">
-                <img class="recipe-img" style="max-width:200px;" src="https://firebase.google.com/static/images/brand-guidelines/logo-built_black.png" />
+                <div class="recipe-img-container">
+                    <img class="recipe-img" style="object-fit:contain" src="https://firebase.google.com/static/images/brand-guidelines/logo-built_black.png" />
+                </div>
                 <div class="dashboard-about-text">
                     Firebase
                 </div>
             </div>
             <div class="dashboard-about">
-                <img class="recipe-img" style="max-width:200px;" src="https://seeklogo.com/images/P/pocketbase-logo-CA73994F09-seeklogo.com.png" />
+                <div class="recipe-img-container">
+                    <img class="recipe-img" style="object-fit:contain" src="https://seeklogo.com/images/P/pocketbase-logo-CA73994F09-seeklogo.com.png" />
+                </div>
                 <div class="dashboard-about-text">
                     Pocketbase
                 </div>
             </div>
             <div class="dashboard-about">
-                <img class="recipe-img" style="max-width:200px;" src="https://angular.io/assets/images/logos/angular/angular.svg" />
+                <div class="recipe-img-container">
+                    <img class="recipe-img" style="object-fit:contain" src="https://angular.io/assets/images/logos/angular/angular.svg" />
+                </div>
+               
                 <div class="dashboard-about-text">
                     Angular
                 </div>
@@ -42,7 +49,7 @@
                         <div style="display:flex; flex-direction:column;">
                             <div *ngIf="TrendingRecipes[0].Thumbnail != undefined">
                                 <img
-                                    class="recipe-img"
+                                    class="trending-img"
                                     [src]="TrendingRecipes[0].Thumbnail"
                                     alt=""
                                 />
@@ -58,7 +65,7 @@
                 <div *ngFor="let Recipe of TrendingRecipes | slice:1" class="mini-recipe-card">
                     <div (click)="gotoRecipe(Recipe)">
                         <div style="display:flex; flex-direction:column;">
-                            <div *ngIf="Recipe.Thumbnail != undefined">
+                            <div *ngIf="Recipe.Thumbnail != undefined" class="recipe-img-container">
                                 <img
                                     class="recipe-img"
                                     [src]="Recipe.Thumbnail"

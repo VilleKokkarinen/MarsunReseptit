@@ -141,6 +141,8 @@
     "TXT_Choose_Template":"Choose template",
 
     "TXT_Welcome_To_Marsun_Reseptit":"Welcome to Marsus' recipes!",
-    "TXT_About_Marsun_Reseptit":"Modern Open Source Web-app, which uses:"
+    "TXT_About_Marsun_Reseptit":"Modern Open Source Web-app, which uses:",
+
+    "TXT_Verify_Account_First":"Verify your account first with the verification message sent to your email"
 }
   
