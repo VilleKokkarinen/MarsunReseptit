@@ -3,6 +3,7 @@
 
     "TXT_Dashboard":"Päävalikko",
     "TXT_Recipes":"Reseptit",
+    "TXT_Themes":"Teemat",
     "TXT_Add_Recipe":"Lisää resepti",
     "TXT_Add_Theme":"Lisää teema",
     "TXT_Settings":"Asetukset",
@@ -30,6 +31,20 @@
     "TXT_Recipe":"Resepti",
     "TXT_Theme":"Teema",
     "TXT_Add":"Lisää",
+
+    "TXT_Likes":"Tykkäyksiä",
+    "TXT_You_Like_This":"Tykkäät tästä",
+    "TXT_Remove_Like":"Poista tykkäys",
+    "TXT_Cancel":"Peruuta",
+    "TXT_Remove":"Poista",
+    "TXT_Edit":"Muokkaa",
+
+    "TXT_Added_Comment":"Kommentti lisätty!",
+    "TXT_Edited_Comment":"Kommenttia muokattu!",
+    "TXT_Deleted_Comment":"Kommentti poistettu!",
+
+    "TXT_No_Comments":"Ei kommentteja...",
+
     
     "TXT_Recipe_Placeholder":"<h1><u>Reseptipohja</u></h1><h1><br></h1><h1><br></h1><p><br></p><h2><u>Raaka-aineet:</u></h2><ul><li>200g x</li><li>2dl y</li><li>2tl z</li></ul><p><br></p><p><br></p><p><br></p><h2><u>Ohje:</u></h2><ol><li>Vatkaa x</li><li>Sulata y</li><li>Sekoita x + y + z</li><li>Paista 200'c 1h</li></ol><p><br></p><p><br></p><p><br></p><p><br></p>",
     "TXT_Name":"Nimi",
@@ -97,6 +112,9 @@
 
     "TXT_Recipe_Search":"Etsi reseptejä",
     "TXT_Trending_Recipes":"Trendaavat reseptit",
+    "TXT_Hosting":"Hostaus",
+    "TXT_Database":"Tietokanta",
+    "TXT_Framework":"Käyttöliittymä",
 
     "TXT_Accept_All":"Hyväksy kaikki",
     "TXT_Accept_Selected":"Hyväksy valitut",
@@ -149,7 +167,37 @@
 
     "TXT_Show_Comments":"Näytä kommentit",
     "TXT_Edit_Recipe":"Muuta reseptiä",
+    "TXT_Edit_Theme":"Muuta teemaa",
     "TXT_Leave_Comment":"Jätä kommentti",
-    "TXT_Like":"Tykkää"
+    "TXT_Like":"Tykkää",
+
+
+    "TXT_Display_Name":"Näkyvä nimi",
+    "TXT_Avatar":"Profiilikuva",
+
+    "TXT_Authentication_Guard_Block":"Et ole kirjautunut sisään.",
+
+    "TXT_Stay_Logged_In":"Muista kirjautuminen (Tallennus selaimen paikalliseen varastoon)",
+
+    "TXT_Username":"Käyttäjänimi",
+    "TXT_Confirm_Password":"Salasana uudelleen",
+
+    "TXT_Signup_success":"Tili luotu!",
+    "TXT_Signup_fail":"Tilin luonnissa tapahtui virhe. (tarkista että salasanat täsmäsivät)",
+
+    "TXT_Email_Verification_Sent":"Sähköpostiisi on lähetetty vahvistusviesti.",
+    "TXT_Login_Success":"Sisäänkirjauduttu!",
+
+    "TXT_ReSend_Verification_Email":"Lähetä vahvistusviesti uudelleen",
+    "TXT_Email_Verified":"Sähköposti vahvistettu!",
+    "TXT_Send":"Lähetä",
+    "TXT_Request_Password_Reset":"Salasanan palautus viesti lähetetty sähköpostiisi",
+    "TXT_Request_Email_Change":"Sähköposti osoitteen vaihto viesti lähetetty sähköpostiisi",
+    "TXT_Confirm_Password_Reset":"Salasanan vaihdettu!",
+    "TXT_Confirm_Email_Change":"Sähköposti osoite vaihdettu!",
+
+
+    "TXT_Cant_Insert_Image":"Et voi lisätä kuvia (Max 5)"
+
 
 }

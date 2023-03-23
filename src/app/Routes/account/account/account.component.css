@@ -1,11 +1,15 @@
-
 .form-group{
     padding-bottom: 25px;
 }
 
-.recipe-card{
-    border:1px solid var(--Primary_Border_Color);
-    border-radius: 8px;
+.settings-card{
     padding:10px;
     margin:10px;
+}
+
+.settings-label{
+    text-align: center;
+    align-items: center;
+    display: flex;
+    padding-right: 5px;
 }

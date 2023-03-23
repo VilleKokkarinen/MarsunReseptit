@@ -2,6 +2,9 @@ import { Component, EventEmitter, HostListener, Input, Output, OnInit } from '@a
 import { ImageService } from "src/app/Services/image.service";
 import { Image } from "src/app/components/shared/image";
 import { ImageData as QuillImageData} from 'quill-image-drop-and-paste';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
+import { TranslateService } from '@ngx-translate/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-image-upload',
@@ -21,7 +24,7 @@ export class ImageUploadComponent implements OnInit {
 
   oldImages:Image[] = [];
 
-  constructor(private imageservice: ImageService){
+  constructor(private imageservice: ImageService, private authservice:PBAuthService, private notifierService: NotifierService, private translate:TranslateService){
   }
 
   ngOnInit(){
@@ -59,9 +62,9 @@ export class ImageUploadComponent implements OnInit {
         if (miniImageData instanceof QuillImageData) {
           const blob = miniImageData.toBlob();
 
-          this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob)).then((result)=>{
+          this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob,this.authservice.userData.id)).then((result)=>{
             if(result == "Not authenticated"){
-              alert("You are not authenticated, cannot insert image")
+              this.notifierService.notify('error', this.translate.instant('TXT_Authentication_Guard_Block'));
             }else if(typeof result != "string" && result.url){
               this.oldImages.push(result);
               this.selectedImage = result

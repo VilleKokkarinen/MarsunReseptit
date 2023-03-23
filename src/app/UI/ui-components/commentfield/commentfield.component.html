@@ -1,12 +1,55 @@
-<div class="row form-group comment-card" *ngIf="Comment != undefined && PublicUser != undefined">
-    <div class="col-xs-12 comment-header">
-        <img
-            class="comment-img"
-            [src]="PublicUser.photoURL"
-            alt="userPicture"
-          />
-
-        {{PublicUser.displayName}} {{Comment.PublishDate ?? "" | localizedDate}}
+<div class="row form-group comment-card" *ngIf="Comment != undefined && PublicUser != undefined" >
+    
+    <div class="comment-header col-xs-12">
+        {{Comment.updated | localizedDate}}
     </div>
-    <div class="col-12 comment-text" [innerHTML] = "Comment.Message"></div>
+
+    <div class="col-xs-12" style="display:flex; flex-direction:row; padding:0; margin:0;">
+        <div class="profile">
+            <div class="profile-img-container">
+                <img
+                    class="profile-img"
+                    [src]="PublicUser.avatar"
+                    alt="userPicture"
+                />
+            </div>
+            <div class="profile-data">
+                {{PublicUser.displayName}}
+            </div>
+        </div>
+
+        <div style="display:flex; flex-direction:column; padding:0; margin:0; width: 100%;">
+            <div class="comment-content">
+
+                <div *ngIf="!Editing">
+                    {{Comment.comment}}
+                </div>
+
+                <div *ngIf="Editing">
+                    <textarea
+                    style="width:100%; height:100%;"
+                    class="form-control" 
+                    type="text"
+                    id="comment"
+                    [(ngModel)]="Comment.comment"
+                    name="comment"
+                ></textarea>
+                </div>
+            </div>
+
+
+    
+            <div *ngIf="ShowEdit == true" class="col-xs-12" style="display:flex; flex-direction:row; justify-content:space-around; padding:0; margin-top:auto;">
+                <div style="margin-left:auto;">
+                    <button class="btn btn-sm btn-success" style="margin-right:20px;" *ngIf="Editing" (click)="updateComment()">{{"TXT_Save" | translate}}</button>
+                    <button class="btn btn-sm btn-info" style="margin-right:20px;" *ngIf="!Editing" (click)="EditComment()">{{"TXT_Edit" | translate}}</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteComment()">{{"TXT_Delete" | translate}} </button>
+                </div>
+            </div>
+        </div>
+      
+      
+    </div>
+
+   
 </div>

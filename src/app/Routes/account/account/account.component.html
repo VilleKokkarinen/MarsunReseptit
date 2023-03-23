@@ -1,10 +1,34 @@
-<div class="row" *ngIf="authService.userData as user">
-    <div class="col-12">
-        <div class="form-group row recipe-card">
-            <div class="col-12">
-                <p> your user data -> </p>
-                <pre>{{userToString()}}</pre>
-            </div>
+<div class="form-group row settings-card" *ngIf="userData != undefined" >
+
+    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+        <label for="displayName" class="settings-label">{{"TXT_Display_Name" | translate}}</label>
+        <input
+            class="form-input"
+            type="text"
+            id="displayName"
+            required
+            [(ngModel)]="userData.displayName"
+            name="displayName" />
+    </div>
+
+    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+        <div class="col-12" style="margin-top:5px;">
+            <label for="Avatar" class="col-6">{{"TXT_Avatar" | translate}}</label>
+            <app-image-upload [(selectedImageURL)]="userData.avatar"></app-image-upload>
+          </div>
+    </div>
+
+    <div class="row" style="display:flex; flex-direction:row; padding:10px;">
+        <div class="col-12">
+          <button (click)="Save()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
         </div>
     </div>
-</div>
+
+
+    <div class="row" style="display:flex; flex-direction:row; padding:10px; margin-top:50px" [hidden]="userEmailVerified === undefined || userEmailVerified == true">
+      <div class="col-12">
+        <button (click)="SendVerificationMail()" class="btn btn-md btn-success">{{"TXT_ReSend_Verification_Email" | translate}}</button>
+      </div>
+  </div>
+    
+  </div>

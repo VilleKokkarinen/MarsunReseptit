@@ -20,9 +20,9 @@
 
         <div style="overflow-y:auto; max-height:20vh;">
             <div *ngFor="let Unit of Units">
-                <div *ngIf='Search == "" || (Unit?.Name?.includes(Search) || Unit?.ShortName?.includes(Search)  ) '>
+                <div>
                     <div class="dropdown-divider"></div>
-                    <button (click)="selectUnit(Unit)" ngbDropdownItem>{{Unit.Name}}</button>
+                    <button (click)="selectUnit(Unit)" ngbDropdownItem>{{Unit.name}}</button>
                 </div>
               
             </div>
@@ -42,7 +42,7 @@
                         class="form-control"
                         id="Unit.Name"
                         required
-                        [(ngModel)]="newUnit.Name"
+                        [(ngModel)]="newUnit.name"
                         name="newUnit.Name"
                         />
                     </div>
@@ -53,24 +53,10 @@
                     <div class="col-5">
                         <input
                         class="form-control"
-                        id="Unit.ShortName"
+                        id="Unit.name"
                         required
-                        [(ngModel)]="newUnit.ShortName"
-                        name="newUnit.ShortName"
-                        />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label for="Name" class="col-7">{{'TXT_Base_Unit_Multiplier' | translate}}</label>
-                    <div class="col-5">
-                        <input
-                        class="form-control"
-                        type="number"
-                        id="Unit.BaseUnitMultiplier"
-                        required
-                        [(ngModel)]="newUnit.BaseUnitMultiplier"
-                        name="newUnit.BaseUnitMultiplier"
+                        [(ngModel)]="newUnit.name"
+                        name="newUnit.name"
                         />
                     </div>
                 </div>

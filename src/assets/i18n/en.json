@@ -3,6 +3,7 @@
 
     "TXT_Dashboard":"Dashboard",
     "TXT_Recipes":"Recipes",
+    "TXT_Themes":"Themes",
     "TXT_Add_Recipe":"Add recipe",
     "TXT_Add_Theme":"Add theme",
     "TXT_Settings":"Settings",
@@ -30,6 +31,19 @@
     "TXT_Recipe":"Recipe",
     "TXT_Theme":"Theme",
     "TXT_Add":"Add",
+
+    "TXT_Likes":"Likes",
+    "TXT_You_Like_This":"You've liked this",
+    "TXT_Remove_Like":"Remove like",
+    "TXT_Cancel":"Cancel",
+    "TXT_Delete":"Delete",
+    "TXT_Edit":"Edit",
+
+    "TXT_Added_Comment":"Comment added!",
+    "TXT_Edited_Comment":"Comment edited!",
+    "TXT_Deleted_Comment":"Comment deleted!",
+
+    "TXT_No_Comments":"No comments...",
 
     "TXT_Recipe_Placeholder":"<h1><u>Recipe template</u></h1><h1><br></h1><h1><br></h1><p><br></p><h2><u>Ingredients:</u></h2><ul><li>200g x</li><li>2dl y</li><li>2tbsp z</li></ul><p><br></p><p><br></p><p><br></p><h2><u>Recipe:</u></h2><ol><li>Whip x</li><li>Melt y</li><li>Mix x + y + z</li><li>Bake at 200'c for 1h</li></ol><p><br></p><p><br></p><p><br></p><p><br></p>",
     "TXT_Name":"Name",
@@ -97,6 +111,10 @@
 
     "TXT_Recipe_Search":"Search recipes",
     "TXT_Trending_Recipes":"Trending recipes",
+    "TXT_Hosting":"Hosting",
+    "TXT_Database":"Database",
+    "TXT_Framework":"User interface",
+
 
     "TXT_Accept_All":"Accept all",
     "TXT_Accept_Selected":"Accept selected",
@@ -147,7 +165,35 @@
 
     "TXT_Show_Comments":"Show comments",
     "TXT_Edit_Recipe":"Edit recipe",
+    "TXT_Edit_Theme":"Edit theme",
     "TXT_Leave_Comment":"Leave a comment",
-    "TXT_Like":"Like"
+    "TXT_Like":"Like",
+
+    "TXT_Display_Name":"Display name",
+    "TXT_Avatar":"Profile image",
+
+    "TXT_Authentication_Guard_Block":"You're not logged in.",
+
+    "TXT_Stay_Logged_In":"Remember Login (Saved in browser local storage)",
+
+    "TXT_Username":"Username",
+    "TXT_Confirm_Password":"Confirm password",
+
+    "TXT_Signup_success":"Account created!",
+    "TXT_Signup_fail":"Error while creating account. (Check that both passwords match.)",
+
+    "TXT_Email_Verification_Sent":"Verification message has been sent into your email",
+    "TXT_Login_Success":"Logged in!",
+
+    "TXT_ReSend_Verification_Email":"Resend verification email",
+    "TXT_Email_Verified":"Email verified!",
+    "TXT_Send":"Send",
+    "TXT_Request_Password_Reset":"Password reset request sent to your email",
+    "TXT_Request_Email_Change":"Email address change request sent to your email",
+    "TXT_Confirm_Password_Reset":"Password changed!",
+    "TXT_Confirm_Email_Change":"email address changed!",
+
+    "TXT_Cant_Insert_Image":"Can't insert images (Max 5)"
+
 }
   

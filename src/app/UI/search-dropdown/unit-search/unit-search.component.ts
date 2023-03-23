@@ -3,6 +3,7 @@ import { UnitService } from 'src/app/Services/unit.service';
 import { Unit } from 'src/app/components/recipecomponents/unit';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
 
 @Component({
   selector: 'app-unit-search',
@@ -18,7 +19,7 @@ export class UnitSearchComponent {
   
   @Output() selectedUnitChange = new EventEmitter<Unit>()
 
-  constructor(private UnitService: UnitService, private translate:TranslateService) {
+  constructor(private UnitService: UnitService, private translate:TranslateService, private authService:PBAuthService) {
     this.retrieveUnits();
    }
 
@@ -26,7 +27,7 @@ export class UnitSearchComponent {
     if(this.selectedUnit == undefined || this.Units == undefined)
     return this.translate.instant("TXT_Select_Unit");
 
-    return this.selectedUnit.Name
+    return this.selectedUnit.name
    }
 
    selectUnit(unit:Unit){
@@ -39,29 +40,26 @@ export class UnitSearchComponent {
    }
 
    retrieveUnits(): void {
-    this.UnitService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.Units = data;
-    });
+    var filter = "";
+    
+    if(this.Search != "")
+    filter = `name~'${this.Search}'`;
+
+    this.UnitService.getList(1,10,filter).then((result)=>{
+      this.Units = result.items;
+    })
   }
 
 
   createNewUnit() {
     this.newUnit = new Unit();
-
-    this.newUnit.Name = "";
-    this.newUnit.ShortName = "";
-    this.newUnit.BaseUnitMultiplier = 1;
-
   }
 
    saveNewUnit(): void {
     if(this.newUnit != null){
+      this.newUnit.publishDate = new Date;
+      this.newUnit.publisher = this.authService.userData.id;
+
       this.UnitService.create(JSON.parse(JSON.stringify(this.newUnit))).then((unitData:Unit) => {
         this.newUnit = null;
       });

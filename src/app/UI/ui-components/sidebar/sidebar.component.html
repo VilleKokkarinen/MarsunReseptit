@@ -1,7 +1,7 @@
 <div class="sidebarelement">
     <div class="sidebar">
-        <nav class="nav" *ngFor="let Route of Routes">
-            <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']">
+        <nav class="nav" *ngFor="let Route of _Routes">
+            <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && isLoggedIn)">
                 <i class="bi bi-{{Route.Icon}} flex-icon"></i>
                 <a class="nav-link">
                     <span> {{Route.Name | translate}} </span>

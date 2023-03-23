@@ -1,12 +1,12 @@
 
 		<div ngbDropdown #accountDD="ngbDropdown" class="d-inline-block" style="position:relative;">
 			<button type="button" class="btn btn-outline-primary" id="dropdownForm1" ngbDropdownToggle>
-				{{this.authService.userData != undefined ? ("TXT_Hi" | translate) + " " + this.authService.userData?.displayName :  ("TXT_Login" | translate)}}
+				{{this.userData.id !== '' ? ("TXT_Hi" | translate) + " " + this.userData.displayName : ("TXT_Login" | translate)}}
 				<i [hidden]="accountDD.isOpen()" class="bi bi-caret-down-fill"></i>
 				<i [hidden]="!accountDD.isOpen()" class="bi bi-caret-up-fill"></i>
 			</button>
 			<div ngbDropdownMenu>
-				<div [hidden]="this.authService.userData !== undefined && this.authService.userData !== null">
+				<div [hidden]="this.userData.id !== ''">
 					<form class="px-3 py-1">
 						<div class="mb-3">
 							<label>{{"TXT_Email_Address" | translate}}</label>
@@ -31,20 +31,32 @@
 							/>
 						</div>
 						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="dropdownCheck" />
+							<input
+							class="form-check-input" 
+							type="checkbox"
+							id="StayLoggedIn"
+							required
+							[(ngModel)]="rememberMe"
+							(ngModelChange)="updateRememberMe()"
+							name="StayLoggedIn" />
 							<label class="form-check-label"> {{"TXT_Remember_Me" | translate}} </label>
 						</div>
 						<button type="button" (click)="authService.SignIn(userName.value, userPassword.value)" class="btn btn-outline-primary">{{"TXT_Login" | translate}}</button>
 					</form>
-					<div class="dropdown-divider"></div>
-					<button type="button" (click)="authService.GoogleAuth()" ngbDropdownItem>{{"TXT_Login_With_Google" | translate}}</button>
+
+					<div *ngFor="let provider of providers">
+						<div class="dropdown-divider"></div>
+						<button type="button" ngbDropdownItem> <a (click)="setProvider(provider)" [href]="provider.authUrl + redirectUrl">{{"TXT_Login_With_Google" | translate}}</a> </button>
+					</div>
+					
 					<div class="dropdown-divider"></div>
 					<button type="button" ngbDropdownItem (click)="openSignUpModal()">{{"TXT_New_Around_Here" | translate}}? {{"TXT_Sign_Up" | translate}}</button>
-					<button type="button" ngbDropdownItem>{{"TXT_Forgot_Password" | translate}}?</button>
+					<div class="dropdown-divider"></div>
+					<button type="button" ngbDropdownItem (click)="openForgotPwModal()">{{"TXT_Forgot_Password" | translate}}?</button>
 					<div class="dropdown-divider"></div>
 					<button type="button" routerLink="Settings" ngbDropdownItem><i class="bi bi-gear-fill"></i> {{"TXT_Settings" | translate}} </button>
 				</div>
-				<div [hidden]="this.authService.userData === undefined || this.authService.userData === null">
+				<div [hidden]="this.userData.id === ''">
 					<button type="button" routerLink="Account" ngbDropdownItem><i class="bi bi-person-square"></i> {{"TXT_My_Account" | translate}} </button>
 					<div class="dropdown-divider"></div>
 					<button type="button" routerLink="Settings" ngbDropdownItem><i class="bi bi-gear-fill"></i> {{"TXT_Settings" | translate}} </button>

@@ -1,10 +1,8 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { Settings } from '../components/shared/settings';
-import { AuthService } from './auth.service';
-import { ThemeService } from './theme.service';
-import { SharedService } from './shared.service';
+import { Settings } from '../components/settings/settings';
 import { NavigationEnd, Router } from '@angular/router';
 import { AnalyticsService } from './analytics.service';
+import { PBAuthService } from './pb.auth.service';
 
 declare let gtag: Function;
 
@@ -17,74 +15,49 @@ export class SettingsService {
   @Output() SettingsChange = new EventEmitter<Settings>()
   
   constructor(
-    private authService:AuthService,
+    private authService:PBAuthService,
     private router: Router,
     private analyticsService:AnalyticsService
   ) {
-
-    this.authService.afAuth.authState.subscribe(() => { // subscribe to login event
+    this.authService.AuthChange.subscribe(() => { // subscribe to login event
       this.LoadSettings();
       this.AcceptSelectedCookies();
-    },);
+    });    
   }
-
+  
   LoadSettings(){
-    if(this.Settings == undefined || this.Settings == null || this.authService.isLoggedIn == false || (this.authService.isLoggedIn && this.authService.userData.uid != this.Settings.User)){
-      var Existing = null;
+    var Existing = null;
 
-      if(this.authService.isLoggedIn && this.authService.userData != undefined){
-        Existing = JSON.parse(localStorage.getItem('settings-'+this.authService.userData.uid)!); // every registered user can have their own
-        
-        if(Existing == null)
-        Existing = this.GetDefaultSettings();
+    Existing = JSON.parse(localStorage.getItem('settings')!);
 
-        Existing.User = this.authService.userData.uid;
-      }else{
-        Existing = JSON.parse(localStorage.getItem('settings')!); // nonregistered users can have their own
-      }
-  
-      console.log("Loaded settings from localstorage: ", Existing) // save to cloud at some point ?
-  
-      if(Existing == undefined || Existing == null){
-        Existing = this.GetDefaultSettings();
-        this.Settings = Existing;
-        this.SaveSettings();
-      }
-  
+    if(Existing == undefined || Existing == null){
+      Existing = this.GetDefaultSettings();
       this.Settings = Existing;
-
-      this.SettingsChange.emit(this.Settings);
+      this.SaveSettings();
+      console.log("Reset settings to default, no settings saved in local storage.")
+    }else{
+      console.log("Loaded settings from localstorage: ", Existing)
     }
+
+    this.Settings = Existing;
+
+    this.SettingsChange.emit(this.Settings);
   }
-
-
 
   GetDefaultSettings(){
     return new Settings();
   }
 
   SaveSettings(){
-    if(this.authService.isLoggedIn && this.authService.userData != undefined && this.Settings != undefined){
-      this.Settings.User = this.authService.userData.uid;
-      localStorage.setItem('settings-'+this.authService.userData.uid, JSON.stringify(this.Settings));
-    }else{
-      localStorage.setItem('settings', JSON.stringify(this.Settings));
-    }
+    localStorage.setItem('settings', JSON.stringify(this.Settings));
     this.SettingsChange.emit(this.Settings);
   }
 
-  MigrateSettings(){
-
-  }
 
   ResetSettings() {
-    if(this.authService.isLoggedIn && this.authService.userData != undefined){
-      localStorage.removeItem('settings-'+this.authService.userData.uid)
-    }else{
-      localStorage.removeItem('settings');
-    }
-      this.Settings=this.GetDefaultSettings();
-      this.SaveSettings();
+    localStorage.removeItem('settings');
+    this.Settings=this.GetDefaultSettings();
+    this.SaveSettings();
   }
 
 

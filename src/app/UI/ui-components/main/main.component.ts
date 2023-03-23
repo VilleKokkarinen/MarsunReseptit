@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, UrlSegment } from '@angular/router';
 import {tap, map, filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
-import { Settings } from 'src/app/components/shared/settings';
+import { Settings } from 'src/app/components/settings/settings';
 import { SettingsService } from 'src/app/Services/settings.service';
 import { environment } from 'src/environments/environment';
 
@@ -46,8 +46,6 @@ export class MainComponent {
 
     if(this.Settings.Show_Footer)
     pxAmount += 30;
-
-
 
     return `calc(100% - ${pxAmount}px)`;
   }

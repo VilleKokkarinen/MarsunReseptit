@@ -1,6 +1,6 @@
 export class Image {
-    id: string = "";
-    //imageservicekey:string = "";
+    id:string = "";
+    publisher: string = "";
     data: Blob = new Blob;
     url:string = "";
 }

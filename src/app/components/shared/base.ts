@@ -1,3 +1,4 @@
 export class Base {
-    Name?: string;
-  }
+  name: string = "";
+  id:string = "";
+}

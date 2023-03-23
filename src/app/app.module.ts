@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
 
 
 /* Services */
-import { AuthService } from './Services/auth.service';
+import { PBAuthService } from './Services/pb.auth.service';
 
 
 /* ui components */
@@ -45,16 +45,13 @@ import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
 /* route components */
 import { DashboardComponent } from './Routes/dashboard/dashboard.component';
 import { AccountComponent } from './Routes/account/account/account.component';
-import { UserComponent } from './Routes/user/user.component';
-
 
 
 /* Recipes */
 import { AddRecipeComponent } from './Routes/recipe/add-recipe/add-recipe.component';
 import { RecipeListComponent } from './Routes/recipe/recipe-list/recipe-list.component';
 import { RecipeDetailsComponent } from './Routes/recipe/recipe-details/recipe-details.component';
-import { RecipeStepListComponent } from './Routes/recipe/add-recipe/recipe-step-list/recipe-step-list.component';
-import { RecipeStepIngredientListComponent } from './Routes/recipe/add-recipe/recipe-step-ingredient-list/recipe-step-ingredient-list.component';
+
 
 /* Ads */
 import { SideAdbarComponent } from './UI/ui-components/ads/side-adbar/side-adbar.component';
@@ -64,7 +61,6 @@ import { TopAdbarComponent } from './UI/ui-components/ads/top-adbar/top-adbar.co
 import { IngredientSearchComponent } from './UI/search-dropdown/ingredient-search/ingredient-search.component';
 import { MeasuringUnitSearchComponent } from './UI/search-dropdown/measuring-unit-search/measuring-unit-search.component';
 import { UnitSearchComponent } from './UI/search-dropdown/unit-search/unit-search.component';
-import { AddStepIngredientModalComponent } from './Routes/recipe/add-stepingredient-modal/add-stepingredient-modal.component';
 import { ThemeSearchComponent } from './UI/search-dropdown/theme-search/theme-search.component';
 import { RichTextEditorModule } from './UI/rich-text-editor/rich-text-editor.module';
 import { QuillModule } from "ngx-quill";
@@ -93,6 +89,11 @@ import { AnalyticsService } from './Services/analytics.service';
 import { SignUpModalComponent } from './UI/modals/sign-up-modal/sign-up-modal.component';
 import { ForgotPasswordModalComponent } from './UI/modals/forgot-password-modal/forgot-password-modal.component';
 import { NotifierModule } from 'angular-notifier';
+import { ThemeTestModalComponent } from './UI/modals/theme-test-modal/theme-test-modal.component';
+import { ChangeEmailModalComponent } from './UI/modals/change-email-modal/change-email-modal.component';
+import { AddCommentComponent } from './UI/ui-components/commentfield/add-comment/add-comment.component';
+import { ThemeListComponent } from './Routes/theme/theme-list/theme-list.component';
+import { ThemeDetailsComponent } from './Routes/theme/theme-details/theme-details.component';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -107,18 +108,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     ErrorComponent,
     LoadingComponent,
-    UserComponent,
     SidebarComponent,
     DashboardComponent,
     AddRecipeComponent,
     RecipeListComponent,
     RecipeDetailsComponent,
-    RecipeStepListComponent,
-    RecipeStepIngredientListComponent,
     IngredientSearchComponent,
     MeasuringUnitSearchComponent,
     UnitSearchComponent,
-    AddStepIngredientModalComponent,
     AccountComponent,
     ThemeSearchComponent,
     AddThemeComponent,
@@ -137,18 +134,23 @@ export function HttpLoaderFactory(http: HttpClient) {
     SettingsComponent,
     ContactUsComponent,
     SignUpModalComponent,
-    ForgotPasswordModalComponent
+    ForgotPasswordModalComponent,
+    ThemeTestModalComponent,
+    ChangeEmailModalComponent,
+    AddCommentComponent,
+    ThemeListComponent,
+    ThemeDetailsComponent
   ],
   imports: [
     NotifierModule.withConfig({
       position:{
         horizontal:{
           position:"right",
-          distance:15
+          distance:130
         },
         vertical:{
           position:"top",
-          distance:60
+          distance:3
         }
       },
       behaviour: {
@@ -186,7 +188,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     { provide: PERSISTENCE, useValue: 'local' },
     { provide: LOCALE_ID, useValue: 'en-US' },
     TranslateService,
-    AuthService,
+    PBAuthService,
     ScreenTrackingService,
     UserTrackingService,
     AnalyticsService

@@ -1,49 +1,57 @@
-import { Injectable } from '@angular/core';
 import { Recipe } from '../components/recipecomponents/recipe';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentSnapshot } from '@angular/fire/compat/firestore';
+import PocketBase, { ListResult, RecordService } from "pocketbase";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  constructor(
-    private db: AngularFirestore
-  ) { this.recipesRef = db.collection(this.dbPath) }
+  pb:PocketBase;
+  collection:RecordService;
 
-  private dbPath = '/recipes';
-
-  recipesRef: AngularFirestoreCollection<Recipe>;
-
-  getAll(): AngularFirestoreCollection<Recipe> {
-    return this.recipesRef;
+  constructor() {
+    this.pb = new PocketBase(environment.pocketbaseUrl);
+    this.collection = this.pb.collection('recipes');
   }
 
-  get(id: string): Observable<Recipe|undefined> {
-    const docs = this.db.doc<Recipe>('recipes/' + id);
-    return docs.snapshotChanges()
-    .pipe(
-      map(changes => {
-        const data = changes.payload.data();
-        return data;
-      }))
+  get(id: string): Observable<Recipe> {
+    return new Observable((observer) => {
+      try{
+        this.collection.subscribe<Recipe>(id, function(data){
+          observer.next(data.record)
+        })
+      }catch(err){
+        observer.error(err);
+      }
+    })
   }
 
-  getTrending(){
-    
-  }
-  
-  create(recipe: Recipe): any {
-    return this.recipesRef.add({ ...recipe });
+  getOne(id: string): Promise<Recipe>{
+    return this.collection.getOne<Recipe>(id);
   }
 
-  update(id: string, data: any): Promise<void> {
-    return this.recipesRef.doc(id).update(data);
+  getList(page:number = 1, perPage:number = 10, filter: string|undefined): Promise<ListResult<Recipe>> {
+    if(filter != undefined && filter != ""){
+      return this.collection.getList<Recipe>(page,perPage,{
+        filter: filter //'created >= "2022-01-01 00:00:00" && someField1 != someField2'
+    });
+    }else{
+      return this.collection.getList<Recipe>(page,perPage);
+    }
   }
 
-  delete(id: string): Promise<void> {
-    return this.recipesRef.doc(id).delete();
+  create(item: Recipe): Promise<Recipe> {
+    return this.collection.create<Recipe>(item);
   }
-     
+
+
+  update(item: Recipe): Promise<Recipe> {
+    return this.collection.update<Recipe>(item.id, item);
+  }
+
+  delete(item: Recipe): Promise<boolean> {
+    return this.collection.delete(item.id);
+  } 
 }

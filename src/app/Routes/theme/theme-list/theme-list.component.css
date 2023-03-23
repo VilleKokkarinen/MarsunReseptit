@@ -1,0 +1,32 @@
+.theme-card{
+    border:1px solid var(--Primary_Border_Color);
+    border-radius: 8px;
+    padding:5px;   
+    margin:10px;
+    margin-top:25px;
+    background-color: var(--Modal_Bg_Color);
+    max-width: 500px;
+    overflow:auto;
+    width:fit-content;
+}
+
+.theme-card:hover{
+    cursor:pointer
+}
+
+
+.theme-preview{
+    border:1px solid;
+    padding:25px;
+    margin:10px;
+    border-radius: 8px;
+}
+
+.title-text{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    background-color: var(--Primary_Color);
+    color:var(--Primary_Text_Color);
+    padding:5px;
+    margin:10px;
+}

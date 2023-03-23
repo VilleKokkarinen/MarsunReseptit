@@ -5,6 +5,9 @@ import { ImageService } from "src/app/Services/image.service";
 import { Image } from "src/app/components/shared/image";
 import QuillImageDropAndPaste, { ImageData as QuillImageData} from 'quill-image-drop-and-paste';
 import {  ImageHandler, Options } from 'ngx-quill-upload';
+import { PBAuthService } from "src/app/Services/pb.auth.service";
+import { NotifierService } from "angular-notifier";
+import { TranslateService } from "@ngx-translate/core";
 Quill.register('modules/imageDropAndPaste', QuillImageDropAndPaste)
 Quill.register('modules/imageHandler', ImageHandler);
 
@@ -28,8 +31,8 @@ export class RichTextEditorComponent{
       upload: (file) => {
         return new Promise((resolve, reject) => {
 
-        if(this.imageCount >= 3){
-          alert("you cannot insert any more images, (images are large and currently we don't have the space to store many.)")
+        if(this.imageCount >= 5){
+          this.notifierService.notify('error', this.translate.instant('TXT_Cant_Insert_Image'));
           reject();
         }
 
@@ -44,9 +47,9 @@ export class RichTextEditorComponent{
           .then((miniImageData:any) => {
             if (miniImageData instanceof QuillImageData) {
               const blob = miniImageData.toBlob();
-              this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob)).then((result)=>{
+              this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob,this.authservice.userData.id)).then((result)=>{
                 if(result == "Not authenticated"){
-                  alert("You are not authenticated, cannot insert image")
+                  this.notifierService.notify('error', this.translate.instant('TXT_Authentication_Guard_Block'));
                 }else if(typeof result != "string" && result.url){
                   this.Images.push(result)
                   this.insertImage(result.url)
@@ -116,7 +119,7 @@ export class RichTextEditorComponent{
     this.controlChange.emit(this.control);
   }
 
-  constructor(private imageservice:ImageService, private sanitizer: DomSanitizer, private _elementRef : ElementRef) {
+  constructor(private imageservice:ImageService, private authservice:PBAuthService, private notifierService: NotifierService, private translate:TranslateService) {
     this.control = this.control ?? "";
   }
 
@@ -137,8 +140,8 @@ export class RichTextEditorComponent{
   }
 
   imageDropAndPasteHandler(dataUrl:any, type: string, imageData:any){
-    if(this.imageCount >= 3){
-      alert("you cannot insert any more images, (images are large and currently we don't have the space to store many.)")
+    if(this.imageCount >= 5){
+      this.notifierService.notify('error', this.translate.instant('TXT_Cant_Insert_Image'));
     }else{
       imageData
       .minify({
@@ -150,9 +153,9 @@ export class RichTextEditorComponent{
         if (miniImageData instanceof QuillImageData) {
           const blob = miniImageData.toBlob();
   
-          this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob)).then((result)=>{
+          this.imageservice.addImage(ImageService.GenerateImageFromBlob(blob,this.authservice.userData.id)).then((result)=>{
             if(result == "Not authenticated"){
-              alert("You are not authenticated, cannot insert image")
+              this.notifierService.notify('error', this.translate.instant('TXT_Authentication_Guard_Block'));
             }else if(typeof result != "string" && result.url){
               this.Images.push(result)
               this.insertImage(result.url)
@@ -213,8 +216,10 @@ export class RichTextEditorComponent{
       })
 
       if(!found){
-        this.imageservice.updateImageURL(image)
-        this.imageservice.addImageEOL(image)
+        this.imageservice.updateImageURL(image).then(()=>{
+          this.imageservice.addImageEOL(image)
+        })
+      
       }else{
         this.imageservice.RefreshImageEOL(image)
       }

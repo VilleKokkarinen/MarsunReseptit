@@ -1,121 +1,122 @@
-<div class="submit-form" style="padding:10px 10px 0px 10px;">
-    <div *ngIf="!submitted">
-      <div class="form-group row">
+<div class="padded-content">
+  <div class="submit-form" style="padding:10px 10px 0px 10px;">
+      <div *ngIf="!submitted">
+        <div class="form-group row">
 
-        <div class="col-xs-12" style="display:flex; flex-direction: row;">
-          <label for="Name" style="padding-right: 5px;" >{{"TXT_Name" | translate}}</label>
-          <input
-          style="max-width:150px;"
-          type="text"
-          class="form-control"
-          id="theme.Name"
-          required
-          [(ngModel)]="NewTheme.Name"
-          name="theme.Name"
-        />
-        <button [disabled]="NewTheme.Name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success" style="margin-right:25px; margin-left:25px;">{{"TXT_Save" | translate}}</button>
-        <button class="btn btn-md btn-danger" (click)="newTheme()">{{"TXT_Clear" | translate}}</button>
-        </div>
-
-        <div class="col-xs-12" style="margin-top:15px;">
-            <label for="Template" style="padding-right: 5px;" >{{"TXT_Choose_Template" | translate}}</label>
-            <app-theme-search></app-theme-search>
-        </div>
-      
-
-      </div>
-      <div *ngIf="NewTheme.Theme != undefined">
-        <div class="row" style="display:flex; flex-direction: row;">
-          
-          <div style="margin:0; width:fit-content;">
-            <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; width: 420px;" *ngFor="let StyleGroup of StyleGroups">
-              <div class="col-6" *ngFor="let Style of Filter(StyleGroup) | keyvalue">
-                <label for="Primary">{{translateKey(Style.key)}}</label> 
-                  <div>
-                    <input
-                    style="max-width:175px;"
-                    [(colorPicker)]="Style.value"
-                    [style.background]="Style.value"
-                    [cpAlphaChannel]="'enabled'"
-                    [cpOutputFormat]="'rgba'"
-                    [cpOKButton]="true"
-                    [cpCancelButton]="true"
-                    [cpOKButtonText]="'apply'"
-                    [cpCancelButtonText]="'cancel'"
-                    [cpCancelButtonClass]="'btn btn-outline-primary'"
-                    [cpOKButtonClass]="'btn btn-outline-primary'"
-                    (colorPickerSelect)="update($event, Style.key);"
-                    />
-                </div>
-              </div>
-            </div>
-            <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap;  width: 420px;">
-              <div class="col-6" *ngFor="let Style of Remaining() | keyvalue">
-                <label for="Primary">{{translateKey(Style.key)}}</label> 
-                  <div>
-                    <input
-                    style="max-width:175px;"
-                    [(colorPicker)]="Style.value"
-                    [style.background]="Style.value"
-                    [cpAlphaChannel]="'enabled'"
-                    [cpOutputFormat]="'rgba'"
-                    [cpOKButton]="true"
-                    [cpCancelButton]="true"
-                    [cpOKButtonText]="'apply'"
-                    [cpCancelButtonText]="'cancel'"
-                    [cpCancelButtonClass]="'btn btn-outline-primary'"
-                    [cpOKButtonClass]="'btn btn-outline-primary'"
-                    (colorPickerSelect)="update($event, Style.key);"
-                    />
-                </div>
-              </div>
-            </div>
-          </div> 
-
-          <div style="margin:0;width:fit-content;">
-            <div class="row theme-card" style="width: 420px;">
-            
-            <h2 style="background-color: var(--Modal_Bg_Color); color:var(--Primary_Text_Color); border:2px solid var(--Primary_Border_Color);">
-              {{"TXT_Add_Theme_Text_1" | translate}}
-              <h3 style="background-color: var(--Dropdown_Bg_Color); color:var(--Complement_Text_Color); border:2px solid var(--Accent_Border_Color)">
-                {{"TXT_Add_Theme_Text_2" | translate}}
-                <h4 style="background-color: var(--MainContent_Bg_Color); color:var(--Accent_Text_Color); border:2px solid var(--Primary_Border_Color)">
-                  {{"TXT_Add_Theme_Text_3" | translate}}
-                </h4>
-              </h3>
-            </h2>
-
-            <app-ingredient-search></app-ingredient-search>
- 
-            <div style="height:25px; margin:25px 0px;">
-              <button class="btn btn-outline-primary" (click)="open()">{{"TXT_Open_Modal" | translate}}</button>
-            </div>
-         
- 
-              <form class="px-4 py-3">
-                <div class="mb-3">
-                  <label style="color:var(--Accent_Text_Color);">{{"TXT_Input" | translate}}</label>
-                  <input
-                    style="box-shadow:4px 4px 6px 0px var(--DropShadow_Color)"
-                    type="text"
-                    class="form-control"
-                    id="text"
-                    placeholder="---aaabbbccc---"
-                    #Input
-                  />
-                </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" />
-                  <label class="form-check-label" style="color:var(--Secondary_Accent_Text_Color);">{{"TXT_Checkbox" | translate}}</label>
-                </div>
-              </form>
-           </div>
+          <div class="col-xs-12" style="display:flex; flex-direction: row;">
+            <label for="Name" style="padding-right: 5px;" >{{"TXT_Name" | translate}}</label>
+            <input
+            style="max-width:150px;"
+            type="text"
+            class="form-control"
+            id="theme.Name"
+            required
+            [(ngModel)]="NewTheme.name"
+            name="theme.Name"
+          />
+          <button [disabled]="NewTheme.name.length == 0" (click)="saveTheme()" class="btn btn-md btn-success" style="margin-right:25px; margin-left:25px;">{{"TXT_Save" | translate}}</button>
+          <button class="btn btn-md btn-danger" (click)="newTheme()">{{"TXT_Clear" | translate}}</button>
           </div>
-      </div>     
-    </div>
+
+          <div class="col-xs-12" style="margin-top:15px;">
+              <label for="Template" style="padding-right: 5px;" >{{"TXT_Choose_Template" | translate}}</label>
+              <app-theme-search></app-theme-search>
+          </div>        
+
+        </div>
+        <div *ngIf="NewTheme.theme != undefined">
+          <div class="row" style="display:flex; flex-direction: row;">
+            <div style="margin:0; width:fit-content;">
+              <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; max-width: 480px;" *ngFor="let StyleGroup of StyleGroups">
+                <div class="col-6" style="overflow:hidden" *ngFor="let Style of Filter(StyleGroup) | keyvalue">
+                  <label for="Primary">{{translateKey(Style.key)}}</label> 
+                    <div>
+                      <input
+                      style="max-width:225px; width:100%"
+                      [(colorPicker)]="Style.value"
+                      [style.background]="Style.value"
+                      [cpAlphaChannel]="'enabled'"
+                      [cpOutputFormat]="'rgba'"
+                      [cpOKButton]="true"
+                      [cpCancelButton]="true"
+                      [cpOKButtonText]="'apply'"
+                      [cpCancelButtonText]="'cancel'"
+                      [cpCancelButtonClass]="'btn btn-outline-primary'"
+                      [cpOKButtonClass]="'btn btn-outline-primary'"
+                      (colorPickerSelect)="update($event, Style.key);"
+                      />
+                  </div>
+                </div>
+              </div>
+              <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; max-width: 480px;">
+                <div class="col-6" style="overflow:hidden" *ngFor="let Style of Remaining() | keyvalue">
+                  <label for="Primary">{{translateKey(Style.key)}}</label> 
+                    <div>
+                      <input
+                      style="max-width:225px; width:100%"
+                      [(colorPicker)]="Style.value"
+                      [style.background]="Style.value"
+                      [cpAlphaChannel]="'enabled'"
+                      [cpOutputFormat]="'rgba'"
+                      [cpOKButton]="true"
+                      [cpCancelButton]="true"
+                      [cpOKButtonText]="'apply'"
+                      [cpCancelButtonText]="'cancel'"
+                      [cpCancelButtonClass]="'btn btn-outline-primary'"
+                      [cpOKButtonClass]="'btn btn-outline-primary'"
+                      (colorPickerSelect)="update($event, Style.key);"
+                      />
+                  </div>
+                </div>
+              </div>
+            </div> 
+
+            <div style="margin:0;width:fit-content;">
+              <div class="row theme-card" style="width: 420px;">
+              
+                <h2 style="background-color: var(--Modal_Bg_Color); color:var(--Primary_Text_Color); border:2px solid var(--Primary_Border_Color);">
+                  {{"TXT_Add_Theme_Text_1" | translate}}
+                  <h3 style="background-color: var(--Dropdown_Bg_Color); color:var(--Complement_Text_Color); border:2px solid var(--Accent_Border_Color)">
+                    {{"TXT_Add_Theme_Text_2" | translate}}
+                    <h4 style="background-color: var(--MainContent_Bg_Color); color:var(--Accent_Text_Color); border:2px solid var(--Primary_Border_Color)">
+                      {{"TXT_Add_Theme_Text_3" | translate}}
+                    </h4>
+                  </h3>
+                </h2>
+
+                <app-ingredient-search></app-ingredient-search>
+    
+                <div style="height:25px; margin:25px 0px;">
+                  <button class="btn btn-outline-primary" (click)="open()">{{"TXT_Open_Modal" | translate}}</button>
+                </div>
+          
   
-    <div *ngIf="submitted">
-      <h4>{{"TXT_Saved_Succesfully" | translate}}</h4>
-      <button class="btn btn-success" (click)="newTheme()">{{"TXT_Add_Theme" | translate}}</button>
+                <form class="px-4 py-3">
+                  <div class="mb-3">
+                    <label style="color:var(--Accent_Text_Color);">{{"TXT_Input" | translate}}</label>
+                    <input
+                      style="box-shadow:4px 4px 6px 0px var(--DropShadow_Color)"
+                      type="text"
+                      class="form-control"
+                      id="text"
+                      placeholder="---aaabbbccc---"
+                      #Input
+                    />
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" />
+                    <label class="form-check-label" style="color:var(--Secondary_Accent_Text_Color);">{{"TXT_Checkbox" | translate}}</label>
+                  </div>
+                </form>
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
-  </div>
+    
+      <div *ngIf="submitted">
+        <h4>{{"TXT_Saved_Succesfully" | translate}}</h4>
+        <button class="btn btn-success" (click)="newTheme()">{{"TXT_Add_Theme" | translate}}</button>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+<div class="padded-content">
+    <div class="form-group theme-card" *ngIf="Theme != undefined">
+   
+        <div class="headercontainer header" *ngIf="!Editing">
+            <div class="header-text">
+                {{Theme.name}}
+            </div>
+            <div class="header-text" style="margin-left:auto; margin-right:5px;">
+                {{"TXT_Likes" |translate}} : {{Likes}}
+            </div>
+        </div>
+
+        <div class="headercontainer header" *ngIf="Editing">
+            <input
+            style="max-width:250px; margin-left:10px;"
+            type="text"
+            class="form-control"
+            id="Theme.Name"
+            required
+            [(ngModel)]="Theme.name"
+            name="Theme.Name" />
+        </div>
+    
+        <div class="themecontainer-simple">
+            <div *ngIf="!Editing">
+                <div style="margin:0; width:fit-content;">
+                    <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap;  max-width: 480px;" *ngFor="let StyleGroup of StyleGroups">
+                        <div class="col-6" style="overflow:hidden" *ngFor="let Style of Filter(StyleGroup) | keyvalue">
+                            <label for="Primary">{{translateKey(Style.key)}}</label> 
+                                <div style="max-width:225px; height:25px;" [style.background]="Style.value">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap;  max-width: 480px;">
+                        <div class="col-6" style="overflow:hidden" *ngFor="let Style of Remaining() | keyvalue">
+                            <label for="Primary">{{translateKey(Style.key)}}</label> 
+                            <div style="max-width:225px; height:25px;" [style.background]="Style.value">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div *ngIf="Editing">
+                <div style="margin:0; width:fit-content;">
+                    <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap; max-width: 480px;" *ngFor="let StyleGroup of StyleGroups">
+                      <div class="col-6" style="overflow:hidden" *ngFor="let Style of Filter(StyleGroup) | keyvalue">
+                        <label for="Primary">{{translateKey(Style.key)}}</label> 
+                          <div>
+                            <input
+                            style="max-width:225px; width:100%"
+                            [(colorPicker)]="Style.value"
+                            [style.background]="Style.value"
+                            [cpAlphaChannel]="'enabled'"
+                            [cpOutputFormat]="'rgba'"
+                            [cpOKButton]="true"
+                            [cpCancelButton]="true"
+                            [cpOKButtonText]="'apply'"
+                            [cpCancelButtonText]="'cancel'"
+                            [cpCancelButtonClass]="'btn btn-outline-primary'"
+                            [cpOKButtonClass]="'btn btn-outline-primary'"
+                            (colorPickerSelect)="update($event, Style.key);"
+                            />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row theme-card" style="display:flex; justify-content:flex-start; flex-wrap: wrap;  max-width: 480px;">
+                      <div class="col-6" style="overflow:hidden" *ngFor="let Style of Remaining() | keyvalue">
+                        <label for="Primary">{{translateKey(Style.key)}}</label> 
+                          <div>
+                            <input
+                            style="max-width:225px; width:100%"
+                            [(colorPicker)]="Style.value"
+                            [style.background]="Style.value"
+                            [cpAlphaChannel]="'enabled'"
+                            [cpOutputFormat]="'rgba'"
+                            [cpOKButton]="true"
+                            [cpCancelButton]="true"
+                            [cpOKButtonText]="'apply'"
+                            [cpCancelButtonText]="'cancel'"
+                            [cpCancelButtonClass]="'btn btn-outline-primary'"
+                            [cpOKButtonClass]="'btn btn-outline-primary'"
+                            (colorPickerSelect)="update($event, Style.key);"
+                            />
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="Editing" class="form-group theme-card">
+        <div style="display:flex; flex-direction:row; justify-content:space-around">
+            <button (click)="saveTheme()" class="btn btn-md btn-success">Save</button>
+    
+            <button class="btn btn-md btn-danger" (click)="Cancel()">Cancel</button>
+        </div>
+    </div>
+    
+    
+    <div class="form-group theme-card">
+        <div style="display:flex; flex-direction:row; justify-content:flex-end">
+            <button class="btn btn-info" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditTheme()">{{"TXT_Edit_Theme" | translate}}</button>
+            <button class="btn btn-success" style="margin-left:5px;margin-right:5px;" *ngIf="AllowUserToLike === true" (click)="Like()">{{"TXT_Like" | translate}} <i class="bi bi-hand-thumbs-up"> </i> </button>
+            
+            <button class="btn btn-danger" style="margin-left:5px;margin-right:5px;" *ngIf="LikeData !== undefined" (click)="RemoveLike()">{{"TXT_Remove_Like" | translate}} <i class="bi bi-hand-thumbs-down"> </i> </button>
+        </div>
+    </div>
+</div>

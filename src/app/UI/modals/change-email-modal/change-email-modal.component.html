@@ -1,0 +1,13 @@
+<form class="px-4 py-3">
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    <div class="mb-3">
+        <label>{{"TXT_Email_Address" | translate}}</label>
+        <input
+            type="email"
+            class="form-control"
+            id="email"
+            #email
+        />
+    </div>
+    <button type="button" (click)="changeEmail(email.value)" class="btn btn-outline-primary">{{"TXT_Send" | translate}}</button>
+</form>

@@ -1,9 +1,9 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { IngredientService } from 'src/app/Services/ingredient.service';
-import { AuthService } from 'src/app/Services/auth.service';
 import { Ingredient } from 'src/app/components/recipecomponents/ingredient';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
 
 @Component({
   selector: 'app-ingredient-search',
@@ -19,7 +19,7 @@ export class IngredientSearchComponent {
   
   @Output() selectedIngredientChange = new EventEmitter<Ingredient>()
 
-  constructor(private ingredientService: IngredientService, private translate:TranslateService) {
+  constructor(private ingredientService: IngredientService, private translate:TranslateService, private authService:PBAuthService) {
     this.retrieveIngredients();
    }
 
@@ -27,7 +27,7 @@ export class IngredientSearchComponent {
     if(this.selectedIngredient == undefined || this.Ingredients == undefined)
     return this.translate.instant("TXT_Select_Ingredient");
 
-    return this.selectedIngredient.Name
+    return this.selectedIngredient.name
    }
 
    selectIngredient(ingredient:Ingredient){
@@ -40,25 +40,26 @@ export class IngredientSearchComponent {
    }
 
    retrieveIngredients(): void {
-    this.ingredientService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.Ingredients = data;
-    });
+    var filter = "";
+    
+    if(this.Search != "")
+    filter = `name~'${this.Search}'`;
+
+    this.ingredientService.getList(1,10,filter).then((result)=>{
+      this.Ingredients = result.items;
+    })
   }
 
 
   createNewIngredient() {
     this.newIngredient = new Ingredient();
-    this.newIngredient.Name = "";
   }
 
    saveNewIngredient(): void {
     if(this.newIngredient != null){
+      this.newIngredient.publishDate = new Date;
+      this.newIngredient.publisher = this.authService.userData.id;
+
       this.ingredientService.create(JSON.parse(JSON.stringify(this.newIngredient))).then((unitData:Ingredient) => {
         this.newIngredient = null;
       });

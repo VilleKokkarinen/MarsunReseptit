@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { AuthService } from 'src/app/Services/auth.service';
+import { Component, ViewChild } from '@angular/core';
+import { PublicUser } from 'src/app/components/shared/user';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
+import { PrivateUserService } from 'src/app/Services/private-user.service';
+import { PublicUserService } from 'src/app/Services/public-user.service';
+import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
 
 @Component({
   selector: 'app-account',
@@ -7,42 +11,33 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./account.component.css']
 })
 export class AccountComponent {
-  constructor(public authService: AuthService) {}
-  ngOnInit(): void {}
+  userData:PublicUser = new PublicUser();
 
+  userEmailVerified:boolean|undefined;
 
-  flattenObject = (obj:any, prefix = "") =>
-  Object.keys(obj).reduce((acc:any, k) => {
-    const pre = prefix.length ? prefix + "." : "";
-    if(obj[k] != null){
-      if (typeof obj[k] === "object")
-      Object.assign(acc, this.flattenObject(obj[k], pre + k));
-      else{
-        var value:string = obj[k];
-
-        if(value.length > 40){
-          value = value.substring(0,40)+"...";
-        }
-
-        acc[pre + k] = value;
-      }
-    }
+  ThumbnailImage:ImageUploadComponent|undefined;
+  @ViewChild(ImageUploadComponent) set TI(ThumbnailImage: ImageUploadComponent) {
+    this.ThumbnailImage = ThumbnailImage
+  };
   
-    return acc;
-  }, {});
+  constructor(private authService: PBAuthService, private privateUserService:PrivateUserService) {
+    this.userData = this.authService.userData;
+    this.privateUserService.getOne(this.userData.id).then((data)=>{
+      this.userEmailVerified = data.verified
+    })
+  }
 
-  userToString(){
+  Save(): void {
+    if(this.userData.id != ""){
+      if(this.ThumbnailImage){
+        this.ThumbnailImage.SaveImage();
+      }
+  
+      this.authService.UpdatePublicUserData(this.userData);
+    }
+  }
 
-    //var prettyobject: {[k: string]: any} = {};
-
-    var user = JSON.parse(JSON.stringify(this.authService.userData));
-    console.log(user)
-
-    var result = this.flattenObject(user);
-
-    console.log(result)
-
-    var pretty = JSON.stringify(result, null, 2);
-    return pretty;
+  SendVerificationMail(){
+    this.authService.ReSendVerificationMail();
   }
 }

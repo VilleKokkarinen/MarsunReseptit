@@ -2,10 +2,11 @@
     padding-bottom: 50px;
 }
 
+
 .dashboard-card{
     border-radius: 8px;
-    padding:5px;   
-    margin:5px;
+    padding:5px;
+    margin:0px 10px;
     margin-bottom:25px;
 }
 
@@ -49,7 +50,6 @@
 
 .dashboard-about .recipe-img-container{
 max-height: 90px;
-height: unset;
 width: unset;
 }
 

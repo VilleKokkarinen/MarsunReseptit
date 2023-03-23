@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router  } from '@angular/router';
-import { AuthService } from '../Services/auth.service';
 import { Observable } from 'rxjs';
 import { NotifierService } from 'angular-notifier';
 import { TranslateService } from '@ngx-translate/core';
+import { PBAuthService } from '../Services/pb.auth.service';
 
 
 @Injectable({
@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AuthGuard implements CanActivate {
   
   constructor(
-    public authService: AuthService,
+    public authService: PBAuthService,
     public router: Router,
     private notifierService: NotifierService,
     private translate:TranslateService
@@ -22,7 +22,8 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
     if(this.authService.isLoggedIn !== true) {
-      this.notifierService.notify('error',  this.translate.instant('TXT_Verify_Account_First'));
+      console.log("Authentication Guard: you're not logged in.")
+      this.notifierService.notify('error',  this.translate.instant('TXT_Authentication_Guard_Block'));
      return false;
     }
 

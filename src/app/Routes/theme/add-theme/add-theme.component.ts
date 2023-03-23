@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ThemeService } from 'src/app/Services/theme.service';
-import { Theme } from 'src/app/components/shared/theme';
-import { AuthService } from 'src/app/Services/auth.service';
+import { Theme } from 'src/app/components/themecomponents/theme';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AddStepIngredientModalComponent } from '../../recipe/add-stepingredient-modal/add-stepingredient-modal.component';
 import { TranslateService } from '@ngx-translate/core';
-import { Settings } from 'src/app/components/shared/settings';
+import { Settings } from 'src/app/components/settings/settings';
 import { SettingsService } from 'src/app/Services/settings.service';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
+import { ThemeTestModalComponent } from 'src/app/UI/modals/theme-test-modal/theme-test-modal.component';
 
 @Component({
   selector: 'app-add-theme',
@@ -28,7 +28,7 @@ export class AddThemeComponent {
   constructor(
     private settingsService:SettingsService,
     private themeService: ThemeService,
-    private authservice:AuthService,
+    private authservice:PBAuthService,
     private modalService: NgbModal,
     config: NgbModalConfig,
     private translate:TranslateService) {
@@ -43,14 +43,15 @@ export class AddThemeComponent {
 
     config.backdrop = 'static';
 		config.keyboard = false;
+
   }
 
   Filter(filter:string):{ [key: string]: string; }{
-    const values = Object.keys(this.NewTheme.Theme)
+    const values = Object.keys(this.NewTheme.theme)
     .filter((key) => key.includes(filter))
     .reduce((obj, key) => {
         return Object.assign(obj, {
-          [key]: this.NewTheme.Theme[key]
+          [key]: this.NewTheme.theme[key]
         });
     }, {});
     return values;
@@ -58,7 +59,7 @@ export class AddThemeComponent {
 
   Remaining():{ [key: string]: string; }{
     var keys_used:string[] = [];
-    var all_keys = Object.keys(this.NewTheme.Theme)
+    var all_keys = Object.keys(this.NewTheme.theme)
     
     this.StyleGroups.forEach(group => {
       var keys = all_keys.filter((key) => key.includes(group))
@@ -68,7 +69,7 @@ export class AddThemeComponent {
     const returnvalue = all_keys.filter((key) => !keys_used.includes(key))
     .reduce((obj, key) => {
         return Object.assign(obj, {
-          [key]: this.NewTheme.Theme[key]
+          [key]: this.NewTheme.theme[key]
         });
     }, {});
 
@@ -92,23 +93,26 @@ export class AddThemeComponent {
   }
 
   open() {
-    const modalRef = this.modalService.open(AddStepIngredientModalComponent);
+    const modalRef = this.modalService.open(ThemeTestModalComponent);
   }
 
   update(color:string, key:string){
-    this.NewTheme.Theme[key] = color;
+    this.NewTheme.theme[key] = color;
     this.themeService.applyTheme(this.NewTheme)
   }
 
   saveTheme(): void {
-    this.NewTheme.Publisher = this.authservice.userData.uid
-    this.NewTheme.PublishDate = new Date;
-
-    this.themeService.create(JSON.parse(JSON.stringify(this.NewTheme))).then(() => {
-      this.settingsService.Settings.Theme = this.NewTheme;
-      this.settingsService.SaveSettings();
-      this.submitted = true;
-    });
+    if(this.authservice.userData != undefined){
+      this.NewTheme.publisher = this.authservice.userData.id
+      this.NewTheme.publishDate = new Date;
+      this.NewTheme.id = "";
+  
+      this.themeService.create(this.NewTheme).then(() => {
+        this.settingsService.Settings.Theme = this.NewTheme;
+        this.settingsService.SaveSettings();
+        this.submitted = true;
+      });
+    }
   }
 
   newTheme(): void {

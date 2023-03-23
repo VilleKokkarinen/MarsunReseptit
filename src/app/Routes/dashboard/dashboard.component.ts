@@ -1,30 +1,61 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { RecipeService } from 'src/app/Services/recipe.service';
+import { ActivatedRoute } from '@angular/router';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   TrendingRecipes:any[]=[];
   
-  constructor(private recipeService: RecipeService, private router: Router) {
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute, private authService:PBAuthService) {
     this.retrieveRecipes(); 
    }
 
+   ngOnInit() {
+    this.route.queryParamMap.subscribe(data => {
+      var state = data.get("state")
+      var code = data.get("code")
+      var providerOrNull = localStorage.getItem('provider');
+      if(providerOrNull != null){
+        const provider = JSON.parse(providerOrNull)
+        if (provider.state === state && code != null) {
+          this.authService.OAuth(provider.name,
+            code,
+            provider.codeVerifier,
+            environment.oauth.redirectUrl)
+        }
+      }
+    
+      var verifytoken = data.get("verifytoken");
+      if(verifytoken != null){
+        this.authService.ConfirmVerification(verifytoken);
+      }
+
+      var pwresettoken = data.get("pwresettoken")
+      if(pwresettoken != null){
+        this.authService.confirmPasswordReset(pwresettoken, "", "");
+      }
+
+      var emailchangetoken = data.get("emailchangetoken")
+      if(emailchangetoken != null){
+        this.authService.ConfirmVerification(emailchangetoken);
+      }
+    })
+   
+
+  }
+
    retrieveRecipes(): void {
-    this.recipeService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.TrendingRecipes = data;
-    });
+    this.recipeService.getList(1,7,"").then((result)=>{
+      this.TrendingRecipes = result.items;
+    })
   }
 
   gotoRecipe(recipe: any) {

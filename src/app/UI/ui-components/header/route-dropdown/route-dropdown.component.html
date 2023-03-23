@@ -6,7 +6,7 @@
         <div style="overflow-y:auto; max-height:20vh;">
             <nav *ngFor="let Route of Routes">
                 <div *ngIf="Routes.indexOf(Route) != 0" class="dropdown-divider"></div>
-                <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']">
+                <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && IsLoggedIn)">
                     <i class="bi bi-{{Route.Icon}} flex-icon"></i>
                     <a class="nav-link">
                         <span> {{Route.Name | translate}} </span>

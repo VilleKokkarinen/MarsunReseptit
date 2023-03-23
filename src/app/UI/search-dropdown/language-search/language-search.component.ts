@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Settings } from 'src/app/components/shared/settings';
+import { Settings } from 'src/app/components/settings/settings';
 import { LanguageService } from 'src/app/Services/language.service';
 import { SettingsService } from 'src/app/Services/settings.service';
 

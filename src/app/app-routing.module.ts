@@ -5,7 +5,6 @@ import { ErrorComponent } from './UI/ui-components/error/error.component';
 import { RecipeListComponent } from './Routes/recipe/recipe-list/recipe-list.component';
 import { DashboardComponent } from './Routes/dashboard/dashboard.component';
 import { AddRecipeComponent } from './Routes/recipe/add-recipe/add-recipe.component';
-import { UserComponent } from './Routes/user/user.component';
 import { AccountComponent } from './Routes/account/account/account.component';
 import { AddThemeComponent } from './Routes/theme/add-theme/add-theme.component';
 
@@ -17,6 +16,8 @@ import { TOSComponent } from './Routes/tos/tos.component';
 import { PrivacyComponent } from './Routes/privacy/privacy.component';
 import { SettingsComponent } from './Routes/settings/settings.component';
 import { ContactUsComponent } from './Routes/contact-us/contact-us.component';
+import { ThemeDetailsComponent } from './Routes/theme/theme-details/theme-details.component';
+import { ThemeListComponent } from './Routes/theme/theme-list/theme-list.component';
 
 const routes: Routes =[
   {
@@ -41,6 +42,14 @@ const routes: Routes =[
         component: RecipeDetailsComponent
       },
       {
+        path: 'Themes',
+        component: ThemeListComponent
+      },
+      {
+        path: 'Themes/:id',
+        component: ThemeDetailsComponent
+      },
+      {
         path: 'Add-Recipe',
         component: AddRecipeComponent,
         canActivate: [AuthGuard]
@@ -48,11 +57,6 @@ const routes: Routes =[
       {
         path: 'Add-Theme',
         component: AddThemeComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'User/:id',
-        component: UserComponent,
         canActivate: [AuthGuard]
       },
       {

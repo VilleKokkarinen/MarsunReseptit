@@ -51,6 +51,12 @@ body{
   color: var(--Primary_Text_Color);
 }
 
+.padded-content{
+  padding:15px;
+  height:100%;
+  width:100%;
+}
+
 .modal {
   color:var(--Complement_Text_Color) ;
   border-color: var(--Primary_Border_Color);
@@ -98,6 +104,10 @@ body{
   --bs-dropdown-header-color: #6c757d;
   color: var(--bs-dropdown-color);
   box-shadow: 0px 2px 6px var(--DropShadow_Color);
+}
+
+input:focus-visible{
+  outline: none;
 }
 
 .nav-tabs>li>a:focus-visible{
@@ -193,6 +203,11 @@ body{
 
 .dropdown-toggle::after {
   display:none;
+}
+
+.btn-close:focus {
+  outline: 0;
+  box-shadow: none;
 }
 
 .ql-container.ql-snow,.ql-toolbar.ql-snow{

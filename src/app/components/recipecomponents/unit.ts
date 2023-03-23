@@ -1,8 +1,5 @@
-import { Base } from "../shared/base";
+import { Publishable } from "../shared/publishable";
 
-export class Unit extends Base {
-    ShortName?: string;
-    
-    BaseUnit?: Unit;
-    BaseUnitMultiplier?: number;
+export class Unit extends Publishable {
+    name: string = "";
 }

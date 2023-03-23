@@ -1,4 +1,5 @@
 export class Publishable {
-  Publisher?: string;
-  PublishDate?: Date;
+  id:string = "";
+  publisher: string = "";
+  publishDate: Date = new Date;
 }

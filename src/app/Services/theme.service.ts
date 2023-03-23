@@ -1,46 +1,68 @@
-import { Injectable } from '@angular/core';
-
-import { Theme } from '../components/shared/theme';
-
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { Theme } from '../components/themecomponents/theme';
 import { SettingsService } from './settings.service';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import PocketBase, { ListResult, RecordService } from "pocketbase";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ThemeService {
+  pb:PocketBase;
+  collection:RecordService;
 
-  constructor(private db: AngularFirestore,private settingsService:SettingsService) {
-    this.themesRef = db.collection(this.dbPath)
+  constructor(private settingsService:SettingsService) {
+    this.pb = new PocketBase(environment.pocketbaseUrl);
+    this.collection = this.pb.collection('themes');
+
     this.settingsService.SettingsChange.subscribe((newSettings)=>{
       this.applyTheme(newSettings.Theme)
     })
-  }  
-  private dbPath = '/themes';
-
-  themesRef: AngularFirestoreCollection<Theme>;
-
-  getAll(): AngularFirestoreCollection<Theme> {
-    return this.themesRef;
   }
-
-  create(theme: Theme): any {
-    return this.themesRef.add({ ...theme });
-  }
-
-  update(id: string, data: any): Promise<void> {
-    return this.themesRef.doc(id).update(data);
-  }
-
-  delete(id: string): Promise<void> {
-    return this.themesRef.doc(id).delete();
-  }
-     
 
   applyTheme(Theme:Theme){
-    for (const [k, v] of Object.entries(Theme.Theme)) {
+    for (const [k, v] of Object.entries(Theme.theme)) {
       document.documentElement.style.setProperty(k, v);
     }
   }
 
+  get(id: string): Observable<Theme> {
+    return new Observable((observer) => {
+      try{
+        this.collection.subscribe<Theme>(id, function(data){
+          observer.next(data.record)
+        })
+      }catch(err){
+        observer.error(err);
+      }
+    })
+  }
+
+  getOne(id: string): Promise<Theme>{
+    return this.collection.getOne<Theme>(id);
+  }
+
+  getList(page:number = 1, perPage:number = 10, filter: string|undefined): Promise<ListResult<Theme>> {
+    if(filter != undefined && filter != ""){
+      return this.collection.getList<Theme>(page,perPage,{
+        filter: filter //'created >= "2022-01-01 00:00:00" && someField1 != someField2'
+    });
+    }else{
+      return this.collection.getList<Theme>(page,perPage);
+    }
+  }
+
+  create(item: Theme): Promise<Theme> {
+    return this.collection.create<Theme>(item);
+  }
+
+
+  update(item: Theme): Promise<Theme> {
+    return this.collection.update<Theme>(item.id, item);
+  }
+
+  delete(item: Theme): Promise<boolean> {
+    return this.collection.delete(item.id);
+  } 
 }

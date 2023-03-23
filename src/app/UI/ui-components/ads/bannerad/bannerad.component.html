@@ -1,10 +1,17 @@
 <ng-container *ngIf="showAd">
+  <div style="position: relative; width: 100%; max-width: 100%;">
     <ins
       class="adsbygoogle"
-      style="display:block;"
+      style="display:block; position: absolute; width: inherit; max-width: inherit;"
       [attr.data-ad-slot]="banner?.adClient"
       [attr.data-ad-client]="banner?.adSlot"
       [attr.data-ad-format]="banner?.adFormat"
       [attr.data-full-width-responsive]="banner?.fullWidthResponsive">
    </ins>
+   <script>
+    document.addEventListener('DOMContentLoaded', (e) => {
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    }, false)
+</script>
+  </div>
   </ng-container>

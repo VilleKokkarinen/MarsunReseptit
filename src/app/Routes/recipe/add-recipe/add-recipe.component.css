@@ -4,8 +4,7 @@
 }
 
 .recipe-card{
-    border:1px solid var(--Primary_Border_Color);
-    border-radius: 8px;
+    max-width:850px;
     padding:10px;
-    margin:10px;
+    margin:50px 10px;
 }

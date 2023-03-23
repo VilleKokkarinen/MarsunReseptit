@@ -1,48 +1,62 @@
-<div class="form-group row settings-card" *ngIf="Settings != undefined && Settings != null">
+<div class="padded-content">
+    <div class="form-group row settings-card" *ngIf="Settings != undefined && Settings != null">
 
-    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
-        <label for="Theme" class="settings-label">{{"TXT_Theme" | translate}}</label>
-        <div class="col-5">
-            <app-theme-search></app-theme-search>
+        <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+            <label for="Theme" class="settings-label">{{"TXT_Theme" | translate}}</label>
+            <div class="col-5">
+                <app-theme-search></app-theme-search>
+            </div>
+        </div>
+
+        
+        <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+            <label for="Language" class="settings-label">{{"TXT_Language" | translate}}</label>
+            <div class="col-5">
+                <app-language-search></app-language-search>
+            </div>
+        </div>
+
+        <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+            <label for="StayLoggedIn" class="settings-label">{{"TXT_Stay_Logged_In" | translate}}</label>
+            <input
+                class="form-check-input" 
+                type="checkbox"
+                id="StayLoggedIn"
+                required
+                [(ngModel)]="rememberMe"
+                (ngModelChange)="updateRememberMe()"
+                name="StayLoggedIn" />
+        </div>
+
+        <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+            <label for="ShowFooter" class="settings-label">{{"TXT_Show_Footer" | translate}}</label>
+            <input
+                class="form-check-input" 
+                type="checkbox"
+                id="Show_Footer"
+                required
+                [(ngModel)]="Settings.Show_Footer"
+                (ngModelChange)="SaveSettings()"
+                name="Show_Footer" />
+        </div>
+
+        <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
+            <label for="Show_Sidebar" class="settings-label">{{"TXT_Show_Sidebar" | translate}}</label>
+            <input
+                class="form-check-input" 
+                type="checkbox"
+                id="Show_Sidebar"
+                required
+                [(ngModel)]="Settings.Show_Sidebar"
+                (ngModelChange)="SaveSettings()"
+                name="Show_Sidebar" />
+        </div>
+
+        <div class="row" style="display:flex; flex-direction:row; padding:10px;">
+            <div class="col-12">
+            <button (click)="ChangePrivacySettings()" class="btn btn-md btn-success">{{"TXT_Change_Privacy_Settings" | translate}}</button>
+            <button (click)="ResetSettings()" class="btn btn-md btn-danger" style="margin-left:50px;">{{"TXT_Reset_Settings" | translate}}</button>
+            </div>
         </div>
     </div>
-
-    
-    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
-        <label for="Language" class="settings-label">{{"TXT_Language" | translate}}</label>
-        <div class="col-5">
-            <app-language-search></app-language-search>
-        </div>
-    </div>
-
-    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
-        <label for="ShowFooter" class="settings-label">{{"TXT_Show_Footer" | translate}}</label>
-        <input
-            class="form-check-input" 
-            type="checkbox"
-            id="Show_Footer"
-            required
-            [(ngModel)]="Settings.Show_Footer"
-            (ngModelChange)="SaveSettings()"
-            name="Show_Footer" />
-    </div>
-
-    <div clas="row" style="display:flex; flex-direction:row; padding:10px;">
-        <label for="Show_Sidebar" class="settings-label">{{"TXT_Show_Sidebar" | translate}}</label>
-        <input
-            class="form-check-input" 
-            type="checkbox"
-            id="Show_Sidebar"
-            required
-            [(ngModel)]="Settings.Show_Sidebar"
-            (ngModelChange)="SaveSettings()"
-            name="Show_Sidebar" />
-    </div>
-
-    <div class="row" style="display:flex; flex-direction:row; padding:10px;">
-        <div class="col-12">
-          <button (click)="ChangePrivacySettings()" class="btn btn-md btn-success">{{"TXT_Change_Privacy_Settings" | translate}}</button>
-          <button (click)="ResetSettings()" class="btn btn-md btn-danger" style="margin-left:50px;">{{"TXT_Reset_Settings" | translate}}</button>
-        </div>
-    </div>
-  </div>
+</div>

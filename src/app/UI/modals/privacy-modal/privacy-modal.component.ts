@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal, NgbNavModule, NgbPanel,NgbAccordionModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from "@angular/forms";
-import { CookieSettings } from 'src/app/components/shared/cookie-settings';
+import { CookieSettings } from 'src/app/components/settings/cookie-settings';
 import { TranslateModule } from '@ngx-translate/core';
 import { NavigationEnd } from '@angular/router';
 import { SettingsService } from 'src/app/Services/settings.service';
-import { Settings } from 'src/app/components/shared/settings';
+import { Settings } from 'src/app/components/settings/settings';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from 'src/app/Services/language.service';
 

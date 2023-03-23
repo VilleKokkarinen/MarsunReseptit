@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/Services/auth.service';
 import { NgbActiveModal  } from '@ng-bootstrap/ng-bootstrap';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
 
 @Component({
   selector: 'app-sign-up-modal',
@@ -8,11 +8,11 @@ import { NgbActiveModal  } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./sign-up-modal.component.css']
 })
 export class SignUpModalComponent {
-  constructor(public activeModal: NgbActiveModal, private authService:AuthService) {
+  constructor(public activeModal: NgbActiveModal, private authService:PBAuthService) {
   }
 
-  signUp(email:string,password:string){
-    this.authService.SignUp(email,password).then(()=>{
+  signUp(email:string,password:string,passwordconfirm:string){
+    this.authService.SignUp(email,password, passwordconfirm).then(()=>{
       this.Close();
     })  
   }

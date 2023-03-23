@@ -1,8 +1,5 @@
-import { Base } from "./../shared/base";
+import { Publishable } from "../shared/publishable";
 
-export class MeasuringUnit extends Base {
-    ShortName?: string;
-    
-    BaseUnit?: MeasuringUnit;
-    BaseUnitMultiplier?: number;
+export class MeasuringUnit extends Publishable {
+    name:string = "";
 }

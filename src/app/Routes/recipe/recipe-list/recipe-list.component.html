@@ -1,31 +1,33 @@
-<div style="justify-content: center; width:100%;">
-    <div style="max-width: 700px; margin:10px;">
-        <input
-            type="text"
-            class="form-control"
-            id="searchIngredient"
-            placeholder="search"
-            [(ngModel)]="Search"
-            name="Search"
-        />
-    </div>
-    <div *ngFor="let Recipe of Recipes">
-        <div *ngIf='Search == "" || (Recipe?.Name?.toLowerCase().includes(Search.toLowerCase()))'>
-            <div class="recipe-card" (click)="gotoRecipe(Recipe)">
-                <div style="display:flex; flex-direction:row;">
-                    <div *ngIf="Recipe.Thumbnail != undefined" class="recipe-img-container">
-                        <img
-                            class="recipe-img"
-                            [src]="Recipe.Thumbnail"
-                            alt=""
-                        />
-                    </div>
-                    <div style="height:fit-content;">
-                        <div class="title-text recipe-card">
-                            {{Recipe.Name}}
+<div class="padded-content" style="height:calc(100% - 100px);">
+    <div style="justify-content: center; width:100%;">
+        <div style="max-width: 700px; margin:10px;">
+            <input
+                type="text"
+                class="form-control"
+                id="searchIngredient"
+                placeholder="search"
+                [(ngModel)]="Search"
+                name="Search"
+            />
+        </div>
+        <div *ngFor="let Recipe of Recipes">
+            <div>
+                <div class="recipe-card" (click)="gotoRecipe(Recipe)">
+                    <div style="display:flex; flex-direction:row;">
+                        <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
+                            <img
+                                class="recipe-img"
+                                [src]="Recipe.thumbnail"
+                                alt=""
+                            />
                         </div>
-                        <div class="description-text recipe-card">
-                            {{Recipe.Description}}
+                        <div style="height:fit-content;">
+                            <div class="title-text recipe-card">
+                                {{Recipe.name}}
+                            </div>
+                            <div class="description-text recipe-card">
+                                {{Recipe.description}}
+                            </div>
                         </div>
                     </div>
                 </div>

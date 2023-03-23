@@ -1,0 +1,4 @@
+.dropdown-item > a {
+    color:unset;
+    text-decoration: unset;
+}

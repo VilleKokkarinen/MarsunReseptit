@@ -20,9 +20,9 @@
 
         <div style="overflow-y:auto; max-height:20vh;">
             <div *ngFor="let MeasuringUnit of MeasuringUnits">
-                <div *ngIf='Search == "" || (MeasuringUnit?.Name?.includes(Search) || MeasuringUnit?.ShortName?.includes(Search)  ) '>
+                <div>
                     <div class="dropdown-divider"></div>
-                    <button (click)="selectMeasuringUnit(MeasuringUnit)" ngbDropdownItem>{{MeasuringUnit.Name}}</button>
+                    <button (click)="selectMeasuringUnit(MeasuringUnit)" ngbDropdownItem>{{MeasuringUnit.name}}</button>
                 </div>
               
             </div>
@@ -42,7 +42,7 @@
                         class="form-control"
                         id="MeasuringUnit.Name"
                         required
-                        [(ngModel)]="newMeasuringUnit.Name"
+                        [(ngModel)]="newMeasuringUnit.name"
                         name="newMeasuringUnit.Name"
                         />
                     </div>
@@ -53,24 +53,10 @@
                     <div class="col-5">
                         <input
                         class="form-control"
-                        id="MeasuringUnit.ShortName"
+                        id="MeasuringUnit.name"
                         required
-                        [(ngModel)]="newMeasuringUnit.ShortName"
-                        name="newMeasuringUnit.ShortName"
-                        />
-                    </div>
-                </div>
-
-                <div class="row">
-                    <label for="Name" class="col-7">{{'TXT_Base_Unit_Multiplier' | translate}}</label>
-                    <div class="col-5">
-                        <input
-                        class="form-control"
-                        type="number"
-                        id="MeasuringUnit.BaseUnitMultiplier"
-                        required
-                        [(ngModel)]="newMeasuringUnit.BaseUnitMultiplier"
-                        name="newMeasuringUnit.BaseUnitMultiplier"
+                        [(ngModel)]="newMeasuringUnit.name"
+                        name="newMeasuringUnit.name"
                         />
                     </div>
                 </div>

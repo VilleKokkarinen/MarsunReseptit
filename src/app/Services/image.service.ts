@@ -1,26 +1,18 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Image, ImageEOL } from '../components/shared/image';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase from "pocketbase";
-import { AuthService } from 'src/app/Services/auth.service';
 import { SharedService } from './shared.service';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
-  baseurl:string = "https://marsun-reseptit.com";
-  asd:string="asd";
   pb:PocketBase;
-  imageServiceKey:string|undefined = undefined;
 
-  constructor(private http: HttpClient, private authservice:AuthService) {
-    this.pb = new PocketBase(this.baseurl);
-    console.log(this.baseurl)
-    this.authservice.GetImageServiceKey().pipe(
-      ).subscribe(data => {
-        this.imageServiceKey = data;
-      });
+  constructor() {
+    this.pb = new PocketBase(environment.pocketbaseUrl);
   }
 
   static blobToBase64(blob:Blob) {
@@ -43,8 +35,9 @@ export class ImageService {
     });
   }
 
-  static GenerateImageFromBlob(blob:Blob, expireInDays:number=1){
+  static GenerateImageFromBlob(blob:Blob, userId:string){
     var img = new Image();
+    img.publisher = userId;
     img.id = ImageService.GenerateGuid();
     img.data = blob;
     return img;
@@ -54,7 +47,7 @@ export class ImageService {
 
   getImageFILEURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getOne(id,{"imageservicekey":this.imageServiceKey}).then((record)=>{
+      this.pb.collection('images').getOne(id, {"$autoCancel": false}).then((record)=>{
       const firstFilename = record['data'];
       const url = this.pb.getFileUrl(record, firstFilename);
       resolve(url)
@@ -67,7 +60,7 @@ export class ImageService {
 
   getImageURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getOne<Image>(id,{"imageservicekey":this.imageServiceKey}).then((record)=>{
+      this.pb.collection('images').getOne<Image>(id, {"$autoCancel": false}).then((record)=>{
       resolve(record.url)
       },(err)=>{
         console.log(err)
@@ -78,71 +71,52 @@ export class ImageService {
 
   getImageByURL(url:string): Promise<Image> {
     return new Promise((resolve,reject) => {
-      SharedService.waitFor(()=> this.authservice.userData != undefined && this.imageServiceKey != undefined, () => {
-        this.pb.collection('images').getFirstListItem<Image>('url="'+url.normalize()+'"',{"imageservicekey":this.imageServiceKey}).then((record)=>{
-          resolve(record)
-        },(err)=>{
-          console.log(err)
-          reject("Not Found")
-        })
-      }, 10)
+      this.pb.collection('images').getFirstListItem<Image>('url="'+url.normalize()+'"').then((record)=>{
+        resolve(record)
+      },(err)=>{
+        console.log(err)
+        reject("Not Found")
+      })
     })
   }
 
   addImage(image:Image): Promise<Image|string> {
     return new Promise((resolve,reject) => {
-      if(this.authservice.userData != undefined){
-          if(this.imageServiceKey){
-            const formData = new FormData();
-            formData.append('imageservicekey', this.imageServiceKey);
-            formData.append('id', image.id);
-            formData.append('data', image.data);
-            formData.append('url', "temp");
-            const createdRecord = this.pb.collection('images').create(formData)
-            createdRecord.then(data=>{
-              const firstFilename = data['data'];
-              const url = this.pb.getFileUrl(data, firstFilename);
-              image.url = url;
-              resolve(image);
-            },(err)=>{
-              console.log(err)
-              reject(err)
-            })
-          }
-          else{
-            this.authservice.SetImageServiceKey();
-            alert("No imageService key found, adding one for your user, try again!")
-            reject("No imageService key found, adding one for your user, try again!");
-          }
-      }
-      else{
-        reject("Not authenticated")
-      }
+        const formData = new FormData();
+        formData.append('id', image.id);
+        formData.append('publisher', image.publisher);
+        formData.append('data', image.data);
+        formData.append('url', "temp");
+        const createdRecord = this.pb.collection('images').create(formData, {"$autoCancel": false})
+        createdRecord.then(data=>{
+          const firstFilename = data['data'];
+          const url = this.pb.getFileUrl(data, firstFilename);
+          image.url = url;
+          resolve(image);
+        },(err)=>{
+          console.log(err)
+          reject(err)
+        })
     })
   }
 
   updateImageURL(image:Image): Promise<string> { // should only be used to transform "temp" => actual url
     return new Promise((resolve,reject) => {
-      if(this.authservice.userData != undefined && this.imageServiceKey){
-          const formData = new FormData();
-          formData.append('url', image.url);
-          const updatedImage = this.pb.collection('images').update(image.id, formData,{"imageservicekey":this.imageServiceKey})
-          updatedImage.then(data=>{
-            resolve("OK");
-          },(err)=>{
-            reject(err)
-          }) 
-      }
-      else{
-        reject("Not authenticated or missing image service key")
-      }
+      const formData = new FormData();
+      formData.append('url', image.url);
+      const updatedImage = this.pb.collection('images').update(image.id, formData, {"$autoCancel": false})
+      updatedImage.then(data=>{
+        resolve("OK");
+      },(err)=>{
+        reject(err)
+      }) 
     })
   }
   
 
   addImageEOL(image:Image): Promise<string> {
     return new Promise((resolve,reject) => {
-      if(this.authservice.userData != undefined && this.imageServiceKey && image.id){
+      if(image.id){
         var date = new Date();
         date.setDate(new Date().getDate() + 365);
         const formData = new FormData();
@@ -156,10 +130,6 @@ export class ImageService {
           console.log(err)
           reject(err)
         })
-      }
-      else{
-        console.log("addImageEOL No permission")
-        reject("No permission")
       }
     })
   }
@@ -181,7 +151,7 @@ export class ImageService {
 
   GetImageEOL(image:Image): Promise<string> {
     return new Promise((resolve,reject) => {
-        const updatedRecord = this.pb.collection('images_eol').getFirstListItem('id="'+image.id+'"')
+        const updatedRecord = this.pb.collection('images_eol').getFirstListItem('id="'+image.id+'"', {"$autoCancel": false})
         updatedRecord.then(data=>{
           resolve(data["eol"]);
         },(err)=>{
@@ -192,18 +162,13 @@ export class ImageService {
 
   deleteImage(image:Image): Promise<Image|string> {
     return new Promise((resolve,reject) => {
-      if(this.authservice.userData != undefined){
-        const updatedRecord = this.pb.collection('images').delete(image.id, {"imageservicekey":this.imageServiceKey})
-        updatedRecord.then(data=>{
-          resolve("OK");
-        },(err)=>{
-          console.log(err)
-          reject(err)
-        })
-      }
-      else{
-        reject("Not authenticated")
-      }
+      const updatedRecord = this.pb.collection('images').delete(image.id, {"$autoCancel": false})
+      updatedRecord.then(data=>{
+        resolve("OK");
+      },(err)=>{
+        console.log(err)
+        reject(err)
+      })
     })
   }
 }

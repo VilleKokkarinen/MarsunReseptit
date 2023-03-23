@@ -7,6 +7,10 @@ export const environment = {
     adClient: 'ca-pub-1120436091721652',
     show: true
  },
+ oauth:{
+  redirectUrl:"http://localhost:4200/Dashboard"
+ },
+ pocketbaseUrl: "https://marsun-reseptit.com",
   firebase: {
     projectId: 'marsun-reseptit',
     appId: '1:335307233189:web:39ecfa651940e2a20f3a4c',

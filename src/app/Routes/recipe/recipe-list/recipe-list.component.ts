@@ -10,7 +10,7 @@ import { Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
-  Recipes:any[]=[];
+  Recipes:Recipe[]=[];
   Search:string="";
 
   
@@ -20,18 +20,17 @@ export class RecipeListComponent {
    }
 
    retrieveRecipes(): void {
-    this.recipeService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.Recipes = data;
-    });
+    var filter = "";
+    
+    if(this.Search != "")
+    filter = `name~'${this.Search}'`;
+
+    this.recipeService.getList(1,10,filter).then((result)=>{
+      this.Recipes = result.items;
+    })
   }
 
-  gotoRecipe(recipe: any) {
+  gotoRecipe(recipe: Recipe) {
     const recipeId = recipe ? recipe.id : null;
         
     this.router.navigate(['Recipes/'+recipeId]);

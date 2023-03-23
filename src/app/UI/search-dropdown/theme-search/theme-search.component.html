@@ -1,18 +1,20 @@
 <div ngbDropdown #ThemeDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
     <button type="button" class="btn btn-outline-primary" id="ThemeDropDownToggle" ngbDropdownToggle>
-        {{Settings.Theme.Name}}
+        {{Settings.Theme.name}}
         <i [hidden]="ThemeDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
         <i [hidden]="!ThemeDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
     </button>
     <div ngbDropdownMenu>
         <form class="px-4 py-3">
-            <div class="mb-3">
+            <div class="mb-3" style="display:flex; flex-direction: row;">
                 <input
+                    style="width:75%"
                     type="text"
                     class="form-control"
                     id="searchTheme"
                     placeholder="{{'TXT_Search' | translate}}"
                     [(ngModel)]="Search"
+                    (ngModelChange)="this.userSearchUpdate.next($event)"
                     name="Search"
                 />
             </div>
@@ -20,9 +22,9 @@
 
         <div style="overflow-y:auto; max-height:20vh;">
             <div *ngFor="let Theme of Themes">
-                <div *ngIf='Search == "" || Theme.Name.includes(Search)'>
+                <div>
                     <div class="dropdown-divider"></div>
-                    <button (click)="selectTheme(Theme)" ngbDropdownItem>{{Theme.Name}}</button>
+                    <button (click)="selectTheme(Theme)" ngbDropdownItem>{{Theme.name}}</button>
                 </div>
               
             </div>

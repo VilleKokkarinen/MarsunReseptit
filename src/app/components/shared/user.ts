@@ -1,20 +1,12 @@
-export interface PublicUser {
-    uid: string;
-    displayName: string;
-    photoURL: string;
+export class PublicUser {
+    id: string = "";
+    displayName: string = "";
+    avatar: string = "";
 }
 
-export interface PrivateUser {
-    uid: string;
-    email: string;
-    emailVerified: boolean;
-    imageServiceKey?:string;
-}
-
-export interface User {
-    uid: string;
-    displayName: string;
-    photoURL: string;
-    email: string;
-    emailVerified: boolean;
+export class PrivateUser {
+    id: string = "";
+    username: string = "";
+    email: string = "";
+    verified: boolean = false;
 }

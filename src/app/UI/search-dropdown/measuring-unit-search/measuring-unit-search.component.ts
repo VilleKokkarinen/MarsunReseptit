@@ -3,6 +3,7 @@ import { MeasuringUnitService } from 'src/app/Services/measuringunit.service';
 import { MeasuringUnit } from 'src/app/components/recipecomponents/measuringunit';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { PBAuthService } from 'src/app/Services/pb.auth.service';
 
 @Component({
   selector: 'app-measuring-unit-search',
@@ -18,7 +19,7 @@ export class MeasuringUnitSearchComponent {
   
   @Output() selectedMeasuringUnitChange = new EventEmitter<MeasuringUnit>()
 
-  constructor(private measuringUnitService: MeasuringUnitService,  private translate:TranslateService) {
+  constructor(private measuringUnitService: MeasuringUnitService, private translate:TranslateService, private authService:PBAuthService) {
     this.retrieveMeasuringUnits();
    }
 
@@ -26,7 +27,7 @@ export class MeasuringUnitSearchComponent {
     if(this.selectedMeasuringUnit == undefined || this.MeasuringUnits == undefined)
     return this.translate.instant("TXT_Select_Measuring_Unit");
 
-    return this.selectedMeasuringUnit.Name
+    return this.selectedMeasuringUnit.name
    }
 
    selectMeasuringUnit(unit:MeasuringUnit){
@@ -39,29 +40,26 @@ export class MeasuringUnitSearchComponent {
    }
 
    retrieveMeasuringUnits(): void {
-    this.measuringUnitService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ id: c.payload.doc.id, ...c.payload.doc.data() })
-        )
-      )
-    ).subscribe(data => {
-      this.MeasuringUnits = data;
-    });
+    var filter = "";
+    
+    if(this.Search != "")
+    filter = `name~'${this.Search}'`;
+
+    this.measuringUnitService.getList(1,10,filter).then((result)=>{
+      this.MeasuringUnits = result.items;
+    })
   }
 
 
   createNewMeasuringUnit() {
     this.newMeasuringUnit = new MeasuringUnit();
-
-    this.newMeasuringUnit.Name = "";
-    this.newMeasuringUnit.ShortName = "";
-    this.newMeasuringUnit.BaseUnitMultiplier = 1;
-
   }
 
    saveNewMeasuringUnit(): void {
     if(this.newMeasuringUnit != null){
+      this.newMeasuringUnit.publishDate = new Date;
+      this.newMeasuringUnit.publisher = this.authService.userData.id;
+
       this.measuringUnitService.create(JSON.parse(JSON.stringify(this.newMeasuringUnit))).then((unitData:MeasuringUnit) => {
         this.newMeasuringUnit = null;
       });

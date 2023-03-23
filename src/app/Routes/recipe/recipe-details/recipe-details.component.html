@@ -1,50 +1,83 @@
-<div class="form-group recipe-card" *ngIf="Recipe != undefined">
+<div class="padded-content">
+    <div class="form-group recipe-card" *ngIf="Recipe != undefined">
    
-    <div class="headercontainer header" *ngIf="!Editing">
-        <img *ngIf="Recipe.Thumbnail != undefined"
-        class="recipe-img"
-        [src]="Recipe.Thumbnail"
-        alt="Recipe Picture"
-        />
-        <div class="header-text">
-            {{Recipe.Name}}
+        <div class="headercontainer header" *ngIf="!Editing">
+            <img *ngIf="Recipe.thumbnail != undefined"
+            class="recipe-img"
+            [src]="Recipe.thumbnail"
+            alt="Recipe Picture"
+            />
+            <div class="header-text">
+                {{Recipe.name}}
+            </div>
+            <div class="header-text" style="margin-left:auto; margin-right:5px;">
+                {{"TXT_Likes" |translate}} : {{Likes}}
+            </div>
+        </div>
+
+        <div class="headercontainer header" *ngIf="Editing">
+            <input
+            style="max-width:250px; margin-left:10px;"
+            type="text"
+            class="form-control"
+            id="Recipe.Name"
+            required
+            [(ngModel)]="Recipe.name"
+            name="Recipe.Name" />
+        </div>
+    
+        <div class="headercontainer header" *ngIf="Editing" style="max-height:100%;">
+            <app-image-upload [(selectedImageURL)]="Recipe.thumbnail"></app-image-upload>
+        </div>
+    
+       
+    
+        <div class="recipecontainer-simple">
+            <div *ngIf="!Editing" [innerHTML]="Recipe.recipe"></div>
+    
+            <rich-text-editor *ngIf="Editing" [(control)]="Recipe.recipe"></rich-text-editor>
         </div>
     </div>
-
-    <div class="headercontainer header" *ngIf="Editing" style="max-height:100%;">
-        <app-image-upload [(selectedImageURL)]="Recipe.Thumbnail"></app-image-upload>
-    </div>
-
-   
-
-    <div class="recipecontainer-simple" *ngIf="Recipe.Mode == 'Simple'">
-        <div *ngIf="!Editing" [innerHTML]="Recipe.Recipe"></div>
-
-        <rich-text-editor *ngIf="Editing" [(control)]="Recipe.Recipe"></rich-text-editor>
-    </div>
-</div>
-
-<div *ngIf="Editing" class="form-group recipe-card">
-    <div style="display:flex; flex-direction:row; justify-content:space-around">
-        <button (click)="saveRecipe()" class="btn btn-md btn-success">Save</button>
-
-        <button class="btn btn-md btn-danger" (click)="Cancel()">Cancel</button>
-    </div>
-</div>
-
-
-<div class="form-group recipe-card">
-    <div style="display:flex; flex-direction:row; justify-content:space-around">
-        <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ShowComments = (ShowComments ? false : true)">{{"TXT_Show_Comments" | translate}}</button>
-        <button class="btn btn-outline-primary" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditRecipe()">{{"TXT_Edit_Recipe" | translate}}</button>
-        <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment">{{"TXT_Leave_Comment" | translate}}</button>
-    </div>
-
-    <div *ngIf="ShowComments == true">
-        <div class="recipecontainer-simple" *ngFor="let Comment of Recipe?.Comments">
-            <app-commentfield [Comment]="Comment"></app-commentfield>
+    
+    <div *ngIf="Editing" class="form-group recipe-card">
+        <div style="display:flex; flex-direction:row; justify-content:space-around">
+            <button (click)="saveRecipe()" class="btn btn-md btn-success">Save</button>
+    
+            <button class="btn btn-md btn-danger" (click)="Cancel()">Cancel</button>
         </div>
     </div>
+    
+    
+    <div class="form-group recipe-card">
+        <div style="display:flex; flex-direction:row; justify-content:space-around">
+            <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ToggleComment()">{{"TXT_Show_Comments" | translate}}</button>
+            <button class="btn btn-info" style="margin-right:5px;" *ngIf="ShowEdit == true" (click)="EditRecipe()">{{"TXT_Edit_Recipe" | translate}}</button>
+            <button class="btn btn-success" style="margin-left:5px;margin-right:5px;" *ngIf="AllowUserToLike === true" (click)="Like()">{{"TXT_Like" | translate}} <i class="bi bi-hand-thumbs-up"> </i> </button>
+            
+            <button class="btn btn-danger" style="margin-left:5px;margin-right:5px;" *ngIf="LikeData !== undefined" (click)="RemoveLike()">{{"TXT_Remove_Like" | translate}} <i class="bi bi-hand-thumbs-down"> </i> </button>
+            <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment()">{{"TXT_Leave_Comment" | translate}}</button>
+        </div>
+
+        <div *ngIf="AddingComment === true">
+            <app-add-comment [recipe]="id" (resultChange)="CommentAdded($event)"></app-add-comment>
+        </div>
+    
+        <div *ngIf="ShowComments == true">
+
+            <div *ngIf="Comments.length === 0">
+                {{"TXT_No_Comments" | translate}}
+            </div>
+           
+            <div *ngFor="let Comment of Comments">
+                <div *ngIf="Comment !== undefined">
+                    <app-commentfield [Comment]="Comment" (deletedComment)="CommentDeleted($event)"></app-commentfield>
+                </div>
+              
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    
 </div>
-
-
