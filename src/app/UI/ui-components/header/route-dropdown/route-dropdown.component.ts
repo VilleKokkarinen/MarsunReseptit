@@ -15,6 +15,10 @@ IsLoggedIn:boolean = false;
 
 constructor(private authService:PBAuthService) {
   this.IsLoggedIn = authService.isLoggedIn;
+
+  this.authService.AuthChange.subscribe(() => { // subscribe to login event
+    this.IsLoggedIn = this.authService.isLoggedIn;
+  });
 }
 
 }

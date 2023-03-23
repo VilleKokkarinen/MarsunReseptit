@@ -18,6 +18,10 @@ export class HeaderComponent {
   
   constructor(private settingsService:SettingsService){
     this.Settings = this.settingsService.Settings
+
+    this.settingsService.SettingsChange.subscribe((data) => {
+      this.Settings = data;
+    })
   }
   
 }

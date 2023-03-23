@@ -4,7 +4,7 @@ export const environment = {
     show: true
  },
  oauth:{
-  redirectUrl:"https://marsun-reseptit.web.app"
+  redirectUrl:"https://marsun-reseptit.web.app/Dashboard"
  },
  pocketbaseUrl: "https://marsun-reseptit.com",
   firebase: {

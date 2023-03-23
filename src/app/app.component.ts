@@ -23,6 +23,7 @@ export class AppComponent {
       if(newSettings.CookieSettings.Show_Popup === true){
         config.backdrop = 'static';
         config.keyboard = false;
+        this.modalService.dismissAll("settings changed");
         this.open(PrivacyModalComponent)
       }
     })

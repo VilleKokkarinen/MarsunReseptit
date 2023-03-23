@@ -35,7 +35,6 @@ export class PBAuthService {
       });
 
       promise.then((data)=>{
-
         if(data.id != "")
         this.notifierService.notify('success', this.translate.instant('TXT_Login_Success'));
 
@@ -215,6 +214,7 @@ export class PBAuthService {
     if(currentUser != null && user.id == currentUser.id){
       this.publicUserService.update(user).then((data)=>{
         this.userData = data;
+        this.notifierService.notify('success', this.translate.instant('TXT_Updated_Public_User_Data'));
         this.SetLocalStorageUser();
       },(err)=>{
         console.log(err);

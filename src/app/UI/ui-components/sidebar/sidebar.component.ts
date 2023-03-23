@@ -48,5 +48,11 @@ export class SidebarComponent {
 
   constructor(private authService:PBAuthService) {
     this.isLoggedIn = authService.isLoggedIn;
+
+    this.authService.AuthChange.subscribe(() => { // subscribe to login event
+      this.isLoggedIn = this.authService.isLoggedIn;
+    });    
+
+    
   }
 }

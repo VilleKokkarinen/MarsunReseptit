@@ -5,9 +5,7 @@
   align-items: center;
   display: flex;
   flex-flow: row nowrap;
-}
-.dropdown-divider{
-  border-top: 1px solid var(--Accent_Border_Color);
+  border-bottom: 1px solid var(--Accent_Border_Color);
 }
   
 .flex-icon,

@@ -22,7 +22,15 @@ export class SettingsService {
     this.authService.AuthChange.subscribe(() => { // subscribe to login event
       this.LoadSettings();
       this.AcceptSelectedCookies();
-    });    
+    });
+
+    setTimeout(() => {
+      if(this.Settings.CookieSettings.Show_Popup === true)
+      {
+        this.LoadSettings(); // if this is users first time entering the site, without having settings
+      }
+    }, 1000);
+
   }
   
   LoadSettings(){
