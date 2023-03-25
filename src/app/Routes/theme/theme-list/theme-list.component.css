@@ -33,6 +33,11 @@
     margin:5px;
 }
 
+.theme-preview > button:hover{
+    -webkit-filter: invert(8%);
+    filter: invert(8%);
+}
+
 .title-text{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
