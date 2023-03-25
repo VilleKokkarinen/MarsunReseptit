@@ -7,6 +7,10 @@ export const environment = {
     adClient: 'ca-pub-1120436091721652',
     show: true
  },
+ version:{
+  major: 0,
+  minor: "001"
+ },
  oauth:{
   redirectUrl:"http://localhost:4200/Dashboard"
  },
@@ -17,7 +21,7 @@ export const environment = {
     databaseURL: 'https://marsun-reseptit-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'marsun-reseptit.appspot.com',
     apiKey: 'AIzaSyDPgFot6mU3_9SizQpOYlGUXhQjF2kvXWQ',
-    authDomain: 'marsun-reseptit.firebaseapp.com',
+    authDomain: 'marsun-reseptit.web.app',
     messagingSenderId: '335307233189',
     measurementId: 'G-NPTH5CEKC2',
   },

@@ -1,5 +1,5 @@
 
-		<div ngbDropdown #accountDD="ngbDropdown" class="d-inline-block" style="position:relative;">
+		<div ngbDropdown #accountDD="ngbDropdown" class="d-inline-block" style="position:relative;" [placement]="['bottom-right']">
 			<button type="button" class="btn btn-outline-primary" id="dropdownForm1" ngbDropdownToggle>
 				{{this.userData.id !== '' ? ("TXT_Hi" | translate) + " " + this.userData.displayName : ("TXT_Login" | translate)}}
 				<i [hidden]="accountDD.isOpen()" class="bi bi-caret-down-fill"></i>

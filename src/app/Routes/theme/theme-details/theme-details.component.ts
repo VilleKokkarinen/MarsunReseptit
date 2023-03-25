@@ -98,7 +98,7 @@ export class ThemeDetailsComponent {
         this.retrieveTheme();
       }
       else{
-        this.router.navigate(['themes'])
+        this.router.navigate(['Themes'])
       }
     });
 

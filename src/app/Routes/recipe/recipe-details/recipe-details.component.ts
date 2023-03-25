@@ -58,7 +58,7 @@ export class RecipeDetailsComponent implements OnInit {
         this.retrieveRecipe();
       }
       else{
-        this.router.navigate(['recipes'])
+        this.router.navigate(['Recipes'])
       }
     });
 

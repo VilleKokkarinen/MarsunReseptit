@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { RecipeService } from 'src/app/Services/recipe.service';
 import { ActivatedRoute } from '@angular/router';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
 import { environment } from 'src/environments/environment';
+import { TrendingRecipeService } from 'src/app/Services/trending_recipe.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class DashboardComponent implements OnInit {
   TrendingRecipes:any[]=[];
   
-  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute, private authService:PBAuthService) {
+  constructor(private recipeService: TrendingRecipeService, private router: Router, private route: ActivatedRoute, private authService:PBAuthService) {
     this.retrieveRecipes(); 
    }
 
@@ -53,7 +52,7 @@ export class DashboardComponent implements OnInit {
   }
 
    retrieveRecipes(): void {
-    this.recipeService.getList(1,7,"").then((result)=>{
+    this.recipeService.getList(1,10).then((result)=>{
       this.TrendingRecipes = result.items;
     })
   }

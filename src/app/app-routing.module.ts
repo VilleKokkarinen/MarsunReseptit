@@ -79,7 +79,7 @@ const routes: Routes =[
       {
         path: 'Settings',
         component: SettingsComponent
-      },
+      }
     ]
   },
   {

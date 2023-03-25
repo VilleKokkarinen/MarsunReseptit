@@ -30,7 +30,7 @@ export class MainComponent {
 
       router.events.subscribe((val) => {
         if(val instanceof NavigationEnd){
-          if(val.url.endsWith("Recipes")){
+          if(val.url.endsWith("Recipes") || val.url.endsWith("Themes") ){
             this.SideAdBarEnabled = true;
             this.TopAdBarEnabled = true;
           }else{

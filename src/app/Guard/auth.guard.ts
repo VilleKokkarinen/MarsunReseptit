@@ -24,9 +24,10 @@ export class AuthGuard implements CanActivate {
     if(this.authService.isLoggedIn !== true) {
       console.log("Authentication Guard: you're not logged in.")
       this.notifierService.notify('error',  this.translate.instant('TXT_Authentication_Guard_Block'));
-     return false;
+      this.router.navigate(["/Dashboard"]);
+      return false;
+    }else{
+      return true;
     }
-
-    return true;
   }
 }

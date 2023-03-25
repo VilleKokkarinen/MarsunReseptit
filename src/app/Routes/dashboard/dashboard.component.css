@@ -55,9 +55,9 @@ width: unset;
 
 .dashboard-about-text{
     color:var(--Primary_Text_Color);
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
-    padding:10px;
+    padding:7px;
 }
 
 .mini-recipe-card{

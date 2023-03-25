@@ -10,3 +10,10 @@ export class Recipe extends Publishable {
     categories?:string[];
     tags?:string[];
  }
+
+ export class Trending_Recipe {
+    name:string = "";
+    id:string = "";
+    thumbnail:string = "";
+    likes:number = 0;
+ }

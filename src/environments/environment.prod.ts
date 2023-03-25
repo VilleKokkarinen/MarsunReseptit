@@ -6,6 +6,10 @@ export const environment = {
  oauth:{
   redirectUrl:"https://marsun-reseptit.web.app/Dashboard"
  },
+ version:{
+  major: 0,
+  minor: "001"
+ },
  pocketbaseUrl: "https://marsun-reseptit.com",
   firebase: {
     projectId: 'marsun-reseptit',
@@ -13,7 +17,7 @@ export const environment = {
     databaseURL: 'https://marsun-reseptit-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'marsun-reseptit.appspot.com',
     apiKey: 'AIzaSyDPgFot6mU3_9SizQpOYlGUXhQjF2kvXWQ',
-    authDomain: 'marsun-reseptit.firebaseapp.com',
+    authDomain: 'marsun-reseptit.web.app',
     messagingSenderId: '335307233189',
     measurementId: 'G-NPTH5CEKC2',
   },
