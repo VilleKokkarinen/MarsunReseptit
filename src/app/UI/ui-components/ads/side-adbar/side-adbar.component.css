@@ -1,10 +1,9 @@
-@media (min-width: 0px) {
-    .side-adbar { 
-      display:none;
-      width:0px;
-    }
-  }
-  
+
+.side-adbar { 
+  display:none;
+  width:0px;
+}
+
 @media (min-width: 900px) {
   .side-adbar {
       display: inline-block;
@@ -17,5 +16,6 @@
       padding:0;
       color:var(--Complement_Text_Color);
       font-family: 'Inter UI', sans-serif; 
+      transition: background-color 1250ms ease-in-out;
   } 
 }

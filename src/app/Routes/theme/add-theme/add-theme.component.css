@@ -11,95 +11,12 @@
     font-size: small;
 }
 
-.stylerow{
-    padding:1px;
-    margin:1px;
-}
 .color-picker {
     background-color: var(--Modal_Bg_Color) !important;
 }
 .preset{
     background-color: var(--Modal_Bg_Color);
 }
-
-
-.body{
-    height:calc(100vh);
-    width:100vw;
-    flex-direction: column;
-    display:flex;
-  }
-  .contentbody{
-    background-color: var(--MainContent_Bg_Color);
-    width: calc(100vw - 6vw - 6vw);
-    height:100%;
-    display:flex;
-  
-    overflow-x: auto;
-    overflow-y: auto;
-  }
-  
-  .content{
-    margin:1vh;
-    height:calc(100% - 2vh);
-    width:100%;
-  }
-  .sidebarelement{
-    display:flex;
-    flex-direction: row;
-    height:calc(100vh - 90px);
-  }
-  
-  .container{
-    display:flex;
-    flex-direction: column;
-    height:100%;
-  }
-  
-  .sidebar {
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: var(--Sidebar_Bg_Color);
-    border-right: 1px solid var(--Accent_Border_Color);
-    width: 6vw;
-    min-width: 120px;
-    height:100%;
-    padding:0;
-    color:var(--Complement_Text_Color);
-    font-family: 'Inter UI', sans-serif; 
-  }
-  
-  .adbar {
-    overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: var(--Sidebar_Bg_Color);
-    border-left: 1px solid var(--Accent_Border_Color);
-    width: 6vw;
-    min-width: 120px;
-    height:100%;
-    padding:0;
-    color:var(--Complement_Text_Color);
-    font-family: 'Inter UI', sans-serif; 
-  } 
-  
-  .sidebar-container {
-    width: 100%;
-    height:3vh;
-    min-height:25px;
-    align-items: center;
-    display: flex;
-    flex-flow: row nowrap;
-    border-bottom: 1px solid var(--Accent_Border_Color);
-  }
-  
-  .ad-container {
-    width: 100%;
-    height:30vh;
-    align-items: center;
-    display: flex;
-    flex-flow: row nowrap;
-    border-bottom: 1px solid var(--Accent_Border_Color);
-  }
   
   .flex-icon,
   .flex-content {

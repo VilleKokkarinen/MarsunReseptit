@@ -12,6 +12,8 @@ export class ThemeService {
   pb:PocketBase;
   collection:RecordService;
 
+  currentlyTestingTheme:boolean = false;
+
   constructor(private settingsService:SettingsService) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
     this.collection = this.pb.collection('themes');
@@ -24,6 +26,17 @@ export class ThemeService {
   applyTheme(Theme:Theme){
     for (const [k, v] of Object.entries(Theme.theme)) {
       document.documentElement.style.setProperty(k, v);
+    }
+  }
+
+  testTheme(Theme:Theme){
+    if(this.currentlyTestingTheme === false && Theme.id != this.settingsService.Settings.Theme.id){
+      this.currentlyTestingTheme = true;
+      this.applyTheme(Theme);
+      setTimeout(() => {
+        this.applyTheme(this.settingsService.Settings.Theme);
+        this.currentlyTestingTheme = false;
+      }, 3500);
     }
   }
 

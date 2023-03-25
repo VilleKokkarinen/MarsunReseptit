@@ -8,18 +8,29 @@
     max-width: 500px;
     overflow:auto;
     width:fit-content;
+    transition: background-color color 1250ms ease-in-out;
 }
 
-.theme-card:hover{
+.pointer:hover{
     cursor:pointer
 }
 
+.search{
+    transition: all 1250ms ease-in-out;
+}
 
 .theme-preview{
     border:1px solid;
     padding:25px;
     margin:10px;
     border-radius: 8px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.theme-preview > button{
+    margin:5px;
 }
 
 .title-text{
@@ -27,6 +38,8 @@
     border-radius: 8px;
     background-color: var(--Primary_Color);
     color:var(--Primary_Text_Color);
-    padding:5px;
+    padding:7px;
     margin:10px;
+    width:fit-content;
+    transition: background-color color 1250ms ease-in-out;
 }

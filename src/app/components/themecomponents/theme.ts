@@ -13,7 +13,7 @@ export class Theme extends Publishable{
     "--MainContent_Bg_Color": "rgba(110, 110, 110)",
   
     "--Primary_Color": "rgba(35, 40, 45)", 
-    "--Complement_Color": "rgba(116, 99, 68)", 
+    "--Complement_Color": "rgba(78, 78, 78)", 
     "--Accent_Color": "rgba(201, 178, 94)", 
     "--Neutral_Color": "rgba(75, 75, 75)",
   

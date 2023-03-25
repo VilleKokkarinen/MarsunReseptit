@@ -51,6 +51,11 @@ body{
   color: var(--Primary_Text_Color);
 }
 
+html{
+  scrollbar-color: var(--Accent_Text_Color) var(--Complement_Color) ;
+  transition: scrollbar-color 250ms ease-in-out;
+}
+
 .padded-content{
   padding:15px;
   height:100%;
@@ -58,7 +63,7 @@ body{
 }
 
 .modal {
-  color:var(--Complement_Text_Color) ;
+  color: var(--Complement_Text_Color) ;
   border-color: var(--Primary_Border_Color);
   box-shadow: 0px 3px 6px var(--DropShadow_Color);
 }
@@ -82,6 +87,7 @@ body{
   --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: var(--Disabled_Element_Color);
   --bs-gradient: none;
+  transition: background-color color 1250ms ease-in-out;
 }
 
 

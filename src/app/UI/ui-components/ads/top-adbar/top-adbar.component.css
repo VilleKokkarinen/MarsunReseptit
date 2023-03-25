@@ -9,5 +9,6 @@
     height:90px !important;
     padding:0;
     color:var(--Complement_Text_Color);
-    font-family: 'Inter UI', sans-serif; 
+    font-family: 'Inter UI', sans-serif;
+    transition: background-color 1250ms ease-in-out;
 } 

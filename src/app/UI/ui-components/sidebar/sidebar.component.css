@@ -7,13 +7,10 @@
 }
 
 
-
-@media (min-width: 0px) {
-  .sidebar { 
-    display:none;
-  }
+.sidebar { 
+  display:none;
+  transition: background-color 1250ms ease-in-out;
 }
-
 @media (min-width: 620px) {
   .sidebar { 
     display: inline;
@@ -23,7 +20,7 @@
     border-right: 1px solid var(--Accent_Border_Color);
     height:100%;
     color:var(--Complement_Text_Color);
-    font-family: 'Inter UI', sans-serif; 
+    font-family: 'Inter UI', sans-serif;
   }
 }
 
