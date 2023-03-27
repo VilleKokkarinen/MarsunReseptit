@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbDropdownMenu, NgbDropdownModule, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import {RouterModule} from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SignUpModalComponent } from 'src/app/UI/modals/sign-up-modal/sign-up-modal.component';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
@@ -27,6 +27,7 @@ export class AccountDropdownComponent {
   rememberMe:boolean;
 
   constructor(
+    private router: Router,
     public authService: PBAuthService,
     private modalService: NgbModal,
     config: NgbModalConfig) {
@@ -50,8 +51,9 @@ export class AccountDropdownComponent {
     this.authService.SetRememberMe(this.rememberMe);
   }
 
-  setProvider(data:any){
+  setProvider(data:any, url:string){
     localStorage.setItem('provider', JSON.stringify(data));
+    window.location.href=url;
   }
 
   openSignUpModal() {

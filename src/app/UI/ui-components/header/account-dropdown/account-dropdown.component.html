@@ -46,10 +46,11 @@
 						<button type="button" (click)="authService.SignIn(userName.value, userPassword.value)" class="btn btn-outline-primary">{{"TXT_Login" | translate}}</button>
 					</form>
 
-					<div *ngFor="let provider of providers">
-						<div class="dropdown-divider"></div>
-						<button type="button" ngbDropdownItem> <a (click)="setProvider(provider)" [href]="provider.authUrl + redirectUrl">{{"TXT_Login_With_Google" | translate}}</a> </button>
-					</div>
+					<!-- if more auth providers add ngfor -->
+					<div class="dropdown-divider"></div>
+					<button type="button" class="btn btn-outline-primary" ngbDropdownItem (click)="setProvider(provider, provider.authUrl + redirectUrl)" *ngFor="let provider of providers">
+						{{"TXT_Login_With_Google" | translate}}
+					</button>
 					
 					<div class="dropdown-divider"></div>
 					<button type="button" ngbDropdownItem (click)="openSignUpModal()">{{"TXT_New_Around_Here" | translate}}? {{"TXT_Sign_Up" | translate}}</button>
