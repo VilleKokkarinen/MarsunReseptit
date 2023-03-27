@@ -18,6 +18,11 @@ import { SettingsComponent } from './Routes/settings/settings.component';
 import { ContactUsComponent } from './Routes/contact-us/contact-us.component';
 import { ThemeDetailsComponent } from './Routes/theme/theme-details/theme-details.component';
 import { ThemeListComponent } from './Routes/theme/theme-list/theme-list.component';
+import { AddRoadmapComponent } from './Routes/roadmap/add-roadmap/add-roadmap.component';
+import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list.component';
+import { RoadmapDetailsComponent } from './Routes/roadmap/roadmap-details/roadmap-details.component';
+import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
+import { ChangeLogComponent } from './Routes/change-log/change-log.component';
 
 const routes: Routes =[
   {
@@ -26,7 +31,7 @@ const routes: Routes =[
     children: [
       {
         path: '',
-        redirectTo: '/Dashboard',
+        redirectTo: 'Dashboard',
         pathMatch: 'full'
       },
       {
@@ -42,6 +47,11 @@ const routes: Routes =[
         component: RecipeDetailsComponent
       },
       {
+        path: 'Add-Recipe',
+        component: AddRecipeComponent,
+        canActivate: [AuthGuard]
+      },
+      {
         path: 'Themes',
         component: ThemeListComponent
       },
@@ -50,13 +60,21 @@ const routes: Routes =[
         component: ThemeDetailsComponent
       },
       {
-        path: 'Add-Recipe',
-        component: AddRecipeComponent,
+        path: 'Add-Theme',
+        component: AddThemeComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'Add-Theme',
-        component: AddThemeComponent,
+        path: 'Roadmaps',
+        component: RoadmapListComponent
+      },
+      {
+        path: 'Roadmaps/:id',
+        component: RoadmapDetailsComponent
+      },
+      {
+        path: 'Add-Roadmap',
+        component: AddRoadmapComponent,
         canActivate: [AuthGuard]
       },
       {
@@ -79,6 +97,10 @@ const routes: Routes =[
       {
         path: 'Settings',
         component: SettingsComponent
+      },
+      {
+        path: 'Change-Log',
+        component: ChangeLogComponent
       }
     ]
   },
@@ -87,8 +109,12 @@ const routes: Routes =[
     component: ErrorComponent
   },
   {
+    path: 'AdminLogin',
+    component: AdminLoginComponent
+  },
+  {
     path: '**',
-    redirectTo: '/Dashboard',
+    redirectTo: 'Dashboard',
     pathMatch: 'full'
   }
 ];

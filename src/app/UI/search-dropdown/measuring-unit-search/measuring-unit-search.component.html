@@ -19,12 +19,9 @@
         </form>
 
         <div style="overflow-y:auto; max-height:20vh;">
-            <div *ngFor="let MeasuringUnit of MeasuringUnits">
-                <div>
-                    <div class="dropdown-divider"></div>
-                    <button (click)="selectMeasuringUnit(MeasuringUnit)" ngbDropdownItem>{{MeasuringUnit.name}}</button>
-                </div>
-              
+            <div *ngFor="let MeasuringUnit of MeasuringUnits; let i = index">
+                <div *ngIf="i != 0" class="dropdown-divider"></div>
+                <button (click)="selectMeasuringUnit(MeasuringUnit)" ngbDropdownItem>{{MeasuringUnit.name}}</button>
             </div>
         </div>
        

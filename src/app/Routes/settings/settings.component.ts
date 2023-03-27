@@ -4,7 +4,7 @@ import { PublicUser } from 'src/app/components/shared/user';
 import { LanguageService } from 'src/app/Services/language.service';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
 import { SettingsService } from 'src/app/Services/settings.service';
-import { ThemeService } from 'src/app/Services/theme.service';
+import { ThemeService } from 'src/app/Services/theme/theme.service';
 
 @Component({
   selector: 'app-settings',
@@ -28,6 +28,7 @@ export class SettingsComponent {
 
   updateRememberMe(){
     this.authService.SetRememberMe(this.rememberMe);
+    this.authService.SetLocalStorageUser();
   }
 
   SaveSettings(){

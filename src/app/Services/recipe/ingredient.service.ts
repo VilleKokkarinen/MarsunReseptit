@@ -1,4 +1,4 @@
-import { Ingredient } from '../components/recipecomponents/ingredient';
+import { Ingredient } from '../../components/recipecomponents/ingredient';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";

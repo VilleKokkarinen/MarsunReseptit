@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MeasuringUnitService } from 'src/app/Services/measuringunit.service';
+import { MeasuringUnitService } from 'src/app/Services/recipe/measuringunit.service';
 import { MeasuringUnit } from 'src/app/components/recipecomponents/measuringunit';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
@@ -60,7 +60,7 @@ export class MeasuringUnitSearchComponent {
       this.newMeasuringUnit.publishDate = new Date;
       this.newMeasuringUnit.publisher = this.authService.userData.id;
 
-      this.measuringUnitService.create(JSON.parse(JSON.stringify(this.newMeasuringUnit))).then((unitData:MeasuringUnit) => {
+      this.measuringUnitService.create(this.newMeasuringUnit).then((unitData:MeasuringUnit) => {
         this.newMeasuringUnit = null;
       });
     }  

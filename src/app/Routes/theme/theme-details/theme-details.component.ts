@@ -5,9 +5,9 @@ import { SettingsService } from 'src/app/Services/settings.service';
 import { Theme } from 'src/app/components/themecomponents/theme';
 import { ThemeLike } from 'src/app/components/themecomponents/themelike';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
-import { ThemeService } from 'src/app/Services/theme.service';
-import { ThemeLikeService } from 'src/app/Services/themelike.service';
-import { ThemeTotalLikesService } from 'src/app/Services/theme_total_likes.service';
+import { ThemeService } from 'src/app/Services/theme/theme.service';
+import { ThemeLikeService } from 'src/app/Services/theme/themelike.service';
+import { ThemeTotalLikesService } from 'src/app/Services/theme/theme_total_likes.service';
 
 @Component({
   selector: 'app-theme-details',
@@ -118,6 +118,9 @@ export class ThemeDetailsComponent {
     })
   }
 
+  isAdmin(){
+    return this.authservice.isAdmin;
+  }
 
   Like(){
     if(this.authservice.userData.id == "")

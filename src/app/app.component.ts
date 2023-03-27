@@ -3,7 +3,7 @@ import { LanguageService } from './Services/language.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SettingsService } from './Services/settings.service';
 import { PrivacyModalComponent } from './UI/modals/privacy-modal/privacy-modal.component';
-import { ThemeService } from './Services/theme.service';
+import { ThemeService } from './Services/theme/theme.service';
 
 @Component({
   selector: 'app-root',

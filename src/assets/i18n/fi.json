@@ -7,6 +7,9 @@
     "TXT_Add_Recipe":"Lisää resepti",
     "TXT_Add_Theme":"Lisää teema",
     "TXT_Settings":"Asetukset",
+    "TXT_Roadmaps":"Kehotukset",
+    "TXT_Add_Roadmap":"Lisää kehotus",
+    "TXT_Change_Log":"Muutos loki",
 
     "TXT_GDPR":"GDPR",
     "TXT_Privacy":"Yksityisyys",
@@ -53,9 +56,10 @@
     "TXT_Simple":"Yksinkertainen",
     "TXT_Description":"Kuvaus",
     "TXT_Recipe_Label":"Resepti: (Voit raahata ja pudottaa / copy paste / ladata max. 3 kuvaa reseptiin.)",
+    "TXT_Roadmap_Label":"Kerro meille ideasi, pyynnöt uusista ominaisuuksista, tai jos löydät bugeja / epäkohtia!",
     "TXT_Save":"Tallenna",
     "TXT_Clear":"Tyhjennä",
-    "TXT_Saved_Succesfully":"Tallennettu onnistuneesti !",
+    "TXT_Saved_Succesfully":"Tallennettu onnistuneesti!",
 
     "TXT_Drag_Drop":"Raahaa ja pudota tänne",
     "TXT_Upload_Image":"Lataa kuva",
@@ -199,7 +203,28 @@
     "TXT_Confirm_Email_Change":"Sähköposti osoite vaihdettu!",
 
 
-    "TXT_Cant_Insert_Image":"Et voi lisätä kuvia (Max 5)"
+    "TXT_Cant_Insert_Image":"Et voi lisätä kuvia (Max 5)",
+
+    "TXT_Select_Priority":"Valitse prioriteetti",
+    "TXT_Select_Status":"Valitse tilanne",
+    "TXT_Select_Type":"Valitse tyyppi",
+
+    "TXT_Idea":"Idea",
+    "TXT_Feature_Request":"Ominaisuus",
+    "TXT_Bug_Report":"Bugi",
+    "TXT_Security":"Turvallisuus",
+    "TXT_Other":"Muu",
+
+    
+    "TXT_Low":"Matala",
+    "TXT_Medium":"Keskitaso",
+    "TXT_High":"Korkea",
+    "TXT_Very_High":"Erittäin korkea",
+
+    "TXT_New":"Uusi",
+    "TXT_Backlogged":"Huomioitu",
+    "TXT_In_Development":"Kehityksessä",
+    "TXT_Done":"Tehty"
 
 
 }

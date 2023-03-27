@@ -1,17 +1,13 @@
-{
-  "database": {
-    "rules": "database.rules.json"
-  },
+{  
   "hosting": {
     "source": "./",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
-  },
-  "firestore": {
-    "rules": "firestore.rules",
-    "indexes": "firestore.indexes.json"
+    ],
+    "frameworksBackend": {
+      "region": "europe-west1"
+    }
   }
 }

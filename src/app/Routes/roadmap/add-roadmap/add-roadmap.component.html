@@ -1,0 +1,43 @@
+<div class="padded-content">
+    <div *ngIf="!submitted">
+      <div class="row roadmap-card">
+        <div class="col-12" style="padding:0;">
+          <div class="row">
+            <div style="display:flex; flex-direction: row;">
+                <label for="Name" style="margin-right: 5px;">{{"TXT_Name" | translate}}</label>
+                <input
+                style="max-width: 150px;margin-right: 10px;"
+                type="text"
+                class="form-control"
+                id="roadmap.Name"
+                required
+                [(ngModel)]="roadmap.name"
+                name="roadmap.Name"
+                />
+                <button (click)="saveRoadmap()" class="btn btn-md btn-success">{{"TXT_Save" | translate}}</button>
+                <button class="btn btn-md btn-danger" style="margin-left:auto;" (click)="newRoadmap()">{{"TXT_Clear" | translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row roadmap-card">
+        <div style="display:flex; flex-direction: row;">
+          <app-roadmap-search type="type" [(selectedOption)]="type"></app-roadmap-search>
+          <app-roadmap-search style="margin-left:10px;" *ngIf="type?.key == 3 || type?.key == 4" type="priority" [(selectedOption)]="priority"></app-roadmap-search>
+        <!--<app-roadmap-search type="status" [(selectedOption)]="status"></app-roadmap-search>-->
+        </div>
+      </div>
+
+      <div class="row roadmap-card">
+        <label for="Roadmap" class="col-12" style="padding-bottom:5px;">{{"TXT_Roadmap_Label" | translate}}</label>
+        <rich-text-editor [(control)]="roadmap.description"></rich-text-editor>
+      </div>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4>{{"TXT_Saved_Succesfully" | translate}}</h4>
+      <button class="btn btn-success" (click)="newRoadmap()">{{"TXT_Add_Roadmap" | translate}}</button>
+    </div>
+  </div>

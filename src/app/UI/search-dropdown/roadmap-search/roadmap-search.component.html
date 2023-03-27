@@ -1,0 +1,15 @@
+<div ngbDropdown #OptionDropDown="ngbDropdown" class="d-inline-block" autoClose="outside">
+    <button type="button" class="btn btn-outline-primary" id="OptionDropDownToggle" ngbDropdownToggle>
+        {{selectOptionData()}}
+        <i [hidden]="OptionDropDown.isOpen()" class="bi bi-caret-down-fill"></i>
+        <i [hidden]="!OptionDropDown.isOpen()" class="bi bi-caret-up-fill"></i>
+    </button>
+    <div ngbDropdownMenu>
+        <div style="overflow-y:auto; max-height:20vh;">
+            <div *ngFor="let Option of Options; let i = index">
+                <div *ngIf="i != 0" class="dropdown-divider"></div>
+                <button (click)="selectOption(Option)" ngbDropdownItem>{{Option.value | translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>

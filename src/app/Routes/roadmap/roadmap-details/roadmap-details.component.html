@@ -1,0 +1,62 @@
+<div class="padded-content">
+    <div class="form-group roadmap-card" *ngIf="Roadmap != undefined">
+   
+        <div class="headercontainer header" *ngIf="!Editing">
+            <div class="header-text">
+                {{Roadmap.name}}
+            </div>
+        </div>
+
+        <div class="headercontainer header" *ngIf="Editing">
+            <input
+            style="max-width:250px; margin-left:10px;"
+            type="text"
+            class="form-control"
+            id="Roadmap.Name"
+            required
+            [(ngModel)]="Roadmap.name"
+            name="Roadmap.Name" />
+        </div>
+    
+        <div class="roadmapcontainer-simple">
+            <div *ngIf="!Editing" [innerHTML]="Roadmap.description"></div>
+    
+            <rich-text-editor *ngIf="Editing" [(control)]="Roadmap.description"></rich-text-editor>
+        </div>
+    </div>
+    
+    <div *ngIf="Editing" class="form-group roadmap-card">
+        <div style="display:flex; flex-direction:row; justify-content:space-around">
+            <button (click)="saveRoadmap()" class="btn btn-md btn-success">Save</button>
+    
+            <button class="btn btn-md btn-danger" (click)="Cancel()">Cancel</button>
+        </div>
+    </div>
+    
+    
+    <div class="form-group roadmap-card">
+        <div style="display:flex; flex-direction:row; justify-content:space-around">
+            <button class="btn btn-outline-primary" style="margin-left:5px; margin-right:auto" (click)="ToggleComment()">{{"TXT_Show_Comments" | translate}}</button>
+            <button class="btn btn-info" style="margin-right:5px;" *ngIf="ShowEdit == true || isAdmin()" (click)="EditRoadmap()">{{"TXT_Edit" | translate}}</button>
+          
+            <button class="btn btn-outline-primary" style="margin-left:5px;margin-right:5px;" (click)="AddComment()">{{"TXT_Leave_Comment" | translate}}</button>
+        </div>
+
+        <div *ngIf="AddingComment === true">
+            <app-add-comment [roadmap]="id" (resultChange)="CommentAdded($event)"></app-add-comment>
+        </div>
+    
+        <div *ngIf="ShowComments == true">
+
+            <div *ngIf="Comments.length === 0">
+                {{"TXT_No_Comments" | translate}}
+            </div>
+           
+            <div *ngFor="let Comment of Comments">
+                <div *ngIf="Comment !== undefined">
+                    <app-commentfield [Comment]="Comment" (deletedComment)="CommentDeleted($event)"></app-commentfield>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

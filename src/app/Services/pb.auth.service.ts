@@ -16,6 +16,8 @@ export class PBAuthService {
 
   rememberMe:boolean = false;
 
+  private userIsAdmin: boolean = false;
+
   @Output() AuthChange = new EventEmitter<PublicUser>()
   
   constructor(
@@ -51,8 +53,14 @@ export class PBAuthService {
       if(user !== null && this.userData.id == "")
         this.userData = user;
       
-        if(this.userData.id != "")
-        this.pb.collection('users').authRefresh()
+        if(this.userData.id != ""){
+          this.pb.collection('users').authRefresh().then(()=>{
+            // OK
+          },()=>{
+            this.pb.admins.authRefresh();
+            this.userIsAdmin = true;
+          })
+        }
     }
   }
 
@@ -61,11 +69,28 @@ export class PBAuthService {
     return this.pb.authStore.isValid;
   }
 
+   // Returns true when user is logged in
+   get isAdmin(): boolean {
+    return this.userIsAdmin;
+  }
+
+  AdminSignIn(email: string, password: string) {
+    return new Promise((resolve, reject)=>{
+      this.pb.admins.authWithPassword(email, password).then((data)=>{
+        resolve("OK")
+        this.userIsAdmin = true;
+        this.router.navigate(['Dashboard']);
+      },(error)=>{
+        console.log(error)
+        reject("Failed");
+      })
+    })
+  }
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return new Promise((resolve, reject)=>{
       this.pb.collection('users').authWithPassword(email, password).then((data)=>{
-        console.log("signin", data)
         resolve("OK")
       },(error)=>{
         console.log(error)

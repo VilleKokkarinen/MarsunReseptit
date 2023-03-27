@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ThemeService } from 'src/app/Services/theme.service';
+import { ThemeService } from 'src/app/Services/theme/theme.service';
 import { Theme } from 'src/app/components/themecomponents/theme';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';

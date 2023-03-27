@@ -1,0 +1,40 @@
+.roadmap-card{
+    padding:10px;
+}
+.roadmap-img{
+    max-height: 8vh;
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+}
+.header{
+    background-color: var(--Dropdown_Bg_Color);
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    font-family: 'Inter UI', sans-serif;
+    margin:10px;
+}
+
+.header-text{
+    padding-left:10px;
+    font-size:calc(100% + 2vw);
+    color: var(--Primary_Text_Color);
+}
+
+.headercontainer{
+    min-height:5vh;
+    max-height:8vh;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.roadmapcontainer-simple{
+    background-color: var(--Dropdown_Bg_Color);
+    color: var(--Primary_Text_Color);
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    font-family: 'Inter UI', sans-serif; 
+    padding:10px;
+    margin:10px;
+}

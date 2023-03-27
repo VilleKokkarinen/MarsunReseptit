@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ThemeService } from 'src/app/Services/theme.service';
+import { ThemeService } from 'src/app/Services/theme/theme.service';
 import { Theme } from 'src/app/components/themecomponents/theme';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';

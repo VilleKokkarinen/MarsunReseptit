@@ -3,9 +3,11 @@ import { PublicUserService } from 'src/app/Services/public-user.service';
 import { PublicUser } from 'src/app/components/shared/user';
 import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
-import { RecipeCommentService } from 'src/app/Services/recipecomment.service';
+import { RecipeCommentService } from 'src/app/Services/recipe/recipecomment.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NotifierService } from 'angular-notifier';
+import { RoadmapComment } from 'src/app/components/roadmapcomponents/roadmapcomment';
+import { RoadmapCommentService } from 'src/app/Services/roadmap/roadmapcomment.service';
 
 @Component({
   selector: 'app-commentfield',
@@ -13,7 +15,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./commentfield.component.css']
 })
 export class CommentfieldComponent implements OnInit {
-  @Input() Comment: RecipeComment|undefined;
+  @Input() Comment: RecipeComment|RoadmapComment|undefined;
   PublicUser:PublicUser|undefined;
   
   ShowEdit:boolean = false;
@@ -25,6 +27,7 @@ export class CommentfieldComponent implements OnInit {
   
   constructor(
     private recipeCommentService:RecipeCommentService, 
+    private roadmapCommentService:RoadmapCommentService,
     private UserService: PublicUserService,
     private authservice:PBAuthService,
     private notifierService: NotifierService,
@@ -40,25 +43,42 @@ export class CommentfieldComponent implements OnInit {
   }
 
   ngOnInit(){
-    if(this.Comment != undefined)
+    if(this.Comment != undefined){
 
-      if(this.Comment.publisher == this.authservice.userData.id) {
-        this.PublicUser = this.authservice.userData;
-        this.ShowEdit = true;
-      }else{
-        this.UserService.getOne(this.Comment.publisher).then((data)=>{
-          this.PublicUser = data;
-          if(this.authservice.userData.id == this.PublicUser.id && this.PublicUser.id != "")
+    if(this.isAdmin()){
+      this.ShowEdit = true;
+      this.UserService.getOne(this.Comment.publisher).then(data => {
+      this.PublicUser = data;
+      })
+    }
+    else if(this.Comment.publisher == this.authservice.userData.id) {
+      this.PublicUser = this.authservice.userData;
+      this.ShowEdit = true;
+    }else{
+      this.UserService.getOne(this.Comment.publisher).then((data)=>{
+        this.PublicUser = data;
+        if(this.authservice.userData.id == this.PublicUser.id && this.PublicUser.id != "")
           this.ShowEdit = true;
         })
       }
+    }
   }
 
-
+  isAdmin(){
+    return this.authservice.isAdmin;
+  }
   
   updateComment(): void {
-    if(this.Comment != undefined && this.authservice.userData.id != ""){
-      this.recipeCommentService.update(this.Comment).then((data) => {
+    const isRecipe = (this.Comment as any).recipe != undefined; // better way ?
+
+    if(this.Comment != undefined && this.authservice.userData.id != "" && isRecipe){
+      this.recipeCommentService.update(this.Comment as RecipeComment).then((data) => {
+        this.Comment = data;
+        this.Editing = false;
+        this.notifierService.notify('success',  this.translate.instant('TXT_Edited_Comment'));
+      });
+    }else if(this.Comment != undefined && this.authservice.userData.id != "" && !isRecipe){
+      this.roadmapCommentService.update(this.Comment as RoadmapComment).then((data) => {
         this.Comment = data;
         this.Editing = false;
         this.notifierService.notify('success',  this.translate.instant('TXT_Edited_Comment'));
@@ -67,8 +87,16 @@ export class CommentfieldComponent implements OnInit {
   }
 
   deleteComment(): void {
-    if(this.Comment != undefined && this.authservice.userData.id != ""){
-      this.recipeCommentService.delete(this.Comment).then(() => {
+    const isRecipe = (this.Comment as any).recipe != undefined;  // better way ?
+
+    if(this.Comment != undefined && this.authservice.userData.id != "" && isRecipe){
+      this.recipeCommentService.delete(this.Comment as RecipeComment).then(() => {
+        this.Editing = false;
+        this.notifierService.notify('success',  this.translate.instant('TXT_Deleted_Comment'));
+        this.deletedComment.emit(this.Comment?.id);
+      });
+    } else if(this.Comment != undefined && this.authservice.userData.id != "" && !isRecipe){
+      this.roadmapCommentService.update(this.Comment as RoadmapComment).then(() => {
         this.Editing = false;
         this.notifierService.notify('success',  this.translate.instant('TXT_Deleted_Comment'));
         this.deletedComment.emit(this.Comment?.id);

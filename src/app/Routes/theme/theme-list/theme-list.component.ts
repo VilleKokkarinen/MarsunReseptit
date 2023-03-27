@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Theme } from 'src/app/components/themecomponents/theme';
 import { SettingsService } from 'src/app/Services/settings.service';
-import { ThemeService } from 'src/app/Services/theme.service';
+import { ThemeService } from 'src/app/Services/theme/theme.service';
 
 @Component({
   selector: 'app-theme-list',

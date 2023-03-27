@@ -1,4 +1,4 @@
-import { Trending_Recipe } from '../components/recipecomponents/recipe';
+import { Trending_Recipe } from 'src/app/components/recipecomponents/recipe';
 import { Injectable } from '@angular/core';
 import PocketBase, { ListResult, RecordService } from "pocketbase";
 import { environment } from 'src/environments/environment';

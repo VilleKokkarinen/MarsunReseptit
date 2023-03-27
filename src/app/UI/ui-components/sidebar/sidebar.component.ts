@@ -40,6 +40,24 @@ export class SidebarComponent {
       "Name":"TXT_Add_Theme",
       "Icon":"palette",
       "Auth":true
+    },
+    {
+      "Route":"Roadmaps",
+      "Name":"TXT_Roadmaps",
+      "Icon":"terminal",
+      "Auth":false
+    },
+    {
+      "Route":"Add-Roadmap",
+      "Name":"TXT_Add_Roadmap",
+      "Icon":"terminal-plus",
+      "Auth":true
+    },
+    {
+      "Route":"Change-Log",
+      "Name":"TXT_Change_Log",
+      "Icon":"card-list",
+      "Auth":false
     }
   ]
 

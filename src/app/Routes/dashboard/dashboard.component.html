@@ -47,15 +47,20 @@
                     <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined">
                         <div (click)="gotoRecipe(TrendingRecipes[0])">
                             <div style="display:flex; flex-direction:column;">
-                                <div *ngIf="TrendingRecipes[0].thumbnail != undefined">
+                                <div *ngIf="TrendingRecipes[0].thumbnail != undefined" style="position:relative;">
                                     <img
                                         class="trending-img"
                                         [src]="TrendingRecipes[0].thumbnail"
                                         alt=""
                                     />
+                                    <div class="recipelikes" *ngIf="TrendingRecipes[0].likes > 0">
+                                        <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(TrendingRecipes[0].likes)}}
+                                    </div>
                                 </div>
-                                <div class="title-text">
-                                    {{TrendingRecipes[0].name}}
+                                <div class="recipe-card-text-container">
+                                    <div class="title-text" >
+                                        {{TrendingRecipes[0].name}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -71,6 +76,9 @@
                                         [src]="Recipe.thumbnail"
                                         alt=""
                                     />
+                                    <div class="recipelikes" *ngIf="Recipe.likes > 0">
+                                        <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(Recipe.likes)}}
+                                    </div>
                                 </div>
                                 <div class="title-text">
                                     {{Recipe.name}}

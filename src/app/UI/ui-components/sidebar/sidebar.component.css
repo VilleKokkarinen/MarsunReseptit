@@ -13,7 +13,9 @@
 }
 @media (min-width: 620px) {
   .sidebar { 
-    display: inline;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: var(--Sidebar_Bg_Color);
@@ -76,4 +78,9 @@
 .sidebar-container.is-active .nav-link  {
   color: var(--Primary_Text_Color);
   text-decoration: underline;
+}
+
+.bottom-route{
+  margin-top: auto;
+  border-top: 1px solid var(--Accent_Border_Color);
 }

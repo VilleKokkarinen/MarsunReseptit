@@ -7,6 +7,9 @@
     "TXT_Add_Recipe":"Add recipe",
     "TXT_Add_Theme":"Add theme",
     "TXT_Settings":"Settings",
+    "TXT_Roadmaps":"Roadmap",
+    "TXT_Add_Roadmap":"Add req.",
+    "TXT_Change_Log":"Change log",
 
     "TXT_GDPR":"GDPR",
     "TXT_Privacy":"Privacy",
@@ -52,9 +55,10 @@
     "TXT_Simple":"Simple",
     "TXT_Description":"Description",
     "TXT_Recipe_Label":"Recipe: (You can drag & drop / copy paste / upload up to 3 images inside the recipe)",
+    "TXT_Roadmap_Label":"Tell us your ideas, feature requests, or report bugs / errors you've found!",
     "TXT_Save":"Save",
     "TXT_Clear":"Clear",
-    "TXT_Saved_Succesfully":"Saved succesfully !",
+    "TXT_Saved_Succesfully":"Saved succesfully!",
 
     "TXT_Drag_Drop":"Drag & Drop here",
     "TXT_Upload_Image":"Upload Image",
@@ -196,7 +200,26 @@
     "TXT_Confirm_Password_Reset":"Password changed!",
     "TXT_Confirm_Email_Change":"email address changed!",
 
-    "TXT_Cant_Insert_Image":"Can't insert images (Max 5)"
+    "TXT_Cant_Insert_Image":"Can't insert images (Max 5)",
 
+    "TXT_Select_Priority":"Choose priority",
+    "TXT_Select_Status":"Choose status",
+    "TXT_Select_Type":"Choose type",
+
+    "TXT_Idea":"Idea",
+    "TXT_Feature_Request":"Feature",
+    "TXT_Security":"Security",
+    "TXT_Bug_Report":"Bug",
+    "TXT_Other":"Other",
+
+    "TXT_Low":"Low",
+    "TXT_Medium":"Medium",
+    "TXT_High":"High",
+    "TXT_Very_High":"Very high",
+
+    "TXT_New":"New",
+    "TXT_Backlogged":"Noticed",
+    "TXT_In_Development":"In development",
+    "TXT_Done":"Done"
 }
   

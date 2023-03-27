@@ -1,6 +1,6 @@
 <div class="sidebarelement">
-    <div class="sidebar">
-        <nav class="nav" *ngFor="let Route of _Routes">
+    <div class="sidebar"> <!-- Bottom 3 routes, roadmap, add roadmap, change log, atleast for now -->
+        <nav class="nav" *ngFor="let Route of _Routes; let i = index" [ngClass]="i == _Routes.length-3 ? 'bottom-route' : '' ">
             <div class="sidebar-container" [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && isLoggedIn)">
                 <i class="bi bi-{{Route.Icon}} flex-icon"></i>
                 <a class="nav-link">

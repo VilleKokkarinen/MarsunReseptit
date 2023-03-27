@@ -1,4 +1,4 @@
-import { RecipeComment } from '../components/recipecomponents/recipecomment';
+import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";

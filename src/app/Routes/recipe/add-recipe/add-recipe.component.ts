@@ -1,5 +1,5 @@
 import { Component, QueryList, ViewChild } from '@angular/core';
-import { RecipeService } from 'src/app/Services/recipe.service';
+import { RecipeService } from 'src/app/Services/recipe/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { RichTextEditorComponent } from 'src/app/UI/rich-text-editor/rich-text-editor.component';
 import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
@@ -47,7 +47,7 @@ export class AddRecipeComponent {
     this.recipe.publisher = this.authservice.userData.id
 
     this.recipe.publishDate = new Date;
-    this.recipeService.create(JSON.parse(JSON.stringify(this.recipe))).then(() => {
+    this.recipeService.create(this.recipe).then(() => {
       this.submitted = true;
     });
     

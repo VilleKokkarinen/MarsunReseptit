@@ -1,0 +1,38 @@
+<form class="px-3 py-1">
+    <div class="mb-3">
+        <label>{{"TXT_Email_Address" | translate}}</label>
+        <input
+            style="color:black !important; background-color: rgb(224, 224, 224) !important;"
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder='{{"TXT_Email_Placeholder" | translate}}'
+            autocomplete="username"
+            #userName
+        />
+    </div>
+    <div class="mb-3">
+        <label>{{"TXT_Password" | translate}}</label>
+        <input
+            style="color:black !important; background-color: rgb(224, 224, 224) !important;"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder='{{"TXT_Password_Placeholder" | translate}}'
+            autocomplete="current-password"
+            #userPassword
+        />
+    </div>
+    <div class="form-check">
+        <input
+        class="form-check-input" 
+        type="checkbox"
+        id="StayLoggedIn"
+        required
+        [(ngModel)]="rememberMe"
+        (ngModelChange)="updateRememberMe()"
+        name="StayLoggedIn" />
+        <label class="form-check-label"> {{"TXT_Remember_Me" | translate}} </label>
+    </div>
+    <button type="button" (click)="authService.AdminSignIn(userName.value, userPassword.value)" class="btn btn-outline-primary">{{"TXT_Login" | translate}}</button>
+</form>

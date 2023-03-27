@@ -1,4 +1,4 @@
-import { ThemeTotalLikes } from '../components/themecomponents/themelike';
+import { ThemeTotalLikes } from '../../components/themecomponents/themelike';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";

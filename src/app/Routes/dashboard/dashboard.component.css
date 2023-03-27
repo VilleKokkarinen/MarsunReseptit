@@ -49,8 +49,8 @@
 }
 
 .dashboard-about .recipe-img-container{
-max-height: 90px;
-width: unset;
+    max-height: 90px;
+    width: unset;
 }
 
 .dashboard-about-text{
@@ -88,7 +88,8 @@ width: unset;
 
 .recipe-img-container{
     width:160px;
-    height:90px
+    height:90px;
+    position:relative;
 }
 
 .trending-img{
@@ -105,4 +106,13 @@ width: unset;
     overflow:hidden;
     max-height: 40px;
     font-size: small;
+}
+.recipelikes{
+    right: 0px;
+    top: 0px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    border-bottom-left-radius: 8px;
+    font-size: 14px;
+    padding-left: 1px;
 }

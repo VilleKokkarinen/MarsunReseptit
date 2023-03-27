@@ -1,0 +1,104 @@
+.roadmap-card{
+    border:1px solid var(--Primary_Border_Color);
+    border-radius: 8px;
+    padding:5px;   
+    margin:10px;
+    margin-top:25px;
+    background-color: var(--Modal_Bg_Color);
+    max-width: 700px;
+}
+
+.roadmap-card:hover{
+  cursor:pointer
+}
+
+.description-text{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    background-color: var(--Primary_Color);
+    color:var(--Accent_Text_Color);
+    overflow-y:auto;
+    max-height: 125px;
+    margin:10px 0px 0px 0px;
+}
+
+.title-text{
+    border:1px solid var(--Accent_Border_Color);
+    border-radius: 8px;
+    background-color: var(--Primary_Color);
+    color:var(--Primary_Text_Color);
+    overflow-y:auto;
+    max-height: 125px;
+    margin:0px 0px 0px 0px;
+    padding:5px;
+    margin:5px;
+}
+
+.Priority1{
+    background-color: rgb(110, 171, 110);
+    color:black;
+}
+
+.Priority2{
+    background-color: rgb(197, 189, 125);
+    color:black;
+}
+
+.Priority3{
+    background-color: rgb(169, 103, 103);
+    color:black;
+}
+
+.Priority4{
+    background-color: rgb(181, 10, 10);
+    color:black;
+}
+
+
+.Type1{
+    background-color: rgb(192, 194, 143);
+    color:black;
+}
+
+.Type2{
+    background-color: rgb(103, 147, 202);
+    color:black;
+}
+
+.Type3{
+    background-color: rgb(106, 106, 106);
+    color:black;
+}
+
+.Type4{
+    background-color: rgb(169, 103, 103);
+    color:black;
+}
+
+.Type5{
+    background-color: rgb(181, 10, 10);
+    color:black;
+}
+
+
+
+
+.Status1{
+    background-color: rgb(181, 10, 10);
+    color:black;
+}
+
+.Status2{
+    background-color: rgb(118, 187, 208);
+    color:black;
+}
+
+.Status3{
+    background-color: rgb(104, 148, 106);
+    color:black;
+}
+
+.Status4{
+    background-color: rgb(22, 184, 22);
+    color:black;
+}

@@ -114,6 +114,7 @@
                 "routes": [
                   "/",
                   "Recipes",
+                  "Themes",
                   "Dashboard"
                 ]
               },

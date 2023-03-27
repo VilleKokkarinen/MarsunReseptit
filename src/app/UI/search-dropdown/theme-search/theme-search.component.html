@@ -14,19 +14,16 @@
                     id="searchTheme"
                     placeholder="{{'TXT_Search' | translate}}"
                     [(ngModel)]="Search"
-                    (ngModelChange)="this.userSearchUpdate.next($event)"
+                    (ngModelChange)="userSearchUpdate.next($event)"
                     name="Search"
                 />
             </div>
         </form>
 
         <div style="overflow-y:auto; max-height:20vh;">
-            <div *ngFor="let Theme of Themes">
-                <div>
-                    <div class="dropdown-divider"></div>
-                    <button (click)="selectTheme(Theme)" ngbDropdownItem>{{Theme.name}}</button>
-                </div>
-              
+            <div *ngFor="let Theme of Themes; let i = index">
+                <div *ngIf="i != 0" class="dropdown-divider"></div>
+                <button (click)="selectTheme(Theme)" ngbDropdownItem>{{Theme.name}}</button>
             </div>
         </div>
        

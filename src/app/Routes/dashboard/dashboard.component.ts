@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
 import { environment } from 'src/environments/environment';
-import { TrendingRecipeService } from 'src/app/Services/trending_recipe.service';
+import { TrendingRecipeService } from 'src/app/Services/recipe/trending_recipe.service';
+import { SharedService } from 'src/app/Services/shared.service';
+import { Trending_Recipe } from 'src/app/components/recipecomponents/recipe';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,9 +13,14 @@ import { TrendingRecipeService } from 'src/app/Services/trending_recipe.service'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  TrendingRecipes:any[]=[];
+  TrendingRecipes:Trending_Recipe[]=[];
   
-  constructor(private recipeService: TrendingRecipeService, private router: Router, private route: ActivatedRoute, private authService:PBAuthService) {
+  constructor(
+    private recipeService: TrendingRecipeService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService:PBAuthService
+    ) {
     this.retrieveRecipes(); 
    }
 
@@ -57,9 +64,11 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  gotoRecipe(recipe: any) {
-    const recipeId = recipe ? recipe.id : null;
-    
-    this.router.navigate(['Recipes/'+recipeId]);
+  gotoRecipe(recipe: Trending_Recipe) {
+    this.router.navigate(['Recipes/'+recipe.id]);
+  }
+
+  numberAbbreviator(number:number){
+    return SharedService.numberAbbreviator(number,1);
   }
 }

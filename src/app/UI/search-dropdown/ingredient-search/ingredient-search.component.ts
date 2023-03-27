@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { IngredientService } from 'src/app/Services/ingredient.service';
+import { IngredientService } from 'src/app/Services/recipe/ingredient.service';
 import { Ingredient } from 'src/app/components/recipecomponents/ingredient';
-import { map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-ingredient-search',
@@ -19,8 +20,17 @@ export class IngredientSearchComponent {
   
   @Output() selectedIngredientChange = new EventEmitter<Ingredient>()
 
+  userSearchUpdate = new Subject<string>();
+
   constructor(private ingredientService: IngredientService, private translate:TranslateService, private authService:PBAuthService) {
     this.retrieveIngredients();
+
+    this.userSearchUpdate.pipe(
+      debounceTime(300),
+      distinctUntilChanged())
+      .subscribe(() => {
+        this.retrieveIngredients();
+      });
    }
 
    selectIngredientData(){
@@ -60,7 +70,7 @@ export class IngredientSearchComponent {
       this.newIngredient.publishDate = new Date;
       this.newIngredient.publisher = this.authService.userData.id;
 
-      this.ingredientService.create(JSON.parse(JSON.stringify(this.newIngredient))).then((unitData:Ingredient) => {
+      this.ingredientService.create(this.newIngredient).then((unitData:Ingredient) => {
         this.newIngredient = null;
       });
     }  

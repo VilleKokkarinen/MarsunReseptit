@@ -1,14 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { RecipeService } from 'src/app/Services/recipe.service';
+import { RecipeService } from 'src/app/Services/recipe/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { RichTextEditorComponent } from 'src/app/UI/rich-text-editor/rich-text-editor.component';
 import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
-import { RecipeLikeService } from 'src/app/Services/recipelike.service';
+import { RecipeLikeService } from 'src/app/Services/recipe/recipelike.service';
 import { RecipeLike } from 'src/app/components/recipecomponents/recipelike';
-import { RecipeTotalLikesService } from 'src/app/Services/recipe_total_likes.service';
-import { RecipeCommentService } from 'src/app/Services/recipecomment.service';
+import { RecipeTotalLikesService } from 'src/app/Services/recipe/recipe_total_likes.service';
+import { RecipeCommentService } from 'src/app/Services/recipe/recipecomment.service';
 import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment';
 
 @Component({
@@ -68,7 +68,7 @@ export class RecipeDetailsComponent implements OnInit {
 
     this.recipeLikeService.HaveILikedThisRecipe(this.id).then(data => {
       if(data == null){
-      this.AllowUserToLike = true
+        this.AllowUserToLike = true
       }else{
         this.LikeData = data;
       }
@@ -76,6 +76,10 @@ export class RecipeDetailsComponent implements OnInit {
     },()=>{ // error means, user has NOT liked the recipe yet
       this.AllowUserToLike = true
     })
+  }
+
+  isAdmin(){
+    return this.authservice.isAdmin;
   }
 
   ToggleComment(){
@@ -115,7 +119,6 @@ export class RecipeDetailsComponent implements OnInit {
         })
         othersComments.then(()=>{
           this.Comments.push(...fetchedComments);
-          console.log(this.Comments)
         })
       })
     }
@@ -125,12 +128,13 @@ export class RecipeDetailsComponent implements OnInit {
     this.AddingComment = !this.AddingComment;
   }
 
-  CommentAdded(result:RecipeComment|null){
+  CommentAdded(result:any){
     if(result != null){
       this.Comments.splice(0,0,result);
     }
     this.AddingComment = false;
   }
+
   CommentDeleted(result:string|null){
     if(result != null){
       var index = this.Comments.findIndex(x => x.id == result);
@@ -200,11 +204,11 @@ export class RecipeDetailsComponent implements OnInit {
       this.ThumbnailImage.SaveImage();
     }
     
-    
-    this.recipeService.update(JSON.parse(JSON.stringify(this.Recipe))).then((data) => {
-      this.Recipe = data;
-     this.Editing = false;
-    });
-    
+    if(this.Recipe != undefined){
+      this.recipeService.update(this.Recipe).then((data) => {
+        this.Recipe = data;
+      this.Editing = false;
+      });
+    }
   }
 }

@@ -1,5 +1,5 @@
-import { Theme } from '../components/themecomponents/theme';
-import { SettingsService } from './settings.service';
+import { Theme } from 'src/app/components/themecomponents/theme';
+import { SettingsService } from '../settings.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";

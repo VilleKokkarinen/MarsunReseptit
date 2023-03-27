@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { RecipeService } from 'src/app/Services/recipe.service';
+import { RecipeService } from 'src/app/Services/recipe/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
-import { map } from 'rxjs/operators';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
