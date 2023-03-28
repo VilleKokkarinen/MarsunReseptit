@@ -36,7 +36,7 @@ export class AccountDropdownComponent {
 
       this.authService.AuthChange.subscribe((data) => { // subscribe to login event
         this.userData = data;
-      });  
+      });
       
       this.redirectUrl = environment.oauth.redirectUrl;
 

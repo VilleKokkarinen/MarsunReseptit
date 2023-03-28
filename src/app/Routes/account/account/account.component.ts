@@ -21,7 +21,7 @@ export class AccountComponent {
   };
   
   constructor(private authService: PBAuthService, private privateUserService:PrivateUserService) {
-    this.userData = this.authService.userData;
+    this.userData = JSON.parse(JSON.stringify(this.authService.userData));
     this.privateUserService.getOne(this.userData.id).then((data)=>{
       this.userEmailVerified = data.verified
     })
@@ -32,7 +32,7 @@ export class AccountComponent {
       if(this.ThumbnailImage){
         this.ThumbnailImage.SaveImage();
       }
-  
+      this.authService.userData = this.userData;
       this.authService.UpdatePublicUserData(this.userData);
     }
   }

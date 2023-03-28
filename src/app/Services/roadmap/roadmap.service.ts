@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";
 import { environment } from 'src/environments/environment';
+import { LoadingSpinnerService } from '../loading-spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -73,9 +74,18 @@ public static Statuses:{key:number,value:string}[] = [
 pb:PocketBase;
 collection:RecordService;
 
-constructor() {
+constructor(private loader: LoadingSpinnerService) {
   this.pb = new PocketBase(environment.pocketbaseUrl);
   this.collection = this.pb.collection('roadmaps');
+  this.collection.client.beforeSend = function (url, options) {
+    loader.addRequest();
+      return { url, options }
+  };
+  
+  this.collection.client.afterSend = function (response, data) {
+    loader.reduceRequest();
+    return data;
+  };
 }
 
 get(id: string): Observable<Roadmap> {

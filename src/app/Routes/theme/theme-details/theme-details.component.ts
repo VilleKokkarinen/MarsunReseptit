@@ -21,6 +21,7 @@ export class ThemeDetailsComponent {
   ShowEdit:boolean = false;
   Editing:boolean = false;
   AllowUserToLike:boolean = false;
+  AllowUserToDislike:boolean = false;
   LikeData:ThemeLike|undefined;
   Likes:number = 0;
   
@@ -111,6 +112,7 @@ export class ThemeDetailsComponent {
       this.AllowUserToLike = true
       }else{
         this.LikeData = data;
+        this.AllowUserToDislike = true;
       }
 
     },()=>{ // error means, user has NOT liked the theme yet
@@ -133,9 +135,10 @@ export class ThemeDetailsComponent {
     Like.publisher = this.authservice.userData.id;
     Like.publishDate = new Date;
 
+    this.AllowUserToLike = false;
     this.themeLikeService.create(Like).then((data)=>{
       this.LikeData = data;
-      this.AllowUserToLike = false;
+      this.AllowUserToDislike = true;
       this.Likes ++;
     })
   }
@@ -146,12 +149,15 @@ export class ThemeDetailsComponent {
       return;
     }
 
-    if(this.LikeData != undefined)
-    this.themeLikeService.delete(this.LikeData).then(()=>{
-      this.LikeData = undefined;
-      this.AllowUserToLike = true;
-      this.Likes --;
-    })
+    
+    if(this.LikeData != undefined){
+      this.AllowUserToDislike = false;
+      this.themeLikeService.delete(this.LikeData).then(()=>{
+        this.LikeData = undefined;
+        this.AllowUserToLike = true;
+        this.Likes --;
+      })
+    }
   }
 
   retrieveTheme(): void {

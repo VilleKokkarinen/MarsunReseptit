@@ -255,6 +255,7 @@ export class PBAuthService {
         this.userData = data;
         this.notifierService.notify('success', this.translate.instant('TXT_Updated_Public_User_Data'));
         this.SetLocalStorageUser();
+        this.AuthChange.emit(this.userData);
       },(err)=>{
         console.log(err);
         this.notifierService.notify('error', this.translate.instant('TXT_Failed_To_Update_Public_User_Data'));

@@ -1,18 +1,31 @@
 import { Image, ImageEOL } from '../components/shared/image';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import PocketBase from "pocketbase";
+import PocketBase, { RecordService } from "pocketbase";
 import { SharedService } from './shared.service';
 import { environment } from 'src/environments/environment';
+import { LoadingSpinnerService } from './loading-spinner.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
   pb:PocketBase;
-
-  constructor() {
+  collection:RecordService;
+  
+  constructor(private loader: LoadingSpinnerService) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
+    this.collection = this.pb.collection('images');
+
+    this.collection.client.beforeSend = function (url, options) {
+      loader.addRequest();
+        return { url, options }
+    };
+    
+    this.collection.client.afterSend = function (response, data) {
+      loader.reduceRequest();
+      return data;
+    };
   }
 
   static blobToBase64(blob:Blob) {
@@ -47,7 +60,7 @@ export class ImageService {
 
   getImageFILEURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getOne(id, {"$autoCancel": false}).then((record)=>{
+      this.collection.getOne(id, {"$autoCancel": false}).then((record)=>{
       const firstFilename = record['data'];
       const url = this.pb.getFileUrl(record, firstFilename);
       resolve(url)
@@ -60,7 +73,7 @@ export class ImageService {
 
   getImageURL(id:string): Promise<string> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getOne<Image>(id, {"$autoCancel": false}).then((record)=>{
+      this.collection.getOne<Image>(id, {"$autoCancel": false}).then((record)=>{
       resolve(record.url)
       },(err)=>{
         console.log(err)
@@ -71,7 +84,7 @@ export class ImageService {
 
   getImageByURL(url:string): Promise<Image> {
     return new Promise((resolve,reject) => {
-      this.pb.collection('images').getFirstListItem<Image>('url="'+url.normalize()+'"').then((record)=>{
+      this.collection.getFirstListItem<Image>('url="'+url.normalize()+'"').then((record)=>{
         resolve(record)
       },(err)=>{
         console.log(err)
@@ -87,7 +100,7 @@ export class ImageService {
         formData.append('publisher', image.publisher);
         formData.append('data', image.data);
         formData.append('url', "temp");
-        const createdRecord = this.pb.collection('images').create(formData, {"$autoCancel": false})
+        const createdRecord = this.collection.create(formData, {"$autoCancel": false})
         createdRecord.then(data=>{
           const firstFilename = data['data'];
           const url = this.pb.getFileUrl(data, firstFilename);
@@ -104,7 +117,7 @@ export class ImageService {
     return new Promise((resolve,reject) => {
       const formData = new FormData();
       formData.append('url', image.url);
-      const updatedImage = this.pb.collection('images').update(image.id, formData, {"$autoCancel": false})
+      const updatedImage = this.collection.update(image.id, formData, {"$autoCancel": false})
       updatedImage.then(data=>{
         resolve("OK");
       },(err)=>{
@@ -162,7 +175,7 @@ export class ImageService {
 
   deleteImage(image:Image): Promise<Image|string> {
     return new Promise((resolve,reject) => {
-      const updatedRecord = this.pb.collection('images').delete(image.id, {"$autoCancel": false})
+      const updatedRecord = this.collection.delete(image.id, {"$autoCancel": false})
       updatedRecord.then(data=>{
         resolve("OK");
       },(err)=>{

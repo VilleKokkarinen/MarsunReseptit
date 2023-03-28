@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";
 import { environment } from 'src/environments/environment';
 import { PBAuthService } from '../pb.auth.service';
+import { LoadingSpinnerService } from '../loading-spinner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +13,21 @@ export class ThemeLikeService {
   pb:PocketBase;
   collection:RecordService;
 
-  constructor(private authService:PBAuthService) {
+  constructor(
+    private loader: LoadingSpinnerService,
+    private authService:PBAuthService
+    ) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
     this.collection = this.pb.collection('theme_likes');
+    this.collection.client.beforeSend = function (url, options) {
+      loader.addRequest();
+        return { url, options }
+    };
+    
+    this.collection.client.afterSend = function (response, data) {
+      loader.reduceRequest();
+      return data;
+    };
   }
 
   get(id: string): Observable<ThemeLike> {
@@ -50,6 +63,7 @@ export class ThemeLikeService {
   }
 
   create(item: ThemeLike): Promise<ThemeLike> {
+    item.themepublisher = item.theme + this.authService.userData.id;
     return this.collection.create<ThemeLike>(item);
   }
 

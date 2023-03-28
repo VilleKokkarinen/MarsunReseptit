@@ -23,6 +23,7 @@ export class RecipeDetailsComponent implements OnInit {
   ShowEdit:boolean = false;
   Editing:boolean = false;
   AllowUserToLike:boolean = false;
+  AllowUserToDislike:boolean = false;
   LikeData:RecipeLike|undefined;
   Likes:number = 0;
   
@@ -71,6 +72,7 @@ export class RecipeDetailsComponent implements OnInit {
         this.AllowUserToLike = true
       }else{
         this.LikeData = data;
+        this.AllowUserToDislike = true;
       }
 
     },()=>{ // error means, user has NOT liked the recipe yet
@@ -158,9 +160,11 @@ export class RecipeDetailsComponent implements OnInit {
     Like.publisher = this.authservice.userData.id;
     Like.publishDate = new Date;
 
+    this.AllowUserToLike = false;
+
     this.recipeLikeService.create(Like).then((data)=>{
       this.LikeData = data;
-      this.AllowUserToLike = false;
+      this.AllowUserToDislike = true;
       this.Likes ++;
     })
   }
@@ -171,12 +175,14 @@ export class RecipeDetailsComponent implements OnInit {
       return;
     }
 
-    if(this.LikeData != undefined)
-    this.recipeLikeService.delete(this.LikeData).then(()=>{
-      this.LikeData = undefined;
-      this.AllowUserToLike = true;
-      this.Likes --;
-    })
+    if(this.LikeData != undefined){
+      this.AllowUserToDislike = false;
+      this.recipeLikeService.delete(this.LikeData).then(()=>{
+        this.LikeData = undefined;
+        this.AllowUserToLike = true;
+        this.Likes --;
+      })
+    }
   }
 
   retrieveRecipe(): void {

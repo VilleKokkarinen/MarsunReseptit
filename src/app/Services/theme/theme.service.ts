@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import PocketBase, { ListResult, RecordService } from "pocketbase";
 import { environment } from 'src/environments/environment';
+import { LoadingSpinnerService } from '../loading-spinner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +15,26 @@ export class ThemeService {
 
   currentlyTestingTheme:boolean = false;
 
-  constructor(private settingsService:SettingsService) {
+  constructor(
+    private loader: LoadingSpinnerService,
+    private settingsService:SettingsService
+    ) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
     this.collection = this.pb.collection('themes');
 
     this.settingsService.SettingsChange.subscribe((newSettings)=>{
       this.applyTheme(newSettings.Theme)
     })
+
+    this.collection.client.beforeSend = function (url, options) {
+      loader.addRequest();
+        return { url, options }
+    };
+    
+    this.collection.client.afterSend = function (response, data) {
+      loader.reduceRequest();
+      return data;
+    };
   }
 
   applyTheme(Theme:Theme){

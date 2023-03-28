@@ -14,10 +14,14 @@
             {{version}}
           </div>
         </div>
-      <div class="col-2" [ngClass]="Settings.Show_Sidebar == false ? 'showroutedropdown' : 'routedropdown'" style="padding-left:25px;">
+       
+      <div [ngClass]="Settings.Show_Sidebar == false ? 'showroutedropdown' : 'routedropdown'" style="margin-left:5px; margin-right:5px;">
         <app-route-dropdown></app-route-dropdown>
       </div>
-      <div class="col-2" style="display:flex; justify-content: flex-end; margin-left:auto; margin-right:10px;">
+      <div style="display:flex; justify-content: flex-end; margin-left:auto; margin-right:5px;">
+        <app-small-spinner></app-small-spinner>
+      </div>
+      <div style="display:flex; justify-content: flex-end; margin-right:10px;">
         <account-dropdown></account-dropdown>
       </div>
     </div>

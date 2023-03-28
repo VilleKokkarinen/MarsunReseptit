@@ -103,7 +103,7 @@
             <button class="btn btn-info" style="margin-right:5px;" *ngIf="ShowEdit == true || isAdmin()" (click)="EditTheme()">{{"TXT_Edit_Theme" | translate}}</button>
             <button class="btn btn-success" style="margin-left:5px;margin-right:5px;" *ngIf="AllowUserToLike === true" (click)="Like()">{{"TXT_Like" | translate}} <i class="bi bi-hand-thumbs-up"> </i> </button>
             
-            <button class="btn btn-danger" style="margin-left:5px;margin-right:5px;" *ngIf="LikeData !== undefined" (click)="RemoveLike()">{{"TXT_Remove_Like" | translate}} <i class="bi bi-hand-thumbs-down"> </i> </button>
+            <button class="btn btn-danger" style="margin-left:5px;margin-right:5px;" *ngIf="LikeData !== undefined && AllowUserToDislike === true" (click)="RemoveLike()">{{"TXT_Remove_Like" | translate}} <i class="bi bi-hand-thumbs-down"> </i> </button>
         </div>
     </div>
 </div>
