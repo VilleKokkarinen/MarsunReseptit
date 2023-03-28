@@ -10,4 +10,7 @@
 .form-control::placeholder {
     color:black !important;
     opacity: 1;
-  }
+}
+.form-control{
+    color:black !important; background-color: rgb(224, 224, 224) !important;
+}

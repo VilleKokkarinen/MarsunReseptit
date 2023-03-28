@@ -170,6 +170,7 @@
 
     "TXT_Verify_Account_First":"Vahvista tilisi ensin sähköpostiisi lähetetyllä viestillä.",
     "TXT_Updated_Public_User_Data":"Päivitetty julkiset tilin tiedot",
+    "TXT_Failed_To_Update_Public_User_Data":"Päivitys epäonnistui. (Nimessä saa olla kirjaimia, numeroita, ja välilyönti kirjainten välissä)",
 
     "TXT_Show_Comments":"Näytä kommentit",
     "TXT_Edit_Recipe":"Muuta reseptiä",
@@ -224,7 +225,8 @@
     "TXT_New":"Uusi",
     "TXT_Backlogged":"Huomioitu",
     "TXT_In_Development":"Kehityksessä",
-    "TXT_Done":"Tehty"
+    "TXT_Done":"Tehty",
 
+    "TXT_Loading":"Lataa..."
 
 }

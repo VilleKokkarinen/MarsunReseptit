@@ -169,6 +169,7 @@
 
     "TXT_Verify_Account_First":"Verify your account first with the verification message sent to your email",
     "TXT_Updated_Public_User_Data":"Updated public account details",
+    "TXT_Failed_To_Update_Public_User_Data":"Updating failed. (Name may contain letters, numbers and a space between characters)",
 
     "TXT_Show_Comments":"Show comments",
     "TXT_Edit_Recipe":"Edit recipe",
@@ -220,6 +221,8 @@
     "TXT_New":"New",
     "TXT_Backlogged":"Noticed",
     "TXT_In_Development":"In development",
-    "TXT_Done":"Done"
+    "TXT_Done":"Done",
+
+    "TXT_Loading":"Loading..."
 }
   

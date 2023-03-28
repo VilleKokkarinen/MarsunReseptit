@@ -25,7 +25,7 @@
       <div class="row roadmap-card">
         <div style="display:flex; flex-direction: row;">
           <app-roadmap-search type="type" [(selectedOption)]="type"></app-roadmap-search>
-          <app-roadmap-search style="margin-left:10px;" *ngIf="type?.key == 3 || type?.key == 4" type="priority" [(selectedOption)]="priority"></app-roadmap-search>
+          <app-roadmap-search style="margin-left:10px;" *ngIf="type?.key == 4 || type?.key == 5" type="priority" [(selectedOption)]="priority"></app-roadmap-search>
         <!--<app-roadmap-search type="status" [(selectedOption)]="status"></app-roadmap-search>-->
         </div>
       </div>

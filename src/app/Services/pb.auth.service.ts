@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { PublicUserService } from './public-user.service';
 import { NotifierService } from 'angular-notifier';
 import { TranslateService } from '@ngx-translate/core';
+import { LoadingSpinnerService } from './loading-spinner.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,8 @@ export class PBAuthService {
     public router: Router,
     private publicUserService:PublicUserService,
     private notifierService: NotifierService,
-    private translate:TranslateService
+    private translate:TranslateService,
+    private loader:LoadingSpinnerService
   ) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
     this.GetRememberMe();
@@ -90,28 +92,40 @@ export class PBAuthService {
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return new Promise((resolve, reject)=>{
-      this.pb.collection('users').authWithPassword(email, password).then((data)=>{
+      this.loader.setFSLoading(true);
+      this.pb.collection('users').authWithPassword(email, password).then(()=>{
         resolve("OK")
+        this.loader.setFSLoading(false);
       },(error)=>{
         console.log(error)
         reject("Failed");
+        this.loader.setFSLoading(false);
       })
     })
   }
 
-   // Sign in with email/password
+   // Create user with email/password
    SignUp(email: string, password: string, passwordconfirm:string) {
     return new Promise((resolve, reject)=>{
-      this.pb.collection('users').create({email, password, passwordConfirm: passwordconfirm}).then((data)=>{
+      this.loader.setFSLoading(true);
+      this.pb.collection('users').create({email, password, passwordConfirm: passwordconfirm}).then(()=>{
 
         this.notifierService.notify('success', this.translate.instant('TXT_Signup_success'));
 
         this.SendVerificationMail(email).then(()=>{
-          resolve("OK")
+          this.SignIn(email,password).then(()=>{
+            this.loader.setFSLoading(false);
+            resolve("OK")
+          },(error)=>{
+            console.log(error)
+            this.loader.setFSLoading(false);
+          })
+        },(error)=>{
+          console.log(error)
+          this.loader.setFSLoading(false);
         })
-
       },(error)=>{
-
+        this.loader.setFSLoading(false);
         this.notifierService.notify('error', this.translate.instant('TXT_Signup_fail'));
 
         console.log(error)
@@ -243,6 +257,7 @@ export class PBAuthService {
         this.SetLocalStorageUser();
       },(err)=>{
         console.log(err);
+        this.notifierService.notify('error', this.translate.instant('TXT_Failed_To_Update_Public_User_Data'));
       })
     
     }
@@ -295,6 +310,8 @@ export class PBAuthService {
     this.pb.authStore.clear();
     localStorage.removeItem('provider');
     localStorage.removeItem('user');
+    localStorage.removeItem('pocketbase_auth');
+    localStorage.removeItem('rememberMe');
 
     this.userData = new PublicUser();
     this.router.navigate(['Dashboard']);

@@ -36,7 +36,8 @@ import { HeaderComponent } from './UI/ui-components/header/header.component';
 import { AccountDropdownComponent } from './UI/ui-components/header/account-dropdown/account-dropdown.component';
 import { FooterComponent } from './UI/ui-components/footer/footer.component';
 import { ErrorComponent } from './UI/ui-components/error/error.component';
-import { LoadingComponent } from './UI/ui-components/loading/loading.component';
+import { SmallLoadingSpinner } from './UI/ui-components/loading-spinner/small-spinner/small-spinner.component';
+import { FullScreenSpinnerComponent } from './UI/ui-components/loading-spinner/full-screen-spinner/full-screen-spinner.component';
 import { SidebarComponent } from './UI/ui-components/sidebar/sidebar.component';
 
 
@@ -113,7 +114,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HeaderComponent,
     ErrorComponent,
-    LoadingComponent,
+    SmallLoadingSpinner,
+    FullScreenSpinnerComponent,
     SidebarComponent,
     DashboardComponent,
     AddRecipeComponent,
