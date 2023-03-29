@@ -1,13 +1,12 @@
 .theme-card{
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
-    padding:5px;   
-    margin:10px;
+    padding:5px;
     margin-top:25px;
     background-color: var(--Modal_Bg_Color);
     max-width: 500px;
     overflow:auto;
-    width:fit-content;
+    width:100%;
     transition: background-color color 1250ms ease-in-out;
 }
 
@@ -21,8 +20,8 @@
 
 .theme-preview{
     border:1px solid;
-    padding:25px;
-    margin:10px;
+    padding:10px;
+    margin:5px;
     border-radius: 8px;
     display:flex;
     flex-direction: column;

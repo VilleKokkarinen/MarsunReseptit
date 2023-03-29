@@ -38,6 +38,16 @@ export class ThemeService {
   }
 
   applyTheme(Theme:Theme){
+    if(this.currentlyTestingTheme === true) // stop testing, if you actually want another theme
+    this.currentlyTestingTheme = false;
+
+    for (const [k, v] of Object.entries(Theme.theme)) {
+      document.documentElement.style.setProperty(k, v);
+    }
+  }
+
+
+  testApplyTheme(Theme:Theme){
     for (const [k, v] of Object.entries(Theme.theme)) {
       document.documentElement.style.setProperty(k, v);
     }
@@ -46,11 +56,13 @@ export class ThemeService {
   testTheme(Theme:Theme){
     if(this.currentlyTestingTheme === false && Theme.id != this.settingsService.Settings.Theme.id){
       this.currentlyTestingTheme = true;
-      this.applyTheme(Theme);
+      this.testApplyTheme(Theme);
       setTimeout(() => {
-        this.applyTheme(this.settingsService.Settings.Theme);
-        this.currentlyTestingTheme = false;
-      }, 3500);
+        if(this.currentlyTestingTheme === true){ // check if user selected other theme in the meantime
+          this.testApplyTheme(this.settingsService.Settings.Theme);
+          this.currentlyTestingTheme = false;
+        }
+      }, 5000);
     }
   }
 

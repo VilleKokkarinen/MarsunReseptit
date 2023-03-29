@@ -1,7 +1,8 @@
 .sidebar-container {
   width: 100%;
-  height:3vh;
-  min-height:25px;
+  height: 5svh;
+  max-height:75px;
+  min-height:35px;
   align-items: center;
   display: flex;
   flex-flow: row nowrap;

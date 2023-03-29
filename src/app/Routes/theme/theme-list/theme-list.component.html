@@ -10,76 +10,73 @@
                 name="Search"
             />
         </div>
-        <div *ngFor="let Theme of Themes">
-            <div class="theme-card" [ngStyle]='{"background-color":Theme.theme["--MainContent_Bg_Color"]}'>
-                <div style="display:flex; flex-direction:row;">
-                    <div style="height:fit-content;">
-                        <div class="theme-preview" style="display:flex; flex-direction:row; padding: 0px; margin: 10px 10px; justify-content: space-between;" [ngStyle]='{
-                            "background-color":Theme.theme["--MainContent_Bg_Color"],
-                            "border":"none"
+            <div class="theme-card" [ngStyle]='{"background-color":Theme.theme["--MainContent_Bg_Color"]}' *ngFor="let Theme of Themes">
+                
+                <div style="height:fit-content;display:flex; flex-direction:column;">
+                    <div class="theme-preview" style="display:flex; flex-direction:row; padding: 0px; margin: 10px 10px; justify-content: space-between;" [ngStyle]='{
+                        "background-color":Theme.theme["--MainContent_Bg_Color"],
+                        "border":"none"
+                        }'>
+                        <button type="button" class="btn btn-outline-primary" style="width: 50%; margin-right: 10px; margin-left:0px;" (click)="tryTheme(Theme)" [ngStyle]='
+                        {
+                            "background-color":Theme.theme["--Primary_Color"],
+                            "color":Theme.theme["--Primary_Text_Color"],
+                            "border-color":Theme.theme["--Primary_Border_Color"]
+                        }'> {{"TXT_Try" | translate}}  {{Theme.name}}
+                        </button>
+                        <button type="button" class="btn btn-outline-primary" style="width: 50%; margin-left: 10px; margin-right:0px;" (click)="selectTheme(Theme)" [ngStyle]='
+                        {
+                            "background-color":Theme.theme["--Dropdown_Bg_Color"],
+                            "color":Theme.theme["--Primary_Text_Color"],
+                            "border-color":Theme.theme["--Accent_Border_Color"]
+                        }'> {{"TXT_Select_Theme" | translate}} 
+                        </button>
+                    </div>
+                    
+
+                    <div (click)="gotoTheme(Theme)" class="pointer" style="display:flex; flex-direction:row; padding: 0px; margin: 10px 10px; justify-content: space-between;">
+                        <div class="theme-preview" style="width: 50%; margin-right: 10px; margin-left:0px;" [ngStyle]='{
+                            "background-color":Theme.theme["--Dropdown_Bg_Color"],
+                            "border-color":Theme.theme["--Primary_Border_Color"]
                             }'>
-                            <button type="button" class="btn btn-outline-primary" style="width: 50%; margin-right: 10px; margin-left:0px;" (click)="tryTheme(Theme)" [ngStyle]='
+                            <button class="btn btn-outline-primary" [ngStyle]='
+                                {
+                                    "background-color":Theme.theme["--Complement_Color"],
+                                    "color":Theme.theme["--Complement_Text_Color"],
+                                    "border-color":Theme.theme["--Accent_Border_Color"]
+                                }'> {{Theme.name}}
+                            </button>
+                            <button class="btn btn-outline-primary" [ngStyle]='
+                            {
+                                "background-color":Theme.theme["--Accent_Color"],
+                                "color":Theme.theme["--Accent_Text_Color"],
+                                "border-color":Theme.theme["--Accent_Border_Color"]
+                            }'> {{Theme.name}}
+                            </button>
+                        </div>
+                        <div class="theme-preview" style="width: 50%; margin-left: 10px; margin-right:0px;" [ngStyle]='{
+                            "background-color":Theme.theme["--Modal_Bg_Color"],
+                            "border-color":Theme.theme["--Accent_Border_Color"]
+                            }'>
+                            <button class="btn btn-outline-primary" [ngStyle]='
                             {
                                 "background-color":Theme.theme["--Primary_Color"],
                                 "color":Theme.theme["--Primary_Text_Color"],
                                 "border-color":Theme.theme["--Primary_Border_Color"]
-                            }'> {{"TXT_Try" | translate}}  {{Theme.name}}
+                            }'> {{Theme.name}}
                             </button>
-                            <button type="button" class="btn btn-outline-primary" style="width: 50%; margin-left: 10px; margin-right:0px;" (click)="selectTheme(Theme)" [ngStyle]='
+
+                            <button class="btn btn-outline-primary" [ngStyle]='
                             {
-                                "background-color":Theme.theme["--Dropdown_Bg_Color"],
-                                "color":Theme.theme["--Primary_Text_Color"],
+                                "background-color":Theme.theme["--Complement_Color"],
+                                "color":Theme.theme["--Accent_Text_Color"],
                                 "border-color":Theme.theme["--Accent_Border_Color"]
-                            }'> {{"TXT_Select_Theme" | translate}} 
+                            }'> {{Theme.name}}
                             </button>
                         </div>
-                       
-
-                        <div (click)="gotoTheme(Theme)" class="pointer" style="display:flex; flex-direction:row;">
-                            <div class="theme-preview" [ngStyle]='{
-                                "background-color":Theme.theme["--Dropdown_Bg_Color"],
-                                "border-color":Theme.theme["--Primary_Border_Color"]
-                                }'>
-                                <button class="btn btn-outline-primary" [ngStyle]='
-                                    {
-                                        "background-color":Theme.theme["--Complement_Color"],
-                                        "color":Theme.theme["--Complement_Text_Color"],
-                                        "border-color":Theme.theme["--Accent_Border_Color"]
-                                    }'> {{Theme.name}}
-                                </button>
-                                <button class="btn btn-outline-primary" [ngStyle]='
-                                {
-                                    "background-color":Theme.theme["--Accent_Color"],
-                                    "color":Theme.theme["--Accent_Text_Color"],
-                                    "border-color":Theme.theme["--Accent_Border_Color"]
-                                }'> {{Theme.name}}
-                                </button>
-                            </div>
-                            <div class="theme-preview" [ngStyle]='{
-                                "background-color":Theme.theme["--Modal_Bg_Color"],
-                                "border-color":Theme.theme["--Accent_Border_Color"]
-                                }'>
-                                <button class="btn btn-outline-primary" [ngStyle]='
-                                {
-                                    "background-color":Theme.theme["--Primary_Color"],
-                                    "color":Theme.theme["--Primary_Text_Color"],
-                                    "border-color":Theme.theme["--Primary_Border_Color"]
-                                }'> {{Theme.name}}
-                                </button>
-
-                                <button class="btn btn-outline-primary" [ngStyle]='
-                                {
-                                    "background-color":Theme.theme["--Complement_Color"],
-                                    "color":Theme.theme["--Accent_Text_Color"],
-                                    "border-color":Theme.theme["--Accent_Border_Color"]
-                                }'> {{Theme.name}}
-                                </button>
-                            </div>
-                        </div>
-                       
                     </div>
                 </div>
-            </div>
+           
         </div>
     </div>
 </div>
