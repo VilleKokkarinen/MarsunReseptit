@@ -4,7 +4,7 @@
             <div class="sidebar-container" [ngClass]="i == _Routes.length-1 ? 'last-container' : '' " [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && isLoggedIn)">
                 <i class="bi bi-{{Route.Icon}} flex-icon"></i>
                 <a class="nav-link">
-                    <span> {{Route.Name | translate}} </span> {{i}} {{_Routes.length}}
+                    <span> {{Route.Name | translate}} </span>
                 </a>
             </div>
         </div>
