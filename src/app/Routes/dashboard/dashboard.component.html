@@ -1,6 +1,6 @@
 <div class="padded-content">
     <div style="max-width: 850px;">
-        <div class="form-group dashboard-card">
+        <div class="form-group dashboard-card" style="padding:0">
 
             <div class="dashboard-about-title">
                 <div class="dashboard-about-text">
@@ -45,7 +45,7 @@
         <div class="form-group dashboard-card">
             <label for="Trending" class="dashboard-label">{{"TXT_Trending_Recipes" | translate}}</label>
             <div class="row">
-                <div class="col-xs-12 col-sm-10 col-md-6">
+                <div class="big-recipe-card-container">
                     <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined">
                         <div (click)="gotoRecipe(TrendingRecipes[0])">
                             <div style="display:flex; flex-direction:column;">
@@ -68,24 +68,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-10 col-md-6" style="flex-wrap:wrap; display:flex;">
-                    <div *ngFor="let Recipe of TrendingRecipes | slice:1" class="mini-recipe-card">
-                        <div (click)="gotoRecipe(Recipe)">
-                            <div style="display:flex; flex-direction:column;">
-                                <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
-                                    <img
-                                        class="recipe-img"
-                                        [src]="Recipe.thumbnail"
-                                        alt=""
-                                    />
-                                    <div class="recipelikes" *ngIf="Recipe.likes > 0">
-                                        <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(Recipe.likes)}}
-                                    </div>
-                                </div>
-                                <div class="title-text">
-                                    {{Recipe.name}}
-                                </div>
+                <div class="small-recipe-card-container">
+                    <div *ngFor="let Recipe of TrendingRecipes | slice:1" class="mini-recipe-card" (click)="gotoRecipe(Recipe)">
+                        <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
+                            <img
+                                class="recipe-img"
+                                [src]="Recipe.thumbnail"
+                                alt=""
+                            />
+                            <div class="recipelikes" *ngIf="Recipe.likes > 0">
+                                <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(Recipe.likes)}}
                             </div>
+                        </div>
+                        <div class="title-text">
+                            {{Recipe.name}}
                         </div>
                     </div>
                 </div>
