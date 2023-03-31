@@ -33,7 +33,10 @@
   --Disabled_Element_Color:rgba(75, 75, 75);
 
   --bs-body-bg: var(--Primary_Color);
-  
+}
+
+.accordion-button {
+  color: var(--Primary_Text_Color);
 }
 
 ::selection {

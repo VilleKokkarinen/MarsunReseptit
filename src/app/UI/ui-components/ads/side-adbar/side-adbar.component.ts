@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BannerAd } from 'src/app/components/ads/bannerad';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-side-adbar',
@@ -8,6 +9,7 @@ import { BannerAd } from 'src/app/components/ads/bannerad';
 })
 export class SideAdbarComponent {
   bannerad: BannerAd;
+  showAd = environment.adsense.show;
   constructor(){
     this.bannerad = new BannerAd(
       'ca-pub-1120436091721652',

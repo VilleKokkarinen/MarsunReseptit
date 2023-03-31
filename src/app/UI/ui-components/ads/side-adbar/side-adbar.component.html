@@ -1,2 +1,7 @@
-<app-bannerad [banner]="bannerad" class="side-adbar">
-</app-bannerad>
+<!--<app-bannerad [banner]="bannerad" class="side-adbar">
+</app-bannerad>-->
+<ng-container *ngIf="showAd">
+    <div  class="side-adbar">
+        <script src="//servedby.studads.com/ads/ads.php?t=MTg0MTQ7MTIyNTQ7dmVydGljYWwuc2t5c2NyYXBlcg==&index=1"></script>
+    </div>
+</ng-container>
