@@ -51,6 +51,7 @@ body{
   padding:0;
   height:100%;
   color: var(--Primary_Text_Color);
+  overflow: hidden;
 }
 
 html{

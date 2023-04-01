@@ -7,6 +7,7 @@ import { PublicUserService } from './public-user.service';
 import { NotifierService } from 'angular-notifier';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingSpinnerService } from './loading-spinner.service';
+import { AnalyticsService } from './analytics.service';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,8 @@ export class PBAuthService {
     private publicUserService:PublicUserService,
     private notifierService: NotifierService,
     private translate:TranslateService,
-    private loader:LoadingSpinnerService
+    private loader:LoadingSpinnerService,
+    private analyticsService: AnalyticsService
   ) {
     this.pb = new PocketBase(environment.pocketbaseUrl);
     this.GetRememberMe();

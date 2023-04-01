@@ -73,7 +73,7 @@ export class SettingsService {
     let body = <HTMLDivElement> document.body;
     let script = document.createElement('script');
     script.innerHTML = '';
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-NPTH5CEKC2';
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-QEF0ZHWVW9';
     script.async = true;
     script.defer = true;
     body.appendChild(script);
@@ -83,7 +83,7 @@ export class SettingsService {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         if (typeof gtag !== 'undefined') {
-          gtag('config', 'G-NPTH5CEKC2', {
+          gtag('config', 'G-QEF0ZHWVW9', {
             page_path: event.urlAfterRedirects,
           });
         }
@@ -94,16 +94,23 @@ export class SettingsService {
     //this.analyticsService.eventEmitter('TEST', 'User visited page', "User visited page" , 'accept dialog', 1);
     if(this.Settings.CookieSettings.Analytics != true){
       this.RejectAnalytics();
+    }else{
+      this.Allowanalytics();
     }
+
     if(this.Settings.CookieSettings.Personalised_Ads != true){
       this.RejectPersonalisedAds();
     }
   }
 
+  Allowanalytics(){
+    gtag('set', 'consent', true);
+    gtag('set', 'allow_google_signals', true);
+  }
 
   RejectAnalytics(){
     this.deleteCookie("_ga");
-    this.deleteCookie("_ga_NPTH5CEKC2");
+    this.deleteCookie("_ga_QEF0ZHWVW9");
     gtag('set', 'consent', false);
     gtag('set', 'allow_google_signals', false);
 
@@ -112,8 +119,6 @@ export class SettingsService {
   RejectPersonalisedAds(){
     this.deleteCookie("__gpi");
     this.deleteCookie("__gads");
-    gtag('set', 'consent', false);
-    gtag('set', 'allow_google_signals', false);
   }
 
   private deleteCookie(name: string) {
@@ -125,7 +130,7 @@ export class SettingsService {
     d.setTime(d.getTime() + expireDays * 24 * 60 * 60 * 1000);
     let expires: string = `Expires=${d.toUTCString()}`;
     let cpath: string = path ? `; Path=${path}` : '';
-    let dpath: string = "Domain=.marsun-reseptit.web.app";
+    let dpath: string = "Domain=.marsun-reseptit.com";
     document.cookie = `${name}=${value}; ${cpath}; ${dpath}; ${expires};`;
   }
 
