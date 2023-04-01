@@ -16,14 +16,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-/* Firebase */
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideDatabase,getDatabase } from '@angular/fire/database';
-import { providePerformance,getPerformance } from '@angular/fire/performance';
-import { PERSISTENCE } from '@angular/fire/compat/auth';
-import { AngularFireModule } from '@angular/fire/compat';
 import { FormsModule } from '@angular/forms';
 
 
@@ -101,6 +93,7 @@ import { RoadmapDetailsComponent } from './Routes/roadmap/roadmap-details/roadma
 import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list.component';
 import { RoadmapSearchComponent } from './UI/search-dropdown/roadmap-search/roadmap-search.component';
 import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
+import { DisclaimerComponent } from './Routes/disclaimer/disclaimer.component';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -153,7 +146,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RoadmapDetailsComponent,
     RoadmapListComponent,
     RoadmapSearchComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    DisclaimerComponent
   ],
   imports: [
     NotifierModule.withConfig({
@@ -181,12 +175,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     RichTextEditorModule,
     ColorPickerModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
-    providePerformance(() => getPerformance()),
     HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
@@ -199,12 +187,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   exports: [TranslateModule],
   providers: [
-    { provide: PERSISTENCE, useValue: 'local' },
     { provide: LOCALE_ID, useValue: 'en-US' },
     TranslateService,
     PBAuthService,
-    ScreenTrackingService,
-    UserTrackingService,
     AnalyticsService
   ],
   bootstrap: [AppComponent]

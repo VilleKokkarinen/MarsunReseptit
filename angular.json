@@ -24,12 +24,10 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
             "assets": [
-              "src/favicon.ico",
               "src/assets",
               "src/ads.txt"
             ],
             "styles": [
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles/style.css"
             ],
             "scripts": [
@@ -103,29 +101,6 @@
               "src/styles.css"
             ],
             "scripts": []
-          }
-        },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {
-            "prerender":{
-              "builder": "@nguniversal/builders:prerender",
-              "options": {
-                "routes": [
-                  "/",
-                  "Recipes",
-                  "Themes",
-                  "Dashboard"
-                ]
-              },
-              "configurations": {
-              },
-              "defaultConfiguration": "production"
-            },
-            "ssr": false,
-            "browserTarget": "MarsunReseptit:build:production",
-            "firebaseProject": "marsun-reseptit",
-            "firebaseHostingSite": "marsun-reseptit"
           }
         }
       }

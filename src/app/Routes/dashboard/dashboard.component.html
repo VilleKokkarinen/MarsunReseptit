@@ -17,14 +17,6 @@
             <div style="display:flex; flex-direction:row; justify-content:space-between; margin-top:50px;">
                 <div class="dashboard-about">
                     <div class="recipe-img-container">
-                        <img class="recipe-img" style="object-fit:contain; margin-top:5px;"  src="../../../assets/Firebase.png" />
-                    </div>
-                    <div class="dashboard-about-text">
-                        Firebase <br/> {{"TXT_Hosting" | translate}}
-                    </div>
-                </div>
-                <div class="dashboard-about">
-                    <div class="recipe-img-container">
                         <img class="recipe-img" style="object-fit:contain; margin-top:5px;"  src="../../../assets/Pocketbase.png" />
                     </div>
                     <div class="dashboard-about-text">
@@ -46,23 +38,21 @@
             <label for="Trending" class="dashboard-label">{{"TXT_Trending_Recipes" | translate}}</label>
             <div class="row">
                 <div class="big-recipe-card-container">
-                    <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined">
-                        <div (click)="gotoRecipe(TrendingRecipes[0])">
-                            <div style="display:flex; flex-direction:column;">
-                                <div *ngIf="TrendingRecipes[0].thumbnail != undefined" style="position:relative;">
-                                    <img
-                                        class="trending-img"
-                                        [src]="TrendingRecipes[0].thumbnail"
-                                        alt=""
-                                    />
-                                    <div class="recipelikes" *ngIf="TrendingRecipes[0].likes > 0">
-                                        <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(TrendingRecipes[0].likes)}}
-                                    </div>
+                    <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined" (click)="gotoRecipe(TrendingRecipes[0])">
+                        <div style="display:flex; flex-direction:column;">
+                            <div *ngIf="TrendingRecipes[0].thumbnail != undefined" style="position:relative;">
+                                <img
+                                    class="trending-img"
+                                    [src]="TrendingRecipes[0].thumbnail"
+                                    alt=""
+                                />
+                                <div class="recipelikes" *ngIf="TrendingRecipes[0].likes > 0">
+                                    <i class="bi bi-hand-thumbs-up"></i>{{numberAbbreviator(TrendingRecipes[0].likes)}}
                                 </div>
-                                <div class="recipe-card-text-container">
-                                    <div class="title-text" >
-                                        {{TrendingRecipes[0].name}}
-                                    </div>
+                            </div>
+                            <div class="recipe-card-text-container">
+                                <div class="title-text" >
+                                    {{TrendingRecipes[0].name}}
                                 </div>
                             </div>
                         </div>

@@ -23,6 +23,7 @@ import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list
 import { RoadmapDetailsComponent } from './Routes/roadmap/roadmap-details/roadmap-details.component';
 import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
 import { ChangeLogComponent } from './Routes/change-log/change-log.component';
+import { DisclaimerComponent } from './Routes/disclaimer/disclaimer.component';
 
 const routes: Routes =[
   {
@@ -93,6 +94,10 @@ const routes: Routes =[
       {
         path: 'Privacy',
         component: PrivacyComponent
+      },
+      {
+        path: 'Disclaimer',
+        component: DisclaimerComponent
       },
       {
         path: 'Settings',
