@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { RecipeService } from 'src/app/Services/recipe/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
@@ -14,7 +14,8 @@ import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment
 @Component({
   selector: 'app-recipe-details',
   templateUrl: './recipe-details.component.html',
-  styleUrls: ['./recipe-details.component.css']
+  styleUrls: ['./recipe-details.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RecipeDetailsComponent implements OnInit {
   id:string = "";

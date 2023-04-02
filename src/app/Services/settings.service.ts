@@ -100,25 +100,40 @@ export class SettingsService {
 
     if(this.Settings.CookieSettings.Personalised_Ads != true){
       this.RejectPersonalisedAds();
+    }else{
+      this.AllowPersonalisedAds();
     }
   }
 
   Allowanalytics(){
-    gtag('set', 'consent', true);
-    gtag('set', 'allow_google_signals', true);
+    //gtag('set', 'consent', true);
+
+    gtag('consent', 'update', {
+    analytics_storage: 'granted',
+    });
   }
 
   RejectAnalytics(){
     this.deleteCookie("_ga");
     this.deleteCookie("_ga_QEF0ZHWVW9");
-    gtag('set', 'consent', false);
-    gtag('set', 'allow_google_signals', false);
 
+    gtag('consent', 'update', {
+    analytics_storage: 'denied',
+    });
   }
 
   RejectPersonalisedAds(){
     this.deleteCookie("__gpi");
     this.deleteCookie("__gads");
+    gtag('consent', 'update', {
+    ad_storage: 'denied'
+    });
+  }
+
+  AllowPersonalisedAds(){
+    gtag('consent', 'update', {
+    ad_storage: 'granted'
+    });
   }
 
   private deleteCookie(name: string) {

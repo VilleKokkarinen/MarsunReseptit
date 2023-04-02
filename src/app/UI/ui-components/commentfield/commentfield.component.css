@@ -20,9 +20,11 @@
 
 
 .profile-img-container{
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
 }
+
+
 
 .profile-img{
     border-radius: 8px;
@@ -32,17 +34,41 @@
 }
 
 .profile{
-    padding:10px;
+    padding:5px;
     background-color: var(--Modal_Bg_Color);
     border-right: 1px solid var(--Accent_Border_Color);
     height:100%;
     width:fit-content;
-    min-width: 100px;
     flex-direction: column;
     justify-content: center;
     display:flex;
     align-items: center;
 }
+
+@media (min-width: 569px) {
+    .profile-img-container{ 
+        height: 70px;
+        width: 70px;
+    }
+    .profile{
+        padding:10px;
+    }
+}
+
+@media (min-width: 769px) {
+    .profile-img-container{ 
+        height: 90px;
+        width: 90px;
+    }
+}
+
+@media (min-width: 969px) {
+    .profile-img-container{ 
+        height: 120px;
+        width: 120px;
+    }
+}
+
 .profile-data{
     padding-top:5px;
     text-align: center;

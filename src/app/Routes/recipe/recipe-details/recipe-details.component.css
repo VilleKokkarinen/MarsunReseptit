@@ -10,7 +10,7 @@
     background-color: var(--Dropdown_Bg_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    font-family: 'Inter UI', sans-serif;
+    font-family: 'Roboto', 'Inter UI', sans-serif;
     margin:10px;
 }
 
@@ -34,7 +34,29 @@
     color: var(--Primary_Text_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
-    font-family: 'Inter UI', sans-serif; 
+    font-family: 'Roboto', 'Inter UI', sans-serif;
     padding:10px;
     margin:10px;
+}
+
+.quill-upload-image{
+    object-fit: cover;
+    width:100%;
+    height:100%;
+}
+
+
+@media (min-width: 769px) {
+    .quill-upload-image{ 
+        max-width: 50vw;
+        max-height: 50svh;
+    }
+}
+
+@media (min-width: 1081px) {
+    .quill-upload-image{ 
+        object-fit: unset;
+        width:unset;
+        height:unset;
+    }
 }

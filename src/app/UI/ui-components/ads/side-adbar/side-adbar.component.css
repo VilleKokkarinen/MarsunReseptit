@@ -15,7 +15,7 @@
       height:100% !important;
       padding:0;
       color:var(--Complement_Text_Color);
-      font-family: 'Inter UI', sans-serif; 
+      font-family: 'Roboto', 'Inter UI', sans-serif;
       transition: background-color 1250ms ease-in-out;
   } 
 }

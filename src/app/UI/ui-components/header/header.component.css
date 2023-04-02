@@ -2,7 +2,7 @@
     height:60px;
     background-color: var(--Header_Bg_Color);
     border-bottom: 1px solid var(--Accent_Border_Color);
-    font-family: 'Inter UI', sans-serif; 
+    font-family: 'Roboto', 'Inter UI', sans-serif;
     transition: background-color 1250ms ease-in-out;
 }
 .header-text{
