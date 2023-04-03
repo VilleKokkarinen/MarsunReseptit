@@ -234,7 +234,8 @@ export class PBAuthService {
             const publicUserData: PublicUser = {
               id: currentUser.id,
               displayName: currentUser.id,
-              avatar: currentUser.avatar
+              avatar: currentUser.avatar,
+              user: currentUser.id
             };
             this.publicUserService.create(publicUserData).then((data)=>{
               resolve(data);

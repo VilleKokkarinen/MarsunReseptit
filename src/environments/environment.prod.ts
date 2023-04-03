@@ -1,7 +1,7 @@
 export const environment = {
   adsense: {
     adClient: 'ca-pub-1120436091721652',
-    show: true
+    show: false
   },
   oauth:{
     redirectUrl:"https://marsun-reseptit.com/Dashboard"

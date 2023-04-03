@@ -24,8 +24,7 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "css",
             "assets": [
-              "src/assets",
-              "src/ads.txt"
+              "src/assets"
             ],
             "styles": [
               "src/styles/style.css"
