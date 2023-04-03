@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BannerAd } from 'src/app/components/ads/bannerad';
 import { environment } from 'src/environments/environment';
-import postscribe from 'postscribe';
 
 @Component({
   selector: 'app-top-adbar',
   templateUrl: './top-adbar.component.html',
   styleUrls: ['./top-adbar.component.css']
 })
-export class TopAdbarComponent implements OnInit{
+export class TopAdbarComponent{
   bannerad: BannerAd;
   showAd = environment.adsense.show;
   constructor(){
@@ -18,9 +17,5 @@ export class TopAdbarComponent implements OnInit{
       'horizontal',
       false
     )
-  }
-
-  ngOnInit(): void {
-  
   }
 }
