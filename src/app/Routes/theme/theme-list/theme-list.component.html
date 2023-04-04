@@ -1,6 +1,6 @@
-<div class="padded-content" style="height:calc(100% - 100px);">
+<div class="padded-content">
     <div style="justify-content: center; width:100%;">
-        <div style="max-width: 700px; margin:10px;">
+        <div class="searchcontainer">
             <input
                 type="text"
                 class="form-control search"
@@ -10,8 +10,8 @@
                 name="Search"
             />
         </div>
+        <div style="display:flex; flex-wrap:wrap; justify-content: flex-start">
             <div class="theme-card" [ngStyle]='{"background-color":Theme.theme["--MainContent_Bg_Color"]}' *ngFor="let Theme of Themes">
-                
                 <div style="height:fit-content;display:flex; flex-direction:column;">
                     <div class="theme-preview" style="display:flex; flex-direction:row; padding: 0px; margin: 10px 10px; justify-content: space-between;" [ngStyle]='{
                         "background-color":Theme.theme["--MainContent_Bg_Color"],
@@ -76,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-           
+            </div>
         </div>
     </div>
 </div>

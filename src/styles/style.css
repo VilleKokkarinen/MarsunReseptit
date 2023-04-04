@@ -159,9 +159,14 @@ html{
 }
 
 .padded-content{
-  padding:15px;
+  padding:5px;
   height:100%;
   width:100%;
+}
+@media (min-width: 576px) {
+  .padded-content{
+    padding:15px;
+  }
 }
 
 .modal {

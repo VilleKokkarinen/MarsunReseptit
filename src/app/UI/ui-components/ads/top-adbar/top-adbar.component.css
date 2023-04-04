@@ -10,5 +10,5 @@
     padding:0;
     color:var(--Complement_Text_Color);
     font-family: 'Inter UI', sans-serif;
-    transition: background-color 1250ms ease-in-out;
+    transition: all 1250ms ease-in-out;
 } 

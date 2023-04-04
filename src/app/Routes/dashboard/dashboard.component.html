@@ -8,24 +8,20 @@
                     <br/>
                     {{"TXT_About_Marsun_Reseptit" | translate}}
                 </div>
-            </div>
-
-          
-            
-    
+            </div>    
     
             <div style="display:flex; flex-direction:row; justify-content:space-between; margin-top:50px;">
                 <div class="dashboard-about">
-                    <div class="recipe-img-container">
-                        <img class="recipe-img" style="object-fit:contain; margin-top:5px;"  src="../../../assets/Pocketbase.png" />
+                    <div class="dashboardrecipe-img-container">
+                        <img class="dashboardrecipe-img" style="object-fit:contain; margin-top:5px;"  src="../../../assets/Pocketbase.png" />
                     </div>
                     <div class="dashboard-about-text">
                         Pocketbase <br/> {{"TXT_Database" | translate}}
                     </div>
                 </div>
                 <div class="dashboard-about">
-                    <div class="recipe-img-container">
-                        <img class="recipe-img" style="object-fit:contain; margin-top:5px;" src="../../../assets/Angular.png" />
+                    <div class="dashboardrecipe-img-container">
+                        <img class="dashboardrecipe-img" style="object-fit:contain; margin-top:5px;" src="../../../assets/Angular.png" />
                     </div>
                     
                     <div class="dashboard-about-text">
@@ -60,9 +56,9 @@
                 </div>
                 <div class="small-recipe-card-container">
                     <div *ngFor="let Recipe of TrendingRecipes | slice:1" class="mini-recipe-card" (click)="gotoRecipe(Recipe)">
-                        <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
+                        <div *ngIf="Recipe.thumbnail != undefined" class="dashboardrecipe-img-container">
                             <img
-                                class="recipe-img"
+                                class="dashboardrecipe-img"
                                 [src]="Recipe.thumbnail"
                                 alt=""
                             />

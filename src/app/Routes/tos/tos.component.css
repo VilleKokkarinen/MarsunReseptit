@@ -1,8 +1,4 @@
 .tos-card{
-    border:1px solid var(--Primary_Border_Color);
-    border-radius: 8px;
     padding:10px;
     margin:10px;
-    background-color: var(--Primary_Color);
-    color:var(--Primary_Text_Color)
 }

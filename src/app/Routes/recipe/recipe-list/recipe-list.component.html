@@ -1,6 +1,6 @@
-<div class="padded-content" style="height:calc(100% - 100px);">
+<div class="padded-content">
     <div style="justify-content: center; width:100%;">
-        <div style="max-width: 700px; margin:10px;">
+        <div class="searchcontainer">
             <input
                 type="text"
                 class="form-control"
@@ -10,21 +10,23 @@
                 name="Search"
             />
         </div>
-        <div *ngFor="let Recipe of Recipes"  class="recipe-card" (click)="gotoRecipe(Recipe)">
-            <div style="display:flex; flex-direction:row;">
-                <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
-                    <img
-                        class="recipe-img"
-                        [src]="Recipe.thumbnail"
-                        alt=""
-                    />
-                </div>
-                <div style="height:fit-content;">
-                    <div class="title-text recipe-card">
-                        {{Recipe.name}}
+        <div style="display:flex; flex-wrap:wrap; justify-content: flex-start; width:100%;">
+            <div *ngFor="let Recipe of Recipes" class="recipe-card" (click)="gotoRecipe(Recipe)">
+                <div style="display:flex; flex-direction:row;">
+                    <div *ngIf="Recipe.thumbnail != undefined" class="recipe-img-container">
+                        <img
+                            class="recipe-img"
+                            [src]="Recipe.thumbnail"
+                            alt=""
+                        />
                     </div>
-                    <div class="description-text recipe-card">
-                        {{Recipe.description}}
+                    <div style="height:fit-content;">
+                        <div class="title-text recipe-card">
+                            {{Recipe.name}}
+                        </div>
+                        <div class="description-text recipe-card">
+                            {{Recipe.description}}
+                        </div>
                     </div>
                 </div>
             </div>

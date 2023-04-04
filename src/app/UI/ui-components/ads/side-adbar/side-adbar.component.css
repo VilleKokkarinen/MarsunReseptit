@@ -4,7 +4,7 @@
   width:0px;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 769px) {
   .side-adbar {
       display: inline-block;
       overflow-x: hidden;
@@ -16,6 +16,6 @@
       padding:0;
       color:var(--Complement_Text_Color);
       font-family: 'Roboto', 'Inter UI', sans-serif;
-      transition: background-color 1250ms ease-in-out;
+      transition: all 1250ms ease-in-out;
   } 
 }

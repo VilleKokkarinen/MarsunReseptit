@@ -2,12 +2,26 @@
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
     padding:5px;
-    margin-top:25px;
+    margin:5px;
     background-color: var(--Modal_Bg_Color);
     max-width: 500px;
     overflow:auto;
     width:100%;
     transition: background-color color 1250ms ease-in-out;
+}
+
+.searchcontainer{
+    max-width: 500px;
+    margin:5px;
+}
+
+@media (min-width: 576px) {
+    .searchcontainer{
+        margin:15px;
+    }
+    .theme-card{
+        margin:15px;
+    }
 }
 
 .pointer:hover{

@@ -1,12 +1,15 @@
-<div class="sidebarelement">
-    <div class="sidebar"> <!-- Bottom 3 routes, roadmap, add roadmap, change log, atleast for now -->
-        <div *ngFor="let Route of _Routes; let i = index" [ngClass]="i == _Routes.length-3 ? 'bottom-route' : '' ">
-            <div class="sidebar-container" [ngClass]="i == _Routes.length-1 ? 'last-container' : '' " [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && isLoggedIn)">
-                <i class="bi bi-{{Route.Icon}} flex-icon"></i>
-                <a class="nav-link">
-                    <span> {{Route.Name | translate}} </span>
-                </a>
+<div class="sidebarwrapper">
+    <div class="sidebarelement">
+        <div class="sidebar"> <!-- Bottom 3 routes, roadmap, add roadmap, change log, atleast for now -->
+            <div *ngFor="let Route of _Routes; let i = index" [ngClass]="i == _Routes.length-3 ? 'bottom-route' : '' ">
+                <div class="sidebar-container" [ngClass]="i == _Routes.length-1 ? 'last-container' : '' " [routerLink]="[Route.Route]" [routerLinkActive]="['is-active']" *ngIf="Route.Auth == false || (Route.Auth == true && isLoggedIn)">
+                    <i class="bi bi-{{Route.Icon}} flex-icon"></i>
+                    <a class="nav-link">
+                        <span> {{Route.Name | translate}} </span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
+   
 </div>

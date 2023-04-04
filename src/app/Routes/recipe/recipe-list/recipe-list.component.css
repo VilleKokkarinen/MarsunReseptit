@@ -2,11 +2,27 @@
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
     padding:5px;   
-    margin:10px;
-    margin-top:25px;
+    margin:5px;
     background-color: var(--Modal_Bg_Color);
-    max-width: 700px;
+    max-width: 500px;
+    height:100%;
+    width:100%;
 }
+
+.searchcontainer{
+    max-width: 500px;
+    margin:5px;
+}
+
+@media (min-width: 576px) {
+    .searchcontainer{
+        margin:15px;
+    }
+    .recipe-card{
+        margin:15px;
+    }
+}
+
 
 .recipe-card:hover{
   cursor:pointer

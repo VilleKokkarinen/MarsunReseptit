@@ -1,17 +1,36 @@
 
-.sidebarelement{
-  display:flex;
-  flex-direction: row;
+.sidebarwrapper{
+  display:inline;
   height:100%;
-  width:max-content;
+  position:fixed;
+  z-index: 10;
+}
+
+
+.sidebarelement{
+  display:inline-block;
+  height:calc(100% - 60px);
+  width:26px;
+  overflow:hidden;
+  white-space:nowrap;
+  transition: width .4s ease;
+  z-index: 10;
+}
+
+
+.sidebarwrapper:hover .sidebarelement{
+  width: 135px;
+  transition: width .4s ease;
+  overflow:hidden;
 }
 
 
 .sidebar { 
   display:none;
-  transition: background-color 1250ms ease-in-out;
+  transition: all 1250ms ease-in-out;
 }
-@media (min-width: 620px) {
+
+@media (min-width: 576px) {
   .sidebar { 
     display: flex;
     flex-direction: column;

@@ -3,10 +3,10 @@
     <div style="display:flex; flex-direction:row; overflow:hidden;" [style.height]="GetHeight()">
         <div class="contentbody">
             <app-sidebar *ngIf="Settings.Show_Sidebar == true"></app-sidebar>
-            <div class="content">
+            <div class="content" [style.marginLeft]="GetContentMarginLeft()">
                 <app-top-adbar *ngIf="TopAdBarEnabled && showAd"></app-top-adbar>
                 <router-outlet />
-               
+             
             </div>
             <app-side-adbar *ngIf="SideAdBarEnabled && showAd"></app-side-adbar>
         </div>

@@ -51,7 +51,7 @@
     display:inline;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 576px) {
     .routedropdown{
         display:none;
     }

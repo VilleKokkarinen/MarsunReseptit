@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, UrlSegment } from '@angular/router';
 import {tap, map, filter} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -17,6 +17,12 @@ export class MainComponent {
   Settings:Settings;
   showAd = environment.adsense.show;
   
+  innerWidth:number = 0;
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any) {
+    this.innerWidth = window.innerWidth;
+  }
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -39,6 +45,8 @@ export class MainComponent {
           }
         }
       })
+
+      this.innerWidth = window.innerWidth;
   }
 
   GetHeight(){
@@ -48,5 +56,14 @@ export class MainComponent {
     pxAmount += 30;
 
     return `calc(100% - ${pxAmount}px)`;
+  }
+
+  GetContentMarginLeft(){
+    var pxAmount = 0; // sidebar
+
+    if(this.Settings.Show_Sidebar === true && this.innerWidth > 576)
+    pxAmount += 26;
+
+    return `${pxAmount}px !important`;
   }
 }
