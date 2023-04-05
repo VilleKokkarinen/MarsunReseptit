@@ -1,31 +1,19 @@
 import { Publishable } from "../shared/publishable";
 
 export class Theme extends Publishable{
-  name:string = "Moonlight Shine";
+  name:string = "Cappuccino";
   theme:{ [key: string]: string; } = {
-    "--Primary_Border_Color": "rgba(25, 25, 30)",
-    "--Accent_Border_Color": "rgba(160, 117, 0)",
-  
-    "--Header_Bg_Color": "rgba(39, 47, 56)",
-    "--Sidebar_Bg_Color": "rgba(35, 40, 45)", 
-    "--Modal_Bg_Color": "rgba(95, 95, 95)",
-    "--Dropdown_Bg_Color": "rgba(40, 45, 51)", 
-    "--MainContent_Bg_Color": "rgba(110, 110, 110)",
-  
-    "--Primary_Color": "rgba(35, 40, 45)", 
-    "--Complement_Color": "rgba(78, 78, 78)", 
-    "--Accent_Color": "rgba(199, 181, 101)", 
-    "--Neutral_Color": "rgba(75, 75, 75)",
-  
-    "--Primary_Text_Color": "rgba(221, 187, 92)",
-    "--Complement_Text_Color": "rgba(255, 217, 112)",  
-    "--Accent_Text_Color": "rgba(161, 114, 2)",
-  
-    "--DropShadow_Color": "rgba(35, 35, 45, 0.9)",  
-    "--Disabled_Element_Color": "rgba(75, 75, 75)",  
-  
-    "--Selected_Text_Color": "rgba(255, 217, 112)",
-    "--Selected_Text_Color_Shadow": "rgba(0, 0, 0)",
-    "--Selected_Text_Color_Bg": "rgba(157, 51, 9, 0.125)",
+  "--Accent_Bg_Color": "rgb(107,67,52)",
+  "--Accent_Border_Color": "rgb(255,244,230)",
+  "--Accent_Color": "rgb(133,93,64)",
+  "--Accent_Text_Color": "rgb(211,167,129)",
+  "--DropShadow_Color": "rgba(35, 35, 45, 0.9)",
+  "--Primary_Bg_Color": "rgb(133,79,66)",
+  "--Primary_Border_Color": "rgb(41,16,3)",
+  "--Primary_Color": "rgb(72,36,34)",
+  "--Primary_Text_Color": "rgb(238,227,213)",
+  "--Selected_Text_Color": "rgba(255, 217, 112)",
+  "--Selected_Text_Color_Bg": "rgba(157, 51, 9, 0.125)",
+  "--Selected_Text_Color_Shadow": "rgba(0, 0, 0)"
   };
 }

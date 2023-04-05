@@ -4,6 +4,6 @@
     border-radius: 8px;
     padding:10px;
     margin:10px;
-    background-color: var(--Dropdown_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     color:var(--Primary_Text_Color)
 }

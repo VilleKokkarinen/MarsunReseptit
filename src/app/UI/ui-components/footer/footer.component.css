@@ -1,7 +1,7 @@
 .footer{
     height:30px;
     border-top: 1px solid var(--Accent_Border_Color);
-    background-color: var(--Header_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     margin:0px;
     padding:0px;
     transition: background-color 1250ms ease-in-out;

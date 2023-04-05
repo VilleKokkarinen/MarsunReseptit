@@ -3,12 +3,12 @@
     display: inline-block;
     overflow-x: hidden;
     overflow-y: hidden;
-    background-color: var(--Sidebar_Bg_Color);
+    background-color: var(--Primary_Bg_Color);
     border-bottom: 1px solid var(--Accent_Border_Color);
     width:100% !important;
     height:90px !important;
     padding:0;
-    color:var(--Complement_Text_Color);
+    color:var(--Accent_Text_Color);
     font-family: 'Inter UI', sans-serif;
     transition: all 1250ms ease-in-out;
 } 

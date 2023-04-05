@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height:fit-content;
-    background-color: var(--Header_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     border-width: 1px;
     border-style: solid;
     border-color: var(--Accent_Border_Color);
@@ -33,7 +33,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height:fit-content;
-    background-color: var(--Header_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     border-width: 1px;
     border-style: solid;
     border-color: var(--Accent_Border_Color);
@@ -59,7 +59,7 @@
 .mini-recipe-card{
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
-    background-color: var(--Sidebar_Bg_Color);
+    background-color: var(--Primary_Bg_Color);
     padding-bottom:5px;
     overflow:hidden;
     height:fit-content;

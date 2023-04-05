@@ -7,10 +7,10 @@
 }
 
 .color-picker {
-    background-color: var(--Modal_Bg_Color) !important;
+    background-color: var(--Accent_Bg_Color) !important;
 }
 .preset{
-    background-color: var(--Modal_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
 }
   
   .flex-icon,

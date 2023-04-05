@@ -7,7 +7,7 @@
     border-radius: 8px;
 }
 .recipe-card .header{
-    background-color: var(--Dropdown_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
     font-family: 'Roboto', 'Inter UI', sans-serif;
@@ -30,7 +30,7 @@
 }
 
 .recipecontainer-simple{
-    background-color: var(--Dropdown_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     color: var(--Primary_Text_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;

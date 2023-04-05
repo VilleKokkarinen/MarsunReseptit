@@ -44,7 +44,7 @@ export class PrivacyModalComponent {
 
   AcceptAll(){
     this.Settings.CookieSettings.Analytics = true;
-    this.Settings.CookieSettings.Personalised_Ads = true;
+    //this.Settings.CookieSettings.Personalised_Ads = true;
     this.Settings.CookieSettings.Geological_Area = true;
     this.AcceptSelected();
   }
@@ -62,7 +62,7 @@ export class PrivacyModalComponent {
 
   RejectAll(){
     this.Settings.CookieSettings.Analytics = false;
-    this.Settings.CookieSettings.Personalised_Ads = false;
+    //this.Settings.CookieSettings.Personalised_Ads = false;
     this.Settings.CookieSettings.Geological_Area = false;
     this.AcceptSelected();
   }

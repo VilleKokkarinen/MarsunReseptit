@@ -64,6 +64,8 @@ export class SidebarComponent {
   _Routes = SidebarComponent.Routes;
   isLoggedIn:boolean = false;
 
+  SideBarOpen:boolean = false;
+
   constructor(private authService:PBAuthService) {
     this.isLoggedIn = authService.isLoggedIn;
 
@@ -72,5 +74,9 @@ export class SidebarComponent {
     });    
 
     
+  }
+
+  ToggleSideBar(){
+    this.SideBarOpen = !this.SideBarOpen;
   }
 }

@@ -29,7 +29,7 @@ export class SettingsService {
       {
         this.LoadSettings(); // if this is users first time entering the site, without having settings
       }
-    }, 1000);
+    }, 1);
 
   }
   
@@ -98,11 +98,13 @@ export class SettingsService {
       this.Allowanalytics();
     }
 
+    /*
     if(this.Settings.CookieSettings.Personalised_Ads != true){
       this.RejectPersonalisedAds();
     }else{
       this.AllowPersonalisedAds();
     }
+    */
   }
 
   Allowanalytics(){

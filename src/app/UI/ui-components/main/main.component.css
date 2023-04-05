@@ -15,7 +15,7 @@
 }
 
 .contentbody{
-    background-color: var(--MainContent_Bg_Color);
+    background-color: var(--Primary_Bg_Color);
     width: 100%;
     height: 100%;
     display:flex;

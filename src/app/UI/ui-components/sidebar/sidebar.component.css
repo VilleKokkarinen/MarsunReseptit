@@ -10,13 +10,19 @@
 .sidebarelement{
   display:inline-block;
   height:calc(100% - 60px);
-  width:26px;
+  width:28px;
   overflow:hidden;
   white-space:nowrap;
   transition: width .4s ease;
   z-index: 10;
 }
 
+
+.SideBarOpen{
+  width: 135px;
+  transition: width .4s ease;
+  overflow:hidden;
+}
 
 .sidebarwrapper:hover .sidebarelement{
   width: 135px;
@@ -28,6 +34,9 @@
 .sidebar { 
   display:none;
   transition: all 1250ms ease-in-out;
+  background-color: var(--Accent_Bg_Color);
+  font-family: 'Roboto', 'Inter UI', sans-serif;
+  color:var(--Accent_Text_Color);
 }
 
 @media (min-width: 576px) {
@@ -37,11 +46,8 @@
     justify-content: flex-start;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: var(--Sidebar_Bg_Color);
     border-right: 1px solid var(--Accent_Border_Color);
     height:100%;
-    color:var(--Complement_Text_Color);
-    font-family: 'Inter UI', sans-serif;
   }
 }
 
@@ -69,7 +75,7 @@
 }
 
 .nav-link {
-  padding-left: 5px;
+  padding-left: 7px;
   padding-right: 5px;
   color: var(--Accent_Text_Color);
   white-space:nowrap;

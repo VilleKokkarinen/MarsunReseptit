@@ -8,7 +8,7 @@
     border-radius: 8px;
 }
 .theme-card .header{
-    background-color: var(--Dropdown_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
     font-family: 'Inter UI', sans-serif;
@@ -31,7 +31,7 @@
 }
 
 .themecontainer-simple{
-    background-color: var(--Dropdown_Bg_Color);
+    background-color: var(--Accent_Bg_Color);
     color: var(--Primary_Text_Color);
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;

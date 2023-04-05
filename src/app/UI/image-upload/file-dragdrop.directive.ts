@@ -16,7 +16,7 @@ constructor() { }
     evt.preventDefault();
     evt.stopPropagation();
 
-    this.backgroundColor = 'var(--Complement_Color)';
+    this.backgroundColor = 'var(--Accent_Color)';
     this.borderColor = 'var(--Primary_Border_Color)';
 }
 

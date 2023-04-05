@@ -62,7 +62,7 @@ export class MainComponent {
     var pxAmount = 0; // sidebar
 
     if(this.Settings.Show_Sidebar === true && this.innerWidth > 576)
-    pxAmount += 26;
+    pxAmount += 28;
 
     return `${pxAmount}px !important`;
   }

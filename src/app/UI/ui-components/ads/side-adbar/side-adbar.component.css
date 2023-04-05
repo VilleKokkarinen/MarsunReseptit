@@ -9,12 +9,12 @@
       display: inline-block;
       overflow-x: hidden;
       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-      background-color: var(--Sidebar_Bg_Color);
+      background-color: var(--Primary_Bg_Color);
       border-left: 1px solid var(--Accent_Border_Color);
       width:120px !important; /*250px*/
       height:100% !important;
       padding:0;
-      color:var(--Complement_Text_Color);
+      color:var(--Accent_Text_Color);
       font-family: 'Roboto', 'Inter UI', sans-serif;
       transition: all 1250ms ease-in-out;
   } 
