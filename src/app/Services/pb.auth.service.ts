@@ -1,13 +1,15 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { PublicUser } from '../components/shared/user';
+import { PublicUser, UserRole } from '../components/shared/user';
 import { Router } from '@angular/router';
 import PocketBase, { AuthProviderInfo } from "pocketbase";
 import { environment } from 'src/environments/environment';
-import { PublicUserService } from './public-user.service';
+import { PublicUserService } from './user/public-user.service';
 import { NotifierService } from 'angular-notifier';
 import { TranslateService } from '@ngx-translate/core';
 import { LoadingSpinnerService } from './loading-spinner.service';
 import { AnalyticsService } from './analytics.service';
+import { UserRoleService } from './user/user-role.service';
+import { PrivateUserService } from './user/private-user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,12 +21,15 @@ export class PBAuthService {
   rememberMe:boolean = false;
 
   private userIsAdmin: boolean = false;
+  private userRole: number = -1;
 
   @Output() AuthChange = new EventEmitter<PublicUser>()
   
   constructor(
     public router: Router,
     private publicUserService:PublicUserService,
+    private privateUserService: PrivateUserService,
+    private userRoleService:UserRoleService,
     private notifierService: NotifierService,
     private translate:TranslateService,
     private loader:LoadingSpinnerService,
@@ -35,20 +40,35 @@ export class PBAuthService {
 
     this.pb.authStore.onChange(()=>{
       var promise = new Promise<PublicUser>((resolve)=>{
-        this.SetPublicUserData().then((data)=>{
-          resolve(data);
-        })
+        var currentUser = this.pb.authStore.model;
+
+        console.log(currentUser);
+
+        if(currentUser == null){ // if user signed out
+          resolve(new PublicUser())
+        }else{
+          this.SetPublicUserData().then((userdata)=>{
+            this.SetUserRole(userdata).then((userRole)=>{
+              this.userRole = userRole.role;
+              resolve(userdata);
+            })
+          },()=>{
+            console.log("error authenticating user")
+            this.notifierService.notify('error',  this.translate.instant('TXT_Authentication_Guard_Block'));
+          })
+        }
       });
 
       promise.then((data)=>{
-        if(data.id != "")
-        this.notifierService.notify('success', this.translate.instant('TXT_Login_Success'));
-
         this.userData = data;
+
+        if(data.id != ""){
+          this.notifierService.notify('success', this.translate.instant('TXT_Login_Success'));
+          this.SetLocalStorageUser();
+        }
+       
         this.AuthChange.emit(this.userData);
-        this.SetLocalStorageUser();
       })
-   
     })
 
     if(this.rememberMe === true){
@@ -68,14 +88,16 @@ export class PBAuthService {
     }
   }
 
-  // Returns true when user is logged in
   get isLoggedIn(): boolean {
     return this.pb.authStore.isValid;
   }
 
-   // Returns true when user is logged in
-   get isAdmin(): boolean {
+  get isAdmin(): boolean {
     return this.userIsAdmin;
+  }
+
+  get UserRole(): number {
+    return this.userRole;
   }
 
   AdminSignIn(email: string, password: string) {
@@ -172,6 +194,11 @@ export class PBAuthService {
       } else {
       this.pb.collection('users').confirmVerification(token).then(() => {
         this.notifierService.notify('success', this.translate.instant('TXT_Email_Verified'));
+
+        if(this.userRole == 0 && currentUser != null){
+          this.UpdateUserRole(1, currentUser.id)
+        }
+
         this.router.navigate(['Dashboard']);
           resolve("OK")
         },(err)=>{
@@ -223,7 +250,7 @@ export class PBAuthService {
   }
 
   SetPublicUserData():Promise<PublicUser> {
-    return new Promise((resolve)=>{
+    return new Promise((resolve, reject)=>{
       var currentUser = this.pb.authStore.model;
       if(currentUser != null){
         this.publicUserService.getOne(currentUser.id).then((existing)=>{
@@ -241,14 +268,61 @@ export class PBAuthService {
               resolve(data);
             })
           }else{
-            resolve(new PublicUser())
+            reject("not signed in")
           }
         })    
       }else{
-        resolve(new PublicUser())
+        reject("not signed in")
       }
     })
-   
+  }
+
+  SetUserRole(currentUser:PublicUser):Promise<UserRole> {
+    return new Promise((resolve, reject)=>{
+        this.userRoleService.getOne(currentUser.id).then((existing)=>{
+          resolve(existing);
+          // all good, current user has role record in db.
+        },(err)=>{ // current user is a new user, and needs a role.
+          if(currentUser != null){
+
+            var data: UserRole = {
+              id: currentUser.id,
+              role: 0,
+              user: currentUser.id
+            };
+
+            this.privateUserService.getOne(this.userData.id).then((pdata)=>{
+              if(pdata.verified === true){
+                data.role = 1;
+              }
+            }).finally(()=>{
+              this.userRoleService.create(data).then((data)=>{
+                resolve(data);
+              })
+            })
+          }else{
+            reject("not signed in")
+          }
+        })
+    })
+  }
+
+  UpdateUserRole(role:number, id:string):Promise<UserRole> {
+    return new Promise((resolve, reject)=>{
+      var currentUser = this.pb.authStore.model;
+      if(currentUser != null){
+        const data: UserRole = {
+          id: id,
+          role: role,
+          user: id
+        };
+        this.userRoleService.update(data).then((data)=>{
+          resolve(data);
+        })
+      }else{
+        reject("not signed in")
+      }
+    })
   }
 
   UpdatePublicUserData(user:PublicUser) {
@@ -263,7 +337,6 @@ export class PBAuthService {
         console.log(err);
         this.notifierService.notify('error', this.translate.instant('TXT_Failed_To_Update_Public_User_Data'));
       })
-    
     }
   }
 
@@ -311,13 +384,15 @@ export class PBAuthService {
 
   // Sign out
   SignOut() {
+    this.userData = new PublicUser();
     this.pb.authStore.clear();
+
+    this.router.navigate(['Dashboard']);
     localStorage.removeItem('provider');
     localStorage.removeItem('user');
     localStorage.removeItem('pocketbase_auth');
     localStorage.removeItem('rememberMe');
+    this.rememberMe = false;
 
-    this.userData = new PublicUser();
-    this.router.navigate(['Dashboard']);
   }
 }

@@ -9,7 +9,7 @@ import { PBAuthService } from '../Services/pb.auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class RoleGuard implements CanActivate {
   
   constructor(
     public authService: PBAuthService,
@@ -21,8 +21,17 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    if(this.authService.isLoggedIn !== true) {
-      this.notifierService.notify('error',  this.translate.instant('TXT_Authentication_Guard_Block'));
+    /*
+      -1: visitor
+      0: user
+      1: verified user
+      2: publisher
+      3: moderator
+      4: admin
+    */
+
+    if(this.authService.UserRole <= 1) {
+      this.notifierService.notify('error',  this.translate.instant('TXT_Role_Guard_Block'));
       this.router.navigate(["/Dashboard"]);
       return false;
     }else{

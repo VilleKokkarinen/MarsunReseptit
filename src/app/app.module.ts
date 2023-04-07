@@ -87,7 +87,6 @@ import { ChangeEmailModalComponent } from './UI/modals/change-email-modal/change
 import { AddCommentComponent } from './UI/ui-components/commentfield/add-comment/add-comment.component';
 import { ThemeListComponent } from './Routes/theme/theme-list/theme-list.component';
 import { ThemeDetailsComponent } from './Routes/theme/theme-details/theme-details.component';
-import { ChangeLogComponent } from './Routes/change-log/change-log.component';
 import { AddRoadmapComponent } from './Routes/roadmap/add-roadmap/add-roadmap.component';
 import { RoadmapDetailsComponent } from './Routes/roadmap/roadmap-details/roadmap-details.component';
 import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list.component';
@@ -141,7 +140,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddCommentComponent,
     ThemeListComponent,
     ThemeDetailsComponent,
-    ChangeLogComponent,
     AddRoadmapComponent,
     RoadmapDetailsComponent,
     RoadmapListComponent,

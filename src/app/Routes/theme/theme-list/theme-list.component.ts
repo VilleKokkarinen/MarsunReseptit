@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { Theme } from 'src/app/components/themecomponents/theme';
 import { SettingsService } from 'src/app/Services/settings.service';
 import { ThemeService } from 'src/app/Services/theme/theme.service';
@@ -14,8 +15,18 @@ export class ThemeListComponent {
   Search:string="";
 
   
+  userSearchUpdate = new Subject<string>();
+  
   constructor(private themeservice: ThemeService, private router: Router, private settingsService:SettingsService) {
     this.retrieveThemes();
+
+    
+    this.userSearchUpdate.pipe(
+      debounceTime(300),
+      distinctUntilChanged())
+      .subscribe(() => {
+        this.retrieveThemes();
+      });
    }
 
    retrieveThemes(): void {

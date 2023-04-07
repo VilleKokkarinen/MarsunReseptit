@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { PublicUserService } from 'src/app/Services/public-user.service';
+import { PublicUserService } from 'src/app/Services/user/public-user.service';
 import { PublicUser } from 'src/app/components/shared/user';
 import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';

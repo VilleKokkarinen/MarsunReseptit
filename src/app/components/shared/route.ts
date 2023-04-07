@@ -3,4 +3,5 @@ export class Route{
   Icon:string = "";
   Name:string = "";
   Auth:boolean = false;
+  Role:number = -1;
 }

@@ -20,7 +20,6 @@ export class AppComponent {
     private themeService:ThemeService
     ) {
     this.settingsService.SettingsChange.subscribe((newSettings) => {
-      console.log(newSettings.CookieSettings.Show_Popup)
       if(newSettings.CookieSettings.Show_Popup === true){
         config.backdrop = 'static';
         config.keyboard = false;

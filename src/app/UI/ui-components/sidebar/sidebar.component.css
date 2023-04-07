@@ -6,7 +6,6 @@
   z-index: 10;
 }
 
-
 .sidebarelement{
   display:inline-block;
   height:calc(100% - 60px);

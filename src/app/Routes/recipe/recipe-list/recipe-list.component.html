@@ -7,6 +7,7 @@
                 id="searchIngredient"
                 placeholder="search"
                 [(ngModel)]="Search"
+                (ngModelChange)="userSearchUpdate.next($event)"
                 name="Search"
             />
         </div>
@@ -21,10 +22,10 @@
                         />
                     </div>
                     <div style="height:fit-content;">
-                        <div class="title-text recipe-card">
+                        <div class="title-text text-container">
                             {{Recipe.name}}
                         </div>
-                        <div class="description-text recipe-card">
+                        <div class="description-text text-container">
                             {{Recipe.description}}
                         </div>
                     </div>

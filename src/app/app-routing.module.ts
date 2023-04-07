@@ -22,8 +22,8 @@ import { AddRoadmapComponent } from './Routes/roadmap/add-roadmap/add-roadmap.co
 import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list.component';
 import { RoadmapDetailsComponent } from './Routes/roadmap/roadmap-details/roadmap-details.component';
 import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
-import { ChangeLogComponent } from './Routes/change-log/change-log.component';
 import { DisclaimerComponent } from './Routes/disclaimer/disclaimer.component';
+import { RoleGuard } from './Guard/role.guard';
 
 const routes: Routes =[
   {
@@ -50,7 +50,7 @@ const routes: Routes =[
       {
         path: 'Add-Recipe',
         component: AddRecipeComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard,RoleGuard]
       },
       {
         path: 'Themes',
@@ -76,7 +76,7 @@ const routes: Routes =[
       {
         path: 'Add-Roadmap',
         component: AddRoadmapComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard,RoleGuard]
       },
       {
         path: 'Account',
@@ -102,10 +102,6 @@ const routes: Routes =[
       {
         path: 'Settings',
         component: SettingsComponent
-      },
-      {
-        path: 'Change-Log',
-        component: ChangeLogComponent
       }
     ]
   },

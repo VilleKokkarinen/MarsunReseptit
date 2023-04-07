@@ -1,7 +1,6 @@
 .recipe-card{
     border:1px solid var(--Primary_Border_Color);
     border-radius: 8px;
-    padding:5px;   
     margin:5px;
     background-color: var(--Accent_Bg_Color);
     max-width: 500px;
@@ -51,22 +50,20 @@
     transition:all .5s;
 }
 
-.description-text{
+.text-container{
     border:1px solid var(--Accent_Border_Color);
     border-radius: 8px;
     background-color: var(--Primary_Color);
-    color:var(--Accent_Text_Color);
     overflow-y:auto;
     max-height: 125px;
-    margin:10px 0px 0px 0px;
+    margin:10px 0px 10px 5px;
+    padding:5px;
+}
+
+.description-text{
+    color:var(--Accent_Text_Color);
 }
 
 .title-text{
-    border:1px solid var(--Accent_Border_Color);
-    border-radius: 8px;
-    background-color: var(--Primary_Color);
     color:var(--Primary_Text_Color);
-    overflow-y:auto;
-    max-height: 125px;
-    margin:0px 0px 0px 0px;
 }

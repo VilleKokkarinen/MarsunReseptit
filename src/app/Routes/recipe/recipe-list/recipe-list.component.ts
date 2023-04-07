@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RecipeService } from 'src/app/Services/recipe/recipe.service';
 import { Recipe } from 'src/app/components/recipecomponents/recipe';
 import { Router } from '@angular/router';
+import { Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,10 +13,18 @@ export class RecipeListComponent {
   Recipes:Recipe[]=[];
   Search:string="";
 
+  userSearchUpdate = new Subject<string>();
   
   constructor(private recipeService: RecipeService, private router: Router) {
     this.retrieveRecipes();
  
+    this.userSearchUpdate.pipe(
+      debounceTime(300),
+      distinctUntilChanged())
+      .subscribe(() => {
+        this.retrieveRecipes();
+      });
+      
    }
 
    retrieveRecipes(): void {

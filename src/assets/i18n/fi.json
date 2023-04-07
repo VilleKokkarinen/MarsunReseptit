@@ -56,7 +56,7 @@
     "TXT_Mode":"Tyyli",
     "TXT_Simple":"Yksinkertainen",
     "TXT_Description":"Kuvaus",
-    "TXT_Recipe_Label":"Resepti: (Voit raahata ja pudottaa / copy paste / ladata max. 3 kuvaa reseptiin.)",
+    "TXT_Recipe_Label":"Resepti: (Voit raahata ja pudottaa / copy paste / ladata max. 5 kuvaa reseptiin.)",
     "TXT_Roadmap_Label":"Kerro meille ideasi, pyynnöt uusista ominaisuuksista, tai jos löydät bugeja / epäkohtia!",
     "TXT_Save":"Tallenna",
     "TXT_Clear":"Tyhjennä",
@@ -165,7 +165,7 @@
     "TXT_Choose_Template":"Valitse pohja",
 
     "TXT_Welcome_To_Marsun_Reseptit":"Tervetuloa Marsun-resepteihin!",
-    "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi, joka käyttää:",
+    "TXT_About_Marsun_Reseptit":"Moderni Open Source Webbi-appi reseptien jakamiseen!",
 
 
     "TXT_Verify_Account_First":"Vahvista tilisi ensin sähköpostiisi lähetetyllä viestillä.",

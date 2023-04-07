@@ -152,9 +152,22 @@ html{
   height:100%;
   width:100%;
 }
+
 @media (min-width: 576px) {
   .padded-content{
-    padding:15px;
+    padding:10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .padded-content{
+    padding:20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .padded-content{
+    padding:30px;
   }
 }
 
@@ -273,7 +286,7 @@ input:focus-visible{
 }
 
 .form-control {
-  background-color: var(--Accent_Color);
+  background-color: var(--Accent_Bg_Color);
   border: 1px solid var(--Accent_Border_Color);
   color:var(--Accent_Text_Color);
 }

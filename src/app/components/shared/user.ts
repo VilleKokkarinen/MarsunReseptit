@@ -29,3 +29,17 @@ export class UserTier {
     user: string = "";
     benefits?: UserTierBenefits;
 }
+
+export class UserRole {
+    id: string = "";
+    user: string = "";
+    role: number = 0;
+    /*
+    -1: visitor
+    0: user
+    1: verified user
+    2: publisher
+    3: moderator
+    4: admin
+    */
+}

@@ -15,49 +15,50 @@ export class SidebarComponent {
       "Route":"Dashboard",
       "Name":"TXT_Dashboard",
       "Icon":"house",
-      "Auth":false
+      "Auth":false,
+      "Role":-1
     },
     {
       "Route":"Recipes",
       "Name":"TXT_Recipes",
       "Icon":"journals",
-      "Auth":false
+      "Auth":false,
+      "Role":-1
     },
     {
       "Route":"Add-Recipe",
       "Name":"TXT_Add_Recipe",
       "Icon":"journal-plus",
-      "Auth":true
+      "Auth":true,
+      "Role":2
     },
     {
       "Route":"Themes",
       "Name":"TXT_Themes",
       "Icon":"journal-album",
-      "Auth":false
+      "Auth":false,
+      "Role":-1
     },
     {
       "Route":"Add-Theme",
       "Name":"TXT_Add_Theme",
       "Icon":"palette",
-      "Auth":true
+      "Auth":true,
+      "Role":1
     },
     {
       "Route":"Roadmaps",
       "Name":"TXT_Roadmaps",
       "Icon":"terminal",
-      "Auth":false
+      "Auth":false,
+      "Role":1
     },
     {
       "Route":"Add-Roadmap",
       "Name":"TXT_Add_Roadmap",
       "Icon":"terminal-plus",
-      "Auth":true
-    },
-    {
-      "Route":"Change-Log",
-      "Name":"TXT_Change_Log",
-      "Icon":"card-list",
-      "Auth":false
+      "Auth":true,
+      "Role":2
     }
   ]
 
@@ -65,18 +66,20 @@ export class SidebarComponent {
   isLoggedIn:boolean = false;
 
   SideBarOpen:boolean = false;
+  roleLevel:number = -1;
 
   constructor(private authService:PBAuthService) {
     this.isLoggedIn = authService.isLoggedIn;
+    this.roleLevel = this.authService.UserRole;
 
     this.authService.AuthChange.subscribe(() => { // subscribe to login event
       this.isLoggedIn = this.authService.isLoggedIn;
-    });    
-
-    
+      this.roleLevel = this.authService.UserRole;
+    });
   }
 
   ToggleSideBar(){
     this.SideBarOpen = !this.SideBarOpen;
   }
+  
 }

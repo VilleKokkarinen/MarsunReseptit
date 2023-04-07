@@ -7,6 +7,7 @@
                 id="searchIngredient"
                 placeholder="search"
                 [(ngModel)]="Search"
+                (ngModelChange)="userSearchUpdate.next($event)"
                 name="Search"
             />
         </div>

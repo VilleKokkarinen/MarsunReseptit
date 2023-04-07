@@ -2,37 +2,16 @@
     <div style="max-width: 850px;">
         <div class="form-group dashboard-card" style="padding:0">
 
-            <div class="dashboard-about-title">
-                <div class="dashboard-about-text">
-                    {{"TXT_Welcome_To_Marsun_Reseptit" | translate}}
-                    <br/>
-                    {{"TXT_About_Marsun_Reseptit" | translate}}
-                </div>
-            </div>    
-    
-            <div style="display:flex; flex-direction:row; justify-content:space-between; margin-top:50px;">
-                <div class="dashboard-about">
-                    <div class="dashboardrecipe-img-container">
-                        <img class="dashboardrecipe-img" style="object-fit:contain; margin-top:5px;"  src="../../../assets/Pocketbase.png" />
-                    </div>
-                    <div class="dashboard-about-text">
-                        Pocketbase <br/> {{"TXT_Database" | translate}}
-                    </div>
-                </div>
-                <div class="dashboard-about">
-                    <div class="dashboardrecipe-img-container">
-                        <img class="dashboardrecipe-img" style="object-fit:contain; margin-top:5px;" src="../../../assets/Angular.png" />
-                    </div>
-                    
-                    <div class="dashboard-about-text">
-                        Angular <br/> {{"TXT_Framework" | translate}}
-                    </div>
-                </div>
+            <div class="dashboard-container about-text">
+                {{"TXT_Welcome_To_Marsun_Reseptit" | translate}}
+                <br/>
+                {{"TXT_About_Marsun_Reseptit" | translate}}
             </div>
         </div>
-        <div class="form-group dashboard-card">
+
+        <div class="form-group dashboard-card" style="padding-top:25px;">
             <label for="Trending" class="dashboard-label">{{"TXT_Trending_Recipes" | translate}}</label>
-            <div class="row">
+            <div style="display:flex; flex-direction:row; flex-wrap: wrap">
                 <div class="big-recipe-card-container">
                     <div class="big-recipe-card mini-recipe-card" *ngIf="TrendingRecipes[0] != undefined" (click)="gotoRecipe(TrendingRecipes[0])">
                         <div style="display:flex; flex-direction:column;">

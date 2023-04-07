@@ -34,7 +34,8 @@ export class AccountDropdownComponent {
       this.rememberMe = this.authService.GetRememberMe();
       this.userData = this.authService.userData;
 
-      this.authService.AuthChange.subscribe((data) => { // subscribe to login event
+      this.authService.AuthChange.subscribe((data) => { // subscribe to login / logout event
+        this.rememberMe = this.authService.GetRememberMe();
         this.userData = data;
       });
       

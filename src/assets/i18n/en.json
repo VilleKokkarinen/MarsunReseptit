@@ -55,7 +55,7 @@
     "TXT_Mode":"Mode",
     "TXT_Simple":"Simple",
     "TXT_Description":"Description",
-    "TXT_Recipe_Label":"Recipe: (You can drag & drop / copy paste / upload up to 3 images inside the recipe)",
+    "TXT_Recipe_Label":"Recipe: (You can drag & drop / copy paste / upload up to 5 images inside the recipe)",
     "TXT_Roadmap_Label":"Tell us your ideas, feature requests, or report bugs / errors you've found!",
     "TXT_Save":"Save",
     "TXT_Clear":"Clear",
@@ -165,7 +165,7 @@
     "TXT_Choose_Template":"Choose template",
 
     "TXT_Welcome_To_Marsun_Reseptit":"Welcome to Marsus' recipes!",
-    "TXT_About_Marsun_Reseptit":"Modern Open Source Web-app, which uses:",
+    "TXT_About_Marsun_Reseptit":"Modern Open Source Web-app for sharing recipes!",
 
     "TXT_Verify_Account_First":"Verify your account first with the verification message sent to your email",
     "TXT_Updated_Public_User_Data":"Updated public account details",

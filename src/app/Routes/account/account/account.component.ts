@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { PublicUser } from 'src/app/components/shared/user';
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
-import { PrivateUserService } from 'src/app/Services/private-user.service';
-import { PublicUserService } from 'src/app/Services/public-user.service';
+import { PrivateUserService } from 'src/app/Services/user/private-user.service';
+import { PublicUserService } from 'src/app/Services/user/public-user.service';
 import { ImageUploadComponent } from 'src/app/UI/image-upload/image-upload.component';
 
 @Component({
@@ -21,7 +21,7 @@ export class AccountComponent {
   };
   
   constructor(private authService: PBAuthService, private privateUserService:PrivateUserService) {
-    this.userData = JSON.parse(JSON.stringify(this.authService.userData));
+    this.userData = this.authService.userData;
     this.privateUserService.getOne(this.userData.id).then((data)=>{
       this.userEmailVerified = data.verified
     })

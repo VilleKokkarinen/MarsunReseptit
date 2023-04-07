@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { PrivateUser } from '../components/shared/user';
+import { PrivateUser } from '../../components/shared/user';
 import { Observable } from 'rxjs';
 import PocketBase, { RecordService } from "pocketbase";
 import { environment } from 'src/environments/environment';
-import { LoadingSpinnerService } from './loading-spinner.service';
+import { LoadingSpinnerService } from '../loading-spinner.service';
 
 @Injectable({
   providedIn: 'root',
