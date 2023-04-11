@@ -10,6 +10,7 @@ import { RecipeLike } from 'src/app/components/recipecomponents/recipelike';
 import { RecipeTotalLikesService } from 'src/app/Services/recipe/recipe_total_likes.service';
 import { RecipeCommentService } from 'src/app/Services/recipe/recipecomment.service';
 import { RecipeComment } from 'src/app/components/recipecomponents/recipecomment';
+import { SharedService } from 'src/app/Services/shared.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -122,6 +123,7 @@ export class RecipeDetailsComponent implements OnInit {
         })
         othersComments.then(()=>{
           this.Comments.push(...fetchedComments);
+          SharedService.scrollToBottom();
         })
       })
     }
@@ -129,6 +131,7 @@ export class RecipeDetailsComponent implements OnInit {
 
   AddComment(){
     this.AddingComment = !this.AddingComment;
+    SharedService.scrollToBottom();
   }
 
   CommentAdded(result:any){

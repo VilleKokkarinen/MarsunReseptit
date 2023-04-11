@@ -20,4 +20,13 @@ export class SharedService {
     x-=x%3
     return Math.round(n*d/p(10,x))/d+" kmgtpe"[x/3]
   }
+
+  static scrollToBottom() {
+    setTimeout(() => { // make sure the new content is loaded before attempting to scroll down
+      const maxScroll = document.getElementsByClassName('content')[0].scrollHeight;
+      console.log(maxScroll);
+
+      document.getElementsByClassName('content')[0].scrollTo({ top: maxScroll, behavior: 'smooth' });
+    }, 25);
+  }
 }
