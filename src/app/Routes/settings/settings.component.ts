@@ -36,7 +36,6 @@ export class SettingsComponent {
     this.settingsService.SaveSettings();
   }
 
-
   ChangePrivacySettings(){
     this.Settings.CookieSettings.Show_Popup = true;
     this.SaveSettings();

@@ -2,7 +2,7 @@
     <div class="sidebarelement" [ngClass]="SideBarOpen === true ? 'SideBarOpen' : '' ">
         <div class="sidebar"> <!-- Bottom 2 routes, roadmap, add roadmap, atleast for now -->
 
-            <div class="sidebar-container" style="height:15px; cursor:pointer;" (click)="ToggleSideBar()">
+            <div class="sidebar-container" style="height:25px; cursor:pointer;" (click)="ToggleSideBar()">
                 <i *ngIf="SideBarOpen === true" class="bi bi-chevron-double-left" style="margin-left:auto; margin-right:5px;"></i>
                 <i *ngIf="SideBarOpen === false" class="bi bi-chevron-double-right" style="margin-left:auto; margin-right:7px;"></i>
             </div>

@@ -5,6 +5,7 @@ import { RoadmapComment } from 'src/app/components/roadmapcomponents/roadmapcomm
 import { PBAuthService } from 'src/app/Services/pb.auth.service';
 import { RoadmapService } from 'src/app/Services/roadmap/roadmap.service';
 import { RoadmapCommentService } from 'src/app/Services/roadmap/roadmapcomment.service';
+import { SharedService } from 'src/app/Services/shared.service';
 import { RichTextEditorComponent } from 'src/app/UI/rich-text-editor/rich-text-editor.component';
 
 @Component({
@@ -88,7 +89,7 @@ export class RoadmapDetailsComponent {
         })
         othersComments.then(()=>{
           this.Comments.push(...fetchedComments);
-          console.log(this.Comments)
+          SharedService.scrollToBottom();
         })
       })
     }
@@ -96,6 +97,7 @@ export class RoadmapDetailsComponent {
 
   AddComment(){
     this.AddingComment = !this.AddingComment;
+    SharedService.scrollToBottom();
   }
 
   CommentAdded(result:any){

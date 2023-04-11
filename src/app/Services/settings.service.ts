@@ -29,7 +29,7 @@ export class SettingsService {
       {
         this.LoadSettings(); // if this is users first time entering the site, without having settings
       }
-    }, 1);
+    }, 1000);
 
   }
   
