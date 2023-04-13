@@ -1,4 +1,4 @@
-<div class="row form-group comment-card" *ngIf="Comment != undefined && PublicUser != undefined" >
+<div class="row form-group comment-card" *ngIf="Comment != undefined && PublicUser != undefined" [id]="Comment.id != undefined ? Comment.id : '' " >
     
     <div class="comment-header col-xs-12">
         {{Comment.updated | localizedDate}}

@@ -121,9 +121,13 @@ export class RecipeDetailsComponent implements OnInit {
             resolve("OK"); // even though failed, no comments from other users?
           })
         })
+     
         othersComments.then(()=>{
           this.Comments.push(...fetchedComments);
+          if(fetchedComments.length == 0)
           SharedService.scrollToBottom();
+          else
+          SharedService.scrollToBottom(fetchedComments[0].id);
         })
       })
     }

@@ -89,7 +89,10 @@ export class RoadmapDetailsComponent {
         })
         othersComments.then(()=>{
           this.Comments.push(...fetchedComments);
+          if(fetchedComments.length == 0)
           SharedService.scrollToBottom();
+          else
+          SharedService.scrollToBottom(fetchedComments[0].id);
         })
       })
     }

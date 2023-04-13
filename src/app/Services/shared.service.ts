@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class SharedService {
   constructor() { }
 
-  static waitFor(condition:any, callback:any, maxCallBacks:number = 10) {
+  static waitFor(condition:any, callback:any, maxCallBacks:number = 10, sleep:number = 500) {
     if(!condition() || (maxCallBacks > 0 && !condition())) {
         maxCallBacks--;
-        window.setTimeout(this.waitFor.bind(null, condition, callback, maxCallBacks), 500);
+        window.setTimeout(this.waitFor.bind(null, condition, callback, maxCallBacks), sleep);
     } else {
         callback();
     }
@@ -21,12 +21,23 @@ export class SharedService {
     return Math.round(n*d/p(10,x))/d+" kmgtpe"[x/3]
   }
 
-  static scrollToBottom() {
-    setTimeout(() => { // make sure the new content is loaded before attempting to scroll down
-      const maxScroll = document.getElementsByClassName('content')[0].scrollHeight;
-      console.log(maxScroll);
-
-      document.getElementsByClassName('content')[0].scrollTo({ top: maxScroll, behavior: 'smooth' });
-    }, 25);
+  static scrollToBottom(id:string = "") {
+      if(id == ""){
+        setTimeout(() => {
+        const maxScroll = document.getElementsByClassName('content')[0].scrollHeight;
+        document.getElementsByClassName('content')[0].scrollTo({ top: maxScroll, behavior: 'smooth' });
+      }, 50);
+      }else{
+        this.waitFor(()=> document.getElementById(id) !== null, () => {
+          var element = document.getElementById(id);
+          if(element != null){
+            element.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+              inline: "nearest"
+              });
+            }
+        },50,70)
+      }
   }
 }

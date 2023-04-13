@@ -1,5 +1,5 @@
 .comment-header{
-    background-color: var(--Primary_Bg_Color);
+    background-color: var(--Primary_Color);
     border-bottom:1px solid var(--Accent_Border_Color);
     padding:0px 0px 0px 10px;
     margin:0;
@@ -55,8 +55,18 @@
     font-size: small;
 }
 
+.comment-textarea{
+    color:var(--Primary_Text_Color);
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    border-radius: 0px;
+    overflow: hidden;
+    min-height: 100px;
+    resize:none;
+}
 .comment-content{
-    max-height: 150px;
+    max-height: 250px;
     overflow-y: auto;
-    padding:9px;
+    padding-bottom:9px;
 }

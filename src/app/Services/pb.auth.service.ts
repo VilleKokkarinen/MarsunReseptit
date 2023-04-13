@@ -41,9 +41,6 @@ export class PBAuthService {
     this.pb.authStore.onChange(()=>{
       var promise = new Promise<PublicUser>((resolve)=>{
         var currentUser = this.pb.authStore.model;
-
-        console.log(currentUser);
-
         if(currentUser == null){ // if user signed out
           resolve(new PublicUser())
         }else{

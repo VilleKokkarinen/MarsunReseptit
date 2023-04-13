@@ -93,6 +93,7 @@ import { RoadmapListComponent } from './Routes/roadmap/roadmap-list/roadmap-list
 import { RoadmapSearchComponent } from './UI/search-dropdown/roadmap-search/roadmap-search.component';
 import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
 import { DisclaimerComponent } from './Routes/disclaimer/disclaimer.component';
+import { TextareaAutoresizeDirective } from './UI/rich-text-editor/textarea-autoresize.directive';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -145,7 +146,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RoadmapListComponent,
     RoadmapSearchComponent,
     AdminLoginComponent,
-    DisclaimerComponent
+    DisclaimerComponent,
+    TextareaAutoresizeDirective
   ],
   imports: [
     NotifierModule.withConfig({
