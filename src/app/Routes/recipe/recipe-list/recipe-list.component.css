@@ -11,6 +11,8 @@
 .searchcontainer{
     max-width: 500px;
     margin:5px;
+    display: flex;
+    align-items: center;
 }
 
 @media (min-width: 576px) {

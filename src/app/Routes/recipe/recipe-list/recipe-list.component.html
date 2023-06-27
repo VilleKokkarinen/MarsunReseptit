@@ -10,6 +10,8 @@
                 (ngModelChange)="userSearchUpdate.next($event)"
                 name="Search"
             />
+            <app-pagination #pagination [collectionSize]="totalRecipes" [pageSize]="pageSize" [firstLastButtons]="true" [maxSize]="1" (selectedPageChange)="selectedPageChanged($event)" >
+            </app-pagination>
         </div>
         <div style="display:flex; flex-wrap:wrap; justify-content: flex-start; width:100%;">
             <div *ngFor="let Recipe of Recipes" class="recipe-card" (click)="gotoRecipe(Recipe)">

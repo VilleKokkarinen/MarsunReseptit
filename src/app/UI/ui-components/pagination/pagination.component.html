@@ -1,0 +1,30 @@
+<nav>
+    <ul [class]="'pagination'">
+        <!-- first button -->
+        <li [class]="selectedPage === 1 ? 'page-item disabled' : 'page-item'" *ngIf="firstLastButtons">
+            <button class="page-link" (click)="selectPageNumber(1)"><i class="bi bi-chevron-bar-left"></i></button>
+        </li>
+        <!-- previous button -->
+        <li [class]="selectedPage === 1 ? 'page-item disabled' : 'page-item'" *ngIf="nextPreviousButtons">
+            <button class="page-link" (click)="previous()"><i class="bi bi-chevron-left"></i></button>
+        </li>
+        <!-- page numbers -->
+        <ng-container *ngFor="let p of totalPages; index as i">
+            <li *ngIf="i + 1 >= (selectedPage - maxSize) && i + 1 <= (selectedPage + maxSize)"
+                [class]="selectedPage === (i  + 1) ? 'page-item active' : 'page-item'">
+                <button class="page-link" (click)="selectPageNumber(i + 1)">{{i + 1}}</button>
+            </li>
+        </ng-container>
+        <!-- next button -->
+        <li [class]="selectedPage === totalPages.length ? 'page-item disabled' : 'page-item'"
+            *ngIf="nextPreviousButtons">
+            <button class="page-link" (click)="next()"><i class="bi bi-chevron-right"></i></button>
+        </li>
+        <!-- last button -->
+        <li [class]="selectedPage === totalPages.length ? 'page-item disabled' : 'page-item'" *ngIf="firstLastButtons">
+            <button class="page-link" (click)="selectPageNumber(totalPages.length)">
+                <i class="bi bi-chevron-bar-right"></i>
+        </button>
+        </li>
+    </ul>
+</nav>

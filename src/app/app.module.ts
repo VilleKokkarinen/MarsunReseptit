@@ -94,6 +94,7 @@ import { RoadmapSearchComponent } from './UI/search-dropdown/roadmap-search/road
 import { AdminLoginComponent } from './Routes/admin-login/admin-login.component';
 import { DisclaimerComponent } from './Routes/disclaimer/disclaimer.component';
 import { TextareaAutoresizeDirective } from './UI/rich-text-editor/textarea-autoresize.directive';
+import { PaginationComponent } from './UI/ui-components/pagination/pagination.component';
 registerLocaleData(localeEn);
 registerLocaleData(localeFi);
 
@@ -147,7 +148,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RoadmapSearchComponent,
     AdminLoginComponent,
     DisclaimerComponent,
-    TextareaAutoresizeDirective
+    TextareaAutoresizeDirective,
+    PaginationComponent
   ],
   imports: [
     NotifierModule.withConfig({

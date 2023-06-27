@@ -24,7 +24,9 @@ export class RecipeService {
       loader.reduceRequest();
       return data;
     };
-  }
+
+    this.collection.client.autoCancellation(false);
+    }
 
   get(id: string): Observable<Recipe> {
     return new Observable((observer) => {

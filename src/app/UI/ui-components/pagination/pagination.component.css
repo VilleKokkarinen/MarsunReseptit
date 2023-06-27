@@ -1,0 +1,30 @@
+.page-item > .page-link {
+    border-color: var(--Accent_Border_Color);
+    background-color: var(--Accent_Color);
+    color:var(--Primary_Text_Color);
+}
+  
+.active.page-item > .page-link {
+    background-color: var(--Primary_Color);
+    color:var(--Accent_Text_Color);
+}
+
+.disabled.page-item > .page-link {
+    background-color: var(--Disabled_Element_Color);
+}
+
+.page-link{
+    height: 37px;
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+}
+
+.pagination{
+    margin:0px;
+    margin-left:15px;
+}
